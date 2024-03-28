@@ -1,4 +1,4 @@
-import './Home.css';
+import './../../css/Home.css';
 import { Container } from 'react-bootstrap';
 import Navbar from '../../components/Navbar';
 
