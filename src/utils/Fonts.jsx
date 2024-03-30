@@ -1,7 +1,7 @@
 function Fonts() {
   return (
     <div>
-      <h1 className="tittle">Hola Mundo Probando Fuente</h1>
+      <h1 className="title">Hola Mundo Probando Fuente</h1>
       <h1 className="subtitle">Hola Mundo Probando Fuente</h1>
       <h2 className="kanit-light ">Hola Mundo Probando Fuente</h2>
       <h3 className="kanit-regular">Hola Mundo Probando Fuente</h3>

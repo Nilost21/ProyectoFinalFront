@@ -8,8 +8,8 @@ function Home() {
     <>
       <Container>
         <header>
-          <NavbarComponent />
           <Fonts />
+          <NavbarComponent />
         </header>
       </Container>
       <Container>
