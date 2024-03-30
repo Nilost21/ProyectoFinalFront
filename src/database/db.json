@@ -2,26 +2,26 @@
   "users": [
     {
       "id": "e9284ea7-2fc8-4d02-9adc-140cfaab7d2c",
-      "name": "Nicolas Molina",
+      "name": "Nicolas",
+      "lastname": "Molina",
       "email": "n@m.com",
       "password": "123",
-      "company": "ico SA",
       "isAdmin": true
     },
     {
       "id": "c77083bb-083f-47ba-b7b1-d44f3c9977cb",
-      "name": "Daniela Lagos",
+      "name": "Daniela ",
+      "lastname" : "Lagos",
       "email": "daniela@gmail.com",
       "password": "123",
-      "company": "Daniela SA",
       "isAdmin": false
     },
     {
       "id": "d7eafb63-79c8-4d75-b96a-ee675688456a",
       "name": "Alfredo",
+      "lastname": "Molina",
       "email": "alfa@jores.com",
       "password": "123",
-      "company": "alfajores SA",
       "nombre": "dd",
       "isAdmin": false
     }
