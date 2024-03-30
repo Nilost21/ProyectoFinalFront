@@ -1,6 +1,6 @@
 import './../../css/Home.css';
 import { Container } from 'react-bootstrap';
-import Navbar from '../../components/Navbar';
+import Navbar from '../../components/NavbarComponent';
 
 function Home() {
   return (
