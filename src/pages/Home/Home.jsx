@@ -1,26 +1,29 @@
+/* eslint-disable no-unused-vars */
 import './../../css/Home.css';
 import { Container } from 'react-bootstrap';
-// import Fonts from '../../utils/Fonts';
 import Products from '../Products/Products';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function Home() {
-  const name = 'NOMBRE PRODUCTO';
-  const price = 15;
-  const fn = () => {
-    console.log('Ejecuta una función desde props');
+  const getData = async () => {
+    try {
+      const response = await axios.get('http://localhost:8000/users');
+      const data = response.data;
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const objectProducts = {
-    nameProduct: 'Mancuerna',
-    priceProduct: 20,
-  };
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <>
       <Container>
-        <header>
-          <Products name={name} price={price} fn={fn} object={objectProducts} />
-        </header>
+        <header></header>
       </Container>
     </>
   );

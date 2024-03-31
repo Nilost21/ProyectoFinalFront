@@ -11,9 +11,9 @@ function NavbarComponent() {
       <Navbar
         collapseOnSelect
         expand="lg"
-        className="bg-navbar mt-3 rounded-3 py-1"
+        className="bg-navbar mt-3 rounded-3 py-1 mx-5"
       >
-        <Container>
+        <Container fluid>
           <Navbar.Brand
             className="title cursor-pointer text-dark"
             onClick={() => navigate('/')}

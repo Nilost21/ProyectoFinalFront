@@ -27,10 +27,19 @@
   ],
   "products": [
     {
-      "id": "d7eafb63-79c8-4d75-b96a-ee6756884561",
-      "name": "Mancuernas",
-      "price": 25,
-      "category": "Pesas"
+      "id": "1",
+      "name": "Producto 1",
+      "price": 25
+    },
+    {
+      "id": "2",
+      "name": "Producto 2",
+      "price": 30
+    },
+    {
+      "id": "3",
+      "name": "Producto 3",
+      "price": 35
     }
   ]
 }

@@ -11,10 +11,10 @@ function App() {
   return (
     <>
       {/* <UsersContext> */}
-      <Container>
-        <NavbarComponent />
-        <RoutesPages />
-      </Container>
+
+      <NavbarComponent />
+
+      <RoutesPages />
       {/* </UsersContext> */}
     </>
   );
