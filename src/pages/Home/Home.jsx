@@ -8,8 +8,9 @@ function Home() {
     <>
       <Container>
         <header>
-          <Fonts />
           <NavbarComponent />
+          <h1 className="title text-light mt-3">ESTAS EN EL HOME</h1>
+          <Fonts />
         </header>
       </Container>
       <Container>

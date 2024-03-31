@@ -2,7 +2,7 @@ import { Container } from 'react-bootstrap';
 
 function Fonts() {
   return (
-    <Container className="mt-3">
+    <Container className="mt-5">
       <h1 className="title text-light">Hola Mundo Probando Fuente</h1>
       <h2 className="title text-light">Hola Mundo Probando Fuente</h2>
       <h3 className="title text-light">Hola Mundo Probando Fuente</h3>

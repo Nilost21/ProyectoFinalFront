@@ -22,8 +22,15 @@
       "lastname": "Molina",
       "email": "alfa@jores.com",
       "password": "123",
-      "nombre": "dd",
       "isAdmin": false
+    }
+  ],
+  "products": [
+    {
+      "id": "d7eafb63-79c8-4d75-b96a-ee6756884561",
+      "name": "Mancuernas",
+      "price": 25,
+      "category": "Pesas"
     }
   ]
 }
