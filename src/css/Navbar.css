@@ -1,8 +1,30 @@
-.bg-transparent-white {
-    background-color: rgba(255, 255, 255, 0.5); /* Color blanco con una opacidad del 50% */
+.bg-navbar {
+  background: linear-gradient(to right, #8366D2, #24203B);
   }
 
+  .text-color {
+    color:#FFFBFD;
+  }
 
   .cursor-pointer {
     cursor: pointer;
   }
+
+
+
+  .text-shadow {
+    transition: text-shadow 0.3s ease;
+}
+
+.text-shadow:hover {
+    text-shadow: 1px 1px 2px rgba(109, 107, 107, 0.9);
+}
+
+
+.text-animation {
+  transition: transform 0.3s ease;
+}
+
+.text-animation:hover {
+  transform: scale(1.05);
+}

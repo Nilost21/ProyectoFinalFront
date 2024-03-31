@@ -1,26 +1,26 @@
 import './../../css/Home.css';
 import { Container } from 'react-bootstrap';
-import NavbarComponent from '../../components/NavbarComponent';
-import Fonts from '../../utils/Fonts';
+// import Fonts from '../../utils/Fonts';
+import Products from '../Products/Products';
 
 function Home() {
+  const name = 'NOMBRE PRODUCTO';
+  const price = 15;
+  const fn = () => {
+    console.log('Ejecuta una función desde props');
+  };
+
+  const objectProducts = {
+    nameProduct: 'Mancuerna',
+    priceProduct: 20,
+  };
+
   return (
     <>
       <Container>
         <header>
-          <NavbarComponent />
-          <h1 className="title text-light mt-3">ESTAS EN EL HOME</h1>
-          <Fonts />
+          <Products name={name} price={price} fn={fn} object={objectProducts} />
         </header>
-      </Container>
-      <Container>
-        <main>
-          <section></section>
-          <section></section>
-        </main>
-      </Container>
-      <Container>
-        <footer></footer>
       </Container>
     </>
   );

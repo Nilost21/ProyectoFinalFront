@@ -1,6 +1,7 @@
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import './../css/Navbar.css';
 import { useNavigate } from 'react-router';
+import ButtonComponent from './ButtonComponent';
 
 function NavbarComponent() {
   const navigate = useNavigate();
@@ -10,31 +11,30 @@ function NavbarComponent() {
       <Navbar
         collapseOnSelect
         expand="lg"
-        className="bg-transparent-white mt-3 rounded-3"
+        className="bg-navbar mt-3 rounded-3 py-1"
       >
         <Container>
           <Navbar.Brand
-            className="title cursor-pointer"
+            className="title cursor-pointer text-dark"
             onClick={() => navigate('/')}
           >
-            ELITEBODY
+            <h5 className="mt-2 text-dark text-shadow">ELITEBODY</h5>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
+          <Navbar.Collapse id="responsive-navbar-nav" className="text-light">
             <Nav className="me-auto">
-              <Nav.Link className="small-font " onClick={() => navigate('/')}>
+              <Nav.Link
+                className="subtitle mt-1 text-white"
+                onClick={() => navigate('/')}
+              >
                 Home
               </Nav.Link>
-              <Nav.Link
-                className="small-font"
-                onClick={() => navigate('/products')}
-              >
-                Products
-              </Nav.Link>
+              <Nav.Link className="subtitle mt-1 text-white">Products</Nav.Link>
               <NavDropdown
-                className="small-font"
+                className="subtitle mt-1"
                 title="About Us"
                 id="collapsible-nav-dropdown"
+                menuVariant="dark"
               >
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
@@ -50,15 +50,13 @@ function NavbarComponent() {
               </NavDropdown>
             </Nav>
             <Nav>
-              <Nav.Link className="subtitle mt-1" href="#features">
-                Admin
+              <Nav.Link className="subtitle mt-1 text-light" href="#features">
+                ADMIN
               </Nav.Link>
-              <Nav.Link className="subtitle mt-1" href="#features">
+              <Nav.Link className="subtitle mt-1 text-light" href="#features">
                 Login
               </Nav.Link>
-              <Nav.Link className="subtitle mt-1" href="#features">
-                Register
-              </Nav.Link>
+              <ButtonComponent text={'Register'} />
             </Nav>
           </Navbar.Collapse>
         </Container>
