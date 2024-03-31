@@ -6,11 +6,13 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function Home() {
+  const [users, setUsers] = useState([]);
+
   const getData = async () => {
     try {
       const response = await axios.get('http://localhost:8000/users');
       const data = response.data;
-      console.log(data);
+      setUsers(data);
     } catch (error) {
       console.log(error);
     }
@@ -20,6 +22,7 @@ function Home() {
     getData();
   }, []);
 
+  console.log(users);
   return (
     <>
       <Container>
