@@ -23,7 +23,7 @@ CardComponent.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   func: PropTypes.func,
-  price: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
 };
 
 export default CardComponent;
