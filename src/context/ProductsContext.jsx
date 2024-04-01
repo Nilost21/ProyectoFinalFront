@@ -8,8 +8,7 @@ export const ProductsProvider = createContext();
 function ProductsContext({ children }) {
   const [products, setProducts] = useState([]);
 
-  
-
+  //CRUD USERS
   const getProducts = async () => {
     try {
       const response = await axios.get('http://localhost:8000/products');
@@ -20,13 +19,26 @@ function ProductsContext({ children }) {
     }
   };
 
+  const addProduct = async (product) => {
+    try {
+      const response = await axios.post(
+        'http://localhost:8000/products',
+        product
+      );
+      const data = response.data;
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getProducts();
   }, []);
 
   return (
-    <ProductsProvider.Provider value={{ products }}>
-      {children}  
+    <ProductsProvider.Provider value={{ products, addProduct }}>
+      {children}
     </ProductsProvider.Provider>
   );
 }

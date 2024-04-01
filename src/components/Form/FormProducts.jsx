@@ -3,60 +3,91 @@
 import { Button, Form } from 'react-bootstrap';
 import './../../css/Form.css';
 import ButtonComponent from '../ButtonComponent';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { ProductsProvider } from '../../context/ProductsContext';
 
 function FormProducts() {
-  const [name, setName] = useState();
-  const [price, setPrice] = useState();
-  const [description, setDescription] = useState();
+  const { addProduct } = useContext(ProductsProvider);
+
+  const [product, setProduct] = useState({
+    id: '',
+    name: '',
+    price: '',
+    description: '',
+    image: '',
+  });
+
+  const handleChange = (e) => {
+    setProduct({
+      ...product,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Formulario enviado');
+    addProduct(product);
   };
 
   return (
     <Form
       onSubmit={handleSubmit}
-      className="subtitle bg-dark text-light rounded-3 pb-3"
+      className=" bg-dark text-light rounded-3 pb-3 px-4 rounded-4"
     >
       <Form.Group className="mb-3 pt-3">
-        <Form.Label className="gradient-bg px-3 pt-1 rounded-5 mb-2">
+        <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2  ps-1">
           Name
         </Form.Label>
         <Form.Control
+          className="paragraph"
           type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          name="Nombre"
+          value={product.name}
+          onChange={handleChange}
+          name="name"
           placeholder="Enter the product name"
         />
       </Form.Group>
       <Form.Group className="mb-3 pt-3">
-        <Form.Label className="gradient-bg px-3 pt-1 rounded-5 mb-2">
+        <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
           Price
         </Form.Label>
         <Form.Control
+          className="paragraph"
           type="number"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          name="Precio"
+          value={product.price}
+          onChange={handleChange}
+          name="price"
           placeholder="Enter the product price"
         />
       </Form.Group>
       <Form.Group className="mb-3 pt-3">
-        <Form.Label className="gradient-bg px-3 pt-1 rounded-5 mb-2">
+        <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2  ps-1">
+          IMAGE
+        </Form.Label>
+        <Form.Control
+          className="paragraph"
+          type="text"
+          value={product.image}
+          onChange={handleChange}
+          name="image"
+          placeholder="Enter the product image"
+        />
+      </Form.Group>
+      <Form.Group className="mb-3 pt-3">
+        <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
           Description
         </Form.Label>
         <Form.Control
+          className="paragraph"
           type="text"
           as="textarea"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          name="Description"
+          value={product.description}
+          onChange={handleChange}
+          name="description"
           placeholder="Enter the product description"
         />
       </Form.Group>
+
       <div className="mt-1">
         <Button
           className="gradient-background border-0 rounded-5  subtitle py-1 mt-1 shadow-on-hover"

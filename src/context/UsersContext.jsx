@@ -23,7 +23,7 @@ function UsersContext({ children }) {
   }, []);
 
   return (
-    <UsersProvider.Provider value={{ users }}>
+    <UsersProvider.Provider value={{ users, getUsers }}>
       {children}
     </UsersProvider.Provider>
   );

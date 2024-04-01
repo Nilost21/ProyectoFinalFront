@@ -10,7 +10,7 @@ function Admin() {
 
       <Container>
         <Row className="d-flex flex-row justify-content-between">
-          <Col xl={3}>
+          <Col xl={3} className="mt-4">
             <Row>
               <h3 className="subtitle ms-5 ps-3 mt-3 text-star">Formulario</h3>
 
