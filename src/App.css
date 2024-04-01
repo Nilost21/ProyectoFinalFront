@@ -1,0 +1,39 @@
+body {
+  /* Fallback para navegadores que no soportan degradados */
+  background-color: #111119;
+  /* Degradado */
+  background-image: radial-gradient(circle at center, #382D57 20%, #111119 80%);
+  /* Esto asegura que el degradado se extienda a lo largo de toda la página */
+  min-height: 100vh;
+  /* Centra el degradado en el medio de la página y define un tamaño más grande */
+  background-size: cover;
+  /* Ajusta la posición del degradado para centrarlo */
+  background-position: center;
+}
+
+/* Fonts */
+.title {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.subtitle {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.paragraph {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.small-font {
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
