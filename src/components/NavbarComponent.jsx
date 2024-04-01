@@ -33,7 +33,12 @@ function NavbarComponent() {
               >
                 Home
               </Nav.Link>
-              <Nav.Link className="subtitle mt-1 text-white">Products</Nav.Link>
+              <Nav.Link
+                className="subtitle mt-1 text-white"
+                onClick={() => navigate('/products')}
+              >
+                Products
+              </Nav.Link>
               <NavDropdown
                 className="subtitle mt-1"
                 title="About Us"
