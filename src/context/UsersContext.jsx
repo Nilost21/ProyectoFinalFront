@@ -1,22 +1,36 @@
-// /* eslint-disable no-unused-vars */
-// import { createContext, useState } from 'react';
-// import axios from 'axios';
-// import PropTypes from 'prop-types';
+/* eslint-disable no-unused-vars */
+import { createContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import axios from 'axios';
 
-// const userProvider = createContext();
+export const UsersProvider = createContext();
 
-// const UsersContext = ({ children }) => {
-//   const [users, setUsuarios] = useState([]);
+function UsersContext({ children }) {
+  const [users, setUsers] = useState([]);
 
-//   return (
-//     <>
-//       <userProvider.Provider value={users}>{children}</userProvider.Provider>
-//     </>
-//   );
-// };
+  const getUsers = async () => {
+    try {
+      const response = await axios.get('http://localhost:8000/users');
+      const data = response.data;
+      setUsers(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-// UsersContext.propTypes = {
-//   children: PropTypes.array.isRequired,
-// };
+  useEffect(() => {
+    getUsers();
+  }, []);
 
-// export default UsersContext;
+  return (
+    <UsersProvider.Provider value={{ users }}>
+      {children}
+    </UsersProvider.Provider>
+  );
+}
+
+UsersContext.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default UsersContext;

@@ -26,7 +26,7 @@ function ProductsContext({ children }) {
 
   return (
     <ProductsProvider.Provider value={{ products }}>
-      {children}
+      {children}  
     </ProductsProvider.Provider>
   );
 }
