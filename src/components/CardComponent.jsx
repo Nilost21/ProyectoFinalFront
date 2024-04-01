@@ -5,10 +5,7 @@ import PropTypes from 'prop-types';
 function CardComponent({ name, description, func }) {
   return (
     <>
-      <Card
-        style={{ width: '18rem' }}
-        className="text-light paragraph bg-dark mb-3"
-      >
+      <Card style={{ width: '18rem' }} className="text-light paragraph bg-dark">
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>{description}</Card.Text>
