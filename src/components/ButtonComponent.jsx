@@ -2,10 +2,13 @@ import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import './../css/Button.css';
 
-function ButtonComponent({ text }) {
+function ButtonComponent({ text, func }) {
   return (
     <div className="mt-1">
-      <Button className=" gradient-background border-0 rounded-5  subtitle py-1 shadow-on-hover">
+      <Button
+        onClick={func}
+        className=" gradient-background border-0 rounded-5  subtitle py-1 shadow-on-hover"
+      >
         <div className="mt-1 ">
           {text}{' '}
           <svg
@@ -29,5 +32,6 @@ function ButtonComponent({ text }) {
 
 ButtonComponent.propTypes = {
   text: PropTypes.string.isRequired,
+  func: PropTypes.func,
 };
 export default ButtonComponent;

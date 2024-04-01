@@ -10,7 +10,13 @@
     cursor: pointer;
   }
 
+  .enlarge {
+    transition: transform 0.3s ease;
+}
 
+.enlarge:hover {
+    transform: scale(1.1);
+}
 
   .text-shadow {
     transition: text-shadow 0.3s ease;

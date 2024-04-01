@@ -7,8 +7,9 @@ import axios from 'axios';
 
 function Home() {
   const [users, setUsers] = useState([]);
+  const [products, setProducts] = useState([]);
 
-  const getData = async () => {
+  const getUsers = async () => {
     try {
       const response = await axios.get('http://localhost:8000/users');
       const data = response.data;
@@ -18,15 +19,26 @@ function Home() {
     }
   };
 
+  const getProducts = async () => {
+    try {
+      const response = await axios.get('http://localhost:8000/products');
+      const data = response.data;
+      setProducts(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    getData();
+    getProducts();
   }, []);
 
-  console.log(users);
   return (
     <>
       <Container>
-        <header></header>
+        <header>
+          <Products products={products} />
+        </header>
       </Container>
     </>
   );

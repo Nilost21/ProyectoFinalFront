@@ -11,9 +11,7 @@ function App() {
   return (
     <>
       {/* <UsersContext> */}
-
       <NavbarComponent />
-
       <RoutesPages />
       {/* </UsersContext> */}
     </>

@@ -6,6 +6,10 @@ import ButtonComponent from './ButtonComponent';
 function NavbarComponent() {
   const navigate = useNavigate();
 
+  const click = () => {
+    console.log('Hiciste click en el botón');
+  };
+
   return (
     <>
       <Navbar
@@ -50,13 +54,17 @@ function NavbarComponent() {
               </NavDropdown>
             </Nav>
             <Nav>
-              <Nav.Link className="subtitle mt-1 text-light" href="#features">
+              <Nav.Link
+                className="subtitle mt-1 text-light text-shadow"
+                href="#features"
+                onClick={() => navigate('/admin')}
+              >
                 ADMIN
               </Nav.Link>
               <Nav.Link className="subtitle mt-1 text-light" href="#features">
                 Login
               </Nav.Link>
-              <ButtonComponent text={'Register'} />
+              <ButtonComponent text={'Register'} func={click} />
             </Nav>
           </Navbar.Collapse>
         </Container>

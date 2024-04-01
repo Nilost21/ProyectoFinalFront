@@ -29,17 +29,20 @@
     {
       "id": "1",
       "name": "Producto 1",
-      "price": 25
+      "price": 25,
+      "description": "Some quick example text to build on the card title and make up the bulk of the content"
     },
     {
       "id": "2",
       "name": "Producto 2",
-      "price": 30
+      "price": 30,
+      "description": "Some quick example text to build on the card title and make up the bulk of the content"
     },
     {
       "id": "3",
       "name": "Producto 3",
-      "price": 35
+      "price": 35,
+      "description": "Some quick example text to build on the card title and make up the bulk of the content"
     }
   ]
 }
