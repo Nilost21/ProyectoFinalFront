@@ -1,25 +1,15 @@
+/* eslint-disable no-unused-vars */
 import './../../css/Home.css';
 import { Container } from 'react-bootstrap';
-import NavbarComponent from '../../components/NavbarComponent';
-import Fonts from '../../utils/Fonts';
+import Products from '../Products/Products';
 
 function Home() {
   return (
     <>
       <Container>
         <header>
-          <Fonts />
-          <NavbarComponent />
+          <h1 className="title">ESTAS EN EL HOME</h1>
         </header>
-      </Container>
-      <Container>
-        <main>
-          <section></section>
-          <section></section>
-        </main>
-      </Container>
-      <Container>
-        <footer></footer>
       </Container>
     </>
   );

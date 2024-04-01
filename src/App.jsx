@@ -2,15 +2,17 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import RoutesPages from './routes/Routes';
-// import UsersContext from './context/UsersContext';
-// import { userProvider } from './context/UsersContext';
+import NavbarComponent from './components/NavbarComponent';
+import { Container } from 'react-bootstrap';
+import ProductsContext from './context/ProductsContext';
 
 function App() {
   return (
     <>
-      {/* <UsersContext> */}
-      <RoutesPages />
-      {/* </UsersContext> */}
+      <ProductsContext>
+        <NavbarComponent />
+        <RoutesPages />
+      </ProductsContext>
     </>
   );
 }

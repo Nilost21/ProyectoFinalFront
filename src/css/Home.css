@@ -1,0 +1,5 @@
+.bg-home{
+    background-image: url('../../src/assets/img/Home/GettyImages-597068867\ \(1\).jpg'); /* Ruta de tu imagen */
+  background-size: cover;
+  background-position: top; /* Posición de la imagen en la parte superior */
+}
