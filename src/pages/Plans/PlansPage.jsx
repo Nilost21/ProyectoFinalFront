@@ -1,6 +1,7 @@
 import { Container } from "react-bootstrap";
+import CardPlan from "../../components/planComponents/CardPlan";
 import "../../css/PlansPage.css";
-import CardsPlan from "./CardsPlan";
+
 import ClassPlan from "./ClassPlan";
 import FullPlan from "./FullPlan";
 import MusclePlan from "./MusclePlan";
@@ -11,7 +12,7 @@ const PlansPage = () => {
     <Container>
         <h1 className="prueba">planess pagee</h1>
         <h2>en su ruta</h2>
-        <CardsPlan/> {/* este componente se mostrara en la pagina principal */}
+        <CardPlan/> {/* este componente se mostrara en la pagina principal */}
         <MusclePlan/>
         <ClassPlan/>
         <FullPlan/>

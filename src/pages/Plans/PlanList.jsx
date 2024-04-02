@@ -1,4 +1,4 @@
-import CardPlan from "../../components/CardPlan";
+import CardPlan from "../../components/planComponents/CardPlan";
 
 
 const PlanList = () => {
