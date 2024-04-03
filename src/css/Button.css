@@ -1,8 +1,7 @@
 .gradient-background {
-    background: linear-gradient(to right, #7E61DD, #8F5EAF);
-  }
+  background: linear-gradient(to right, #7E61DD, #8F5EAF);
+}
 
-
-  .gradient-background:hover {
-    box-shadow: 0 0 10px rgba(206, 205, 205, 0.3);
-  }
+.gradient-background:hover {
+  box-shadow: 0 0 10px rgba(206, 205, 205, 0.3);
+}

@@ -1,10 +1,33 @@
+import { useState } from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import './../css/Navbar.css';
 import { useNavigate } from 'react-router';
 import ButtonComponent from './ButtonComponent';
 
+import SignIn from './SignIn';
+import SignUp from './SignUp';
+
+import './../css/Navbar.css';
+
 function NavbarComponent() {
+
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
+
   const navigate = useNavigate();
+
+  const handleLoginModalShow = () => {
+    setShowLoginModal(true);
+  };
+
+  const handleRegisterModalShow = () => {
+    setShowRegisterModal(true);
+  };
+
+  // Cierra los modales
+  const handleCloseModals = () => {
+    setShowLoginModal(false);
+    setShowRegisterModal(false);
+  };
 
   const click = () => {
     console.log('Hiciste click en el botón');
@@ -66,13 +89,15 @@ function NavbarComponent() {
               >
                 ADMIN
               </Nav.Link>
-              <Nav.Link className="subtitle mt-1 text-light" href="#features">
+              <Nav.Link onClick={handleLoginModalShow} className="subtitle mt-1 text-light">
                 Login
               </Nav.Link>
-              <ButtonComponent text={'Register'} func={click} />
+              <ButtonComponent onClick={handleRegisterModalShow} text={'Register'} />
             </Nav>
           </Navbar.Collapse>
         </Container>
+        <SignIn show={showLoginModal} handleClose={handleCloseModals} showRegisterModal={handleRegisterModalShow} />
+        <SignUp show={showRegisterModal} handleClose={handleCloseModals} showLoginModal={handleLoginModalShow} />
       </Navbar>
     </>
   );

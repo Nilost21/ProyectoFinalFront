@@ -2,14 +2,21 @@ import { Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import './../css/Button.css';
 
-function ButtonComponent({ text, func }) {
+function ButtonComponent({ text, onClick }) {
+
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+
   return (
     <div className="mt-1">
       <Button
-        onClick={func}
-        className=" gradient-background border-0 rounded-5  subtitle py-1 shadow-on-hover"
+        onClick={handleClick}
+        className="gradient-background border-0 rounded-5 subtitle py-1 shadow-on-hover"
       >
-        <div className="mt-1 ">
+        <div className="mt-1">
           {text}{' '}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -32,6 +39,7 @@ function ButtonComponent({ text, func }) {
 
 ButtonComponent.propTypes = {
   text: PropTypes.string.isRequired,
-  func: PropTypes.func,
+  onClick: PropTypes.func,
 };
+
 export default ButtonComponent;
