@@ -1,25 +1,27 @@
+import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 
-const CardPlan = () => {
+const CardPlan = ({name, price, description}) => {
+  const handleClick = () => {
+    // Aquí puedes realizar la acción que desees cuando se haga clic en el botón
+    console.log('Se hizo clic en el botón');
+  };
   return (
     <>
     <Card style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
+        <Card.Title>{name}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-        <Card.Text>$</Card.Text>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
+        <Card.Text>${price}</Card.Text>
+        <Card.Text>{description}</Card.Text>
+        <Button variant="primary" onClick={handleClick}>Go somewhere</Button>   
       </Card.Body>
     </Card>
-      
     </>
   )
 }
+
+
 
 
 export default CardPlan

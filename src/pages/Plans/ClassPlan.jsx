@@ -1,4 +1,5 @@
 import { Container } from 'react-bootstrap';
+import FormPlan from '../../components/planComponents/FormPlan';
 
 const ClassPlan = () => {
   return (
@@ -6,6 +7,7 @@ const ClassPlan = () => {
     <Container>
         <header>
         <h1>plan solo clases</h1>
+        <FormPlan/>
         </header>
   
       
