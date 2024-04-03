@@ -17,15 +17,9 @@ function Admin() {
           </Col>
           <Col xl={8}>
             <Row>
-              <h3 className="subtitle ms-5 ps-3 mt-3 text-center text-white">
-                USERS
-              </h3>
               <TableUsers />
             </Row>
             <Row className="mt-5">
-              <h3 className="subtitle ms-5 ps-3 mt-3 text-center text-white">
-                PRODUCTS
-              </h3>
               <TableProducts />
             </Row>
           </Col>

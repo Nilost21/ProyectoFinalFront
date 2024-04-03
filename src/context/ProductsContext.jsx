@@ -52,12 +52,26 @@ function ProductsContext({ children }) {
     }
   };
 
+  const updateProduct = async (product) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:8000/products/${product.id}`,
+        product
+      );
+      await getProducts();
+    } catch (error) {
+      console.log(error, 'Error update Product');
+    }
+  };
+
   useEffect(() => {
     getProducts();
   }, []);
 
   return (
-    <ProductsProvider.Provider value={{ products, addProduct, deleteProducts }}>
+    <ProductsProvider.Provider
+      value={{ products, addProduct, deleteProducts, updateProduct }}
+    >
       {children}
     </ProductsProvider.Provider>
   );

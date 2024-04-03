@@ -1,9 +1,8 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
 import { Modal, Button, Form } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Login = ({ show, handleClose, showRegisterModal }) => {
-
   const handleRegisterClick = () => {
     handleClose();
     showRegisterModal();
@@ -18,14 +17,27 @@ const Login = ({ show, handleClose, showRegisterModal }) => {
         <Form>
           <Form.Group controlId="formBasicEmail">
             <Form.Label style={{ color: 'white' }}>Email</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" style={{ backgroundColor: 'black', color: 'white' }} />
+            <Form.Control
+              type="email"
+              placeholder="Enter email"
+              style={{ backgroundColor: 'black', color: 'white' }}
+            />
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
             <Form.Label style={{ color: 'white' }}>Contraseña</Form.Label>
-            <Form.Control type="password" placeholder="Contraseña" style={{ backgroundColor: 'black', color: 'white' }} />
+            <Form.Control
+              type="password"
+              placeholder="Contraseña"
+              style={{ backgroundColor: 'black', color: 'white' }}
+            />
           </Form.Group>
-          <p>No tienes una cuenta? <Link to="#" onClick={handleRegisterClick}>Registrarse</Link></p>
+          <p>
+            No tienes una cuenta?{' '}
+            <Link to="#" onClick={handleRegisterClick}>
+              Registrarse
+            </Link>
+          </p>
         </Form>
       </Modal.Body>
       <Modal.Footer style={{ backgroundColor: 'black' }}>

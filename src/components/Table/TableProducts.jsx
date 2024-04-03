@@ -7,11 +7,12 @@ import FormProducts from '../Form/FormProducts';
 function TableProducts() {
   const { products, deleteProducts } = useContext(ProductsProvider);
   const [show, setShow] = useState(false);
+  const [editProducts, setEditProducts] = useState(null);
 
   const handleClose = () => setShow(false);
 
-  const handleEdit = () => {
-    console.log('Editar');
+  const handleEdit = (product) => {
+    setEditProducts(product);
     setShow(true);
   };
 
@@ -19,6 +20,9 @@ function TableProducts() {
 
   return (
     <>
+      <div className="text-star bg-dark text-white rounded-top-4 py-1">
+        <h3 className="subtitle ps-3 mt-1 pt-1 my-0 ">Table Products</h3>
+      </div>
       <Table className="mb-0">
         <thead>
           <tr className="subtitle">
@@ -53,7 +57,7 @@ function TableProducts() {
                   <td className=" bg-dark text-light border-0">
                     <div className="d-flex flex-row justify-content-around">
                       <Button
-                        onClick={handleEdit}
+                        onClick={() => handleEdit(product)}
                         className="bg-secondary border-0 text-dark me-3 "
                       >
                         <svg
@@ -98,11 +102,11 @@ function TableProducts() {
           className="rounded-5 p-0"
           contentClassName="bg-transparent p-0 border-0"
         >
-          <Modal.Body
-            closeButton
-            className="bg-transparent rounded-5 border-0 p-0 "
-          >
-            <FormProducts />
+          <Modal.Body className="bg-transparent rounded-5 border-0 p-0 ">
+            <FormProducts
+              editProducts={editProducts}
+              handleClose={handleClose}
+            />
           </Modal.Body>
         </Modal>
       </div>

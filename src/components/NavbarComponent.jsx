@@ -22,7 +22,7 @@ function NavbarComponent() {
             className="title cursor-pointer text-dark"
             onClick={() => navigate('/')}
           >
-            <h5 className="mt-2 text-dark text-shadow">ELITEBODY</h5>
+            <h5 className="mt-2 text-dark text-shadow fs-3">ELITEBODY</h5>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav" className="text-light">
