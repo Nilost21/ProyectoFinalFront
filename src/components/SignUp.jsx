@@ -58,8 +58,8 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
   };
 
   return (
-    <Modal show={show} onHide={handleClose} centered>
-      <Modal.Header className="text-star bg-dark shadow-box text-white rounded-top-4 py-1" closeButton>
+    <Modal show={show} onHide={handleClose} contentClassName="bg-transparent border-0 p-0" centered>
+      <Modal.Header className="text-star bg-dark shadow-box text-white rounded-top-4 py-1 border-0" closeButton>
         <Modal.Title className="subtitle ps-3 mt-2 pt-1 my-0">New user</Modal.Title>
       </Modal.Header>
       <Modal.Body className="gradient-bg shadow-box text-light pb-3 px-4 rounded-bottom-4">
