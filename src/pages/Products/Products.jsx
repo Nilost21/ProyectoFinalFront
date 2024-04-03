@@ -18,17 +18,18 @@ function Products() {
             <h2 className="paragraph">No hay productos</h2>
           ) : (
             products.map((product) => {
-              const { id, name, price, description } = product;
+              const { id, name, price, description, image } = product;
               const clickProducts = () =>
                 console.log(`Hiciste click en el producto ${name}`);
 
               return (
-                <Col xs={12} lg={3} md={4} sm={6} key={id}>
+                <Col xs={8} lg={2} md={6} sm={8} key={id}>
                   <CardComponent
                     name={name}
                     description={description}
                     func={clickProducts}
                     price={price}
+                    image={image}
                   />
                 </Col>
               );

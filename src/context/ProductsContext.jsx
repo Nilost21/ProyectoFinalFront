@@ -2,6 +2,7 @@
 import { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export const ProductsProvider = createContext();
 
@@ -26,9 +27,28 @@ function ProductsContext({ children }) {
         product
       );
       const data = response.data;
-      console.log(data);
+      setProducts([...products, data]);
     } catch (error) {
-      console.log(error);
+      console.log(error, 'Error adding product');
+    }
+  };
+
+  const deleteProducts = async (id) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8000/products/${id}`
+      );
+      const filteredProducts = products.filter((product) => product.id !== id);
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Product eliminated',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      setProducts(filteredProducts);
+    } catch (error) {
+      console.log(error, 'error when deleting product');
     }
   };
 
@@ -37,7 +57,7 @@ function ProductsContext({ children }) {
   }, []);
 
   return (
-    <ProductsProvider.Provider value={{ products, addProduct }}>
+    <ProductsProvider.Provider value={{ products, addProduct, deleteProducts }}>
       {children}
     </ProductsProvider.Provider>
   );
