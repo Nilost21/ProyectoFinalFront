@@ -13,9 +13,9 @@ const PlansPage = () => {
         <h1 className="prueba">planess pagee</h1>
         <h2>en su ruta</h2>
         <PlanList/> {/* este componente se mostrara en la pagina principal */}
-        <MusclePlan/>
+        {/* <MusclePlan/>
         <ClassPlan/>
-        <FullPlan/>
+        <FullPlan/> */}
       </Container>
       <Container>
         <footer>

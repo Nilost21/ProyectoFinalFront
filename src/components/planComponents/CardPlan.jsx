@@ -1,10 +1,15 @@
 import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
+import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const CardPlan = ({name, price, description}) => {
+function CardPlan ({name, price, description, page}) {
+  const navigate = useNavigate();
+
   const handleClick = () => {
-    // Aquí puedes realizar la acción que desees cuando se haga clic en el botón
-    console.log('Se hizo clic en el botón');
+     navigate(`/plans/${page}`);
+
+    console.log(`Se hizo clic en el botón ${page}`);
   };
   return (
     <>
@@ -21,7 +26,10 @@ const CardPlan = ({name, price, description}) => {
   )
 }
 
-
-
+CardPlan.propTypes = {
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+};
 
 export default CardPlan
