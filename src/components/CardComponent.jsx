@@ -8,14 +8,16 @@ function CardComponent({ name, description, func, price, image }) {
     <>
       <Card
         style={{ width: '18rem' }}
-        className="text-light bg-dark rounded-5 border-0 rounded-4 mb-3 "
+        className="text-light g-bg rounded-5 border-0 rounded-4 mb-3 card-zoom "
       >
         <Card.Body className=" shadow-box rounded-4 border-0 rounded-5">
-          <Card.Img
-            variant="top"
-            src={`${image}`}
-            className="rounded-4 mb-2 p-2"
-          />
+          <div className="p-2">
+            <Card.Img
+              variant="top"
+              src={`${image}`}
+              className="rounded-5 mb-2 p-2"
+            />
+          </div>
           <Card.Title className="subtitle mt-1">{name}</Card.Title>
           <Card.Text className="paragraph ">{description}</Card.Text>
           <div className="d-flex justify-content-around">
