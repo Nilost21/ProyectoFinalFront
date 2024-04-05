@@ -1,8 +1,15 @@
 .gradient-bg {
-    background: linear-gradient(to right, #9681db, #3c2661);
+    background: linear-gradient(to right, #6a4f97, #494177);
   }
 
 
   .gradient-background {
     background: linear-gradient(to right, #57439b, #c27bf1);
+  }
+
+  .shadow-box{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  }
+  .no-resizable {
+    resize: none;
   }
