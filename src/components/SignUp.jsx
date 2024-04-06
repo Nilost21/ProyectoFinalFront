@@ -98,3 +98,4 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
 };
 
 export default SignUp;
+
