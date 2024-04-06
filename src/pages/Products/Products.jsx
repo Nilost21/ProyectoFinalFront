@@ -13,7 +13,7 @@ function Products() {
   return (
     <>
       <Container>
-        <Row className="d-flex justify-content-around mt-3">
+        <Row className="d-flex flex-row justify-content-around mt-3 ">
           {isEmpty() ? (
             <h2 className="paragraph">No hay productos</h2>
           ) : (

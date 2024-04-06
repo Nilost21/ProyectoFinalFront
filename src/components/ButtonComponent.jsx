@@ -43,4 +43,3 @@ ButtonComponent.propTypes = {
 };
 
 export default ButtonComponent;
-
