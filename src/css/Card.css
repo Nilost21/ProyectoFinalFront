@@ -1,16 +1,23 @@
+.gradient-bg {
+  background: linear-gradient(to right, #6a4f97, #3b3561);
+}
+
+.shadow-box {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
 .g-bg {
-    background: linear-gradient(to right, #242323, #1a0e1d);
-  }
+  background: linear-gradient(to right, #242323, #1a0e1d);
+}
 
-  .shadow-box{
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-  }
+.shadow-box {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
 
+.card-zoom {
+  transition: transform 0.3s ease;
+}
 
-  .card-zoom {
-    transition: transform 0.3s ease;
-  }
-  
-  .card-zoom:hover {
-    transform: scale(1.05); 
-  }
+.card-zoom:hover {
+  transform: scale(1.05);
+}

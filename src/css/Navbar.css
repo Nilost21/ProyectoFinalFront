@@ -1,31 +1,30 @@
 .bg-navbar {
   background: transparent
-  }
+}
 
-  .text-color {
-    color:#FFFBFD;
-  }
+.text-color {
+  color: #FFFBFD;
+}
 
-  .cursor-pointer {
-    cursor: pointer;
-  }
+.cursor-pointer {
+  cursor: pointer;
+}
 
-  .enlarge {
-    transition: transform 0.3s ease;
+.enlarge {
+  transition: transform 0.3s ease;
 }
 
 .enlarge:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
-  .text-shadow {
-    transition: text-shadow 0.3s ease;
+.text-shadow {
+  transition: text-shadow 0.3s ease;
 }
 
 .text-shadow:hover {
-    text-shadow: 1px 1px 2px rgba(109, 107, 107, 0.9);
+  text-shadow: 1px 1px 2px rgba(109, 107, 107, 0.9);
 }
-
 
 .text-animation {
   transition: transform 0.3s ease;
