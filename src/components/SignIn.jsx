@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from './Auth/AuthContext';
 
 import './../css/Form.css';
 
@@ -12,6 +13,7 @@ const SignIn = ({ show, handleClose, showRegisterModal }) => {
   });
 
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -33,8 +35,13 @@ const SignIn = ({ show, handleClose, showRegisterModal }) => {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        console.log('Respuesta del servidor:', data);
+        const { user, token } = await response.json();
+
+        login(formData.email, formData.password);
+
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
+
         setFormData({
           email: '',
           password: '',
