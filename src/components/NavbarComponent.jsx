@@ -9,7 +9,6 @@ import SignUp from './SignUp';
 import './../css/Navbar.css';
 
 function NavbarComponent() {
-
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
 
@@ -27,10 +26,6 @@ function NavbarComponent() {
   const handleCloseModals = () => {
     setShowLoginModal(false);
     setShowRegisterModal(false);
-  };
-
-  const click = () => {
-    console.log('Hiciste click en el botón');
   };
 
   return (
@@ -89,18 +84,31 @@ function NavbarComponent() {
               >
                 ADMIN
               </Nav.Link>
-              <Nav.Link onClick={handleLoginModalShow} className="subtitle mt-1 text-light">
+              <Nav.Link
+                onClick={handleLoginModalShow}
+                className="subtitle mt-1 text-light"
+              >
                 Login
               </Nav.Link>
-              <ButtonComponent onClick={handleRegisterModalShow} text={'Register'} />
+              <ButtonComponent
+                onClick={handleRegisterModalShow}
+                text={'Register'}
+              />
             </Nav>
           </Navbar.Collapse>
         </Container>
-        <SignIn show={showLoginModal} handleClose={handleCloseModals} showRegisterModal={handleRegisterModalShow} />
-        <SignUp show={showRegisterModal} handleClose={handleCloseModals} showLoginModal={handleLoginModalShow} />
+        <SignIn
+          show={showLoginModal}
+          handleClose={handleCloseModals}
+          showRegisterModal={handleRegisterModalShow}
+        />
+        <SignUp
+          show={showRegisterModal}
+          handleClose={handleCloseModals}
+          showLoginModal={handleLoginModalShow}
+        />
       </Navbar>
     </>
   );
 }
 export default NavbarComponent;
-
