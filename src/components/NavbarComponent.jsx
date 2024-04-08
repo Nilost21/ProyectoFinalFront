@@ -26,15 +26,13 @@ function NavbarComponent() {
 
   const handleLogout = () => {
     logout();
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
     navigate('/');
   };
 
   const handleProfileButtonClick = () => {
     navigate('/profile');
-  };
-
-  const click = () => {
-    console.log('Hiciste click en el botón');
   };
 
   return (
@@ -88,6 +86,11 @@ function NavbarComponent() {
             <Nav>
               {isLoggedIn ? ( // Si el usuario está autenticado, muestra el botón de Logout
                 <>
+                  {user && user.role === '6611a95b23873e069120fe2f' && ( // Si el usuario tiene rol ADMIN, muestra el botón
+                    <Nav.Link className="subtitle mt-1 text-light text-shadow" href="#features" onClick={() => navigate('/admin')} >
+                      Admin Management
+                    </Nav.Link>
+                  )}
                   <Nav.Link onClick={handleLogout} className="subtitle mt-1 text-light">
                     Logout
                   </Nav.Link>
@@ -96,13 +99,6 @@ function NavbarComponent() {
                 </>
               ) : (
                 <>
-                  <Nav.Link
-                    className="subtitle mt-1 text-light text-shadow"
-                    href="#features"
-                    onClick={() => navigate('/admin')}
-                  >
-                    ADMIN
-                  </Nav.Link>
                   <Nav.Link onClick={handleLoginModalShow} className="subtitle mt-1 text-light">
                     Login
                   </Nav.Link>
