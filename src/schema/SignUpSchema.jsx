@@ -8,7 +8,8 @@ export const schema = object({
   username: string()
     .required("Please enter an username")
     .min(4, "Username must have at least 4 characters")
-    .max(31, "Username must have a maxium of 32 characters"),
+    .max(31, "Username must have a maxium of 32 characters")
+    .matches(/^\S*$/, 'Username cannot contain spaces'),
 
   email: string()
     .email()
@@ -20,7 +21,9 @@ export const schema = object({
     .max(32, "Password must have a maxium of 32 characters")
     .matches(/[0-9]/, getCharacterValidationError("digit"))
     .matches(/[a-z]/, getCharacterValidationError("lowercase"))
-    .matches(/[A-Z]/, getCharacterValidationError("uppercase")),
+    .matches(/[A-Z]/, getCharacterValidationError("uppercase"))
+    .matches(/^\S*$/, 'Password cannot contain spaces'),
+
   confirmPassword: string()
     .required("Please re-type your password")
     .oneOf([ref("password")], "Passwords does not match"),
