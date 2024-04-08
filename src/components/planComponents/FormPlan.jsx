@@ -3,6 +3,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import React, { useState } from "react";
+import EmailPlanSender from "./EmailPlanSender";
 
 const FormPlan = () => {
   const [name, setName] = useState("");
@@ -150,6 +151,13 @@ const FormPlan = () => {
           Send Message
         </Button>
       </Form>
+      <EmailPlanSender
+        name={name}
+        lastName={lastName}
+        email={email}
+        phone={phone}
+        message={message}
+      />
     </>
   );
 };
