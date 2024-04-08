@@ -21,10 +21,10 @@ const RoutesPages = () => {
 
         {/* Rutas para paginas de planes */}
 
-        <Route path="/plans" element={<PlansPage />} /> {/* esta ruta es momentanea */}
-        <Route path="/plans/clases" element={<ClassPlan />} />
-        <Route path="/plans/entrenamiento" element={<MusclePlan />} />
-        <Route path="/plans/completo" element={<FullPlan />} />
+        <Route path="/plans" element={<PlansPage />} /> {/* esta ruta es momentanea podria poner a PlanList en su lugar*/}
+        <Route path="/plans/class-plan" element={<ClassPlan />} />
+        <Route path="/plans/muscle-plan" element={<MusclePlan />} />
+        <Route path="/plans/full-plan" element={<FullPlan />} />
 
         {/* Fin rutas para paginas de planes */}
       </Routes>
