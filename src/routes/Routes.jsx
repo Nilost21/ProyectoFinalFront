@@ -5,6 +5,7 @@ import { PrivateRoute } from './PrivateRoutes';
 import Home from '../pages/Home/Home';
 import Admin from '../pages/Admin/Admin';
 import Products from '../pages/Products/Products';
+import Contact from '../pages/Contact/Contact';
 import Profile from '../pages/Profile';
 
 const RoutesPages = () => {
@@ -13,6 +14,7 @@ const RoutesPages = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/*" element={<h1 className="title text-light mt-3 ">NOT FOUND</h1>} />
         <Route element={<PrivateRoute />}>
           <Route path="/admin" element={<Admin />} isAdminRoute={true} />

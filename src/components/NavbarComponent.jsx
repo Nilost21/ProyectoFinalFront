@@ -62,6 +62,12 @@ function NavbarComponent() {
               >
                 Products
               </Nav.Link>
+              <Nav.Link
+                className="subtitle mt-1 text-white"
+                onClick={() => navigate('/contact')}
+              >
+                Contact
+              </Nav.Link>
               <NavDropdown
                 className="subtitle mt-1"
                 title="About Us"
