@@ -1,6 +1,9 @@
 /* Background */
 body {
-  background: linear-gradient(to right, #8366D2, #24203B);
+  background: linear-gradient(to right, #8366D2, #24203B); 
+}
+footer {
+  background: linear-gradient(to right, #5a34ac, #24203B); 
 }
 /* Background */
 
