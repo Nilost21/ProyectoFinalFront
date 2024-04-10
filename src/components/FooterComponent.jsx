@@ -17,19 +17,19 @@ function Footer() {
           <Col className='mt-3'>
             <h5 className="text-white subtitle">Enlaces útiles</h5>
             <ul className="list-unstyled">
-              <li><a href="#" className="text-white paragraph text-decoration-none" onClick={() => navigate('/')}>Inicio</a></li>
-              <li><a href="#" className="text-white paragraph text-decoration-none" onClick={() => navigate('/products')}>Acerca</a></li>
-              <li><a href="#" className="text-white paragraph text-decoration-none" onClick={() => navigate('/contact')}>Servicios</a></li>
-              <li><a href="#" className="text-white paragraph text-decoration-none" onClick={() => navigate('/contact')}>Contacto</a></li>
+              <li><a href="#" className="text-white paragraph text-decoration-none" onClick={() => navigate('/')}>home</a></li>
+              <li><a href="#" className="text-white paragraph text-decoration-none" onClick={() => navigate('/login')}>login</a></li>
+              <li><a href="#" className="text-white paragraph text-decoration-none" onClick={() => navigate('/register')}>register</a></li>
+              <li><a href="#" className="text-white paragraph text-decoration-none" onClick={() => navigate('/contact')}>contact</a></li>
             </ul>
           </Col>
           <Col className='mt-3'>
             <h5 className="text-white subtitle">Enlaces útiles</h5>
             <ul className="list-unstyled">
-              <li><a href="#" className="text-white paragraph text-decoration-none" onClick={() => navigate('/')}>Inicio</a></li>
-              <li><a href="#" className="text-white paragraph text-decoration-none" onClick={() => navigate('/products')}>Acerca</a></li>
-              <li><a href="#" className="text-white paragraph text-decoration-none" onClick={() => navigate('/contact')}>Servicios</a></li>
-              <li><a href="#" className="text-white paragraph text-decoration-none" onClick={() => navigate('/contact')}>Contacto</a></li>
+              <li><a href="#" className="text-white paragraph text-decoration-none" onClick={() => navigate('/')}>abaout</a></li>
+              <li><a href="#" className="text-white paragraph text-decoration-none" onClick={() => navigate('/products')}>admin</a></li>
+              <li><a href="#" className="text-white paragraph text-decoration-none" onClick={() => navigate('/contact')}>service</a></li>
+              <li><a href="#" className="text-white paragraph text-decoration-none" onClick={() => navigate('/contact')}>planing</a></li>
             </ul>
           </Col>
           <Col className='mt-3'>
