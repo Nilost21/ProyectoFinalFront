@@ -7,7 +7,7 @@ const MusclePlan = () => {
     <Container>
         <header>
         <h1>plan solo musculos</h1>
-        <FormPlan/>
+        <FormPlan planType="muscle-plan"/>
         </header>
   
       

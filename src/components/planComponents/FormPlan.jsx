@@ -2,15 +2,17 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import React, { useState } from "react";
-import EmailPlanSender from "./EmailPlanSender";
+import { useState } from "react";
+/* import EmailPlanSender from "./EmailPlanSender"; */
+import emailjs from '@emailjs/browser';
 
-const FormPlan = () => {
+const FormPlan = ({ planType }) => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleFormPlanSubmit = (e) => {
     e.preventDefault();
@@ -69,7 +71,42 @@ const FormPlan = () => {
       alert("El campo no debe estar vacio");
       return;
     }
-    alert("Formulario enviado");
+    /* alert("Formulario enviado"); */
+
+    emailjs.send(
+      'service_fsmi4tm',
+      'template_0q7zmpm',
+      {
+        name: name,
+        lastName: lastName,
+        email: email,
+        phone: phone,
+        message: message,
+        planType: planType
+      },
+      'hogPQ3aXzDYTe-4XH'
+    ).then(() => {
+      // Correo enviado al destinatario
+      console.log('Correo enviado al destinatario');
+    }).catch((error) => {
+      console.error('Error al enviar correo al destinatario:', error);
+    });
+
+    emailjs.send(
+      'service_fsmi4tm',
+      'template_a7wqcem',
+      {
+        name: name,
+        email: email
+      },
+      'hogPQ3aXzDYTe-4XH'
+    ).then(() => {
+      // Correo enviado al remitente
+      console.log('Correo enviado al remitente');
+    }).catch((error) => {
+      console.error('Error al enviar correo al remitente:', error);
+    });
+    setFormSubmitted(true);
   };
 
   return (
@@ -147,17 +184,15 @@ const FormPlan = () => {
           </Form.Group>
         </Row>
 
-        <Button variant="primary" type="submit">
+        {/* <Button variant="primary" type="submit">
           Send Message
-        </Button>
+        </Button> */}
+        <input type="hidden" name="planType" value={planType} />
+        <Button variant="primary" type="submit" disabled={formSubmitted}>
+  {formSubmitted ? 'Formulario enviado' : 'Send Message'}
+</Button>
       </Form>
-      <EmailPlanSender
-        name={name}
-        lastName={lastName}
-        email={email}
-        phone={phone}
-        message={message}
-      />
+     
     </>
   );
 };

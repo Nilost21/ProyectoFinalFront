@@ -7,7 +7,7 @@ const ClassPlan = () => {
     <Container>
         <header>
         <h1>plan solo clases</h1>
-        <FormPlan/>
+        <FormPlan planType="class-plan"/>
         </header>
   
       

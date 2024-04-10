@@ -7,7 +7,7 @@ const FullPlan = () => {
     <Container>
         <header>
         <h1>plan full</h1>
-        <FormPlan/>
+        <FormPlan planType="full-plan"/>
         </header>
   
       
