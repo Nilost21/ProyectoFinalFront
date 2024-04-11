@@ -12,7 +12,7 @@ function ProductsContext({ children }) {
   //CRUD USERS
   const getProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/products');
+      const response = await axios.get('http://localhost:8080/products');
       const data = response.data;
       setProducts(data);
     } catch (error) {
@@ -23,7 +23,7 @@ function ProductsContext({ children }) {
   const addProduct = async (product) => {
     try {
       const response = await axios.post(
-        'http://localhost:8000/products',
+        'http://localhost:8080/products',
         product
       );
       const data = response.data;
@@ -36,7 +36,7 @@ function ProductsContext({ children }) {
   const deleteProducts = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:8000/products/${id}`
+        `http://localhost:8080/products/${id}`
       );
       const filteredProducts = products.filter((product) => product.id !== id);
       Swal.fire({
@@ -55,7 +55,7 @@ function ProductsContext({ children }) {
   const updateProduct = async (product) => {
     try {
       const response = await axios.put(
-        `http://localhost:8000/products/${product.id}`,
+        `http://localhost:8080/products/${product.id}`,
         product
       );
       await getProducts();
