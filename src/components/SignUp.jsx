@@ -51,7 +51,7 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
             confirmPassword: ''
           }}
         >
-          {({ handleSubmit, handleChange, values, errors }) => (
+          {({ handleSubmit, handleChange, values }) => (
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="formBasicUsername">
                 <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">Username</Form.Label>
@@ -132,8 +132,8 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
   );
 };
 
-SignUp.PropTypes = {
-  show: PropTypes.func,
+SignUp.propTypes = {
+  show: PropTypes.bool,
   handleClose: PropTypes.func,
   showLoginModal: PropTypes.func,
 };

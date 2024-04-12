@@ -30,7 +30,7 @@ function TableUsers() {
               </td>
             </tr>
           ) : (
-            users.map((user, index) => {
+            users.map((user) => {
               const { _id, username, email, isAdmin } = user;
               const checkAdmin = isAdmin ? 'Admin' : 'Normal';
               const adminClass = isAdmin ? 'text-danger' : 'text-secondary';

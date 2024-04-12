@@ -4,8 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-//import { useAuth } from '../context/Utils/authUtils';
-import { useAuth } from '../context/Auth/AuthContext';
+import { useAuth } from '../context/Utils/authUtils';
+//import { useAuth } from '../context/Auth/AuthContext';
 import './../css/Form.css';
 
 const SignIn = ({ show, handleClose, showRegisterModal }) => {
@@ -87,10 +87,10 @@ const SignIn = ({ show, handleClose, showRegisterModal }) => {
   );
 };
 
-SignIn.PropTypes = {
-  show: PropTypes.func,
+SignIn.propTypes = {
+  show: PropTypes.bool,
   handleClose: PropTypes.func,
-  showLoginModal: PropTypes.func,
+  showRegisterModal: PropTypes.func,
 };
 
 export default SignIn;

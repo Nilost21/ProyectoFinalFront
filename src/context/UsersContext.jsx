@@ -10,6 +10,7 @@ function UsersContext({ children }) {
   const getUsers = async () => {
     try {
       const token = localStorage.getItem('token');
+      if (!token) return;
       const config = {
         headers: {
           Authorization: `Bearer ${token}`

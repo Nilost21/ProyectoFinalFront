@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { useAuth } from '../context/Auth/AuthContext';
+import { useAuth } from '../context/Utils/authUtils';
 import { Navigate, Outlet } from 'react-router-dom';
 
 export const PrivateRoute = ({ isAdminRoute, redirectPath = '/' }) => {

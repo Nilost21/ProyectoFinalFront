@@ -5,8 +5,8 @@ import ButtonComponent from './ButtonComponent';
 
 import SignIn from './SignIn';
 import SignUp from './SignUp';
-//import { useAuth } from '../context/Utils/authUtils';
-import { useAuth } from '../context/Auth/AuthContext';
+import { useAuth } from '../context/Utils/authUtils';
+//import { useAuth } from '../context/Auth/AuthContext';
 
 import './../css/Navbar.css';
 
