@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 import ButtonComponent from './ButtonComponent';
 
@@ -62,24 +62,12 @@ function NavbarComponent() {
               >
                 Products
               </Nav.Link>
-              <NavDropdown
-                className="subtitle mt-1"
-                title={<span className="nav-dropdown-title">About Us</span>}
-                id="collapsible-nav-dropdown"
-                menuVariant="white"
+              <Nav.Link
+                className="subtitle mt-1 text-white"
+                onClick={() => navigate('/contact')}
               >
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
+                Contact
+              </Nav.Link>
             </Nav>
             <Nav className="pe-4">
               {isLoggedIn ? ( // Si el usuario está autenticado, muestra el botón de Logout
@@ -110,7 +98,7 @@ function NavbarComponent() {
                 <>
                   <Nav.Link
                     onClick={handleLoginModalShow}
-                    className="subtitle mt-1 text-light"
+                    className="subtitle mt-1 text-light mx-2"
                   >
                     Login
                   </Nav.Link>
