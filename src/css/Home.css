@@ -1,5 +1,9 @@
 .bg-home {
-  background-image: url('../../src/assets/img/Home/GettyImages-597068867\ \(1\).jpg');
+  border-bottom-color: transparent;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url('../../src/assets/img/Home/GettyImages-597068867 (1).jpg');
   background-size: cover;
   background-position: top;
+  -webkit-mask-image: linear-gradient(black 75%, transparent);
+  mask-image: linear-gradient(black 75%, transparent); 
 }
+

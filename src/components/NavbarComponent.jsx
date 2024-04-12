@@ -42,10 +42,10 @@ function NavbarComponent() {
       >
         <Container fluid>
           <Navbar.Brand
-            className="title cursor-pointer text-dark"
+            className="title cursor-pointer"
             onClick={() => navigate('/')}
           >
-            <h5 className="mt-2 text-dark text-shadow fs-3">ELITEBODY</h5>
+            <h5 className="mt-2 gradient-text text-shadow fs-2">ELITEBODY</h5>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav" className="text-light">
@@ -64,9 +64,9 @@ function NavbarComponent() {
               </Nav.Link>
               <NavDropdown
                 className="subtitle mt-1"
-                title="About Us"
+                title={<span className="nav-dropdown-title">About Us</span>}
                 id="collapsible-nav-dropdown"
-                menuVariant="dark"
+                menuVariant="white"
               >
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
@@ -81,7 +81,7 @@ function NavbarComponent() {
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            <Nav>
+            <Nav className="pe-4">
               {isLoggedIn ? ( // Si el usuario está autenticado, muestra el botón de Logout
                 <>
                   {user &&
