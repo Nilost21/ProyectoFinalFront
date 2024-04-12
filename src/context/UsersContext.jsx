@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -10,7 +9,14 @@ function UsersContext({ children }) {
 
   const getUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/users');
+      const token = localStorage.getItem('token');
+      if (!token) return;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      };
+      const response = await axios.get('http://localhost:3000/api/user/', config);
       const data = response.data;
       setUsers(data);
     } catch (error) {

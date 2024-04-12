@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -9,10 +8,18 @@ export const ProductsProvider = createContext();
 function ProductsContext({ children }) {
   const [products, setProducts] = useState([]);
 
-  //CRUD USERS
   const getProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/products');
+      const token = localStorage.getItem('token');
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      };
+      const response = await axios.get(
+        'http://localhost:3000/api/products/',
+        config
+      );
       const data = response.data;
       setProducts(data);
     } catch (error) {
@@ -22,8 +29,15 @@ function ProductsContext({ children }) {
 
   const addProduct = async (product) => {
     try {
+      const token = localStorage.getItem('token');
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      };
       const response = await axios.post(
-        'http://localhost:8000/products',
+        'http://localhost:3000/api/products/create',
+        config,
         product
       );
       const data = response.data;
@@ -35,8 +49,15 @@ function ProductsContext({ children }) {
 
   const deleteProducts = async (id) => {
     try {
+      const token = localStorage.getItem('token');
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      };
       const response = await axios.delete(
-        `http://localhost:8000/products/${id}`
+        `http://localhost:3000/api/products/${id}`,
+        config
       );
       const filteredProducts = products.filter((product) => product.id !== id);
       Swal.fire({
@@ -48,14 +69,21 @@ function ProductsContext({ children }) {
       });
       setProducts(filteredProducts);
     } catch (error) {
-      console.log(error, 'error when deleting product');
+      console.log(error, 'Error when deleting product');
     }
   };
 
-  const updateProduct = async (product) => {
+  const updateProduct = async (id, product) => {
     try {
+      const token = localStorage.getItem('token');
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      };
       const response = await axios.put(
-        `http://localhost:8000/products/${product.id}`,
+        `http://localhost:3000/api/products/${id}`,
+        config,
         product
       );
       await getProducts();

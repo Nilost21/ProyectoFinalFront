@@ -1,44 +1,48 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [token, setToken] = useState('');
-  const [user, setUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    return JSON.parse(localStorage.getItem('isLoggedIn')) || false;
+  });
+  const [user, setUser] = useState(() => {
+    return JSON.parse(localStorage.getItem('user')) || null;
+  });
+  const [token, setToken] = useState(() => {
+    return localStorage.getItem('token') || '';
+  });
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('token');
-    const storedUser = localStorage.getItem('user');
-
-    if (storedToken && storedUser) {
-      setIsLoggedIn(true);
-      setToken(storedToken);
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
-
-  const login = async (token, userData) => {
-    setIsLoggedIn(true);
-    setToken(token);
-    setUser(userData);
+    // Almacenar el estado de autenticación, el estado y el token en el almacenamiento local
+    localStorage.setItem('isLoggedIn', JSON.stringify(isLoggedIn));
+    localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('token', token);
-    localStorage.setItem('user', JSON.stringify(userData));
+  }, [isLoggedIn, user, token]);
+
+  const login = async (newToken, userData) => {
+    setIsLoggedIn(true);
+    setToken(newToken);
+    setUser(userData);
   };
 
   const logout = () => {
     setIsLoggedIn(false);
     setToken('');
     setUser(null);
-    localStorage.removeItem('token');
+    localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('user');
+    localStorage.removeItem('token');
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout, user }}>
+    <AuthContext.Provider value={{ isLoggedIn, login, logout, user, token }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};

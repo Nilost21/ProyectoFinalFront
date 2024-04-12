@@ -5,7 +5,7 @@ import { PrivateRoute } from './PrivateRoutes';
 import Home from '../pages/Home/Home';
 import Admin from '../pages/Admin/Admin';
 import Products from '../pages/Products/Products';
-import Profile from '../pages/Profile';
+import Profile from '../pages/Profile/Profile';
 
 const RoutesPages = () => {
   return (
