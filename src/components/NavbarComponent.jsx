@@ -5,27 +5,32 @@ import ButtonComponent from './ButtonComponent';
 
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+import { useAuth } from '../context/Auth/AuthContext';
 
 import './../css/Navbar.css';
 
 function NavbarComponent() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
-
+  const { isLoggedIn, user, logout } = useAuth();
   const navigate = useNavigate();
 
-  const handleLoginModalShow = () => {
-    setShowLoginModal(true);
-  };
-
-  const handleRegisterModalShow = () => {
-    setShowRegisterModal(true);
-  };
+  const handleLoginModalShow = () => setShowLoginModal(true);
+  const handleRegisterModalShow = () => setShowRegisterModal(true);
 
   // Cierra los modales
   const handleCloseModals = () => {
     setShowLoginModal(false);
     setShowRegisterModal(false);
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
+  const handleProfileButtonClick = () => {
+    navigate('/profile');
   };
 
   return (
@@ -77,23 +82,44 @@ function NavbarComponent() {
               </NavDropdown>
             </Nav>
             <Nav>
-              <Nav.Link
-                className="subtitle mt-1 text-light text-shadow"
-                href="#features"
-                onClick={() => navigate('/admin')}
-              >
-                ADMIN
-              </Nav.Link>
-              <Nav.Link
-                onClick={handleLoginModalShow}
-                className="subtitle mt-1 text-light"
-              >
-                Login
-              </Nav.Link>
-              <ButtonComponent
-                onClick={handleRegisterModalShow}
-                text={'Register'}
-              />
+              {isLoggedIn ? ( // Si el usuario está autenticado, muestra el botón de Logout
+                <>
+                  {user &&
+                    user.role === '6611a95b23873e069120fe2f' && ( // Si el usuario tiene rol ADMIN, muestra el botón
+                      <Nav.Link
+                        className="subtitle mt-1 text-light text-shadow"
+                        href="#features"
+                        onClick={() => navigate('/admin')}
+                      >
+                        Admin Management
+                      </Nav.Link>
+                    )}
+                  <Nav.Link
+                    onClick={handleLogout}
+                    className="subtitle mt-1 text-light"
+                  >
+                    Logout
+                  </Nav.Link>
+
+                  <ButtonComponent
+                    onClick={handleProfileButtonClick}
+                    text={user && user.username ? user.username : 'Profile'}
+                  />
+                </>
+              ) : (
+                <>
+                  <Nav.Link
+                    onClick={handleLoginModalShow}
+                    className="subtitle mt-1 text-light"
+                  >
+                    Login
+                  </Nav.Link>
+                  <ButtonComponent
+                    onClick={handleRegisterModalShow}
+                    text={'Register'}
+                  />
+                </>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
