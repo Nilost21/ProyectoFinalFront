@@ -1,6 +1,7 @@
 import { Modal, Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Formik, ErrorMessage } from 'formik';
+import PropTypes from 'prop-types';
 
 import { schema } from '../schema/SignUpSchema';
 import './../css/Form.css';
@@ -54,34 +55,73 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="formBasicUsername">
                 <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">Username</Form.Label>
-                <Form.Control className="paragraph" type="text" name="username" value={values.username} onChange={handleChange} placeholder="Enter your username" />
-                <ErrorMessage name="username" component="div" className="formik-error-message" />
+                <Form.Control
+                  className="paragraph"
+                  type="text"
+                  name="username"
+                  value={values.username}
+                  onChange={handleChange}
+                  placeholder="Enter your username" />
+                <ErrorMessage
+                  name="username"
+                  component="div"
+                  className="formik-error-message" />
               </Form.Group>
-
               <Form.Group controlId="formBasicEmail">
                 <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">Email</Form.Label>
-                <Form.Control className="paragraph" type="email" name="email" value={values.email} onChange={handleChange} placeholder="Enter your email" />
-                <ErrorMessage name="email" component="div" className="formik-error-message" />
+                <Form.Control
+                  className="paragraph"
+                  type="email"
+                  name="email"
+                  value={values.email}
+                  onChange={handleChange}
+                  placeholder="Enter your email" />
+                <ErrorMessage
+                  name="email"
+                  component="div"
+                  className="formik-error-message" />
               </Form.Group>
-
               <Form.Group controlId="formBasicPassword">
                 <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">Password</Form.Label>
-                <Form.Control className="paragraph" type="password" name="password" value={values.password} onChange={handleChange} placeholder="Enter a password" />
-                <ErrorMessage name="password" component="div" className="formik-error-message" />
+                <Form.Control
+                  className="paragraph"
+                  type="password"
+                  name="password"
+                  value={values.password}
+                  onChange={handleChange}
+                  placeholder="Enter a password"
+                  title="Password must be between 8 and 32 characters long, contain at least one digit, one uppercase letter, and one lowercase letter"
+                />
+                <ErrorMessage
+                  name="password"
+                  component="div"
+                  className="formik-error-message" />
               </Form.Group>
-
               <Form.Group controlId="formBasicConfirmPassword">
                 <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">Repeat Password</Form.Label>
-                <Form.Control className="paragraph" type="password" name="confirmPassword" value={values.confirmPassword} onChange={handleChange} placeholder="Confirm your password" />
-                <ErrorMessage name="confirmPassword" component="div" className="formik-error-message" />
+                <Form.Control
+                  className="paragraph"
+                  type="password"
+                  name="confirmPassword"
+                  value={values.confirmPassword}
+                  onChange={handleChange}
+                  placeholder="Confirm your password" />
+                <ErrorMessage
+                  name="confirmPassword"
+                  component="div"
+                  className="formik-error-message" />
               </Form.Group>
-
               <p className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1 mt-4 mb-4">Already have an account? <Link onClick={handleLoginClick}>Log In</Link></p>
-
-              <Button className="gradient-background border-0 rounded-5 subtitle py-1 mt-1 shadow-on-hover w-25" onClick={handleClose}>
+              <Button
+                className="gradient-background border-0 rounded-5 subtitle py-1 mt-1 shadow-on-hover w-25"
+                onClick={handleClose}
+              >
                 Close
               </Button>
-              <Button className="gradient-background border-0 rounded-5 subtitle py-1 mt-1 shadow-on-hover w-25" type="submit">
+              <Button
+                className="gradient-background border-0 rounded-5 subtitle py-1 mt-1 shadow-on-hover w-25"
+                type="submit"
+              >
                 Sign Up
               </Button>
             </Form>
@@ -90,6 +130,12 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
       </Modal.Body>
     </Modal>
   );
+};
+
+SignUp.PropTypes = {
+  show: PropTypes.func,
+  handleClose: PropTypes.func,
+  showLoginModal: PropTypes.func,
 };
 
 export default SignUp;

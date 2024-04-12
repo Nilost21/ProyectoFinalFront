@@ -9,7 +9,7 @@ export const PrivateRoute = ({ isAdminRoute, redirectPath = '/' }) => {
     return <Navigate to={redirectPath} />;
   } // o redirige a una página de acceso denegado
 
-  if (isAdminRoute && user.role !== '6611a95b23873e069120fe2f') {
+  if (isAdminRoute && !user.isAdmin) {
     return <Navigate to={redirectPath} replace />; // Otra opción: redirigir a una página de acceso denegado
   }
 

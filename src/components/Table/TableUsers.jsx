@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useContext } from 'react';
 import { UsersProvider } from '../../context/UsersContext';
 import { Table, Button } from 'react-bootstrap';
@@ -16,8 +15,8 @@ function TableUsers() {
       <Table className="mb-0">
         <thead>
           <tr className="subtitle">
-            <th>Index</th>
-            <th>Name</th>
+            <th>Id</th>
+            <th>Username</th>
             <th>Email</th>
             <th>Is Admin</th>
             <th>Actions</th>
@@ -32,14 +31,14 @@ function TableUsers() {
             </tr>
           ) : (
             users.map((user, index) => {
-              const { name, email, id, password, isAdmin } = user;
+              const { _id, username, email, isAdmin } = user;
               const checkAdmin = isAdmin ? 'Admin' : 'Normal';
               const adminClass = isAdmin ? 'text-danger' : 'text-secondary';
 
               return (
-                <tr key={id} className="paragraph fw-bold ">
-                  <td className="bg-dark text-light border-0">{index}</td>
-                  <td className="bg-dark text-light border-0">{name}</td>
+                <tr key={_id} className="paragraph fw-bold ">
+                  <td className="bg-dark text-light border-0">{_id}</td>
+                  <td className="bg-dark text-light border-0">{username}</td>
                   <td className="bg-dark text-light border-0">{email}</td>
                   <td className={`${adminClass} bg-dark border-0`}>
                     {checkAdmin}
