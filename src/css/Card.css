@@ -21,3 +21,58 @@
 .card-zoom:hover {
   transform: scale(1.05);
 }
+
+
+
+.bg-experience {
+  background: #1B1924;
+}
+
+.border-experience {
+  border: 2px solid #AB61C7
+}
+
+.border-card{
+  border: 1px solid #88559c8f
+}
+
+.star-color {
+  fill: linear-gradient(to top right,#6245c4, #bb56ff);
+}
+
+.gradient-hover {
+    background: linear-gradient(to top right,#6245c4, #bb56ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.gradient-hover:hover {
+    color: white; /* Cambia al color que desees cuando pases el mouse sobre el texto */
+}
+
+.gradient-background {
+  background: linear-gradient(to right,#7D63D3, #B263D5);
+}
+
+.number-color {
+  color: #AC65CF;
+  font-size: 5rem; 
+}
+
+
+.slide-up {
+  animation: slideUp 3s ease forwards;
+  opacity: 0;
+}
+
+@keyframes slideUp {
+  from {
+      transform: translateY(100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}

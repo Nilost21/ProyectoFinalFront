@@ -5,7 +5,7 @@ import '../css/Title.css';
 function TitleHomeComponent() {
   return (
     <>
-      <Card className="bg-transparent border-0 ms-xl-5 ms-md-5 mb-5 mt-5 pb-5">
+      <Card className="bg-transparent border-0 ms-xl-5 ms-md-5 mb-5 mt-5 ">
         <Card.Body className="bg-transparent p-0 w-75">
           <Card.Subtitle className="paragraph text-white fs-5 mt-5">
             Gym Station
@@ -13,7 +13,7 @@ function TitleHomeComponent() {
               xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="16"
-              fill="currentColor"
+              fill="#BD6EDD"
               className="bi bi-dash-lg ms-1 text-color"
               viewBox="0 0 16 16"
             >
@@ -26,7 +26,7 @@ function TitleHomeComponent() {
           <Card.Title className="title text-white mt-4 mb-3 increase-font-size">
             Take care of Your health with our exercise plans.
           </Card.Title>
-          <Card.Text className="small-font text-white pe-5 me-5 mt-4">
+          <Card.Text className="small-font pe-5 me-5 mt-4 text-color-small">
             We have been creating and implementing projects for many years all
             over the wold, we have hundreds of satisfaced customers
           </Card.Text>
@@ -38,7 +38,7 @@ function TitleHomeComponent() {
                 width="16"
                 height="16"
                 fill="currentColor"
-                className="bi bi-arrow-right ms-4"
+                className="bi bi-arrow-right ms-4 mt-1"
                 viewBox="0 0 16 16"
               >
                 <path
