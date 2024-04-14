@@ -13,7 +13,7 @@ function CardPlan ({name, price, description, page}) {
   };
   return (
     <>
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem'}} className='mb-3 mb-lg-0'>
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text>${price}</Card.Text>

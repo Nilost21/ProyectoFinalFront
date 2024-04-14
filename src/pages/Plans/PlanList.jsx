@@ -12,10 +12,10 @@ const PlanList = () => {
   return (
     <>
     <Container>
-            <Row>
+            <Row className="justify-content-center">
                 {plans.map((product) => (
-                    <Col key={product.id}>
-                        <CardPlan
+                    <Col key={product.id}  lg={4} className="text-center" >
+                        <CardPlan 
                             name={product.name}
                             price={product.price}
                             description={product.description}
