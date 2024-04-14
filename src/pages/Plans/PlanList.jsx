@@ -1,24 +1,33 @@
 import CardPlan from "../../components/planComponents/CardPlan";
+import { Container, Row, Col } from 'react-bootstrap';
 
 const PlanList = () => {
 
     const plans = [
-        { id: 1, name: 'Plan 1', price: 10 , description: 'Description of plan 1', page: 'class-plan'},
-        { id: 2, name: 'Plan 2', price: 20, description: 'Description of plan 2', page: 'muscle-plan' },
-        { id: 3, name: 'Plan 3', price: 30, description: 'Description of plan 3', page: 'full-plan' },
+        { id: 1, name: 'Class Only Plan', price: 10 , description: 'Access to all fitness classes without additional gym amenities', page: 'class-plan'},
+        { id: 2, name: 'Muscle Only Plan', price: 20, description: 'Focused on strength training with access to gym facilities', page: 'muscle-plan' },
+        { id: 3, name: 'Full Plan', price: 30, description: 'Includes access to all gym facilities and fitness classes.', page: 'full-plan' },
       ];
 
   return (
     <>
-      {plans.map((product) => (
-        <CardPlan
-          key={product.id}
-          name={product.name}
-          price={product.price}
-          description={product.description}
-          page={product.page}
-        />
-      ))}
+    <Container>
+            <Row>
+                {plans.map((product) => (
+                    <Col key={product.id}>
+                        <CardPlan
+                            name={product.name}
+                            price={product.price}
+                            description={product.description}
+                            page={product.page}
+                        />
+                    </Col>
+                ))}
+            </Row>
+        </Container>
+       
+        
+      
     </>
   )
 }

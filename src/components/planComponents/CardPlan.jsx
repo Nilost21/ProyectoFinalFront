@@ -16,8 +16,8 @@ function CardPlan ({name, price, description, page}) {
     <Card style={{ width: '18rem' }}>
       <Card.Body>
         <Card.Title>{name}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
         <Card.Text>${price}</Card.Text>
+        <Card.Subtitle className="mb-2 text-muted">per month</Card.Subtitle>
         <Card.Text>{description}</Card.Text>
         <Button variant="primary" onClick={handleShowPlanInfo}>Go somewhere</Button>   
       </Card.Body>
