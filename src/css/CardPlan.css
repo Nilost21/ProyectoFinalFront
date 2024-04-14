@@ -1,0 +1,16 @@
+.cardcolor{
+    color: rgb(255, 255, 255);
+    /* width: 200px;*/ 
+    height: 20rem;
+   
+    border-radius: 15px;
+    border: 2px solid #412e59;
+    background-color: rgba(0, 0, 0, 0.0);
+    transition: transform 0.3s;
+}
+
+.cardcolor:hover{
+    border-color: #9b65d2;
+ box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+ transform: scale(1.1);
+}

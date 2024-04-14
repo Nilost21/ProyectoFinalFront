@@ -1,7 +1,8 @@
-import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import '../../css/CardPlan.css';
+import ButtonCardPlan from './ButtonCardPlan';
 
 function CardPlan ({name, price, description, page}) {
   const navigate = useNavigate();
@@ -13,13 +14,13 @@ function CardPlan ({name, price, description, page}) {
   };
   return (
     <>
-    <Card style={{ width: '18rem'}} className='mb-3 mb-lg-0'>
+    <Card style={{ width: '18rem'}} className='mb-3 mb-lg-0 cardcolor'>
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text>${price}</Card.Text>
         <Card.Subtitle className="mb-2 text-muted">per month</Card.Subtitle>
         <Card.Text>{description}</Card.Text>
-        <Button variant="primary" onClick={handleShowPlanInfo}>Go somewhere</Button>   
+        <ButtonCardPlan /* variant="primary" */ children="CHOOSE" onClick={handleShowPlanInfo}></ButtonCardPlan>   
       </Card.Body>
     </Card>
     </>
