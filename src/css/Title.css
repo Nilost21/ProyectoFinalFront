@@ -20,4 +20,19 @@
   }
 
 
+  .slide-Right {
+    animation: slideRight 5s ease forwards;
+    opacity: 0;
+    transform: translateX(-100%);
+  }
   
+  @keyframes slideRight {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }

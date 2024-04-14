@@ -5,7 +5,7 @@ import '../css/Title.css';
 function TitleHomeComponent() {
   return (
     <>
-      <Card className="bg-transparent border-0 ms-xl-5 ms-md-5 mb-5 mt-5 ">
+      <Card className="bg-transparent border-0 ms-xl-5 ms-md-5 mb-5 mt-5 slide-Right">
         <Card.Body className="bg-transparent p-0 w-75">
           <Card.Subtitle className="paragraph text-white fs-5 mt-5">
             Gym Station

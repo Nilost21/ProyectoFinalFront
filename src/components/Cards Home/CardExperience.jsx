@@ -6,7 +6,7 @@ import '../../css/Home.css';
 function CardExperience() {
   return (
     <>
-      <Card className="bg-experience mb-5 rounded-3 border-0 pt-5 pb-4 px-4 shadow-box  card-zoom">
+      <Card className="bg-experience mb-5 rounded-3 border-0 pt-5 pb-4 px-4 shadow-box  card-zoom slide-up">
         <Card.Body className="pt-4">
           <div>
             <Button className="bg-transparent rounded-5 px-2 py-1 mb-4 border-experience ">

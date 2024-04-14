@@ -23,7 +23,7 @@ function CardSatisfied() {
           <Card.Title className="text-white paragraph mb-3  fs-1">
             Satisfied Costumers
           </Card.Title>
-          <Card.Text className="text-color-small small-font pe-3">
+          <Card.Text className="text-color-small small-font pe-5">
             So many people have already trusted us. This number is constantly
             growing thanks to the positive feedback from our customers.
           </Card.Text>

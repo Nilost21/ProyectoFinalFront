@@ -19,7 +19,7 @@ function Home() {
             <TitleHomeComponent />
           </Col>
         </Row>
-        <Row className="pb-5 d-flex flex-row justify-content-center px-5">
+        <Row className="pb-5 d-flex flex-row justify-content-center px-5 ">
           <Col xl={3} lg={3} md={6} sm={8}>
             <CardExperience />
           </Col>

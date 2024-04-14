@@ -62,7 +62,7 @@
 
 
 .slide-up {
-  animation: slideUp 3s ease forwards;
+  animation: slideUp 5s ease forwards;
   opacity: 0;
 }
 
@@ -75,4 +75,10 @@
       transform: translateY(0);
       opacity: 1;
   }
+}
+
+
+.bg-rounded {
+  background: #24203B; 
+  background-image: radial-gradient(circle at center, #3B2E59 0%, #24203B 70%);;
 }

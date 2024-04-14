@@ -1,7 +1,8 @@
 /* Background */
-body {  background: #24203B; /* Color de fondo */
-  background-image: radial-gradient(circle at center, #3B2E59 0%, #24203B 70%);;
- 
+body {
+  background: #24203B;
+  background-image: radial-gradient(circle at center center, #493772 0%, #24203B 40%);
+  background-size: 100% 170%; 
 }
 /* Background */
 
