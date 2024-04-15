@@ -3,25 +3,25 @@ import { Button } from 'react-bootstrap';
 import '../../css/ButtonCardPlan.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-function ButtonCardPlan ({ /* variant ,*/ onClick, children })  {
+function ButtonCardPlan ({ variant  , onClick, children })  {
   return (
     <>
-      <Button /* variant={variant} */ className="custom-button-card-plan" onClick={onClick}>
+      <Button variant={variant}  className="custom-button-card-plan small-font" onClick={onClick}>
       
       {children}
-      <i class="bi bi-arrow-right-circle-fill"></i>
+      <i class="bi bi-arrow-right-circle-fill icon-arrow-plan"></i>
       
     </Button>
     </>
   );
 }
 ButtonCardPlan.propTypes = {
-    /* variant: PropTypes.string, */
+    variant: PropTypes.string,
     onClick: PropTypes.func.isRequired,
     children: PropTypes.node.isRequired,
   };
- /*  ButtonCardPlan.defaultProps = {
-    variant: 'primary',
-  }; */
+ ButtonCardPlan.defaultProps = {
+    variant: 'custom-button-card-plan',
+  };
 
 export default ButtonCardPlan;
