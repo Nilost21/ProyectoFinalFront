@@ -125,7 +125,7 @@ const FormPlan = ({ planType }) => {
 
   return (
     <>
-      <Form onSubmit={handleFormPlanSubmit} className="small-font text-light">
+      <Form onSubmit={handleFormPlanSubmit} className="small-font text-light mb-4 mt-4">
         <Row >
           <Form.Group as={Col} controlId="formPlanName" xs={12} md={6} className="mb-3">
             <Form.Label>
