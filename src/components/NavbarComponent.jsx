@@ -5,7 +5,8 @@ import ButtonComponent from './ButtonComponent';
 
 import SignIn from './SignIn';
 import SignUp from './SignUp';
-import { useAuth } from '../context/Auth/AuthContext';
+import { useAuth } from '../context/Utils/authUtils';
+//import { useAuth } from '../context/Auth/AuthContext';
 
 import './../css/Navbar.css';
 
@@ -29,8 +30,12 @@ function NavbarComponent() {
     navigate('/');
   };
 
-  const handleProfileButtonClick = () => {
+  const handleProfileButton = () => {
     navigate('/profile');
+  };
+
+  const handleAdminButton = () => {
+    navigate('/admin');
   };
 
   return (
@@ -73,11 +78,10 @@ function NavbarComponent() {
               {isLoggedIn ? ( // Si el usuario está autenticado, muestra el botón de Logout
                 <>
                   {user &&
-                    user.role === '6611a95b23873e069120fe2f' && ( // Si el usuario tiene rol ADMIN, muestra el botón
+                    user.isAdmin && ( // Si el usuario tiene rol ADMIN, muestra el botón
                       <Nav.Link
+                        onClick={handleAdminButton}
                         className="subtitle mt-1 text-light text-shadow"
-                        href="#features"
-                        onClick={() => navigate('/admin')}
                       >
                         Admin Management
                       </Nav.Link>
@@ -90,7 +94,7 @@ function NavbarComponent() {
                   </Nav.Link>
 
                   <ButtonComponent
-                    onClick={handleProfileButtonClick}
+                    onClick={handleProfileButton}
                     text={user && user.username ? user.username : 'Profile'}
                   />
                 </>

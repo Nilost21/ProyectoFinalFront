@@ -6,7 +6,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-import { useAuth } from '../context/Auth/AuthContext';
+import { useAuth } from '../context/Utils/authUtils';
+//import { useAuth } from '../context/Auth/AuthContext';
 import './../css/Form.css';
 
 const SignIn = ({ show, handleClose, showRegisterModal }) => {
@@ -16,7 +17,7 @@ const SignIn = ({ show, handleClose, showRegisterModal }) => {
   });
 
   const navigate = useNavigate();
-  const { user, login } = useAuth();
+  const { login } = useAuth();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -36,8 +37,6 @@ const SignIn = ({ show, handleClose, showRegisterModal }) => {
 
       if (response.status === 200) {
         const { token, user } = response.data;
-        console.log(user);
-        console.log('El token es: ', token);
         login(token, user);
 
         localStorage.setItem('token', token);
@@ -55,8 +54,6 @@ const SignIn = ({ show, handleClose, showRegisterModal }) => {
       }
     } catch (error) {
       console.error('Error:', error.message);
-      // Aquí puedes manejar errores específicos, como por ejemplo mostrar un mensaje de error al usuario
-      // Por ejemplo, si el error.response.data contiene un mensaje de error específico, puedes mostrarlo al usuario
     }
   };
 
@@ -132,9 +129,9 @@ const SignIn = ({ show, handleClose, showRegisterModal }) => {
 };
 
 SignIn.propTypes = {
-  showRegisterModal: PropTypes.func,
-  handleClose: PropTypes.func,
   show: PropTypes.bool,
+  handleClose: PropTypes.func,
+  showRegisterModal: PropTypes.func,
 };
 
 export default SignIn;

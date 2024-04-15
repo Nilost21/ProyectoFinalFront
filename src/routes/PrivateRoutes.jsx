@@ -1,4 +1,4 @@
-import { useAuth } from '../context/Auth/AuthContext';
+import { useAuth } from '../context/Utils/authUtils';
 import { Navigate, Outlet } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -7,6 +7,10 @@ export const PrivateRoute = ({ isAdminRoute, redirectPath = '/' }) => {
 
   if (!isLoggedIn) {
     return <Navigate to={redirectPath} />;
+  } // o redirige a una página de acceso denegado
+
+  if (isAdminRoute && !user.isAdmin) {
+    return <Navigate to={redirectPath} replace />; // Otra opción: redirigir a una página de acceso denegado
   }
 
   if (isAdminRoute && user.role !== '6611a95b23873e069120fe2f') {

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import RoutesPages from './routes/Routes';

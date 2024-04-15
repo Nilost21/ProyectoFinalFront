@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { Modal, Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -62,7 +63,7 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
             confirmPassword: '',
           }}
         >
-          {({ handleSubmit, handleChange, values, errors }) => (
+          {({ handleSubmit, handleChange, values }) => (
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="formBasicUsername">
                 <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
@@ -82,7 +83,6 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
                   className="formik-error-message"
                 />
               </Form.Group>
-
               <Form.Group controlId="formBasicEmail">
                 <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
                   Email
@@ -101,7 +101,6 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
                   className="formik-error-message"
                 />
               </Form.Group>
-
               <Form.Group controlId="formBasicPassword">
                 <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
                   Password
@@ -120,7 +119,6 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
                   className="formik-error-message"
                 />
               </Form.Group>
-
               <Form.Group controlId="formBasicConfirmPassword">
                 <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
                   Repeat Password
@@ -163,12 +161,6 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
       </Modal.Body>
     </Modal>
   );
-};
-
-SignUp.propTypes = {
-  showLoginModal: PropTypes.func,
-  handleClose: PropTypes.func,
-  show: PropTypes.bool,
 };
 
 export default SignUp;
