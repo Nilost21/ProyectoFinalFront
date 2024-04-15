@@ -1,0 +1,27 @@
+.custom-input-formplan{
+    border: 2px solid #4f3273;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #aba7c3;
+    font-size: 20px;
+  padding: 8px 12px;
+}
+.custom-input-formplan:focus,
+.custom-input-formplan:hover {
+    outline: none;
+    box-shadow: none;
+    border-color: #b266d2;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #aba7c3;
+    
+  }
+  .custom-input-formplan::placeholder {
+    color: #aba7c3;
+  }
+  .span-input-plan{
+    color: #5e0a82;
+  margin-left: 5px;
+  font-size: 18px;
+  }
+  
+  

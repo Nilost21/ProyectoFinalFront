@@ -5,7 +5,7 @@
    
     border-radius: 15px;
     border: 2px solid #412e59;
-    background-color: rgba(0, 0, 0, 0.0);
+    background-color: rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
 }
 

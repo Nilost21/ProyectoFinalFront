@@ -6,6 +6,7 @@ import { useState } from "react";
 /* import EmailPlanSender from "./EmailPlanSender"; */
 import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2';
+import '../../css/FormPlan.css';
 
 const FormPlan = ({ planType }) => {
   const [name, setName] = useState("");
@@ -127,9 +128,11 @@ const FormPlan = ({ planType }) => {
       <Form onSubmit={handleFormPlanSubmit}>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formPlanName">
+          <Form.Label className="small-font text-light">First name <span className="span-input-plan">*</span> </Form.Label>
             <Form.Control
+              className="custom-input-formplan"
               type="text"
-              placeholder="First Name"
+              placeholder="Your first name"
               maxLength={30}
               minLength={2}
               pattern="^(?=.*[a-zA-Z\u00f1\u00d1])[\w\u00f1\u00d1\u00e1\u00e9\u00ed\u00f3\u00fa\u00c1\u00c9\u00cd\u00d3\u00da\s']+$"
@@ -141,9 +144,11 @@ const FormPlan = ({ planType }) => {
           </Form.Group>
 
           <Form.Group as={Col} controlId="formPlanLastName">
+          <Form.Label className="small-font text-light">Last name <span className="span-input-plan">*</span> </Form.Label>
             <Form.Control
+              className="custom-input-formplan"
               type="text"
-              placeholder="Last Name"
+              placeholder="Your last name"
               maxLength={30}
               minLength={2}
               /* pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1\s']+$" */
@@ -158,10 +163,12 @@ const FormPlan = ({ planType }) => {
 
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formPlanEmail">
+          <Form.Label className="small-font text-light">Email <span className="span-input-plan">*</span> </Form.Label>
             <Form.Control
+              className="custom-input-formplan"
               type="email"
               title="Enter a valid email address (Example@example.com)"
-              placeholder="Email"
+              placeholder="Your email"
               maxLength={50}
               /* pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" */
               required
@@ -171,9 +178,11 @@ const FormPlan = ({ planType }) => {
           </Form.Group>
 
           <Form.Group as={Col} controlId="formPlanPhone">
+          <Form.Label className="small-font text-light">Phone number <span className="span-input-plan">*</span> </Form.Label>
             <Form.Control
+              className="custom-input-formplan"
               type="tel"
-              placeholder="Phone"
+              placeholder="Your phone number"
               maxLength={10}
               pattern="[0-9]{10}"
               required
@@ -186,10 +195,12 @@ const FormPlan = ({ planType }) => {
 
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formPlanMessage">
+          <Form.Label className="small-font text-light">Message <span className="span-input-plan">*</span> </Form.Label>
             <Form.Control
+              className="custom-input-formplan"
               as="textarea"
               rows={3}
-              placeholder="Message"
+              placeholder="Your message here"
               maxLength={1500} 
               required
               value={message}
