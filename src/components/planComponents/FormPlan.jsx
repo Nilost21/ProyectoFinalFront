@@ -119,16 +119,18 @@ const FormPlan = ({ planType }) => {
       console.log('Correo enviado al remitente');
     }).catch((error) => {
       console.error('Error al enviar correo al remitente:', error);
-    });
-    setFormSubmitted(true); */
+    });*/
+    setFormSubmitted(true); 
   };
 
   return (
     <>
-      <Form onSubmit={handleFormPlanSubmit}>
-        <Row className="mb-3">
-          <Form.Group as={Col} controlId="formPlanName">
-          <Form.Label className="small-font text-light">First name <span className="span-input-plan">*</span> </Form.Label>
+      <Form onSubmit={handleFormPlanSubmit} className="small-font text-light">
+        <Row >
+          <Form.Group as={Col} controlId="formPlanName" xs={12} md={6} className="mb-3">
+            <Form.Label>
+              First name <span className="span-input-plan">*</span>{" "}
+            </Form.Label>
             <Form.Control
               className="custom-input-formplan"
               type="text"
@@ -143,8 +145,10 @@ const FormPlan = ({ planType }) => {
             />
           </Form.Group>
 
-          <Form.Group as={Col} controlId="formPlanLastName">
-          <Form.Label className="small-font text-light">Last name <span className="span-input-plan">*</span> </Form.Label>
+          <Form.Group as={Col} controlId="formPlanLastName" xs={12} md={6} className="mb-3">
+            <Form.Label>
+              Last name <span className="span-input-plan">*</span>{" "}
+            </Form.Label>
             <Form.Control
               className="custom-input-formplan"
               type="text"
@@ -161,11 +165,13 @@ const FormPlan = ({ planType }) => {
           </Form.Group>
         </Row>
 
-        <Row className="mb-3">
-          <Form.Group as={Col} controlId="formPlanEmail">
-          <Form.Label className="small-font text-light">Email <span className="span-input-plan">*</span> </Form.Label>
+        <Row >
+          <Form.Group as={Col} controlId="formPlanEmail" xs={12} md={6} className="mb-3">
+            <Form.Label>
+              Email <span className="span-input-plan">*</span>{" "}
+            </Form.Label>
             <Form.Control
-              className="custom-input-formplan"
+              className="custom-input-formplan small-font"
               type="email"
               title="Enter a valid email address (Example@example.com)"
               placeholder="Your email"
@@ -177,8 +183,10 @@ const FormPlan = ({ planType }) => {
             />
           </Form.Group>
 
-          <Form.Group as={Col} controlId="formPlanPhone">
-          <Form.Label className="small-font text-light">Phone number <span className="span-input-plan">*</span> </Form.Label>
+          <Form.Group as={Col} controlId="formPlanPhone" xs={12} md={6} className="mb-3">
+            <Form.Label>
+              Phone number <span className="span-input-plan">*</span>{" "}
+            </Form.Label>
             <Form.Control
               className="custom-input-formplan"
               type="tel"
@@ -194,14 +202,16 @@ const FormPlan = ({ planType }) => {
         </Row>
 
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="formPlanMessage">
-          <Form.Label className="small-font text-light">Message <span className="span-input-plan">*</span> </Form.Label>
+          <Form.Group as={Col} controlId="formPlanMessage" xs={12} className="mb-3">
+            <Form.Label>
+              Message <span className="span-input-plan">*</span>{" "}
+            </Form.Label>
             <Form.Control
               className="custom-input-formplan"
               as="textarea"
               rows={3}
               placeholder="Your message here"
-              maxLength={1500} 
+              maxLength={1500}
               required
               value={message}
               onChange={(e) => setMessage(e.target.value)}
@@ -213,11 +223,23 @@ const FormPlan = ({ planType }) => {
           Send Message
         </Button> */}
         <input type="hidden" name="planType" value={planType} />
-        <Button variant="primary" type="submit" disabled={formSubmitted}>
-  {formSubmitted ? 'Sending...' : 'Send Message'}
-</Button>
+
+        
+
+        <Row className="justify-content-end">
+          <Col xs={12} md={6} className="text-end">
+          <Button
+          className={`btn-form-plan ${formSubmitted ? 'btn-form-plan-sent' : ''} small-font text-light`}
+          variant="btn-form-plan"
+          type="submit"
+          disabled={formSubmitted}
+        >
+          {formSubmitted ? "Sending..." : "Send Message"}
+        </Button>
+
+          </Col>
+        </Row>
       </Form>
-     
     </>
   );
 };
