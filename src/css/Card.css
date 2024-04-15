@@ -77,8 +77,20 @@
   }
 }
 
+.card-img-custom {
+  width: 80%; 
+  height: auto; 
+  border-top-right-radius: 100px; 
+  border-bottom-right-radius: 100px;
+  border-top-left-radius: 20px; 
+  border-bottom-left-radius:20px;
+}
 
-.bg-rounded {
-  background: #24203B; 
-  background-image: radial-gradient(circle at center, #3B2E59 0%, #24203B 70%);;
+.shadow-image {
+  -webkit-mask-image: linear-gradient(black 30%, transparent);
+  mask-image: linear-gradient(black 25%, transparent); 
+}
+
+.text-gray {
+  color: #cbcbce
 }

@@ -6,8 +6,8 @@ import '../../css/Home.css';
 function CardSatisfied() {
   return (
     <>
-      <Card className="bg-transparent mb-5 rounded-3 border-0 p-0 slide-up ">
-        <Card.Title className="title number-color mt-4  increase-font-size ms-3  ">
+      <Card className="bg-transparent mb-5 rounded-3 border-0 p-0 slide-up  ms-md-5 mt-md-5 pt-5 ps-md-5">
+        <Card.Title className="title number-color mt-4  increase-font-number ms-3  ">
           1 4 0 0 0 +
         </Card.Title>
         <Card.Body className="pt-1">
@@ -20,7 +20,7 @@ function CardSatisfied() {
               <StarSVG />
             </Button>
           </div>
-          <Card.Title className="text-white paragraph mb-3  fs-1">
+          <Card.Title className="text-white paragraph mb-3 increase-font-p">
             Satisfied Costumers
           </Card.Title>
           <Card.Text className="text-color-small small-font pe-5">

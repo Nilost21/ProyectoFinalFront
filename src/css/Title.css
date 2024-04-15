@@ -2,6 +2,13 @@
     font-size: 4rem; 
   }
 
+  .increase-font-p {
+    font-size: 3rem; 
+  }
+
+  .increase-font-number {
+    font-size: 6rem; 
+  }
 
   .gradient-background {
     background: linear-gradient(to right, #6245c4, #bb56ff);

@@ -5,7 +5,7 @@ import '../../css/Home.css';
 function CardTrainer() {
   return (
     <>
-      <Card className="bg-transparent mb-5 rounded-3 border-card pt-5 pb-4 px-4 shadow-box card-zoom slide-up">
+      <Card className="bg-transparent mb-5 rounded-3 border-card pt-5 pb-4 px-4 shadow-box card-zoom">
         <Card.Body className="pt-4">
           <div className="p-0">
             <Button className="gradient-background rounded-5 px-2 py-1 mb-4 border-0 ">
