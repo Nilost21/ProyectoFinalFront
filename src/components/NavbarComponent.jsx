@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 import ButtonComponent from './ButtonComponent';
 
@@ -46,10 +46,10 @@ function NavbarComponent() {
       >
         <Container fluid>
           <Navbar.Brand
-            className="title cursor-pointer text-dark"
+            className="title cursor-pointer"
             onClick={() => navigate('/')}
           >
-            <h5 className="mt-2 text-dark text-shadow fs-3">ELITEBODY</h5>
+            <h5 className="mt-2 gradient-text text-shadow fs-2">ELITEBODY</h5>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav" className="text-light">
@@ -66,55 +66,66 @@ function NavbarComponent() {
               >
                 Products
               </Nav.Link>
-              <NavDropdown
-                className="subtitle mt-1"
-                title="About Us"
-                id="collapsible-nav-dropdown"
-                menuVariant="dark"
+              <Nav.Link
+                className="subtitle mt-1 text-white"
+                onClick={() => navigate('/contact')}
               >
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
+                Contact
+              </Nav.Link>
             </Nav>
-            <Nav>
+            <Nav className="pe-4">
               {isLoggedIn ? ( // Si el usuario está autenticado, muestra el botón de Logout
                 <>
-                  {user && user.isAdmin && ( // Si el usuario tiene rol ADMIN, muestra el botón
-                    <Nav.Link onClick={handleAdminButton} className="subtitle mt-1 text-light text-shadow">
-                      Admin Management
-                    </Nav.Link>
-                  )}
-                  <Nav.Link onClick={handleLogout} className="subtitle mt-1 text-light">
+                  {user &&
+                    user.isAdmin && ( // Si el usuario tiene rol ADMIN, muestra el botón
+                      <Nav.Link
+                        onClick={handleAdminButton}
+                        className="subtitle mt-1 text-light text-shadow"
+                      >
+                        Admin Management
+                      </Nav.Link>
+                    )}
+                  <Nav.Link
+                    onClick={handleLogout}
+                    className="subtitle mt-1 text-light"
+                  >
                     Logout
                   </Nav.Link>
 
-                  <ButtonComponent onClick={handleProfileButton} text={user && user.username ? user.username : 'Profile'} />
+                  <ButtonComponent
+                    onClick={handleProfileButton}
+                    text={user && user.username ? user.username : 'Profile'}
+                  />
                 </>
               ) : (
                 <>
-                  <Nav.Link onClick={handleLoginModalShow} className="subtitle mt-1 text-light">
+                  <Nav.Link
+                    onClick={handleLoginModalShow}
+                    className="subtitle mt-1 text-light mx-2"
+                  >
                     Login
                   </Nav.Link>
-                  <ButtonComponent onClick={handleRegisterModalShow} text={'Register'} />
+                  <ButtonComponent
+                    onClick={handleRegisterModalShow}
+                    text={'Register'}
+                  />
                 </>
               )}
             </Nav>
           </Navbar.Collapse>
         </Container>
-        <SignIn show={showLoginModal} handleClose={handleCloseModals} showRegisterModal={handleRegisterModalShow} />
-        <SignUp show={showRegisterModal} handleClose={handleCloseModals} showLoginModal={handleLoginModalShow} />
+        <SignIn
+          show={showLoginModal}
+          handleClose={handleCloseModals}
+          showRegisterModal={handleRegisterModalShow}
+        />
+        <SignUp
+          show={showRegisterModal}
+          handleClose={handleCloseModals}
+          showLoginModal={handleLoginModalShow}
+        />
       </Navbar>
     </>
   );
 }
 export default NavbarComponent;
-

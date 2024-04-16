@@ -13,10 +13,13 @@ function UsersContext({ children }) {
       if (!token) return;
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       };
-      const response = await axios.get('http://localhost:3000/api/user/', config);
+      const response = await axios.get(
+        'http://localhost:3000/api/user/',
+        config
+      );
       const data = response.data;
       setUsers(data);
     } catch (error) {

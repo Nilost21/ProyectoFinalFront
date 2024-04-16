@@ -33,3 +33,13 @@
 .text-animation:hover {
   transform: scale(1.05);
 }
+
+
+.text-gradient {
+  color: linear-gradient(to right, #7E61DD, #8F5EAF);
+}
+
+
+.nav-dropdown-title {
+  color: white !important;
+}

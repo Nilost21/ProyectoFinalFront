@@ -1,6 +1,8 @@
 /* Background */
 body {
-  background: linear-gradient(to right, #8366D2, #24203B);
+  background: #24203B;
+  background-image: radial-gradient(circle at center center, #493772 0%, #24203B 40%);
+  background-size: 100% 170%; 
 }
 /* Background */
 

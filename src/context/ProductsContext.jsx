@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -13,8 +14,8 @@ function ProductsContext({ children }) {
       const token = localStorage.getItem('token');
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       };
       const response = await axios.get(
         'http://localhost:3000/api/products/',
@@ -32,8 +33,8 @@ function ProductsContext({ children }) {
       const token = localStorage.getItem('token');
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       };
       const response = await axios.post(
         'http://localhost:3000/api/products/create',
@@ -52,8 +53,8 @@ function ProductsContext({ children }) {
       const token = localStorage.getItem('token');
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       };
       await axios.delete(
         `http://localhost:3000/api/products/${id}`,
@@ -78,8 +79,8 @@ function ProductsContext({ children }) {
       const token = localStorage.getItem('token');
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       };
       await axios.put(
         `http://localhost:3000/api/products/${id}`,

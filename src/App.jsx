@@ -10,7 +10,6 @@ function App() {
     <>
       <UsersContext>
         <ProductsContext>
-          <NavbarComponent />
           <RoutesPages />
         </ProductsContext>
       </UsersContext>

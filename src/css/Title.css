@@ -1,0 +1,45 @@
+.increase-font-size {
+    font-size: 4rem; 
+  }
+
+  .increase-font-p {
+    font-size: 3rem; 
+  }
+
+  .increase-font-number {
+    font-size: 6rem; 
+  }
+
+  .gradient-background {
+    background: linear-gradient(to right, #6245c4, #bb56ff);
+  }
+  
+  .gradient-background:hover {
+    box-shadow: 0 0 10px rgba(206, 205, 205, 0.3);
+  }
+
+
+  .gradient-text {
+    background-image: linear-gradient(to right, #6245c4, #b665ec);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+
+  .slide-Right {
+    animation: slideRight 5s ease forwards;
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  
+  @keyframes slideRight {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
