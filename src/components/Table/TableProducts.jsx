@@ -57,9 +57,8 @@ function TableProducts() {
                   <td className=" bg-dark text-light border-0">
                     <div className="d-flex flex-row justify-content-around">
                       <Button
-                        onClick={() => handleEdit(product)}
-                        className="bg-secondary border-0 text-dark me-3 "
-                      >
+                        className="bg-secondary border-0 text-dark me-3"
+                        onClick={() => handleEdit(product)}>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"

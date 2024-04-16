@@ -1,8 +1,9 @@
 import { useContext } from 'react';
 import { UsersProvider } from '../../context/UsersContext';
 import { Table, Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
-function TableUsers() {
+function TableUsers({ onEdit, onDelete }) {
   const { users } = useContext(UsersProvider);
 
   const isEmpty = () => users.length === 0;
@@ -10,7 +11,7 @@ function TableUsers() {
   return (
     <>
       <div className="text-star bg-dark text-white rounded-top-4 py-1">
-        <h3 className="subtitle ps-3 mt-1 pt-1 my-0 ">Table Users</h3>
+        <h3 className="subtitle ps-3 mt-1 pt-1 my-0">Table Users</h3>
       </div>
       <Table className="mb-0">
         <thead>
@@ -36,7 +37,7 @@ function TableUsers() {
               const adminClass = isAdmin ? 'text-danger' : 'text-secondary';
 
               return (
-                <tr key={_id} className="paragraph fw-bold ">
+                <tr key={_id} className="paragraph fw-bold">
                   <td className="bg-dark text-light border-0">{_id}</td>
                   <td className="bg-dark text-light border-0">{username}</td>
                   <td className="bg-dark text-light border-0">{email}</td>
@@ -44,7 +45,7 @@ function TableUsers() {
                     {checkAdmin}
                   </td>
                   <td className="d-flex flex-row justify-content-around bg-dark text-light border-0">
-                    <Button className="bg-secondary border-0 text-dark ">
+                    <Button className="bg-secondary border-0 text-dark" onClick={() => onEdit(_id)}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -56,7 +57,7 @@ function TableUsers() {
                         <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001" />
                       </svg>
                     </Button>
-                    <Button className="bg-danger border-0 text-dark ">
+                    <Button className="bg-danger border-0 text-dark" onClick={() => onDelete(_id)}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -78,4 +79,10 @@ function TableUsers() {
     </>
   );
 }
+
+TableUsers.propTypes = {
+  onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
+
 export default TableUsers;

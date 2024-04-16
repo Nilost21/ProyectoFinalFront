@@ -55,7 +55,7 @@ function ProductsContext({ children }) {
           Authorization: `Bearer ${token}`
         }
       };
-      const response = await axios.delete(
+      await axios.delete(
         `http://localhost:3000/api/products/${id}`,
         config
       );
@@ -81,7 +81,7 @@ function ProductsContext({ children }) {
           Authorization: `Bearer ${token}`
         }
       };
-      const response = await axios.put(
+      await axios.put(
         `http://localhost:3000/api/products/${id}`,
         config,
         product

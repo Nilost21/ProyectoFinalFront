@@ -5,7 +5,6 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 
 import { useAuth } from '../context/Utils/authUtils';
-//import { useAuth } from '../context/Auth/AuthContext';
 import './../css/Form.css';
 
 const SignIn = ({ show, handleClose, showRegisterModal }) => {

@@ -1,6 +1,6 @@
-import { Routes, Route } from 'react-router-dom';
 import { useAuth } from '../context/Utils/authUtils';
 import { Navigate, Outlet } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const PrivateRoute = ({ isAdminRoute, redirectPath = '/' }) => {
   const { isLoggedIn, user } = useAuth();
@@ -14,4 +14,9 @@ export const PrivateRoute = ({ isAdminRoute, redirectPath = '/' }) => {
   }
 
   return <Outlet />
+};
+
+PrivateRoute.prototype = {
+  isAdminRoute: PropTypes.bool,
+  redirectPath: PropTypes.string
 };

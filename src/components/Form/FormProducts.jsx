@@ -4,8 +4,6 @@ import { v4 as uuidv4 } from 'uuid';
 import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
 
-import ButtonComponent from '../ButtonComponent';
-
 import { ProductsProvider } from '../../context/ProductsContext';
 
 import './../../css/Form.css';
