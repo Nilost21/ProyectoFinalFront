@@ -1,21 +1,34 @@
 /* eslint-disable no-unused-vars */
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Modal } from 'react-bootstrap';
+import { useState } from 'react';
+
 import '../../css/Card.css';
 import '../../css/Home.css';
+import InfoCardHome from './InfoCardHome';
 
 function CardExperience() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const subTitle =
+    "Our team of specialists is dedicated to providing you with comprehensive support throughout your fitness journey. From the moment you step into our facility, they take the time to understand your goals, limitations, and preferences. They meticulously oversee your form, ensuring that each exercise is performed safely and effectively. If you have any questions or concerns at any point during your workout, our specialists are readily available to provide guidance and assistance. Furthermore, they continuously monitor your progress and make necessary adjustments to your exercise plans to ensure that you're consistently moving towards your fitness goals. Whether you're aiming to build strength, improve flexibility, or enhance your overall health, our specialists are committed to helping you achieve success." +
+    '\n\n' +
+    'Feel confident knowing that our team is here to support you every step of the way, celebrating your victories and helping you overcome any challenges that may arise on your fitness journey.';
+
   return (
     <>
       <Card className="bg-experience mb-5 rounded-3 border-0 pt-5 pb-4 px-4 shadow-box  card-zoom ">
-        <Card.Body className="pt-4">
+        <Card.Body className="pt-1">
           <div>
             <Button className="bg-transparent rounded-5 px-2 py-1 mb-4 border-experience ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
+                width="39"
+                height="41"
                 fill="#BB6BDC"
-                className="bi bi-star-fill mb-1 "
+                className="bi bi-star-fill mb-1 p-2 "
                 viewBox="0 0 16 16"
               >
                 <path
@@ -33,7 +46,10 @@ function CardExperience() {
             to you if you have any questions during the execution of the
             exercise plans
           </Card.Text>
-          <Button className="bg-transparent border-0 subtitle px-0 ">
+          <Button
+            onClick={handleShow}
+            className="bg-transparent border-0 subtitle px-0 "
+          >
             {' '}
             <span className="gradient-hover">Read More</span>{' '}
             <svg
@@ -49,6 +65,18 @@ function CardExperience() {
           </Button>
         </Card.Body>
       </Card>
+
+      <Modal
+        contentClassName="bg-transparent border-0 p-0"
+        show={show}
+        onHide={handleClose}
+      >
+        <InfoCardHome
+          handleClose={handleClose}
+          textTitle={'Experience'}
+          textSubtitle={subTitle}
+        />
+      </Modal>
     </>
   );
 }

@@ -6,15 +6,15 @@ function CardTrainer() {
   return (
     <>
       <Card className="bg-transparent mb-5 rounded-3 border-card pt-5 pb-4 px-4 shadow-box card-zoom">
-        <Card.Body className="pt-4">
+        <Card.Body className="pt-1">
           <div className="p-0">
             <Button className="gradient-background rounded-5 px-2 py-1 mb-4 border-0 ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
+                width="39"
+                height="41"
                 fill="currentColor"
-                className="bi bi-person-heart mb-1"
+                className="bi bi-person-heart mb-1 p-2"
                 viewBox="0 0 16 16"
               >
                 <path d="M9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4m13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276Z" />
