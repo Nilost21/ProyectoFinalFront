@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { UsersProvider } from '../../context/UsersContext';
 import { Table, Button } from 'react-bootstrap';
+
 import PropTypes from 'prop-types';
 
 function TableUsers({ onEdit, onDelete }) {
@@ -37,7 +38,7 @@ function TableUsers({ onEdit, onDelete }) {
               const adminClass = isAdmin ? 'text-danger' : 'text-secondary';
 
               return (
-                <tr key={_id} className="paragraph fw-bold">
+                <tr key={`${_id}-${username}`} className="paragraph fw-bold">
                   <td className="bg-dark text-light border-0">{_id}</td>
                   <td className="bg-dark text-light border-0">{username}</td>
                   <td className="bg-dark text-light border-0">{email}</td>

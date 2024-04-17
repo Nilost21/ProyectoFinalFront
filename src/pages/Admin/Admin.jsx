@@ -4,29 +4,49 @@ import { Container, Row, Col } from 'react-bootstrap';
 import TableUsers from '../../components/Table/TableUsers';
 import TableProducts from '../../components/Table/TableProducts';
 import FormProducts from '../../components/Form/FormProducts';
+import FormEditProduct from '../../components/Form/FormEditProduct';
 import FormEditUser from '../../components/Form/FormEditUser';
 import { UsersProvider } from '../../context/UsersContext';
+import { ProductsProvider } from '../../context/ProductsContext';
 
 
 function Admin() {
   const { getUsers, editUser, deleteUser } = useContext(UsersProvider);
+  const { getProducts, editProduct, deleteProduct } = useContext(ProductsProvider);
 
-  const [showEditModal, setShowEditModal] = useState(false);
+  const [showUserEditModal, setshowUserEditModal] = useState(false);
+  const [showProductEditModal, setshowProductEditModal] = useState(false);
+
   const [userIdToEdit, setUserIdToEdit] = useState(null);
+  const [productIdToEdit, setProductIdToEdit] = useState(null);
 
-  const handleOpenEditModal = (userId) => {
+  const handleOpenEditUserModal = (userId) => {
     setUserIdToEdit(userId);
-    setShowEditModal(true);
+    setshowUserEditModal(true);
   };
 
-  const handleCloseEditModal = () => {
+  const handleOpenEditProductModal = (productId) => {
+    setProductIdToEdit(productId);
+    setshowProductEditModal(true);
+  };
+
+  const handleCloseEditUserModal = () => {
     setUserIdToEdit(null);
-    setShowEditModal(false);
+    setshowUserEditModal(false);
+  };
+
+  const handleCloseEditProductModal = () => {
+    setUserIdToEdit(null);
+    setshowUserEditModal(false);
   };
 
   const updateUserList = async () => {
     await getUsers(); // Actualiza la lista de usuarios después de editar
   };
+
+  const updatedProductList = async () => {
+    await getProducts();
+  }
 
   return (
     <>
@@ -40,15 +60,16 @@ function Admin() {
           </Col>
           <Col xl={8}>
             <Row>
-              <TableUsers onEdit={handleOpenEditModal} onDelete={deleteUser} />
+              <TableUsers onEdit={handleOpenEditUserModal} onDelete={deleteUser} />
             </Row>
             <Row className="mt-5">
-              <TableProducts />
+              <TableProducts onEdit={handleOpenEditProductModal} onDelete={deleteProduct} />
             </Row>
           </Col>
         </Row>
       </Container>
-      <FormEditUser show={showEditModal} handleClose={handleCloseEditModal} userId={userIdToEdit} editUser={editUser} updateUserList={updateUserList} />
+      <FormEditUser show={showUserEditModal} handleClose={handleCloseEditUserModal} userId={userIdToEdit} editUser={editUser} updateUserList={updateUserList} />
+      <FormEditProduct show={showProductEditModal} handleClose={handleCloseEditProductModal} productId={productIdToEdit} editProduct={editProduct} updatedProductList={updatedProductList} />
     </>
   );
 }

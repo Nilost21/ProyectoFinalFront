@@ -3,35 +3,39 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
 
-import { UsersProvider } from '../../context/UsersContext';
+import { ProductsProvider } from '../../context/ProductsContext';
 import './../../css/Form.css';
 
-const FormEditUser = ({ show, handleClose, userId, updateUserList }) => {
-  const { getUser, editUser } = useContext(UsersProvider);
+function FormEditProduct({ show, handleClose, productId, updateProductList }) {
+  const { getProduct, editProduct } = useContext(ProductsProvider);
 
   const [formData, setFormData] = useState({
-    username: '',
-    email: ''
+    name: '',
+    price: '',
+    description: '',
+    image: ''
   });
 
   useEffect(() => {
-    const fetchUser = async () => {
+    const fetchProduct = async () => {
       try {
-        if (userId) {
-          const user = await getUser(userId);
-          console.log("#️⃣ User Id", userId);
-          console.log("💁 User ", user);
+        if (productId) {
+          const product = await getProduct(productId);
+          console.log("#️⃣ Product Id", productId);
+          console.log("💁 Product ", product);
           setFormData({
-            username: user.username,
-            email: user.email
+            name: product.name,
+            price: product.price,
+            description: product.description,
+            image: product.image
           });
         }
       } catch (error) {
         console.error('Error:', error.message);
       }
     };
-    fetchUser();
-  }, [getUser, userId]);
+    fetchProduct();
+  }, [getProduct, productId]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -45,14 +49,14 @@ const FormEditUser = ({ show, handleClose, userId, updateUserList }) => {
   const handleEdit = async (e) => {
     e.preventDefault();
     try {
-      await editUser(userId, formData);
-      updateUserList();
+      await editProduct(productId, formData);
+      updateProductList();
       handleClose();
       Swal.fire({
         position: 'center',
         icon: 'success',
         title: 'Success!',
-        text: 'User edited successfully.',
+        text: 'Product edited successfully.',
         timer: 2000,
         showConfirmButton: false
       });
@@ -70,7 +74,7 @@ const FormEditUser = ({ show, handleClose, userId, updateUserList }) => {
         <Form>
           <Form.Group controlId="formBasicUserId">
             <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">User ID</Form.Label>
-            <Form.Control className="paragraph bg-dark text-white" type="text" name="userId" value={userId || ''} readOnly />
+            <Form.Control className="paragraph bg-dark text-white" type="text" name="userId" value={productId || ''} readOnly />
           </Form.Group>
 
           <Form.Group controlId="formBasicUsername">
@@ -95,12 +99,11 @@ const FormEditUser = ({ show, handleClose, userId, updateUserList }) => {
   );
 }
 
-FormEditUser.propTypes = {
+FormEditProduct.propTypes = {
   show: PropTypes.bool,
   handleClose: PropTypes.func,
-  userId: PropTypes.string,
-  editUser: PropTypes.func,
-  updateUserList: PropTypes.func
+  productId: PropTypes.string,
+  editProducts: PropTypes.object,
+  updateProductList: PropTypes.func
 };
-
-export default FormEditUser;
+export default FormEditProduct;

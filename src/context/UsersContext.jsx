@@ -27,6 +27,27 @@ function UsersContext({ children }) {
     }
   };
 
+  const getUser = async (id) => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) return;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.get(
+        `http://localhost:3000/api/user/${id}`,
+        config
+      );
+      const data = response.data;
+      return data;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  };
+
   const editUser = async (id, formData) => {
     try {
       const token = localStorage.getItem('token');
@@ -69,7 +90,7 @@ function UsersContext({ children }) {
   }, []);
 
   return (
-    <UsersProvider.Provider value={{ users, getUsers, editUser, deleteUser }}>
+    <UsersProvider.Provider value={{ users, getUsers, getUser, editUser, deleteUser }}>
       {children}
     </UsersProvider.Provider>
   );

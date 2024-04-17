@@ -1,20 +1,11 @@
-/* eslint-disable no-unused-vars */
-import { useContext, useState } from 'react';
-import { Table, Button, Modal } from 'react-bootstrap';
+import { useContext } from 'react';
 import { ProductsProvider } from '../../context/ProductsContext';
-import FormProducts from '../Form/FormProducts';
+import { Table, Button } from 'react-bootstrap';
 
-function TableProducts() {
-  const { products, deleteProducts } = useContext(ProductsProvider);
-  const [show, setShow] = useState(false);
-  const [editProducts, setEditProducts] = useState(null);
+import PropTypes from 'prop-types';
 
-  const handleClose = () => setShow(false);
-
-  const handleEdit = (product) => {
-    setEditProducts(product);
-    setShow(true);
-  };
+function TableProducts({ onEdit, onDelete }) {
+  const { products } = useContext(ProductsProvider);
 
   const isEmpty = () => products.length === 0;
 
@@ -41,24 +32,18 @@ function TableProducts() {
               </td>
             </tr>
           ) : (
-            products.map((product, index) => {
-              const { name, price, id, description } = product;
+            products.map((product) => {
+              const { _id, name, price, description } = product;
 
               return (
-                <tr key={id} className="paragraph fw-bold ">
-                  <td className="bg-dark text-light border-0 pt-3">{index}</td>
+                <tr key={`${_id}-${name}`} className="paragraph fw-bold ">
+                  <td className="bg-dark text-light border-0 pt-3">{_id}</td>
                   <td className="bg-dark text-light border-0 pt-3">{name}</td>
-                  <td className="bg-dark text-light border-0 pt-3">
-                    {description}
-                  </td>
-                  <td className="bg-dark text-light border-0 pt-3">
-                    $ {price}
-                  </td>
+                  <td className="bg-dark text-light border-0 pt-3">{description}</td>
+                  <td className="bg-dark text-light border-0 pt-3">$ {price}</td>
                   <td className=" bg-dark text-light border-0">
                     <div className="d-flex flex-row justify-content-around">
-                      <Button
-                        className="bg-secondary border-0 text-dark me-3"
-                        onClick={() => handleEdit(product)}>
+                      <Button className="bg-secondary border-0 text-dark me-3" onClick={() => onEdit(_id)}>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"
@@ -70,10 +55,7 @@ function TableProducts() {
                           <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001" />
                         </svg>
                       </Button>
-                      <Button
-                        onClick={() => deleteProducts(id)}
-                        className="bg-danger border-0 text-dark "
-                      >
+                      <Button className="bg-danger border-0 text-dark" onClick={() => onDelete(_id)}>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="16"
@@ -93,23 +75,14 @@ function TableProducts() {
           )}
         </tbody>
       </Table>
-
-      <div className="rounded-5 p-0">
-        <Modal
-          show={show}
-          onHide={handleClose}
-          className="rounded-5 p-0"
-          contentClassName="bg-transparent p-0 border-0"
-        >
-          <Modal.Body className="bg-transparent rounded-5 border-0 p-0 ">
-            <FormProducts
-              editProducts={editProducts}
-              handleClose={handleClose}
-            />
-          </Modal.Body>
-        </Modal>
-      </div>
     </>
   );
 }
+
+TableProducts.propTypes = {
+  onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
+
+
 export default TableProducts;
