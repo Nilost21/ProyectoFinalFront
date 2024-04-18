@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { Modal, Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { Formik, ErrorMessage } from 'formik';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
@@ -14,6 +15,7 @@ import './../css/Form.css';
 const SignUp = ({ show, handleClose, showLoginModal }) => {
   const handleSignUp = async (values) => {
     try {
+
       const response = await fetch('http://localhost:3000/api/auth/signup', {
         method: 'POST',
         headers: {
@@ -174,5 +176,12 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
     </Modal>
   );
 };
+
+SignUp.propTypes = {
+  show: PropTypes.bool,
+  handleClose: PropTypes.func,
+  showLoginModal: PropTypes.func,
+};
+
 
 export default SignUp;
