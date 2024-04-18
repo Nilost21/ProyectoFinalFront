@@ -2,15 +2,20 @@
 /* eslint-disable no-unused-vars */
 import { Modal, Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { Formik, ErrorMessage } from 'formik';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { schema } from '../schema/SignUpSchema';
+import errorMessages from '../utils/errorMessages';
 import './../css/Form.css';
 
 const SignUp = ({ show, handleClose, showLoginModal }) => {
   const handleSignUp = async (values) => {
     try {
+
       const response = await fetch('http://localhost:3000/api/auth/signup', {
         method: 'POST',
         headers: {
@@ -25,7 +30,16 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
         handleClose();
         showLoginModal();
       } else {
-        throw new Error('Error al enviar la solicitud');
+        const errorData = await response.json();
+        console.log("ERRORDATA", errorData);
+        let errorMessage = 'An unexpected error occurred.';
+        if (errorData && errorData.error && errorData.error.message) {
+          toast.error(errorData.error.message);
+        } else {
+          const errorCode = response.status;
+          errorMessage = errorMessages[errorCode] || errorMessage;
+          toast.error(errorMessage);
+        }
       }
     } catch (error) {
       console.error('Error:', error.message);
@@ -162,5 +176,12 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
     </Modal>
   );
 };
+
+SignUp.propTypes = {
+  show: PropTypes.bool,
+  handleClose: PropTypes.func,
+  showLoginModal: PropTypes.func,
+};
+
 
 export default SignUp;

@@ -24,3 +24,8 @@ PrivateRoute.propTypes = {
   isAdminRoute: PropTypes.bool,
   redirectPath: PropTypes.string,
 };
+
+PrivateRoute.prototype = {
+  isAdminRoute: PropTypes.bool,
+  redirectPath: PropTypes.string
+};

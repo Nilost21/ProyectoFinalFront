@@ -2,7 +2,6 @@
 import { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import Swal from 'sweetalert2';
 
 export const ProductsProvider = createContext();
 
@@ -12,6 +11,7 @@ function ProductsContext({ children }) {
   const getProducts = async () => {
     try {
       const token = localStorage.getItem('token');
+      if (!token) return;
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -24,13 +24,36 @@ function ProductsContext({ children }) {
       const data = response.data;
       setProducts(data);
     } catch (error) {
-      console.log(error);
+      console.log(error, 'Error getting products');
+      throw error;
+    }
+  };
+
+  const getProduct = async (id) => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) return;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.get(
+        `http://localhost:3000/api/product/${id}`,
+        config
+      );
+      const data = response.data;
+      return data;
+    } catch (error) {
+      console.log(error, 'Error getting product');
+      throw error;
     }
   };
 
   const addProduct = async (product) => {
     try {
       const token = localStorage.getItem('token');
+      if (!token) return;
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -45,51 +68,47 @@ function ProductsContext({ children }) {
       setProducts([...products, data]);
     } catch (error) {
       console.log(error, 'Error adding product');
+      throw error;
     }
   };
 
-  const deleteProducts = async (id) => {
-    try {
-      const token = localStorage.getItem('token');
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      const response = await axios.delete(
-        `http://localhost:3000/api/products/${id}`,
-        config
-      );
-      const filteredProducts = products.filter((product) => product.id !== id);
-      Swal.fire({
-        position: 'center',
-        icon: 'error',
-        title: 'Product eliminated',
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      setProducts(filteredProducts);
-    } catch (error) {
-      console.log(error, 'Error when deleting product');
-    }
-  };
 
-  const updateProduct = async (id, product) => {
+  const editProduct = async (id, formData) => {
     try {
       const token = localStorage.getItem('token');
+      if (!token) return;
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`,
-        },
+          Authorization: `Bearer ${token}`
+        }
       };
       const response = await axios.put(
-        `http://localhost:3000/api/products/${id}`,
-        config,
-        product
+        `http://localhost:3000/api/product/${id}`,
+        formData,
+        config
       );
-      await getProducts();
+      const updatedProduct = response.data;
+      setProducts(prevProducts => prevProducts.map(product => product._id === id ? updatedProduct : product));
     } catch (error) {
-      console.log(error, 'Error update Product');
+      console.log(error, 'Error editing product');
+      throw error;
+    }
+  };
+
+  const deleteProduct = async (id) => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) return;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      };
+      await axios.delete(`http://localhost:3000/api/product/${id}`, config);
+      setProducts(prevProducts => prevProducts.filter(product => product._id !== id));
+    } catch (error) {
+      console.log(error, 'Error deleting product');
+      throw error;
     }
   };
 
@@ -99,7 +118,7 @@ function ProductsContext({ children }) {
 
   return (
     <ProductsProvider.Provider
-      value={{ products, addProduct, deleteProducts, updateProduct }}
+      value={{ products, getProducts, getProduct, addProduct, editProduct, deleteProduct }}
     >
       {children}
     </ProductsProvider.Provider>

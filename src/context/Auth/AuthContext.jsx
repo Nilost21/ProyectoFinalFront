@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import Swal from 'sweetalert2';
 
 export const AuthContext = createContext();
 
@@ -25,6 +26,13 @@ export const AuthProvider = ({ children }) => {
     setIsLoggedIn(true);
     setToken(newToken);
     setUser(userData);
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Welcome back!',
+      timer: 1500,
+      showConfirmButton: false
+    });
   };
 
   const logout = () => {
@@ -34,6 +42,13 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('user');
     localStorage.removeItem('token');
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'See you later!',
+      timer: 1500,
+      showConfirmButton: false
+    });
   };
 
   return (
