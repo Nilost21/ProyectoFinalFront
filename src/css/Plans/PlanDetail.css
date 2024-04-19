@@ -10,10 +10,22 @@
   
   .cover-content {
     text-align: center;
-    color: #fff; /* Color del texto */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra del texto */
-    /* z-index: 2; */
+    font-size: 20px;
+    color: #fcfbfd;
+    text-shadow: 2px 3px 1px rgb(36,32,59);
+    z-index: 2;
   }
+
+  @media (max-width: 767px) {
+    .cover-content {
+      font-size: 16px;
+    }
+    }
+    @media (max-width: 576px) {
+      .cover-section {
+        height: 400px;
+      }
+      }
   
   .cover-overlay {
     position: absolute;
@@ -35,4 +47,15 @@
   ul li {
     margin-bottom: 10px; 
   }
+
+  .size-title-form{
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 0.7px;
+  }
+  .size-subtitle-form{
+    font-size: 25px;
+  }
+ 
+  
  

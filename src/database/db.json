@@ -11,7 +11,7 @@
     {
       "id": "c77083bb-083f-47ba-b7b1-d44f3c9977cb",
       "name": "Daniela ",
-      "lastname" : "Lagos",
+      "lastname": "Lagos",
       "email": "daniela@gmail.com",
       "password": "123",
       "isAdmin": false
@@ -27,22 +27,25 @@
   ],
   "products": [
     {
-      "id": "1",
-      "name": "Producto 1",
-      "price": 25,
-      "description": "Some quick example text to build on the card title and make up the bulk of the content"
+      "id": "e2c5ff11-d505-4553-b95f-362e7bb82f41",
+      "name": "Block Yoga",
+      "price": "30",
+      "description": "With it you can improve and deepen the sport practice in yoga sessions and learn.",
+      "image": "https://shop.gymvirtual.com/wp-content/uploads/2021/11/bloque-de-yoga-800x800.jpg"
     },
     {
-      "id": "2",
-      "name": "Producto 2",
-      "price": 30,
-      "description": "Some quick example text to build on the card title and make up the bulk of the content"
+      "id": "248be8b4-109e-4cf6-a910-efd03730b5ba",
+      "name": "Gym Virtual",
+      "price": "50",
+      "description": "With it you can improve and deepen the sport practice in yoga sessions and learn.",
+      "image": "https://shop.gymvirtual.com/wp-content/uploads/2020/06/banda-turquesa-bolsa-2.jpg"
     },
     {
-      "id": "3",
-      "name": "Producto 3",
-      "price": 35,
-      "description": "Some quick example text to build on the card title and make up the bulk of the content"
+      "id": "e0518f0a-caf2-474c-981e-d5139ff2d114",
+      "name": "Gym Virtual Basic Unisex",
+      "price": "25",
+      "description": "With it you can improve and deepen the sport practice in yoga sessions and learn",
+      "image": "https://shop.gymvirtual.com/wp-content/uploads/2017/08/GymVirutal-Basic-Unisex-1-800x800.jpg"
     }
   ]
 }

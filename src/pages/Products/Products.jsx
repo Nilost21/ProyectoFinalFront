@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import CardComponent from '../../components/CardComponent';
 import { useContext } from 'react';
 import { ProductsProvider } from '../../context/ProductsContext';
+import NavbarComponent from '../../components/NavbarComponent';
 
 function Products() {
   const { products } = useContext(ProductsProvider);
@@ -12,29 +13,33 @@ function Products() {
 
   return (
     <>
-      <Container>
-        <Row className="d-flex justify-content-around mt-3">
-          {isEmpty() ? (
-            <h2 className="paragraph">No hay productos</h2>
-          ) : (
-            products.map((product) => {
-              const { id, name, price, description } = product;
-              const clickProducts = () =>
-                console.log(`Hiciste click en el producto ${name}`);
+      <Container fluid>
+        <NavbarComponent />
+        <Container>
+          <Row className="d-flex flex-row justify-content-around mt-3 ">
+            {isEmpty() ? (
+              <h2 className="paragraph">No hay productos</h2>
+            ) : (
+              products.map((product) => {
+                const { id, name, price, description, image } = product;
+                const clickProducts = () =>
+                  console.log(`Hiciste click en el producto ${name}`);
 
-              return (
-                <Col xs={12} lg={3} md={4} sm={6} key={id}>
-                  <CardComponent
-                    name={name}
-                    description={description}
-                    func={clickProducts}
-                    price={price}
-                  />
-                </Col>
-              );
-            })
-          )}
-        </Row>
+                return (
+                  <Col xs={8} lg={2} md={6} sm={8} key={id}>
+                    <CardComponent
+                      name={name}
+                      description={description}
+                      func={clickProducts}
+                      price={price}
+                      image={image}
+                    />
+                  </Col>
+                );
+              })
+            )}
+          </Row>
+        </Container>
       </Container>
     </>
   );

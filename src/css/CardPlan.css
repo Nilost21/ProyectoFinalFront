@@ -1,30 +1,39 @@
 .custom-card-plan{
     color: rgb(255, 255, 255);
     /* width: 200px;*/ 
-    height: 21rem;
+    height: 26rem;
    
     border-radius: 15px;
-    border: 2px solid #412e59;
+    /* border: 2px solid #412e59; */
+    border: 1px solid #88559c8f;
     background-color: rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
 }
 
 .custom-card-plan:hover{
-   border-color: #9b65d2;
+   /* border-color: #9b65d2; */
  /* box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25); */
  box-shadow: #2e2168 0px 7px 29px 0px;
  transform: scale(1.1);
+ background: linear-gradient(to top right, #7b63d2, #af65d2);
 }
+.custom-card-plan:hover .month-card-plan,
+.custom-card-plan:hover .description-card-plan{
+    color: azure;
+}
+
 .price-card-plan{
     font-size: 50px;
-    color: #9b65d2;
     margin-bottom: 0%;
+    letter-spacing: 2px;
 }
-.name-card-plan{
+/* .name-card-plan{
     text-transform: uppercase;
-}
+} */
+
 .description-card-plan{
-    font-size: 18px;
+    /* font-size: 18px; */
+    color: #a5a5af
 }
 .month-card-plan{
     color: #a198c9;

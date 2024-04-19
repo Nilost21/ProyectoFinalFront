@@ -1,13 +1,41 @@
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import './../css/Navbar.css';
+import { useState } from 'react';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 import ButtonComponent from './ButtonComponent';
 
+import SignIn from './SignIn';
+import SignUp from './SignUp';
+import { useAuth } from '../context/Utils/authUtils';
+//import { useAuth } from '../context/Auth/AuthContext';
+
+import './../css/Navbar.css';
+
 function NavbarComponent() {
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const { isLoggedIn, user, logout } = useAuth();
   const navigate = useNavigate();
 
-  const click = () => {
-    console.log('Hiciste click en el botón');
+  const handleLoginModalShow = () => setShowLoginModal(true);
+  const handleRegisterModalShow = () => setShowRegisterModal(true);
+
+  // Cierra los modales
+  const handleCloseModals = () => {
+    setShowLoginModal(false);
+    setShowRegisterModal(false);
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
+  const handleProfileButton = () => {
+    navigate('/profile');
+  };
+
+  const handleAdminButton = () => {
+    navigate('/admin');
   };
 
   return (
@@ -19,10 +47,10 @@ function NavbarComponent() {
       >
         <Container fluid>
           <Navbar.Brand
-            className="title cursor-pointer text-dark"
+            className="title cursor-pointer"
             onClick={() => navigate('/')}
           >
-            <h5 className="mt-2 text-dark text-shadow">ELITEBODY</h5>
+            <h5 className="mt-2 gradient-text text-shadow fs-2">ELITEBODY</h5>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav" className="text-light">
@@ -39,40 +67,64 @@ function NavbarComponent() {
               >
                 Products
               </Nav.Link>
-              <NavDropdown
-                className="subtitle mt-1"
-                title="About Us"
-                id="collapsible-nav-dropdown"
-                menuVariant="dark"
-              >
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-            <Nav>
               <Nav.Link
-                className="subtitle mt-1 text-light text-shadow"
-                href="#features"
-                onClick={() => navigate('/admin')}
+                className="subtitle mt-1 text-white"
+                onClick={() => navigate('/contact')}
               >
-                ADMIN
+                Contact
               </Nav.Link>
-              <Nav.Link className="subtitle mt-1 text-light" href="#features">
-                Login
-              </Nav.Link>
-              <ButtonComponent text={'Register'} func={click} />
+            </Nav>
+            <Nav className="pe-4">
+              {isLoggedIn ? ( // Si el usuario está autenticado, muestra el botón de Logout
+                <>
+                  {user &&
+                    user.isAdmin && ( // Si el usuario tiene rol ADMIN, muestra el botón
+                      <Nav.Link
+                        onClick={handleAdminButton}
+                        className="subtitle mt-1 text-light text-shadow"
+                      >
+                        Admin Management
+                      </Nav.Link>
+                    )}
+                  <Nav.Link
+                    onClick={handleLogout}
+                    className="subtitle mt-1 text-light"
+                  >
+                    Logout
+                  </Nav.Link>
+
+                  <ButtonComponent
+                    onClick={handleProfileButton}
+                    text={user && user.username ? user.username : 'Profile'}
+                  />
+                </>
+              ) : (
+                <>
+                  <Nav.Link
+                    onClick={handleLoginModalShow}
+                    className="subtitle mt-1 text-light mx-2"
+                  >
+                    Login
+                  </Nav.Link>
+                  <ButtonComponent
+                    onClick={handleRegisterModalShow}
+                    text={'Register'}
+                  />
+                </>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
+        <SignIn
+          show={showLoginModal}
+          handleClose={handleCloseModals}
+          showRegisterModal={handleRegisterModalShow}
+        />
+        <SignUp
+          show={showRegisterModal}
+          handleClose={handleCloseModals}
+          showLoginModal={handleLoginModalShow}
+        />
       </Navbar>
     </>
   );
