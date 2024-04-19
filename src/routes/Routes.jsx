@@ -5,7 +5,7 @@ import Admin from "../pages/Admin/Admin";
 import Products from "../pages/Products/Products";
 import Profile from '../pages/Profile/Profile';
 
-/* import PlansPage from "../pages/Plans/PlansPage"; */
+
 import ClassPlan from "../pages/Plans/ClassPlan";
 import MusclePlan from "../pages/Plans/MusclePlan";
 import FullPlan from "../pages/Plans/FullPlan";

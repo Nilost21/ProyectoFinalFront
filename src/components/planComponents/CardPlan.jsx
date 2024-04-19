@@ -1,7 +1,7 @@
 import { Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import "../../css/CardPlan.css";
+import "../../css/Plans/CardPlan.css";
 import ButtonCardPlan from "./ButtonCardPlan";
 import ButtonLevel from "./ButtonLevel";
 

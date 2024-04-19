@@ -6,7 +6,7 @@ import { useState } from "react";
 /* import EmailPlanSender from "./EmailPlanSender"; */
 import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2';
-import '../../css/FormPlan.css';
+import '../../css/Plans/FormPlan.css';
 
 const FormPlan = ({ planType }) => {
   const [name, setName] = useState("");

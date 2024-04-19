@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
-import '../../css/ButtonCardPlan.css';
+import '../../css/Plans/ButtonCardPlan.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 function ButtonCardPlan ({ variant  , onClick, children })  {
