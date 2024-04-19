@@ -22,7 +22,7 @@ function CardComponent({ name, description, func, price, image }) {
           <Card.Text className="paragraph ">{description}</Card.Text>
           <div className="d-flex justify-content-around">
             <ButtonComponent text="Go somewhere" onClick={func} />
-            <Card.Text className="subtitle fs-2  me-1 ">${price},99</Card.Text>
+            <Card.Text className="subtitle fs-2  me-1">${price}</Card.Text>
           </div>
         </Card.Body>
       </Card>
@@ -34,7 +34,7 @@ CardComponent.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   func: PropTypes.func,
-  price: PropTypes.string,
+  price: PropTypes.number,
   image: PropTypes.string,
 };
 

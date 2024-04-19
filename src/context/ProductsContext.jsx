@@ -72,15 +72,14 @@ function ProductsContext({ children }) {
     }
   };
 
-
   const editProduct = async (id, formData) => {
     try {
       const token = localStorage.getItem('token');
       if (!token) return;
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       };
       const response = await axios.put(
         `http://localhost:3000/api/product/${id}`,
@@ -88,7 +87,11 @@ function ProductsContext({ children }) {
         config
       );
       const updatedProduct = response.data;
-      setProducts(prevProducts => prevProducts.map(product => product._id === id ? updatedProduct : product));
+      setProducts((prevProducts) =>
+        prevProducts.map((product) =>
+          product._id === id ? updatedProduct : product
+        )
+      );
     } catch (error) {
       console.log(error, 'Error editing product');
       throw error;
@@ -101,11 +104,13 @@ function ProductsContext({ children }) {
       if (!token) return;
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       };
       await axios.delete(`http://localhost:3000/api/product/${id}`, config);
-      setProducts(prevProducts => prevProducts.filter(product => product._id !== id));
+      setProducts((prevProducts) =>
+        prevProducts.filter((product) => product._id !== id)
+      );
     } catch (error) {
       console.log(error, 'Error deleting product');
       throw error;
@@ -118,7 +123,14 @@ function ProductsContext({ children }) {
 
   return (
     <ProductsProvider.Provider
-      value={{ products, getProducts, getProduct, addProduct, editProduct, deleteProduct }}
+      value={{
+        products,
+        getProducts,
+        getProduct,
+        addProduct,
+        editProduct,
+        deleteProduct,
+      }}
     >
       {children}
     </ProductsProvider.Provider>

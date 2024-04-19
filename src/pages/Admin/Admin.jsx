@@ -13,7 +13,8 @@ import { ProductsProvider } from '../../context/ProductsContext';
 
 function Admin() {
   const { getUsers, editUser, deleteUser } = useContext(UsersProvider);
-  const { getProducts, editProduct, deleteProduct } = useContext(ProductsProvider);
+  const { getProducts, editProduct, deleteProduct } =
+    useContext(ProductsProvider);
 
   const [showUserEditModal, setshowUserEditModal] = useState(false);
   const [showProductEditModal, setshowProductEditModal] = useState(false);
@@ -47,7 +48,7 @@ function Admin() {
 
   const updatedProductList = async () => {
     await getProducts();
-  }
+  };
 
   return (
     <>
@@ -65,16 +66,34 @@ function Admin() {
             </Col>
             <Col xl={8}>
               <Row>
-                <TableUsers onEdit={handleOpenEditUserModal} onDelete={deleteUser} />
+                <TableUsers
+                  onEdit={handleOpenEditUserModal}
+                  onDelete={deleteUser}
+                />
               </Row>
               <Row className="mt-5">
-                <TableProducts onEdit={handleOpenEditProductModal} onDelete={deleteProduct} />
+                <TableProducts
+                  onEdit={handleOpenEditProductModal}
+                  onDelete={deleteProduct}
+                />
               </Row>
             </Col>
           </Row>
         </Container>
-        <FormEditUser show={showUserEditModal} handleClose={handleCloseEditUserModal} userId={userIdToEdit} editUser={editUser} updateUserList={updateUserList} />
-        <FormEditProduct show={showProductEditModal} handleClose={handleCloseEditProductModal} productId={productIdToEdit} editProduct={editProduct} updatedProductList={updatedProductList} />
+        <FormEditUser
+          show={showUserEditModal}
+          handleClose={handleCloseEditUserModal}
+          userId={userIdToEdit}
+          editUser={editUser}
+          updateUserList={updateUserList}
+        />
+        <FormEditProduct
+          show={showProductEditModal}
+          handleClose={handleCloseEditProductModal}
+          productId={productIdToEdit}
+          editProduct={editProduct}
+          updatedProductList={updatedProductList}
+        />
       </Container>
     </>
   );

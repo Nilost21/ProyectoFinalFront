@@ -1,13 +1,16 @@
-/* eslint-disable no-unused-vars */
 import { Container, Row, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import CardComponent from '../../components/CardComponent';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { ProductsProvider } from '../../context/ProductsContext';
 import NavbarComponent from '../../components/NavbarComponent';
 
 function Products() {
-  const { products } = useContext(ProductsProvider);
+  const { products, getProducts } = useContext(ProductsProvider);
+
+  useEffect(() => {
+    getProducts();
+  }, [getProducts]);
 
   const isEmpty = () => products.length === 0;
 
@@ -22,15 +25,12 @@ function Products() {
             ) : (
               products.map((product) => {
                 const { id, name, price, description, image } = product;
-                const clickProducts = () =>
-                  console.log(`Hiciste click en el producto ${name}`);
 
                 return (
                   <Col xs={8} lg={2} md={6} sm={8} key={id}>
                     <CardComponent
                       name={name}
                       description={description}
-                      func={clickProducts}
                       price={price}
                       image={image}
                     />
@@ -45,7 +45,8 @@ function Products() {
   );
 }
 
-// Products.propTypes = {
-//   products: PropTypes.array,
-// };
+Products.propTypes = {
+  products: PropTypes.array,
+};
+
 export default Products;
