@@ -226,7 +226,7 @@ const FormPlan = ({ planType }) => {
 
         
 
-        <Row className="justify-content-end">
+        <Row className="justify-content-end mb-3">
           <Col xs={12} md={6} className="text-end">
           <Button
           className={`btn-form-plan ${formSubmitted ? 'btn-form-plan-sent' : ''} small-font text-light`}

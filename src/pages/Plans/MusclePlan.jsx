@@ -13,15 +13,15 @@ const MusclePlan = () => {
     </Container>
       <header>
         <div
-          className="cover-section"
+          className="cover-section-plans"
           style={{
             backgroundImage: `url(${coverImageMuscle})`,
             position: "relative",
           }}
         >
-          <div className="cover-overlay"></div>
+          <div className="cover-overlay-plans"></div>
          
-          <div className="cover-content paragraph" style={{width:'1080px'}}>
+          <div className="cover-content-plans paragraph" style={{width:'1080px'}}>
             <h1 className="mb-3 mb-md-5 mt-2">Muscle Only Plan</h1>
             <p className="me-2 ms-2 small-font mt-5">
               Achieve your muscle-building goals with our tailored plan.
@@ -29,8 +29,8 @@ const MusclePlan = () => {
               training and balanced nutrition for optimal muscle growth. Start
               today and unlock your strength potential.
             </p>
-            <div className="container-fluid mt-5" style={{width:'310px'}}>
-              <ul>
+            <div className="container-fluid mt-5 d-flex justify-content-center align-items-center" style={{width:'310px'}}>
+              <ul className="ul-plans">
                 <li>
                   <i class="bi bi-check-circle-fill me-2"></i>Weightlifting
                   Exercises

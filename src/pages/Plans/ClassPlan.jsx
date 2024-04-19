@@ -14,38 +14,32 @@ const ClassPlan = () => {
     </Container>
       <header>
         <div
-          className="cover-section"
+          className="cover-section-plans"
           style={{
             backgroundImage: `url(${coverImageClass})`,
             position: "relative",
           }}
         >
-          <div className="cover-overlay"></div>
+          <div className="cover-overlay-plans"></div>
          
-          <div className="cover-content paragraph" style={{width:'1080px'}}>
-            <h1 className="mb-3 mb-md-5 mt-2">Muscle Only Plan</h1>
-            <p className="me-2 ms-2 small-font mt-5">
-              Achieve your muscle-building goals with our tailored plan.
-              Designed for all fitness levels, it focuses on progressive
-              training and balanced nutrition for optimal muscle growth. Start
-              today and unlock your strength potential.
+          <div className="cover-content-plans paragraph" style={{width:'1080px'}}>
+            <h1 className="mb-3 mb-md-5 mt-2">Class Only Plan</h1>
+            <p className="me-2 ms-2 small-font mt-1">
+            Our class-only plan provides access to a variety of fitness classes for all levels. Led by experienced instructors, classes include HIIT, yoga, spinning, and dance cardio. Whether you aim to build strength, improve flexibility, or stay active, our plan offers a dynamic workout experience tailored to your needs.
             </p>
-            <div className="container-fluid mt-5" style={{width:'310px'}}>
-              <ul>
+            <div className="container-fluid mt-1 mt-md-5 d-flex justify-content-center align-items-center" style={{width:'310px'}}>
+              <ul  className="ul-plans">
                 <li>
-                  <i class="bi bi-check-circle-fill me-2"></i>Weightlifting
-                  Exercises
+                  <i class="bi bi-check-circle-fill me-2"></i>Access to all fitness classes
                 </li>
                 <li>
-                  <i class="bi bi-check-circle-fill me-2"></i>Training Routines
+                  <i class="bi bi-check-circle-fill me-2"></i>Experienced instructors
                 </li>
                 <li>
-                  <i class="bi bi-check-circle-fill me-2"></i>Premium support
-                  for Diets
+                  <i class="bi bi-check-circle-fill me-2"></i>Progress tracking
                 </li>
                 <li>
-                  <i class="bi bi-check-circle-fill me-2"></i>Includes Personal
-                  Trainer Guidance
+                  <i class="bi bi-check-circle-fill me-2"></i>Access to amenities
                 </li>
               </ul>
             </div>
