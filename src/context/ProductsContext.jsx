@@ -22,7 +22,7 @@ function ProductsContext({ children }) {
         config
       );
       const data = response.data;
-      setProducts(data);
+      setProducts([...data]);
     } catch (error) {
       console.log(error, 'Error getting products');
       throw error;
