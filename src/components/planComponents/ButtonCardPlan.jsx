@@ -8,7 +8,7 @@ function ButtonCardPlan({ variant, onClick, children }) {
     <>
       <Button
         variant={variant}
-        className="custom-button-card-plan small-font"
+        className="custom-button-card-plan small-font fw-bold"
         onClick={onClick}
       >
         {children}
