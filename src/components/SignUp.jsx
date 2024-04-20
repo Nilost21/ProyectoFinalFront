@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+import { useContext } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -8,14 +9,43 @@ import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { UsersProvider } from '../context/UsersContext';
 import { schema } from '../schema/SignUpSchema';
 import errorMessages from '../utils/errorMessages';
 import './../css/Form.css';
 
 const SignUp = ({ show, handleClose, showLoginModal }) => {
+  const { users, getUsers, createUser } = useContext(UsersProvider);
+
+  const handleSignUp = async (user) => {
+    try {
+      // Call createUser function with the form values
+      await createUser(user);
+      // Show success message or navigate to login page
+      toast.success('User registered successfully');
+      handleClose();
+      showLoginModal();
+    } catch (error) {
+      //console.error('Registration error:', error.message);
+      //toast.error('An error occurred while registering the user');
+      if (error.response) {
+        // Si la respuesta contiene un error
+        const errorCode = error.response.status;
+        const errorMessage = errorMessages[errorCode] || 'An unexpected error occurred.';
+        toast.error(errorMessage);
+      } else if (error.request) {
+        // Si no se recibe respuesta del servidor
+        toast.error('No response from server. Please try again later.');
+      } else {
+        // Si ocurre un error durante la solicitud
+        console.error('Registration error:', error.message);
+        toast.error('An error occurred while registering the user');
+      }
+    }
+  };
+  /*
   const handleSignUp = async (values) => {
     try {
-
       const response = await fetch('http://localhost:3000/api/auth/signup', {
         method: 'POST',
         headers: {
@@ -27,6 +57,7 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
       if (response.ok) {
         const data = await response.json();
         console.log('Respuesta del servidor:', data);
+        await getUsers();
         handleClose();
         showLoginModal();
       } else {
@@ -45,7 +76,7 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
       console.error('Error:', error.message);
     }
   };
-
+*/
   const handleLoginClick = () => {
     handleClose();
     showLoginModal();

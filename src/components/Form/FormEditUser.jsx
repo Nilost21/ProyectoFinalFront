@@ -35,10 +35,9 @@ const FormEditUser = ({ show, handleClose, userId, updateUserList }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    // Actualiza el campo correspondiente solo si el valor es diferente al valor actual
     setFormData(prevFormData => ({
       ...prevFormData,
-      [name]: value !== prevFormData[name] ? value : prevFormData[name]
+      [name]: value
     }));
   };
 

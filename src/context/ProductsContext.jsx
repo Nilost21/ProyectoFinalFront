@@ -9,7 +9,6 @@ export const ProductsProvider = createContext();
 function ProductsContext({ children }) {
   const [products, setProducts] = useState([]);
 
-  //CRUD USERS
   const getProducts = async () => {
     try {
       const response = await axios.get('http://localhost:3000/api/products');
