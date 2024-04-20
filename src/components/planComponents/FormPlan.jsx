@@ -87,7 +87,7 @@ const FormPlan = ({ planType }) => {
     
     Swal.fire('Sent', 'Your inquiry has been successfully sent', 'success');
 
-    /* emailjs.send(
+    emailjs.send(
       'service_fsmi4tm',
       'template_0q7zmpm',
       {
@@ -100,10 +100,9 @@ const FormPlan = ({ planType }) => {
       },
       'hogPQ3aXzDYTe-4XH'
     ).then(() => {
-      // Correo enviado al destinatario
-      console.log('Correo enviado al destinatario');
+      
     }).catch((error) => {
-      console.error('Error al enviar correo al destinatario:', error);
+      
     });
 
     emailjs.send(
@@ -115,11 +114,10 @@ const FormPlan = ({ planType }) => {
       },
       'hogPQ3aXzDYTe-4XH'
     ).then(() => {
-      // Correo enviado al remitente
-      console.log('Correo enviado al remitente');
+      
     }).catch((error) => {
-      console.error('Error al enviar correo al remitente:', error);
-    });*/
+      
+    });
     setFormSubmitted(true); 
   };
 
@@ -155,7 +153,6 @@ const FormPlan = ({ planType }) => {
               placeholder="Your last name"
               maxLength={30}
               minLength={2}
-              /* pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1\s']+$" */
               pattern="^(?=.*[a-zA-Z\u00f1\u00d1])[\w\u00f1\u00d1\u00e1\u00e9\u00ed\u00f3\u00fa\u00c1\u00c9\u00cd\u00d3\u00da\s']+$"
               required
               title="Enter a valid last name (only letters and spaces)"
@@ -219,12 +216,7 @@ const FormPlan = ({ planType }) => {
           </Form.Group>
         </Row>
 
-        {/* <Button variant="primary" type="submit">
-          Send Message
-        </Button> */}
         <input type="hidden" name="planType" value={planType} />
-
-        
 
         <Row className="justify-content-end mb-3">
           <Col xs={12} md={6} className="text-end">

@@ -56,7 +56,7 @@ const FullPlan = () => {
         <p className="paragraph text-light text-center size-subtitle-form">
           Make your inquiry now!</p>
         
-        <FormPlan planType="full-plan"/>      
+        <FormPlan planType="Full Plan"/>      
     </Container>
       
     </>

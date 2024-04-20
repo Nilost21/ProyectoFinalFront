@@ -15,18 +15,12 @@ function CardPlan({ level, name, price, description, page }) {
   };
   return (
     <>
-      <Card
-        style={{ width: "18rem" }}
-        className="mb-3 mt-5 mb-lg-0 custom-card-plan"
-      >
+      <Card style={{ width: "18rem" }} className="mb-4 mt-4 custom-card-plan">
         <Card.Body>
           <div className="d-flex mt-3 mb-3">
             <ButtonLevel children={level} />
           </div>
-          <Card.Title
-            /* className="title text-light name-card-plan" */ 
-            className="text-white paragraph mt-1 mb-3 fs-2"
-          >
+          <Card.Title className="text-white paragraph mt-1 mb-3 fs-2">
             {name}
           </Card.Title>
           <Card.Text className="title text-light price-card-plan">

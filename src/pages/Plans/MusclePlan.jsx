@@ -56,7 +56,7 @@ const MusclePlan = () => {
         <p className="paragraph text-light text-center size-title-form mt-4">
         Want to know more?</p>
         <p className="paragraph text-light text-center size-subtitle-form">Make your inquiry now!</p>
-        <FormPlan planType="muscle-plan" />
+        <FormPlan planType="Muscle Only Plan" />
       </Container>
     </>
   );

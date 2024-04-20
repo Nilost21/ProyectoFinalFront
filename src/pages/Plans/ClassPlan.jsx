@@ -52,7 +52,7 @@ const ClassPlan = () => {
         Want to know more?</p>
         <p className="paragraph text-light text-center size-subtitle-form">
           Make your inquiry now!</p>
-        <FormPlan planType="class-plan"/>
+        <FormPlan planType="Class Only Plan"/>
     </Container>
       
     </>
