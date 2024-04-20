@@ -9,7 +9,6 @@ import Profile from '../pages/Profile/Profile';
 import ClassPlan from "../pages/Plans/ClassPlan";
 import MusclePlan from "../pages/Plans/MusclePlan";
 import FullPlan from "../pages/Plans/FullPlan";
-import PlanList from "../pages/Plans/PlanList";
 
 const RoutesPages = () => {
   return (
@@ -22,13 +21,10 @@ const RoutesPages = () => {
           element={<h1 className="title text-light mt-3 ">NOT FOUND</h1>}
         />
 
-        {/* Rutas para paginas de planes */}
-
-        <Route path="/plans" element={<PlanList />} /> {/* esta ruta es momentanea podria poner a PlanList en su lugar*/}
-        <Route path="/plans/class-plan" element={<ClassPlan />} />
-        <Route path="/plans/muscle-plan" element={<MusclePlan />} />
-        <Route path="/plans/full-plan" element={<FullPlan />} />
-
+        {/* Rutas para paginas de planes */}        
+        <Route path="/class-plan" element={<ClassPlan />} />
+        <Route path="/muscle-plan" element={<MusclePlan />} />
+        <Route path="/full-plan" element={<FullPlan />} />
         {/* Fin rutas para paginas de planes */}
         
       

@@ -8,9 +8,9 @@ import NavbarComponent from "../../components/NavbarComponent";
 const MusclePlan = () => {
   return (
     <>
-    <Container fluid>
-    <NavbarComponent/>
-    </Container>
+      <Container fluid>
+        <NavbarComponent />
+      </Container>
       <header>
         <div
           className="cover-section-plans"
@@ -20,8 +20,11 @@ const MusclePlan = () => {
           }}
         >
           <div className="cover-overlay-plans"></div>
-         
-          <div className="cover-content-plans paragraph" style={{width:'1080px'}}>
+
+          <div
+            className="cover-content-plans paragraph"
+            style={{ width: "1080px" }}
+          >
             <h1 className="mb-3 mb-md-5 mt-2">Muscle Only Plan</h1>
             <p className="me-2 ms-2 small-font mt-5">
               Achieve your muscle-building goals with our tailored plan.
@@ -29,22 +32,26 @@ const MusclePlan = () => {
               training and balanced nutrition for optimal muscle growth. Start
               today and unlock your strength potential.
             </p>
-            <div className="container-fluid mt-5 d-flex justify-content-center align-items-center" style={{width:'310px'}}>
+            <div
+              className="container-fluid mt-5 d-flex justify-content-center align-items-center"
+              style={{ width: "310px" }}
+            >
               <ul className="ul-plans">
                 <li>
-                  <i class="bi bi-check-circle-fill me-2"></i>Weightlifting
+                  <i className="bi bi-check-circle-fill me-2"></i>Weightlifting
                   Exercises
                 </li>
                 <li>
-                  <i class="bi bi-check-circle-fill me-2"></i>Training Routines
+                  <i className="bi bi-check-circle-fill me-2"></i>Training
+                  Routines
                 </li>
                 <li>
-                  <i class="bi bi-check-circle-fill me-2"></i>Premium support
-                  for Diets
+                  <i className="bi bi-check-circle-fill me-2"></i>Premium
+                  support for Diets
                 </li>
                 <li>
-                  <i class="bi bi-check-circle-fill me-2"></i>Includes Personal
-                  Trainer Guidance
+                  <i className="bi bi-check-circle-fill me-2"></i>Includes
+                  Personal Trainer Guidance
                 </li>
               </ul>
             </div>
@@ -54,8 +61,11 @@ const MusclePlan = () => {
 
       <Container>
         <p className="paragraph text-light text-center size-title-form mt-4">
-        Want to know more?</p>
-        <p className="paragraph text-light text-center size-subtitle-form">Make your inquiry now!</p>
+          Want to know more?
+        </p>
+        <p className="paragraph text-light text-center size-subtitle-form">
+          Make your inquiry now!
+        </p>
         <FormPlan planType="Muscle Only Plan" />
       </Container>
     </>

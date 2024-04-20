@@ -9,9 +9,7 @@ function CardPlan({ level, name, price, description, page }) {
   const navigate = useNavigate();
 
   const handleShowPlanInfo = () => {
-    navigate(`/plans/${page}`);
-
-    console.log(`Se hizo clic en el botón ${page}`); //borrar luego
+    navigate(`/${page}`);
   };
   return (
     <>

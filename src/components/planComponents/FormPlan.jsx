@@ -3,10 +3,9 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useState } from "react";
-/* import EmailPlanSender from "./EmailPlanSender"; */
-import emailjs from '@emailjs/browser';
-import Swal from 'sweetalert2';
-import '../../css/Plans/FormPlan.css';
+import emailjs from "@emailjs/browser";
+import Swal from "sweetalert2";
+import "../../css/Plans/FormPlan.css";
 
 const FormPlan = ({ planType }) => {
   const [name, setName] = useState("");
@@ -18,114 +17,139 @@ const FormPlan = ({ planType }) => {
 
   const handleFormPlanSubmit = (e) => {
     e.preventDefault();
-    console.log(`las validaciones estan andando`);//borrar
 
-    if (!name.trim() && !lastName.trim() && !email.trim() && !phone.trim() && !message.trim()) {
-      Swal.fire('Error', 'All fields are required', 'error');
+    if (
+      !name.trim() &&
+      !lastName.trim() &&
+      !email.trim() &&
+      !phone.trim() &&
+      !message.trim()
+    ) {
+      Swal.fire("Error", "All fields are required", "error");
       return;
     }
-  
 
     if (name.length < 2) {
-      Swal.fire('Error', 'The name must have at least 2 characters', 'error');
+      Swal.fire("Error", "The name must have at least 2 characters", "error");
       return;
     }
     if (lastName.length < 2) {
-      Swal.fire('Error', 'The last name must have at least 2 characters', 'error');
+      Swal.fire(
+        "Error",
+        "The last name must have at least 2 characters",
+        "error"
+      );
       return;
     }
 
     if (name.length > 30) {
-      Swal.fire('Error', 'The name cannot exceed 30 characters', 'error');
+      Swal.fire("Error", "The name cannot exceed 30 characters", "error");
       return;
     }
     if (lastName.length > 30) {
-      Swal.fire('Error', 'The last name cannot exceed 30 characters', 'error');
+      Swal.fire("Error", "The last name cannot exceed 30 characters", "error");
       return;
     }
 
-    const nameRegex = /^(?=.*[a-zA-Z])[\w\u00f1\u00d1\u00e1\u00e9\u00ed\u00f3\u00fa\u00c1\u00c9\u00cd\u00d3\u00da]+(?:[\s]+[\w\u00f1\u00d1\u00e1\u00e9\u00ed\u00f3\u00fa\u00c1\u00c9\u00cd\u00d3\u00da]+)*$/;
+    const nameRegex =
+      /^(?=.*[a-zA-Z])[\w\u00f1\u00d1\u00e1\u00e9\u00ed\u00f3\u00fa\u00c1\u00c9\u00cd\u00d3\u00da]+(?:[\s]+[\w\u00f1\u00d1\u00e1\u00e9\u00ed\u00f3\u00fa\u00c1\u00c9\u00cd\u00d3\u00da]+)*$/;
 
     if (!nameRegex.test(name)) {
-      Swal.fire('Error', 'Enter a valid name', 'error');
+      Swal.fire("Error", "Enter a valid name", "error");
       return;
     }
 
-     if (!nameRegex.test(lastName)) { 
-      Swal.fire('Error', 'Enter a valid last name', 'error');
+    if (!nameRegex.test(lastName)) {
+      Swal.fire("Error", "Enter a valid last name", "error");
       return;
     }
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if (!emailRegex.test(email)) {
-      Swal.fire('Error', 'Enter a valid email', 'error');
+      Swal.fire("Error", "Enter a valid email", "error");
       return;
     }
 
     if (email.length > 50) {
-      Swal.fire('Error', 'The email cannot exceed 50 characters', 'error');
+      Swal.fire("Error", "The email cannot exceed 50 characters", "error");
       return;
     }
 
     const phoneRegex = /^[0-9]{10}$/;
     if (!phoneRegex.test(phone)) {
-      Swal.fire('Error', 'The phone number must have 10 numeric digits', 'error');
+      Swal.fire("Error", "Please enter a valid 10-digit phone number", "error");
       return;
     }
 
     if (message.length > 1500) {
-      Swal.fire('Error', 'The message cannot exceed 1500 characters', 'error');
+      Swal.fire("Error", "The message cannot exceed 1500 characters", "error");
       return;
     }
     if (message === "") {
-      
-      Swal.fire('Error', 'The message field cannot be empty', 'error');
+      Swal.fire("Error", "The message field cannot be empty", "error");
       return;
     }
-    
-    
-    Swal.fire('Sent', 'Your inquiry has been successfully sent', 'success');
 
-    emailjs.send(
-      'service_fsmi4tm',
-      'template_0q7zmpm',
-      {
-        name: name,
-        lastName: lastName,
-        email: email,
-        phone: phone,
-        message: message,
-        planType: planType
-      },
-      'hogPQ3aXzDYTe-4XH'
-    ).then(() => {
-      
-    }).catch((error) => {
-      
-    });
+    emailjs
+      .send(
+        "service_ofcw5zh",
+        "template_4iaskjh",
+        {
+          name: name,
+          lastName: lastName,
+          email: email,
+          phone: phone,
+          message: message,
+          planType: planType,
+        },
+        "8F110xbED2WxgH2Xs"
+      )
+      .then(() => {
+        Swal.fire("Sent", "Your inquiry has been successfully sent", "success");
+        setName("");
+        setLastName("");
+        setEmail("");
+        setPhone("");
+        setMessage("");
+      })
+      .catch((error) => {
+        Swal.fire(
+          "Error",
+          "There was an error sending your inquiry. Please try again later.",
+          "error"
+        );
+      });
 
-    emailjs.send(
-      'service_fsmi4tm',
-      'template_a7wqcem',
-      {
-        name: name,
-        email: email
-      },
-      'hogPQ3aXzDYTe-4XH'
-    ).then(() => {
-      
-    }).catch((error) => {
-      
-    });
-    setFormSubmitted(true); 
+    emailjs
+      .send(
+        "service_ofcw5zh",
+        "template_9sfx2rh",
+        {
+          name: name,
+          email: email,
+        },
+        "8F110xbED2WxgH2Xs"
+      )
+      .then(() => {})
+      .catch((error) => {});
+    setFormSubmitted(true);
   };
 
   return (
     <>
-      <Form onSubmit={handleFormPlanSubmit} className="small-font text-light mb-4 mt-4">
-        <Row >
-          <Form.Group as={Col} controlId="formPlanName" xs={12} md={6} className="mb-3">
+      <Form
+        onSubmit={handleFormPlanSubmit}
+        className="small-font text-light mb-4 mt-4"
+      >
+        <Row>
+          <Form.Group
+            as={Col}
+            controlId="formPlanName"
+            xs={12}
+            md={6}
+            className="mb-3"
+          >
             <Form.Label>
               First name <span className="span-input-plan">*</span>{" "}
             </Form.Label>
@@ -143,7 +167,13 @@ const FormPlan = ({ planType }) => {
             />
           </Form.Group>
 
-          <Form.Group as={Col} controlId="formPlanLastName" xs={12} md={6} className="mb-3">
+          <Form.Group
+            as={Col}
+            controlId="formPlanLastName"
+            xs={12}
+            md={6}
+            className="mb-3"
+          >
             <Form.Label>
               Last name <span className="span-input-plan">*</span>{" "}
             </Form.Label>
@@ -162,8 +192,14 @@ const FormPlan = ({ planType }) => {
           </Form.Group>
         </Row>
 
-        <Row >
-          <Form.Group as={Col} controlId="formPlanEmail" xs={12} md={6} className="mb-3">
+        <Row>
+          <Form.Group
+            as={Col}
+            controlId="formPlanEmail"
+            xs={12}
+            md={6}
+            className="mb-3"
+          >
             <Form.Label>
               Email <span className="span-input-plan">*</span>{" "}
             </Form.Label>
@@ -180,7 +216,13 @@ const FormPlan = ({ planType }) => {
             />
           </Form.Group>
 
-          <Form.Group as={Col} controlId="formPlanPhone" xs={12} md={6} className="mb-3">
+          <Form.Group
+            as={Col}
+            controlId="formPlanPhone"
+            xs={12}
+            md={6}
+            className="mb-3"
+          >
             <Form.Label>
               Phone number <span className="span-input-plan">*</span>{" "}
             </Form.Label>
@@ -199,7 +241,12 @@ const FormPlan = ({ planType }) => {
         </Row>
 
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="formPlanMessage" xs={12} className="mb-3">
+          <Form.Group
+            as={Col}
+            controlId="formPlanMessage"
+            xs={12}
+            className="mb-3"
+          >
             <Form.Label>
               Message <span className="span-input-plan">*</span>{" "}
             </Form.Label>
@@ -220,15 +267,16 @@ const FormPlan = ({ planType }) => {
 
         <Row className="justify-content-end mb-3">
           <Col xs={12} md={6} className="text-end">
-          <Button
-          className={`btn-form-plan ${formSubmitted ? 'btn-form-plan-sent' : ''} small-font text-light`}
-          variant="btn-form-plan"
-          type="submit"
-          disabled={formSubmitted}
-        >
-          {formSubmitted ? "Sending..." : "Send Message"}
-        </Button>
-
+            <Button
+              className={`btn-form-plan ${
+                formSubmitted ? "btn-form-plan-sent" : ""
+              } small-font text-light`}
+              variant="btn-form-plan"
+              type="submit"
+              disabled={formSubmitted}
+            >
+              {formSubmitted ? "Sending..." : "Send Message"}
+            </Button>
           </Col>
         </Row>
       </Form>

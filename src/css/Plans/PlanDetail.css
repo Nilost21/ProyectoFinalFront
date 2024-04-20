@@ -1,61 +1,60 @@
 .cover-section-plans {
-    position: relative;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
+  position: relative;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cover-content-plans {
+  text-align: center;
+  font-size: 20px;
+  color: #fcfbfd;
+  text-shadow: 2px 3px 1px rgb(36, 32, 59);
+  z-index: 2;
+}
+
+@media (max-width: 767px) {
   .cover-content-plans {
-    text-align: center;
-    font-size: 20px;
-    color: #fcfbfd;
-    text-shadow: 2px 3px 1px rgb(36,32,59);
-    z-index: 2;
+    font-size: 16px;
   }
+}
 
-  @media (max-width: 767px) {
-    .cover-content-plans {
-      font-size: 16px;
-    }
-    }
-    @media (max-width: 576px) {
-      .cover-section-plans {
-        height: 400px;
-      }
-      }
-  
-  .cover-overlay-plans {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(41, 36, 68, 0), rgba(49, 42, 91, 0.5));
-    z-index: 1;
-    pointer-events: none;
+@media (max-width: 576px) {
+  .cover-section-plans {
+    height: 400px;
   }
+}
 
-  .ul-plans{
-    list-style-type: none;
-    padding: 0;
-    text-align: start; 
-  }
-  
-  .ul-plans li {
-    margin-bottom: 10px;
-  }
+.cover-overlay-plans {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(41, 36, 68, 0), rgba(49, 42, 91, 0.5));
+  z-index: 1;
+  pointer-events: none;
+}
 
-  .size-title-form{
-    font-size: 30px;
-    font-weight: bold;
-    letter-spacing: 0.7px;
-  }
-  .size-subtitle-form{
-    font-size: 25px;
-  }
- 
-  
- 
+.ul-plans {
+  list-style-type: none;
+  padding: 0;
+  text-align: start;
+}
+
+.ul-plans li {
+  margin-bottom: 10px;
+}
+
+.size-title-form {
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 0.7px;
+}
+
+.size-subtitle-form {
+  font-size: 25px;
+}
