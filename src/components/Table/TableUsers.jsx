@@ -16,12 +16,13 @@ function TableUsers({ onEdit, onDelete }) {
       </div>
       <Table className="mb-0">
         <thead>
-          <tr className="subtitle">
+          <tr className="subtitle text-center">
+            <th>Index</th>
             <th>Id</th>
             <th>Username</th>
             <th>Email</th>
-            <th>Is Admin</th>
-            <th>Actions</th>
+            <th>Role</th>
+            <th className=''>Actions</th>
           </tr>
         </thead>
         <tbody className="rounded-bottom-5">
@@ -32,21 +33,24 @@ function TableUsers({ onEdit, onDelete }) {
               </td>
             </tr>
           ) : (
-            users.map((user) => {
+            users.map((user, index) => {
               const { _id, username, email, isAdmin } = user;
               const checkAdmin = isAdmin ? 'Admin' : 'User';
               const adminClass = isAdmin ? 'text-danger' : 'text-secondary';
 
               return (
-                <tr key={`${_id}-${username}`} className="paragraph fw-bold">
-                  <td className="bg-dark text-light border-0">{_id}</td>
-                  <td className="bg-dark text-light border-0">{username}</td>
-                  <td className="bg-dark text-light border-0">{email}</td>
-                  <td className={`${adminClass} bg-dark border-0`}>
+                <tr key={`${_id}-${username}`} className="paragraph fw-bold text-center">
+                  <td className="bg-dark text-light border-0 pt-3">{index}</td>
+                  <td className="bg-dark text-light border-0 pt-3">{_id}</td>
+                  <td className="bg-dark text-light border-0 pt-3">{username}</td>
+                  <td className="bg-dark text-light border-0 pt-3">{email}</td>
+                  <td className={`${adminClass} bg-dark border-0 pt-3`}>
                     {checkAdmin}
                   </td>
                   <td className="d-flex flex-row justify-content-around bg-dark text-light border-0">
-                    <Button className="bg-secondary border-0 text-dark" onClick={() => onEdit(_id)}>
+                    <Button
+                      className="bg-secondary border-0 text-dark me-3"
+                      onClick={() => onEdit(_id)}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -58,8 +62,13 @@ function TableUsers({ onEdit, onDelete }) {
                         <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001" />
                       </svg>
                     </Button>
+                    {/* Condición para renderizar el botón y deshabilitarlo si el usuario es administrador */}
 
-                    <Button className="bg-danger border-0 text-dark" onClick={() => onDelete(_id)}>
+                    <Button
+                      className="bg-danger border-0 text-dark me-3"
+                      disabled={isAdmin}
+                      onClick={() => onDelete(_id)}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
