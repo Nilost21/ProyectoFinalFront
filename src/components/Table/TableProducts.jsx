@@ -103,10 +103,12 @@ function TableProducts() {
           contentClassName="bg-transparent p-0 border-0"
         >
           <Modal.Body className="bg-transparent rounded-5 border-0 p-0 ">
-            <FormProducts
-              editProducts={editProducts}
-              handleClose={handleClose}
-            />
+            {editProducts && (
+              <FormProducts
+                editProducts={editProducts}
+                handleClose={handleClose}
+              />
+            )}
           </Modal.Body>
         </Modal>
       </div>

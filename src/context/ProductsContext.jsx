@@ -57,13 +57,14 @@ function ProductsContext({ children }) {
   const updateProduct = async (product) => {
     try {
       await axios.put(
-        `http://localhost:3000/api/products/${product._id}`,
+        `http://localhost:3000/api/products/${product.id}`,
         product
       );
       const updatedProducts = products.map((p) =>
-        p._id === product._id ? product : p
+        p.id === product.id ? product : p
       );
       setProducts(updatedProducts);
+      await getProducts();
     } catch (error) {
       console.log(error, 'Error updating product');
     }

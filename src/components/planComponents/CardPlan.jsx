@@ -1,3 +1,5 @@
+/* eslint-disable react/no-children-prop */
+/* eslint-disable react/prop-types */
 import { Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
