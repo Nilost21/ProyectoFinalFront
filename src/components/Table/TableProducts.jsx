@@ -1,15 +1,20 @@
-import { useContext, useEffect } from 'react';
+/* eslint-disable no-unused-vars */
+import { useContext, useState } from 'react';
+import { Table, Button, Modal } from 'react-bootstrap';
 import { ProductsProvider } from '../../context/ProductsContext';
-import { Table, Button } from 'react-bootstrap';
+import FormProducts from '../Form/FormProducts';
 
-import PropTypes from 'prop-types';
+function TableProducts() {
+  const { products, deleteProducts } = useContext(ProductsProvider);
+  const [show, setShow] = useState(false);
+  const [editProducts, setEditProducts] = useState(null);
 
-function TableProducts({ onEdit, onDelete }) {
-  const { products, getProducts } = useContext(ProductsProvider);
+  const handleClose = () => setShow(false);
 
-  useEffect(() => {
-    getProducts();
-  }, [getProducts]);
+  const handleEdit = (product) => {
+    setEditProducts(product);
+    setShow(true);
+  };
 
   const isEmpty = () => products.length === 0;
 
@@ -36,12 +41,12 @@ function TableProducts({ onEdit, onDelete }) {
               </td>
             </tr>
           ) : (
-            products.map((product) => {
-              const { _id, name, price, description } = product;
+            products.map((product, index) => {
+              const { name, price, _id, description } = product;
 
               return (
-                <tr key={`${_id}-${name}`} className="paragraph fw-bold ">
-                  <td className="bg-dark text-light border-0 pt-3">{_id}</td>
+                <tr key={_id} className="paragraph fw-bold ">
+                  <td className="bg-dark text-light border-0 pt-3">{index}</td>
                   <td className="bg-dark text-light border-0 pt-3">{name}</td>
                   <td className="bg-dark text-light border-0 pt-3">
                     {description}
@@ -52,8 +57,8 @@ function TableProducts({ onEdit, onDelete }) {
                   <td className=" bg-dark text-light border-0">
                     <div className="d-flex flex-row justify-content-around">
                       <Button
-                        className="bg-secondary border-0 text-dark me-3"
-                        onClick={() => onEdit(_id)}
+                        onClick={() => handleEdit(product)}
+                        className="bg-secondary border-0 text-dark me-3 "
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -67,8 +72,8 @@ function TableProducts({ onEdit, onDelete }) {
                         </svg>
                       </Button>
                       <Button
-                        className="bg-danger border-0 text-dark"
-                        onClick={() => onDelete(_id)}
+                        onClick={() => deleteProducts(_id)}
+                        className="bg-danger border-0 text-dark "
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -89,13 +94,23 @@ function TableProducts({ onEdit, onDelete }) {
           )}
         </tbody>
       </Table>
+
+      <div className="rounded-5 p-0">
+        <Modal
+          show={show}
+          onHide={handleClose}
+          className="rounded-5 p-0"
+          contentClassName="bg-transparent p-0 border-0"
+        >
+          <Modal.Body className="bg-transparent rounded-5 border-0 p-0 ">
+            <FormProducts
+              editProducts={editProducts}
+              handleClose={handleClose}
+            />
+          </Modal.Body>
+        </Modal>
+      </div>
     </>
   );
 }
-
-TableProducts.propTypes = {
-  onEdit: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
-};
-
 export default TableProducts;

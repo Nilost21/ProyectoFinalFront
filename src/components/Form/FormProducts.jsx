@@ -1,18 +1,19 @@
-import { useState, useContext } from 'react';
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 import { Button, Form } from 'react-bootstrap';
+import './../../css/Form.css';
+import ButtonComponent from '../ButtonComponent';
+import { useState, useContext } from 'react';
+import { ProductsProvider } from '../../context/ProductsContext';
 import { v4 as uuidv4 } from 'uuid';
 import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
-
-import { ProductsProvider } from '../../context/ProductsContext';
-
-import './../../css/Form.css';
 
 function FormProducts({ editProducts, handleClose }) {
   const { addProduct, updateProduct } = useContext(ProductsProvider);
 
   const [product, setProduct] = useState({
-    id: editProducts ? editProducts.id : uuidv4(),
+    id: editProducts ? editProducts._id : uuidv4(),
     name: editProducts ? editProducts.name : '',
     price: editProducts ? editProducts.price : '',
     description: editProducts ? editProducts.description : '',
@@ -72,14 +73,14 @@ function FormProducts({ editProducts, handleClose }) {
   return (
     <>
       <div className="text-star bg-dark shadow-box text-white rounded-top-4 py-1">
-        <h3 className="subtitle ps-3 mt-2 pt-1 my-0">Form products</h3>
+        <h3 className="subtitle ps-3 mt-2 pt-1 my-0 ">Form products</h3>
       </div>
       <Form
         onSubmit={handleSubmit}
-        className="gradient-bg shadow-box text-light pb-3 px-4 rounded-bottom-4"
+        className=" gradient-bg shadow-box text-light rounded-bottom-3 pb-3 px-4 rounded-bottom-4"
       >
         <Form.Group className="mb-1 pt-1">
-          <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
+          <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2  ps-1">
             Name
           </Form.Label>
           <Form.Control
@@ -92,7 +93,7 @@ function FormProducts({ editProducts, handleClose }) {
           />
         </Form.Group>
         <Form.Group className="mb-1 pt-1">
-          <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
+          <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
             Price
           </Form.Label>
           <Form.Control
@@ -105,7 +106,7 @@ function FormProducts({ editProducts, handleClose }) {
           />
         </Form.Group>
         <Form.Group className="mb-1 pt-1">
-          <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
+          <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2  ps-1">
             IMAGE
           </Form.Label>
           <Form.Control
@@ -118,7 +119,7 @@ function FormProducts({ editProducts, handleClose }) {
           />
         </Form.Group>
         <Form.Group className="mb-3 pt-1">
-          <Form.Label className="subtitle fs-5 px-3 rounded-5 mb-2 ps-1">
+          <Form.Label className="subtitle fs-5 px-3  rounded-5 mb-2 ps-1">
             Description
           </Form.Label>
           <Form.Control
@@ -135,7 +136,7 @@ function FormProducts({ editProducts, handleClose }) {
         {editProducts ? (
           <div className="mt-1">
             <Button
-              className="gradient-background border-0 rounded-5 subtitle py-1 mt-1 shadow-on-hover w-100"
+              className="gradient-background border-0 rounded-5  subtitle py-1 mt-1 shadow-on-hover w-100"
               type="submit"
             >
               Edit Product{' '}
@@ -157,7 +158,7 @@ function FormProducts({ editProducts, handleClose }) {
         ) : (
           <div className="mt-1">
             <Button
-              className="gradient-background border-0 rounded-5 subtitle py-1 mt-1 shadow-on-hover w-100"
+              className="gradient-background border-0 rounded-5  subtitle py-1 mt-1 shadow-on-hover w-100"
               type="submit"
             >
               Add Product{' '}
