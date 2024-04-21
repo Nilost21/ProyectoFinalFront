@@ -42,9 +42,11 @@ function CardPlan({ level, name, price, description, page }) {
 }
 
 CardPlan.propTypes = {
+  level: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  page: PropTypes.string.isRequired,
 };
 
 export default CardPlan;
