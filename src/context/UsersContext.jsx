@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export const UsersProvider = createContext();
 
@@ -21,9 +22,24 @@ function UsersContext({ children }) {
         config
       );
       const data = response.data;
-      setUsers(data);
+      //setUsers(data);
+      setUsers([...data]);
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const createUser = async (user) => {
+    try {
+      const response = await axios.post(
+        'http://localhost:3000/api/auth/signup',
+        user
+      );
+      const data = response.data;
+      setUsers([...users, data]);
+      await getUsers();
+    } catch (error) {
+      console.error('Registration error:', error.message);
     }
   };
 
@@ -48,7 +64,7 @@ function UsersContext({ children }) {
     }
   };
 
-  const editUser = async (id, formData) => {
+  const editUser = async (id, user) => {
     try {
       const token = localStorage.getItem('token');
       if (!token) return;
@@ -57,13 +73,18 @@ function UsersContext({ children }) {
           Authorization: `Bearer ${token}`
         }
       };
-      const response = await axios.put(
+      await axios.put(
         `http://localhost:3000/api/user/${id}`,
-        formData,
+        user,
         config
       );
-      const updatedUser = response.data;
-      setUsers(prevUsers => prevUsers.map(user => user._id === id ? updatedUser : user));
+      //const updatedUser = response.data;
+      //setUsers(prevUsers => prevUsers.map(user => user._id === id ? updatedUser : user));
+      const updatedUsers = users.map((u) =>
+        u._id === users._id ? user : u
+      );
+      setUsers(updatedUsers);
+
     } catch (error) {
       console.log(error);
     }
@@ -79,7 +100,17 @@ function UsersContext({ children }) {
         }
       };
       await axios.delete(`http://localhost:3000/api/user/${id}`, config);
-      setUsers(prevUsers => prevUsers.filter(user => user._id !== id));
+      const filteredUsers = users.filter(user => user._id !== id);
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'User deleted succesfully',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      setUsers([...filteredUsers]);
+      await getUsers();
+      //setUsers(prevUsers => prevUsers.filter(user => user._id !== id));
     } catch (error) {
       console.log(error);
     }
@@ -90,7 +121,7 @@ function UsersContext({ children }) {
   }, []);
 
   return (
-    <UsersProvider.Provider value={{ users, getUsers, getUser, editUser, deleteUser }}>
+    <UsersProvider.Provider value={{ users, getUsers, createUser, getUser, editUser, deleteUser }}>
       {children}
     </UsersProvider.Provider>
   );

@@ -58,7 +58,7 @@ function TableProducts() {
                     <div className="d-flex flex-row justify-content-around">
                       <Button
                         onClick={() => handleEdit(product)}
-                        className="bg-secondary border-0 text-dark me-3 "
+                        className="bg-secondary border-0 text-dark me-3"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +73,7 @@ function TableProducts() {
                       </Button>
                       <Button
                         onClick={() => deleteProducts(_id)}
-                        className="bg-danger border-0 text-dark "
+                        className="bg-danger border-0 text-dark"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
