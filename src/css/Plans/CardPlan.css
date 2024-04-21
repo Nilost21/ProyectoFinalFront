@@ -2,8 +2,9 @@
     color: rgb(255, 255, 255);
     height: 26rem;
     border-radius: 15px;
-    border: 1px solid #88559c8f;
-    background-color: rgba(0, 0, 0, 0.1);
+    border: 0;
+    /* border: 1px solid #88559c8f; */
+    background-color: rgba(0, 0, 0, 0.3);
     transition: transform 0.3s;
 }
 

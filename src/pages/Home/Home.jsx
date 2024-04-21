@@ -10,6 +10,8 @@ import CardDiet from '../../components/Cards Home/CardDiet';
 import CardSatisfied from '../../components/Cards Home/CardSatisfied';
 import CardFlex from '../../components/Cards Home/CardFlex';
 
+import PlanList from '../Plans/PlanList';
+
 function Home() {
   return (
     <>
@@ -39,6 +41,9 @@ function Home() {
             <CardFlex />
           </Col>
         </Row>
+      </Container>
+      <Container>
+        <PlanList/>
       </Container>
     </>
   );
