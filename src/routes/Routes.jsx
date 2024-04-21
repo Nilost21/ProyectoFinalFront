@@ -3,8 +3,8 @@ import { PrivateRoute } from './PrivateRoutes';
 import Home from "../pages/Home/Home";
 import Admin from "../pages/Admin/Admin";
 import Products from "../pages/Products/Products";
+import About from "../pages/About/About";
 import Profile from '../pages/Profile/Profile';
-
 
 import ClassPlan from "../pages/Plans/ClassPlan";
 import MusclePlan from "../pages/Plans/MusclePlan";
@@ -16,6 +16,7 @@ const RoutesPages = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/about" element={<About />} />
         <Route
           path="/*"
           element={<h1 className="title text-light mt-3 ">NOT FOUND</h1>}

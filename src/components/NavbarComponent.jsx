@@ -72,6 +72,12 @@ function NavbarComponent() {
               >
                 Contact
               </Nav.Link>
+              <Nav.Link
+                className="subtitle mt-1 text-white"
+                onClick={() => navigate('/about')}
+              >
+                About
+              </Nav.Link>
             </Nav>
             <Nav className="pe-4">
               {isLoggedIn ? ( // Si el usuario está autenticado, muestra el botón de Logout
