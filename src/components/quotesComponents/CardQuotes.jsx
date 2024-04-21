@@ -3,7 +3,7 @@
 const CardQuotes = () => {
   return (
     <>
-      {/* cards dinamicas que se veran en home */}
+      {/* esqueleto de cards */}
     </>
   )
 }
