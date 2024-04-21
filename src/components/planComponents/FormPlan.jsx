@@ -91,6 +91,8 @@ const FormPlan = ({ planType }) => {
       return;
     }
 
+    setFormSubmitted(true);
+
     emailjs
       .send(
         "service_ofcw5zh",
@@ -112,6 +114,11 @@ const FormPlan = ({ planType }) => {
         setEmail("");
         setPhone("");
         setMessage("");
+
+        setTimeout(()=> {
+          setFormSubmitted(false);
+        }, 3000);
+
       })
       .catch((error) => {
         Swal.fire(
@@ -119,6 +126,7 @@ const FormPlan = ({ planType }) => {
           "There was an error sending your inquiry. Please try again later.",
           "error"
         );
+        setFormSubmitted(false);
       });
 
     emailjs
@@ -133,7 +141,6 @@ const FormPlan = ({ planType }) => {
       )
       .then(() => {})
       .catch((error) => {});
-    setFormSubmitted(true);
   };
 
   return (
@@ -266,7 +273,7 @@ const FormPlan = ({ planType }) => {
         <input type="hidden" name="planType" value={planType} />
 
         <Row className="justify-content-end mb-3">
-          <Col xs={12} md={6} className="text-end">
+          <Col xs={12} md={6} className="text-center text-md-end">
             <Button
               className={`btn-form-plan ${
                 formSubmitted ? "btn-form-plan-sent" : ""
