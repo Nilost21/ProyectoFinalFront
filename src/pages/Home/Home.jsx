@@ -9,8 +9,10 @@ import CardTrainer from '../../components/Cards Home/CardTrainer';
 import CardDiet from '../../components/Cards Home/CardDiet';
 import CardSatisfied from '../../components/Cards Home/CardSatisfied';
 import CardFlex from '../../components/Cards Home/CardFlex';
-
 import PlanList from '../Plans/PlanList';
+
+// Importación del componente Footer
+import FooterComponent from '../../components/FooterComponent';
 
 function Home() {
   return (
@@ -45,6 +47,8 @@ function Home() {
       <Container>
         <PlanList/>
       </Container>
+      
+      <FooterComponent />
     </>
   );
 }
