@@ -2,8 +2,8 @@
 import { createContext, useEffect, useState, useContext } from 'react';
 import { ProductsProvider } from './ProductsContext';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import Swal from 'sweetalert2';
+import { useAuth } from '../context/Utils/authUtils';
 
 export const CartProvider = createContext();
 
@@ -18,8 +18,21 @@ function CartContext({ children }) {
   const MAX_ITEMS = 5;
   const MIN_ITEMS = 1;
 
+  const { isLoggedIn } = useAuth();
+
   const addToCart = (item) => {
-    console.log(item);
+    if (!isLoggedIn) {
+      Swal.fire({
+        title: 'Oops!',
+        text: 'Please log in first.',
+        icon: 'error',
+        timer: 2000,
+        timerProgressBar: true,
+        allowOutsideClick: false,
+      });
+      return;
+    }
+
     const itemIndex = cart.findIndex((product) => product._id === item._id);
 
     if (itemIndex !== -1) {
@@ -37,6 +50,15 @@ function CartContext({ children }) {
       const newItem = { ...item, quantity: 1 };
       setCart([...cart, newItem]);
     }
+
+    Swal.fire({
+      title: 'Success!',
+      text: 'Product added to cart.',
+      icon: 'success',
+      timer: 1500,
+      timerProgressBar: true,
+      allowOutsideClick: false,
+    });
   };
 
   const increaseQuantity = (id) => {
@@ -80,8 +102,17 @@ function CartContext({ children }) {
   };
 
   const clearCart = () => {
+    Swal.fire({
+      title: 'info!',
+      text: 'The cart has been cleared.',
+      icon: 'info',
+      confirmButtonText: 'OK',
+    });
     setCart([]);
   };
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <CartProvider.Provider
