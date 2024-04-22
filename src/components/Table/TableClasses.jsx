@@ -31,6 +31,7 @@ function TableClasses() {
             <th>Description</th>
             <th>Teacher</th>
             <th>Date and time</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
