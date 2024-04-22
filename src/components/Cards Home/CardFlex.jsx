@@ -6,7 +6,7 @@ import '../../css/Card.css';
 function CardFlex() {
   return (
     <>
-      <Card className="bg-transparent border-0 ms-xl-5 ms-md-5 mb-5 text-white me-5 pb-5 px-5 mt-xl-5 slide-up ">
+      <Card className="bg-transparent border-0 ms-xl-5 ms-md-5 mb-5 text-white me-5 pb-5 px-5 mt-xl-5">
         <Card.Img
           src="../../../public/img/3.jpg"
           alt="Card image"
@@ -23,7 +23,7 @@ function CardFlex() {
               xl={3}
               className="d-flex flex-column justify-content-end pe-xl-5 mt-0 mt-xxl-0 ps-xl-3"
             >
-              <Card.Text className="paragraph fs-5 mt-5 text-gray pt-md-0 pt-xxl-5  pe-xl-2 ">
+              <Card.Text className="paragraph fs-5 mt-5 text-gray pt-md-0 pt-xxl-5  pe-xl-2">
                 We have been creating and implementing projects for many years
                 all over the wold, we have hundreds of satisfaced customers
               </Card.Text>

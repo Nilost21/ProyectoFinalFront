@@ -3,13 +3,16 @@ import './App.css';
 import RoutesPages from './routes/Routes';
 import ProductsContext from './context/ProductsContext';
 import UsersContext from './context/UsersContext';
+import ClassContext from './context/ClassContex';
 
 function App() {
   return (
     <>
       <UsersContext>
         <ProductsContext>
-          <RoutesPages />
+          <ClassContext>
+            <RoutesPages />
+          </ClassContext>
         </ProductsContext>
       </UsersContext>
     </>

@@ -6,13 +6,13 @@ import '../../css/Home.css';
 function CardSatisfied() {
   return (
     <>
-      <Card className="bg-transparent mb-5 rounded-3 border-0 p-0 slide-up  ms-md-5 mt-md-5 pt-5 ps-md-5">
-        <Card.Title className="title number-color mt-4  increase-font-number ms-3  ">
+      <Card className="bg-transparent mb-5 rounded-3 border-0 p-0 ms-md-5 mt-md-5 pt-5 ps-md-5">
+        <Card.Title className="title number-color mt-4 increase-font-number ms-3">
           1 4 0 0 0 +
         </Card.Title>
         <Card.Body className="pt-1">
           <div className="p-0">
-            <Button className="bg-transparent py-1 mb-1 border-0 d-flex flex-row justify-content-around ">
+            <Button className="bg-transparent py-1 mb-1 border-0 d-flex flex-row justify-content-around">
               <StarSVG />
               <StarSVG />
               <StarSVG />

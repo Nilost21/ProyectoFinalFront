@@ -10,6 +10,11 @@ import CardDiet from '../../components/Cards Home/CardDiet';
 import CardSatisfied from '../../components/Cards Home/CardSatisfied';
 import CardFlex from '../../components/Cards Home/CardFlex';
 
+import NutritionTitle from '../../components/NutritionComponents/NutritionTitle';
+import NutritionFood from '../../components/NutritionComponents/NutritionFood';
+import TrainingComponent from '../../components/NutritionComponents/TrainingComponent';
+import NutritionBtn from '../../components/NutritionComponents/NutritionBtn';
+
 function Home() {
   return (
     <>
@@ -37,6 +42,33 @@ function Home() {
           </Col>
           <Col lg={7} xs={12} s={12} className="px-0 pe-md-5 ps-md-0">
             <CardFlex />
+          </Col>
+        </Row>
+      </Container>
+      <Container fluid>
+        <Row className="d-flex flex-row justify-content-start">
+          <Col xl={12} className="p-0 bg-black mb-5">
+
+            <Row className="d-flex flex-row justify-content-center mt-5 px-5">
+              <NutritionTitle />
+            </Row>
+
+            <Row className="d-flex flex-row justify-content-between">
+              <Col xl={5} className="">
+                <NutritionFood />
+              </Col>
+              {/* Segunda columna */}
+              <Col xl={6} className="mb-4">
+                <TrainingComponent />
+              </Col>
+            </Row>
+
+            <Row>
+              <div className="d-flex flex-row justify-content-center">
+                <NutritionBtn />
+              </div>
+            </Row>
+
           </Col>
         </Row>
       </Container>
