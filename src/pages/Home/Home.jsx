@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import './../../css/Home.css';
 import { Container, Col, Row } from 'react-bootstrap';
-import Products from '../Products/Products';
 import TitleHomeComponent from '../../components/TitleHomeComponent';
 import NavbarComponent from '../../components/NavbarComponent';
 import CardExperience from '../../components/Cards Home/CardExperience';
@@ -43,7 +42,7 @@ function Home() {
         </Row>
       </Container>
       <Container>
-        <PlanList/>
+        <PlanList />
       </Container>
     </>
   );
