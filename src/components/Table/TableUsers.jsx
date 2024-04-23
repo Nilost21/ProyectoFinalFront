@@ -1,15 +1,11 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { UsersProvider } from '../../context/UsersContext';
 import { Table, Button } from 'react-bootstrap';
 
 import PropTypes from 'prop-types';
 
 function TableUsers({ onEdit, onDelete }) {
-  const { users, getUsers } = useContext(UsersProvider);
-
-  useEffect(() => {
-    getUsers();
-  }, [getUsers]);
+  const { users } = useContext(UsersProvider);
 
   const isEmpty = () => users.length === 0;
 

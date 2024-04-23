@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import './../../css/Home.css';
+import '../../css/Footer/Footer.css';
 import { Container, Col, Row } from 'react-bootstrap';
 import TitleHomeComponent from '../../components/TitleHomeComponent';
 import NavbarComponent from '../../components/NavbarComponent';
@@ -8,7 +9,7 @@ import CardTrainer from '../../components/Cards Home/CardTrainer';
 import CardDiet from '../../components/Cards Home/CardDiet';
 import CardSatisfied from '../../components/Cards Home/CardSatisfied';
 import CardFlex from '../../components/Cards Home/CardFlex';
-
+import FooterComponent from '../../components/FooterComponent';
 import PlanList from '../Plans/PlanList';
 
 function Home() {
@@ -43,6 +44,12 @@ function Home() {
       </Container>
       <Container>
         <PlanList />
+      </Container>
+      <Container
+        fluid
+        className="d-flex flex-row justify-content-around mt-5  border-footer bg-footer"
+      >
+        <FooterComponent />
       </Container>
     </>
   );
