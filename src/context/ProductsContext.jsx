@@ -35,9 +35,7 @@ function ProductsContext({ children }) {
 
   const deleteProducts = async (_id) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:3000/api/products/${_id}`
-      );
+      await axios.delete(`http://localhost:3000/api/products/${_id}`);
       const filteredProducts = products.filter((product) => product.id !== _id);
       Swal.fire({
         position: 'center',

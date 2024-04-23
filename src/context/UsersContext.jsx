@@ -35,7 +35,7 @@ function UsersContext({ children }) {
         user
       );
       const data = response.data;
-      setUsers([...users, data]);
+      setUsers(prevUsers => [...prevUsers, data]);
     } catch (error) {
       console.error('Registration error:', error.message);
     }
@@ -62,17 +62,23 @@ function UsersContext({ children }) {
     }
   };
 
-  const editUser = async (id, user) => {
+  const editUser = async (user) => {
     try {
       const token = localStorage.getItem('token');
       if (!token) return;
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`,
-        },
+          Authorization: `Bearer ${token}`
+        }
       };
-      await axios.put(`http://localhost:3000/api/user/${id}`, user, config);
-      const updatedUsers = users.map((u) => (u._id === users._id ? user : u));
+      await axios.put(
+        `http://localhost:3000/api/user/${user.id}`,
+        user,
+        config
+      );
+      const updatedUsers = users.map((u) =>
+        u._id === users._id ? user : u
+      );
       setUsers(updatedUsers);
     } catch (error) {
       console.log(error);
@@ -85,14 +91,14 @@ function UsersContext({ children }) {
       if (!token) return;
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`,
-        },
+          Authorization: `Bearer ${token}`
+        }
       };
       await axios.delete(`http://localhost:3000/api/user/${id}`, config);
-      const filteredUsers = users.filter((user) => user._id !== id);
+      const filteredUsers = users.filter(user => user._id !== id);
       Swal.fire({
         position: 'center',
-        icon: 'error',
+        icon: 'Success',
         title: 'User deleted succesfully',
         showConfirmButton: false,
         timer: 1500,
@@ -109,9 +115,14 @@ function UsersContext({ children }) {
   }, []);
 
   return (
-    <UsersProvider.Provider
-      value={{ users, getUsers, createUser, getUser, editUser, deleteUser }}
-    >
+    <UsersProvider.Provider value={{
+      users,
+      getUsers,
+      createUser,
+      getUser,
+      editUser,
+      deleteUser
+    }}>
       {children}
     </UsersProvider.Provider>
   );

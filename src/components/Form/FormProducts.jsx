@@ -2,7 +2,6 @@
 /* eslint-disable no-unused-vars */
 import { Button, Form } from 'react-bootstrap';
 import './../../css/Form.css';
-import ButtonComponent from '../ButtonComponent';
 import { useState, useContext } from 'react';
 import { ProductsProvider } from '../../context/ProductsContext';
 import { v4 as uuidv4 } from 'uuid';
@@ -29,22 +28,6 @@ function FormProducts({ editProducts, handleClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (
-      !product.name ||
-      !product.price ||
-      !product.description ||
-      !product.image
-    ) {
-      Swal.fire({
-        position: 'center',
-        icon: 'error',
-        title: 'Please fill in all fields',
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      return;
-    }
 
     if (editProducts) {
       updateProduct(product);

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState, useContext } from 'react';
 import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
@@ -44,6 +43,7 @@ function NavbarComponent() {
   const handleLoginModalShow = () => setShowLoginModal(true);
   const handleRegisterModalShow = () => setShowRegisterModal(true);
 
+  // Cierra los modales
   const handleCloseModals = () => {
     setShowLoginModal(false);
     setShowRegisterModal(false);
@@ -58,8 +58,16 @@ function NavbarComponent() {
     navigate('/profile');
   };
 
-  const handleAdminButton = () => {
-    navigate('/admin');
+  const handleProductsButton = () => {
+    navigate('/adminproducts');
+  };
+
+  const handleClassesButton = () => {
+    navigate('/adminclasses')
+  };
+
+  const handleUsersButton = () => {
+    navigate('/adminusers')
   };
 
   return (
@@ -80,23 +88,25 @@ function NavbarComponent() {
           <Navbar.Collapse id="responsive-navbar-nav" className="text-light">
             <Nav className="me-auto">
               <Nav.Link
-                className="subtitle mt-1 text-white"
+                className="subtitle mt-1 text-white navbar-button"
                 onClick={() => navigate('/')}
               >
                 Home
               </Nav.Link>
               <Nav.Link
-                className="subtitle mt-1 text-white"
+                className="subtitle mt-1 text-white navbar-button"
                 onClick={() => navigate('/products')}
               >
                 Products
               </Nav.Link>
               <Nav.Link
-                className="subtitle mt-1 text-white"
+                className="subtitle mt-1 text-white navbar-button"
                 onClick={() => navigate('/contact')}
               >
                 Contact
               </Nav.Link>
+
+              {/* Inicio carrito */}
               {isLoggedIn ? (
                 <>
                   <NavDropdown
@@ -254,35 +264,59 @@ function NavbarComponent() {
               ) : (
                 <></>
               )}
+              {/* Fin carrito */}
+
+
             </Nav>
             <Nav className="pe-4">
               {isLoggedIn ? (
                 <>
-                  {user && user.isAdmin && (
-                    <Nav.Link
-                      onClick={handleAdminButton}
-                      className="subtitle mt-1 gradient-text text-shadow"
-                    >
-                      Admin Management
-                    </Nav.Link>
-                  )}
+                  {user &&
+                    user.isAdmin && (
+
+                      <Nav.Link
+                        onClick={handleProductsButton}
+                        className="subtitle mt-1 text-light text-shadow navbar-button"
+                      >
+                        Products
+                      </Nav.Link>
+                    )}
+                  {
+                    user && user.isAdmin && (
+                      <Nav.Link
+                        onClick={handleClassesButton}
+                        className="subtitle mt-1 text-light text-shadow navbar-button"
+                      >
+                        Classes
+                      </Nav.Link>
+                    )
+                  }
+                  {user &&
+                    user.isAdmin && (
+                      <Nav.Link
+                        onClick={handleUsersButton}
+                        className="subtitle mt-1 text-light text-shadow navbar-button"
+                      >
+                        Users
+                      </Nav.Link>
+                    )}
                   <Nav.Link
                     onClick={handleLogout}
-                    className="subtitle mt-1 text-light"
+                    className="subtitle mt-1 text-light navbar-button"
                   >
                     Logout
                   </Nav.Link>
 
                   <ButtonComponent
                     onClick={handleProfileButton}
-                    text={user && user.username ? user.username : 'Profile'}
+                    text={user && user.name ? user.name : 'Profile'}
                   />
                 </>
               ) : (
                 <>
                   <Nav.Link
                     onClick={handleLoginModalShow}
-                    className="subtitle mt-1 text-light mx-2"
+                    className="subtitle mt-1 text-light mx-2 navbar-button"
                   >
                     Login
                   </Nav.Link>
