@@ -17,6 +17,10 @@ import Products from './pages/Products/Products';
 import Profile from './pages/Profile/Profile';
 import AdminClass from './pages/Admin/AdminClass';
 import AdminUsers from './pages/Admin/AdminUsers';
+import ClassPlan from './pages/Plans/ClassPlan';
+import MusclePlan from './pages/Plans/MusclePlan';
+import FullPlan from './pages/Plans/FullPlan';
+
 
 
 function App() {
@@ -33,6 +37,18 @@ function App() {
     {
       path: "/products",
       element: <PublicRoute><Products /></PublicRoute>
+    },
+    {
+      path:"/class-plan",
+      element: <PublicRoute><ClassPlan/></PublicRoute>
+    },
+    {
+      path:"/muscle-plan",
+      element: <PublicRoute><MusclePlan/></PublicRoute>
+    },
+    {
+      path:"/full-plan",
+      element: <PublicRoute><FullPlan/></PublicRoute>
     },
     {
       path: "/adminproducts",

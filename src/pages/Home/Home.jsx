@@ -17,6 +17,7 @@ import NutritionTitle from '../../components/NutritionComponents/NutritionTitle'
 import NutritionFood from '../../components/NutritionComponents/NutritionFood';
 import TrainingComponent from '../../components/NutritionComponents/TrainingComponent';
 import NutritionBtn from '../../components/NutritionComponents/NutritionBtn';
+import ClassBookings from '../../components/ClassBookingsComponents/ClassBookings';
 
 function Home() {
   return (
@@ -78,6 +79,10 @@ function Home() {
       <Container>
         <PlanList />
       </Container>
+      <Container>
+        <ClassBookings/>
+      </Container>
+
       <Container
         fluid
         className="d-flex flex-row justify-content-around mt-5  border-footer bg-footer"

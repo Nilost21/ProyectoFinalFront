@@ -1,0 +1,18 @@
+.body-booking-page {
+    background-image: url('../../assets/img/ClassBookings/cover-booking-page.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh; /* Establece la altura mínima de la página para que la imagen de fondo se extienda hasta abajo */
+    padding-top: 56px; /* Ajusta este valor según la altura de tu NavbarComponent */
+}
+
+@media (min-width: 992px) {
+    .body-booking-page {
+        padding-top: 80px; /* Ajusta este valor según la altura de tu NavbarComponent en pantallas grandes */
+    }
+}
+
+.line-divider {
+    border-color: #fff; /* Cambia el color de la línea a tu preferencia */
+    border-width: 2px;
+}
