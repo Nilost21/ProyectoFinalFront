@@ -30,7 +30,7 @@ function ClassBookings() {
               return (
                 <Col xs={8} lg={2} md={6} sm={8} key={_id}>
                   <BookingCard
-                    _id={_id}
+                    id={_id}
                     name={name}
                     description={description}
                     teacher={teacher}

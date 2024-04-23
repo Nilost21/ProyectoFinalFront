@@ -21,6 +21,7 @@ import AdminUsers from './pages/Admin/AdminUsers';
 import ClassPlan from './pages/Plans/ClassPlan';
 import MusclePlan from './pages/Plans/MusclePlan';
 import FullPlan from './pages/Plans/FullPlan';
+import AdminEnrollments from './pages/Admin/AdminEnrollments';
 
 function App() {
 
@@ -60,6 +61,10 @@ function App() {
     {
       path: "/adminclasses",
       element: <AdminRoute> <AdminClass /> </AdminRoute>
+    },
+    {
+      path: "/enrollments",
+      element: <AdminRoute> <AdminEnrollments /> </AdminRoute>
     },
     {
       path: "/profile",

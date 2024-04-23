@@ -21,13 +21,15 @@ function EnrollmentContext({ children }) {
 
   const newEnrollment = async (enrollmentData) => {
     try {
+      console.log("ENROLLMENT DATA A VER QUE LLEGA", enrollmentData);
       const response = await axios.post(
         'http://localhost:3000/api/enrollment/',
         enrollmentData
       );
       const data = response.data;
+      console.log("Llego hasta enrollment context", data);
       setEnrollments([...enrollments, data]);
-      await getEnrollments();
+      //await getEnrollments();
     } catch (error) {
       console.log('Error at enrolling to the class', error.message || error);
     }
@@ -52,7 +54,7 @@ function EnrollmentContext({ children }) {
   };
 
   useEffect(() => {
-    getEnrollments();
+    //getEnrollments();
   }, []);
 
   return (

@@ -112,7 +112,7 @@ function NavbarComponent() {
                   <NavDropdown
                     title={<CartSVG />}
                     id="navbar-dropdown"
-                    className="hide-toggle-icon pe-5 me-5 border-0"
+                    className="hide-toggle-icon pe-5 me-5 border-0 navbar-button"
                   >
                     <NavDropdown.Item
                       id="carrito"

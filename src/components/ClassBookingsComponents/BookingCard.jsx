@@ -13,7 +13,7 @@ import { useAuth } from '../../context/Utils/authUtils';
 import '../../css/ClassBookings/BookingCard.css';
 
 
-const BookingCard = ({ classId, name, description, teacher, dateAndTime }) => {
+const BookingCard = ({ id, name, description, teacher, dateAndTime }) => {
 
   const { newEnrollment } = useContext(EnrollmentProvider);
 
@@ -26,8 +26,8 @@ const BookingCard = ({ classId, name, description, teacher, dateAndTime }) => {
         return;
       }
       console.log("🇲🇻 User - BOOKINGCARD COMPONENT", user);
-      console.log("🍯 ClassId - BOOKINGCARD COMPONENT", classId);
-      await newEnrollment({ userId: user.id, classId });
+      console.log("🍯 ClassId - BOOKINGCARD COMPONENT", id);
+      await newEnrollment({ user: user._id, gymClass: id });
 
       Swal.fire({
         position: 'center',
@@ -87,7 +87,7 @@ const BookingCard = ({ classId, name, description, teacher, dateAndTime }) => {
 };
 
 BookingCard.propTypes = {
-  classId: PropTypes.string,
+  id: PropTypes.string,
   name: PropTypes.string,
   description: PropTypes.string,
   teacher: PropTypes.string,
