@@ -2,32 +2,31 @@
 body {
   background: #24203B;
   background-image: radial-gradient(circle at center center, #493772 0%, #24203B 40%);
-  background-size: 100% 170%; 
+  background-size: 100% 170%;
 }
+
 /* Background */
-
-
 
 /* Fonts */
 .title {
-    font-family: "Anton", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
 .subtitle {
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-
-  .paragraph{
-    font-family: "Oswald", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
+
+.paragraph {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .small-font {
   font-family: "Roboto Condensed", sans-serif;
   font-optical-sizing: auto;
@@ -35,4 +34,4 @@ body {
   font-style: normal;
 }
 
-  /* Fonts */
+/* Fonts */

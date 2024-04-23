@@ -47,24 +47,29 @@ const About = () => {
   ];
 
   return (
-    <Container fluid className="mt-5">
-      <Row className="p-0 bg-home pe-5 pb-5 pb-md-0">
-          <NavbarComponent />´{}
+    <Container fluid >
+      <Row className="p-0 pe-5 pb-5 pb-md-0">
+          <NavbarComponent />{}
         </Row>
-      <Row className="p-0 bg-home pe-5 pb-5 pb-md-0">
-        <Col className="ms-xl-5 ms-4 d-flex justify-content-center align-items-center" xxl={5} xl={7} lg={8} md={9}>
-          <div className="text-center">
-            <img src="https://images7.alphacoders.com/692/692042.jpg" alt="Imagen de fondo" className='w-100 h-100' />
-            <div>
-              <h1 className="text-purple display-1 title">Sobre Nosotros</h1>
-              <h5 className="text-white subtitle">Somos un gimnasio comprometido con tu bienestar y salud. Ofrecemos programas de entrenamiento personalizados y asesoramiento nutricional para ayudarte a alcanzar tus objetivos de fitness.</h5>
+        <Row className="m-0">
+        <Col className="p-0">
+          <div className="position-relative">
+            <img
+              src="https://img.freepik.com/fotos-premium/estuvimos-aqui-fitness-retrato-grupo-jovenes-confiados-trabajando-juntos-gimnasio_590464-9593.jpg?size=626&ext=jpghttps://img.freepik.com/fotos-premium/ejercicio-fisico-grupo-responsabilidad-diverso-parados-juntos-luciendo-felices-despues-entrenar-gimnasio-retrato-amigos-disfrutando-su-membresia-centro-salud-bienestar_590464-78757.jpg"
+              alt="Imagen de fondo"
+              className="w-100"
+              style={{ height: '100vh', objectFit: 'cover' }}
+            />
+            <div className="position-absolute top-50 start-50 translate-middle text-center text-dark">
+              <h1 className="display-1 title">Sobre Nosotros</h1>
+              <h4 className="subtitle">Somos un gimnasio comprometido con tu bienestar y salud. Ofrecemos programas de entrenamiento personalizados y asesoramiento nutricional para ayudarte a alcanzar tus objetivos de fitness.</h4>
             </div>
           </div>
         </Col>
       </Row>
 
       {teamMembers.map((member, index) => (
-        <Row key={index} className="mb-5 subtitle text-white justify-content-center align-items-center">
+        <Row key={index} className="mb-5 subtitle text-white justify-content-center align-items-center mt-5">
           <Col md={5} className="text-center">
             <div className="d-flex justify-content-center align-items-center">
               <Card className="text-center animate_animated animate_fadeIn custom-bg-purple" style={{border: "none"}}>

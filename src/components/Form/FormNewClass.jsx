@@ -3,25 +3,25 @@
 import { Button, Form } from 'react-bootstrap';
 import './../../css/Form.css';
 import { useState, useContext } from 'react';
-import { UsersProvider } from '../../context/UsersContext';
+import { ClassProvider } from '../../context/ClassContex';
 import { v4 as uuidv4 } from 'uuid';
 import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
 
-function FormEditUser({ updateUser, handleClose }) {
-  const { createUser, editUser } = useContext(UsersProvider);
+function FormNewClass({ editClass, handleClose }) {
+  const { addClass, updateClass } = useContext(ClassProvider);
 
-  const [users, setUsers] = useState({
-    id: updateUser ? updateUser._id : uuidv4(),
-    name: updateUser ? updateUser.name : '',
-    lastname: updateUser ? updateUser.lastname : '',
-    phonenumber: updateUser ? updateUser.phonenumber : '',
-    email: updateUser ? updateUser.email : '',
+  const [classFormData, setClassFormData] = useState({
+    id: editClass ? editClass._id : uuidv4(),
+    name: editClass ? editClass.name : '',
+    description: editClass ? editClass.description : '',
+    teacher: editClass ? editClass.teacher : '',
+    dateAndTime: editClass ? editClass.dateAndTime : '',
   });
 
   const handleChange = (e) => {
-    setUsers({
-      ...users,
+    setClassFormData({
+      ...classFormData,
       [e.target.name]: e.target.value,
     });
   };
@@ -29,34 +29,34 @@ function FormEditUser({ updateUser, handleClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (updateUser) {
-      editUser(users);
+    if (editClass) {
+      updateClass(classFormData);
       handleClose();
     } else {
-      createUser(users);
+      addClass(classFormData);
     }
 
     Swal.fire({
       position: 'center',
       icon: 'success',
-      title: 'User Checked',
+      title: 'Class Checked',
       showConfirmButton: false,
       timer: 1500,
     });
 
-    setUsers({
+    setClassFormData({
       id: uuidv4(),
       name: '',
-      lastname: '',
-      phonenumber: '',
-      email: '',
+      description: '',
+      teacher: '',
+      dateAndTime: '',
     });
   };
 
   return (
     <>
       <div className="text-star bg-dark shadow-box text-white rounded-top-4 py-1">
-        <h3 className="subtitle ps-3 mt-2 pt-1 my-0 ">Gym user</h3>
+        <h3 className="subtitle ps-3 mt-2 pt-1 my-0 ">Gym class</h3>
       </div>
       <Form
         onSubmit={handleSubmit}
@@ -69,62 +69,63 @@ function FormEditUser({ updateUser, handleClose }) {
           <Form.Control
             className="paragraph"
             type="text"
-            value={users.name}
+            value={classFormData.name}
             onChange={handleChange}
             name="name"
-            placeholder="Enter the user name"
+            placeholder="Enter the class name"
           />
         </Form.Group>
 
-        <Form.Group className="mb-1 pt-1">
-          <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2  ps-1">
-            Lastname
+        <Form.Group className="mb-3 pt-1">
+          <Form.Label className="subtitle fs-5 px-3 rounded-5 mb-2 ps-1">
+            Description
+          </Form.Label>
+          <Form.Control
+            className="paragraph no-resizable"
+            type="text"
+            as="textarea"
+            value={classFormData.description}
+            onChange={handleChange}
+            name="description"
+            placeholder="Write a description"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3 pt-1">
+          <Form.Label className="subtitle fs-5 px-3 rounded-5 mb-2 ps-1">
+            Teacher
           </Form.Label>
           <Form.Control
             className="paragraph"
             type="text"
-            value={users.lastname}
+            value={classFormData.teacher}
             onChange={handleChange}
-            name="lastnamename"
-            placeholder="Enter the user lastname"
+            name="teacher"
+            placeholder="Enter the teacher's name"
           />
         </Form.Group>
 
-        <Form.Group className="mb-1 pt-1">
-          <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2  ps-1">
-            Phone number
+        {/* Campo para la fecha y hora */}
+        <Form.Group className="mb-3 pt-1">
+          <Form.Label className="subtitle fs-5 px-3 rounded-5 mb-2 ps-1">
+            Date and Time
           </Form.Label>
           <Form.Control
             className="paragraph"
-            type="text"
-            value={users.phonenumber}
+            type="datetime-local"
+            value={classFormData.dateAndTime}
             onChange={handleChange}
-            name="phonenumber"
-            placeholder="Enter the user phone"
+            name="dateAndTime"
           />
         </Form.Group>
 
-        <Form.Group className="mb-1 pt-1">
-          <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2  ps-1">
-            Email
-          </Form.Label>
-          <Form.Control
-            className="paragraph"
-            type="email"
-            value={users.email}
-            onChange={handleChange}
-            name="email"
-            placeholder="Enter the user email"
-          />
-        </Form.Group>
-
-        {updateUser ? (
+        {editClass ? (
           <div className="mt-1">
             <Button
               className="gradient-background border-0 rounded-5 subtitle py-1 mt-1 shadow-on-hover w-100"
               type="submit"
             >
-              Edit User{' '}
+              Edit Class{' '}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -143,10 +144,10 @@ function FormEditUser({ updateUser, handleClose }) {
         ) : (
           <div className="mt-1">
             <Button
-              className="gradient-background border-0 rounded-5 subtitle py-1 mt-3 shadow-on-hover w-100"
+              className="gradient-background border-0 rounded-5 subtitle py-1 mt-1 shadow-on-hover w-100"
               type="submit"
             >
-              Add User{' '}
+              Add Class{' '}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -168,8 +169,8 @@ function FormEditUser({ updateUser, handleClose }) {
   );
 }
 
-FormEditUser.propTypes = {
-  updateUser: PropTypes.object,
+FormNewClass.propTypes = {
+  editClass: PropTypes.object,
   handleClose: PropTypes.func,
 };
-export default FormEditUser;
+export default FormNewClass;

@@ -1,15 +1,26 @@
-import { object, string, ref } from 'yup';
+import { object, string, number, ref } from 'yup';
 
 const getCharacterValidationError = (str) => {
   return `Your password must have at least 1 ${str} character`;
 };
 
 export const schema = object({
-  username: string()
-    .required("Please enter an username")
-    .min(4, "Username must have at least 4 characters")
-    .max(31, "Username must have a maxium of 32 characters")
-    .matches(/^\S*$/, 'Username cannot contain spaces'),
+  name: string()
+    .required("Please enter your name")
+    .min(3, "Name must have at least 4 characters")
+    .max(30, "Name must have a maxium of 30 characters")
+    .matches(/^\S*$/, 'Name cannot contain spaces'),
+
+  lastname: string()
+    .required("Please enter your lastname")
+    .min(3, "Name must have at least 4 characters")
+    .max(30, "Name must have a maxium of 30 characters")
+    .matches(/^\S*$/, 'Lastname cannot contain spaces'),
+
+  phonenumber: number()
+    .required("Please enter your phone number")
+    .integer("Your phone number must be an integer")
+    .min(3, "Your phone must have at least 4 digits"),
 
   email: string()
     .email()

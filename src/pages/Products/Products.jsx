@@ -12,9 +12,9 @@ function Products() {
 
   return (
     <>
-      <Container fluid>
+      <Container fluid className="px-0">
         <NavbarComponent />
-        <Container>
+        <Container className="px-0">
           <Row className="d-flex flex-row justify-content-around mt-3 ">
             {isEmpty() ? (
               <h2 className="paragraph">No hay productos</h2>
@@ -26,6 +26,7 @@ function Products() {
                   <Col xs={8} lg={2} md={6} sm={8} key={_id}>
                     <CardComponent
                       name={name}
+                      product={product}
                       description={description}
                       price={price}
                       image={image}

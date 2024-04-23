@@ -1,9 +1,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useContext } from 'react';
-import { Modal, Button, Form } from 'react-bootstrap';
+import { Modal, Button, Form, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { Formik, ErrorMessage } from 'formik';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
@@ -26,8 +25,6 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
       handleClose();
       showLoginModal();
     } catch (error) {
-      //console.error('Registration error:', error.message);
-      //toast.error('An error occurred while registering the user');
       if (error.response) {
         // Si la respuesta contiene un error
         const errorCode = error.response.status;
@@ -43,40 +40,7 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
       }
     }
   };
-  /*
-  const handleSignUp = async (values) => {
-    try {
-      const response = await fetch('http://localhost:3000/api/auth/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      });
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Respuesta del servidor:', data);
-        await getUsers();
-        handleClose();
-        showLoginModal();
-      } else {
-        const errorData = await response.json();
-        console.log("ERRORDATA", errorData);
-        let errorMessage = 'An unexpected error occurred.';
-        if (errorData && errorData.error && errorData.error.message) {
-          toast.error(errorData.error.message);
-        } else {
-          const errorCode = response.status;
-          errorMessage = errorMessages[errorCode] || errorMessage;
-          toast.error(errorMessage);
-        }
-      }
-    } catch (error) {
-      console.error('Error:', error.message);
-    }
-  };
-*/
   const handleLoginClick = () => {
     handleClose();
     showLoginModal();
@@ -102,7 +66,9 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
           validationSchema={schema}
           onSubmit={handleSignUp}
           initialValues={{
-            username: '',
+            name: '',
+            lastname: '',
+            phonenumber: '',
             email: '',
             password: '',
             confirmPassword: '',
@@ -110,78 +76,123 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
         >
           {({ handleSubmit, handleChange, values }) => (
             <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="formBasicUsername">
-                <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
-                  Username
-                </Form.Label>
-                <Form.Control
-                  className="paragraph"
-                  type="text"
-                  name="username"
-                  value={values.username}
-                  onChange={handleChange}
-                  placeholder="Enter your username"
-                />
-                <ErrorMessage
-                  name="username"
-                  component="div"
-                  className="formik-error-message"
-                />
-              </Form.Group>
-              <Form.Group controlId="formBasicEmail">
-                <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
-                  Email
-                </Form.Label>
-                <Form.Control
-                  className="paragraph"
-                  type="email"
-                  name="email"
-                  value={values.email}
-                  onChange={handleChange}
-                  placeholder="Enter your email"
-                />
-                <ErrorMessage
-                  name="email"
-                  component="div"
-                  className="formik-error-message"
-                />
-              </Form.Group>
-              <Form.Group controlId="formBasicPassword">
-                <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
-                  Password
-                </Form.Label>
-                <Form.Control
-                  className="paragraph"
-                  type="password"
-                  name="password"
-                  value={values.password}
-                  onChange={handleChange}
-                  placeholder="Enter a password"
-                />
-                <ErrorMessage
-                  name="password"
-                  component="div"
-                  className="formik-error-message"
-                />
-              </Form.Group>
-              <Form.Group controlId="formBasicConfirmPassword">
-                <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
-                  Repeat Password
-                </Form.Label>
-                <Form.Control
-                  className="paragraph"
-                  type="password"
-                  name="confirmPassword"
-                  value={values.confirmPassword}
-                  onChange={handleChange}
-                  placeholder="Confirm your password"
-                />
-                <ErrorMessage
-                  name="confirmPassword"
-                  component="div"
-                  className="formik-error-message"
-                />
-              </Form.Group>
+              <Row>
+                <Col>
+                  <Form.Group controlId="formBasicName">
+                    <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
+                      Name
+                    </Form.Label>
+                    <Form.Control
+                      className="paragraph"
+                      type="text"
+                      name="name"
+                      value={values.name}
+                      onChange={handleChange}
+                      placeholder="Enter your name"
+                    />
+                    <ErrorMessage
+                      name="name"
+                      component="div"
+                      className="formik-error-message"
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="formBasicLastname">
+                    <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
+                      Lastname
+                    </Form.Label>
+                    <Form.Control
+                      className="paragraph"
+                      type="text"
+                      name="lastname"
+                      value={values.lastname}
+                      onChange={handleChange}
+                      placeholder="Enter your lastname"
+                    />
+                    <ErrorMessage
+                      name="lastname"
+                      component="div"
+                      className="formik-error-message"
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="formBasicPhoneNumber">
+                    <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
+                      Phone Number
+                    </Form.Label>
+                    <Form.Control
+                      className="paragraph"
+                      type="text"
+                      name="phonenumber"
+                      value={values.phonenumber}
+                      onChange={handleChange}
+                      placeholder="Enter your phone number"
+                    />
+                    <ErrorMessage
+                      name="phonenumber"
+                      component="div"
+                      className="formik-error-message"
+                    />
+                  </Form.Group>
+                </Col>
+
+                <Col>
+                  <Form.Group controlId="formBasicEmail">
+                    <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
+                      Email
+                    </Form.Label>
+                    <Form.Control
+                      className="paragraph"
+                      type="email"
+                      name="email"
+                      value={values.email}
+                      onChange={handleChange}
+                      placeholder="Enter your email"
+                    />
+                    <ErrorMessage
+                      name="email"
+                      component="div"
+                      className="formik-error-message"
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="formBasicPassword">
+                    <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
+                      Password
+                    </Form.Label>
+                    <Form.Control
+                      className="paragraph"
+                      type="password"
+                      name="password"
+                      value={values.password}
+                      onChange={handleChange}
+                      placeholder="Enter a password"
+                    />
+                    <ErrorMessage
+                      name="password"
+                      component="div"
+                      className="formik-error-message"
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="formBasicConfirmPassword">
+                    <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
+                      Repeat Password
+                    </Form.Label>
+                    <Form.Control
+                      className="paragraph"
+                      type="password"
+                      name="confirmPassword"
+                      value={values.confirmPassword}
+                      onChange={handleChange}
+                      placeholder="Confirm your password"
+                    />
+                    <ErrorMessage
+                      name="confirmPassword"
+                      component="div"
+                      className="formik-error-message"
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
 
               <p className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1 mt-4 mb-4">
                 Already have an account?{' '}
@@ -216,3 +227,4 @@ SignUp.propTypes = {
 
 
 export default SignUp;
+
