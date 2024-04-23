@@ -18,43 +18,8 @@ const BookingCard = ({ name, description, teacher, dateAndTime }) => {
 
   return (
     <>
-      {/* <Card
-        style={{ width: "18rem" }}
-        className="mb-5 mt-5 text-center custom-booking-card"
-      >
-        <Card.Body>
-          <ListGroup variant="flush">
-            <ListGroup.Item>
-              <Card.Title className="text-white paragraph mt-1 mb-3 fs-3">
-                Boxing
-              </Card.Title>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Card.Text className="mb-1 mt-1 small-font">
-                Monday at 5 PM
-              </Card.Text>
-              <Card.Text className="mb-1 mt-1 small-font">Instructor</Card.Text>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Card.Text className="small-font description-booking-card mt-1 mb-1">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </Card.Text>
-            </ListGroup.Item>
-          </ListGroup>
-          <Button
-            variant="primary"
-            className="custom-btn-bc small-font fw-bold"
-            onClick={ () => navigate("/class-bookings") }
-          >
-            Reserve
-          </Button>
-        </Card.Body>
-      </Card>
- */}
-      {/* Card con props */}
       <Card
-        style={{ width: "18rem" }}
+        style={{ width: "16rem" }}
         className="mb-5 mt-5 text-center custom-booking-card"
       >
         <Card.Body>
@@ -76,6 +41,7 @@ const BookingCard = ({ name, description, teacher, dateAndTime }) => {
               </Card.Text>
             </ListGroup.Item>
           </ListGroup>
+          <div className="button-container d-flex justify-content-center">
           <Button
             variant="primary"
             className="custom-btn-bc small-font fw-bold"
@@ -83,6 +49,7 @@ const BookingCard = ({ name, description, teacher, dateAndTime }) => {
           >
             Reserve
           </Button>
+          </div>
         </Card.Body>
       </Card>
     </>
