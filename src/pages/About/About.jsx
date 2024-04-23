@@ -2,6 +2,8 @@ import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { FaInstagram, FaFacebook, FaLinkedin, FaGithub } from 'react-icons/fa';
 import NavbarComponent from '../../components/NavbarComponent';
+import FooterComponent from '../../components/FooterComponent';
+import '../../css/Footer/Footer.css';
 const About = () => {
   const teamMembers = [
     {
@@ -101,7 +103,9 @@ const About = () => {
           </Col>
         </Row>
       ))}
+      <FooterComponent />
     </Container>
+
   );
 };
 
