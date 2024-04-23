@@ -6,6 +6,14 @@ import "../../css/ClassBookings/BookingForm.css";
 
 const BookingForm = () => {
   const { classes } = useContext(ClassProvider);
+
+  const formatDateTime = (dateTimeString) => {
+    const date = new Date(dateTimeString);
+    const formattedDate = date.toLocaleDateString();
+    const formattedTime = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    return `${formattedDate} ${formattedTime}`;
+  };
+
   const [selectedClass, setSelectedClass] = useState({});
   const [formData, setFormData] = useState({
     instructor: "",
@@ -14,16 +22,17 @@ const BookingForm = () => {
   });
 
   useEffect(() => {
-    // Inicializar el formulario con la primera clase de la lista
-    if (classes.length > 0) {
+    // Inicializar el formulario solo si no hay clases seleccionadas
+    if (classes.length > 0 && !selectedClass.id) {
       setSelectedClass(classes[0]);
       setFormData({
-        instructor: classes[0]?.teacher || "",
-        day: classes[0]?.dateAndTime || "",
-        time: classes[0]?.dateAndTime || "",
+        instructor: "",
+        day: "",
+        time: "",
       });
     }
-  }, [classes]);
+  }, [classes, selectedClass]);
+  
 
   const handleClassChange = (e) => {
     const classId = parseInt(e.target.value);
@@ -59,13 +68,13 @@ const BookingForm = () => {
           <Form.Group controlId="classSelect">
             <Form.Label>Select a class:</Form.Label>
             <Form.Control as="select" onChange={handleClassChange}>
-              <option value="">Seleccione una clase</option>
-              {classes.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.name} - {c.teacher} - {c.dateAndTime}
-                </option>
-              ))}
-            </Form.Control>
+  <option value="">Seleccione una clase</option>
+  {classes.map((c) => (
+    <option key={c.id} value={c.id}>
+      {c.name} - {c.teacher} - {formatDateTime(c.dateAndTime)}
+    </option>
+  ))}
+</Form.Control>
           </Form.Group>
 
           <Form.Group controlId="instructor">
@@ -79,7 +88,7 @@ const BookingForm = () => {
             />
           </Form.Group>
 
-          <Form.Group controlId="day">
+        {/*   <Form.Group controlId="day">
             <Form.Label>Day</Form.Label>
             <Form.Control
               type="text"
@@ -88,14 +97,14 @@ const BookingForm = () => {
               onChange={handleChange}
               readOnly
             />
-          </Form.Group>
+          </Form.Group> */}
 
           <Form.Group controlId="time">
-            <Form.Label>Time</Form.Label>
+            <Form.Label>Day and Time</Form.Label>
             <Form.Control
               type="text"
               name="time"
-              value={formData.time}
+              value={formatDateTime(formData.time)}
               onChange={handleChange}
               readOnly
             />

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useState } from 'react';
-import { Table, Button, Modal } from 'react-bootstrap';
+import { Table, Button, Modal, Pagination } from 'react-bootstrap';
 import { ProductsProvider } from '../../context/ProductsContext';
 import FormProducts from '../Form/FormProducts';
 
@@ -9,6 +9,9 @@ function TableProducts() {
   const [show, setShow] = useState(false);
   const [editProducts, setEditProducts] = useState(null);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(6);
+
   const handleClose = () => setShow(false);
 
   const handleEdit = (product) => {
@@ -16,12 +19,20 @@ function TableProducts() {
     setShow(true);
   };
 
+  // Calcular los índices de los elementos a mostrar en la página actual
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Cambiar de página
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   const isEmpty = () => products.length === 0;
 
   return (
     <>
       <div className="text-star bg-dark text-white rounded-top-4 py-1">
-        <h3 className="subtitle ps-3 mt-1 pt-1 my-0 ">Table Products</h3>
+        <h3 className="subtitle ps-3 mt-1 pt-1 my-0 ">Gym Products</h3>
       </div>
       <Table className="mb-0">
         <thead>
@@ -41,19 +52,16 @@ function TableProducts() {
               </td>
             </tr>
           ) : (
-            products.map((product, index) => {
+            currentItems.map((product, index) => {
+              const rowIndex = index + indexOfFirstItem;
               const { name, price, _id, description } = product;
 
               return (
                 <tr key={_id} className="paragraph fw-bold ">
-                  <td className="bg-dark text-light border-0 pt-3">{index}</td>
+                  <td className="bg-dark text-light border-0 pt-3">{rowIndex + 1}</td>
                   <td className="bg-dark text-light border-0 pt-3">{name}</td>
-                  <td className="bg-dark text-light border-0 pt-3">
-                    {description}
-                  </td>
-                  <td className="bg-dark text-light border-0 pt-3">
-                    $ {price}
-                  </td>
+                  <td className="bg-dark text-light border-0 pt-3">{description}</td>
+                  <td className="bg-dark text-light border-0 pt-3">$ {price}</td>
                   <td className=" bg-dark text-light border-0">
                     <div className="d-flex flex-row justify-content-around">
                       <Button
@@ -95,6 +103,7 @@ function TableProducts() {
         </tbody>
       </Table>
 
+      {/* Form edit product */}
       <div className="rounded-5 p-0">
         <Modal
           show={show}
@@ -103,15 +112,22 @@ function TableProducts() {
           contentClassName="bg-transparent p-0 border-0"
         >
           <Modal.Body className="bg-transparent rounded-5 border-0 p-0 ">
-            {editProducts && (
-              <FormProducts
-                editProducts={editProducts}
-                handleClose={handleClose}
-              />
-            )}
+            <FormProducts
+              editProducts={editProducts}
+              handleClose={handleClose}
+            />
           </Modal.Body>
         </Modal>
       </div>
+
+      {/* Pagination */}
+      <Pagination className="justify-content-center mt-4 paragraph">
+        {Array.from({ length: Math.ceil(products.length / itemsPerPage) }).map((_, index) => (
+          <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
+            {index + 1}
+          </Pagination.Item>
+        ))}
+      </Pagination>
     </>
   );
 }

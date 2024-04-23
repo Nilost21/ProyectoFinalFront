@@ -160,6 +160,7 @@ const SignIn = ({ show, handleClose, showRegisterModal }) => {
                 Close
               </Button>
               <Button
+                type="submit"
                 className="gradient-background border-0 rounded-5 subtitle py-1 mt-1 shadow-on-hover w-25"
                 onClick={handleSignIn}
               >

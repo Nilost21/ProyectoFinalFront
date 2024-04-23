@@ -1,9 +1,13 @@
 import { Card } from 'react-bootstrap';
+import { useContext } from 'react';
+import { CartProvider } from '../context/CartContext';
 import './../css/Card.css';
 import ButtonComponent from './ButtonComponent';
 import PropTypes from 'prop-types';
 
-function CardComponent({ name, description, func, price, image }) {
+function CardComponent({ name, description, product, price, image }) {
+  const { addToCart } = useContext(CartProvider);
+
   return (
     <>
       <Card
@@ -21,7 +25,10 @@ function CardComponent({ name, description, func, price, image }) {
           <Card.Title className="subtitle mt-1">{name}</Card.Title>
           <Card.Text className="paragraph ">{description}</Card.Text>
           <div className="d-flex justify-content-around">
-            <ButtonComponent text="Go somewhere" onClick={func} />
+            <ButtonComponent
+              text="Go somewhere"
+              onClick={() => addToCart(product)}
+            />
             <Card.Text className="subtitle fs-2  me-1">${price}</Card.Text>
           </div>
         </Card.Body>
@@ -33,7 +40,7 @@ function CardComponent({ name, description, func, price, image }) {
 CardComponent.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  func: PropTypes.func,
+  product: PropTypes.object.isRequired,
   price: PropTypes.number,
   image: PropTypes.string,
 };

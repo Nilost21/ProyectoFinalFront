@@ -1,105 +1,175 @@
-import { useContext, useEffect, useState } from 'react';
-import { Modal, Button, Form } from 'react-bootstrap';
-import PropTypes from 'prop-types';
-import Swal from 'sweetalert2';
-
-import { UsersProvider } from '../../context/UsersContext';
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+import { Button, Form } from 'react-bootstrap';
 import './../../css/Form.css';
+import { useState, useContext } from 'react';
+import { UsersProvider } from '../../context/UsersContext';
+import { v4 as uuidv4 } from 'uuid';
+import Swal from 'sweetalert2';
+import PropTypes from 'prop-types';
 
-const FormEditUser = ({ show, handleClose, userId, updateUserList }) => {
-  const { getUser, editUser } = useContext(UsersProvider);
+function FormEditUser({ updateUser, handleClose }) {
+  const { createUser, editUser } = useContext(UsersProvider);
 
-  const [formData, setFormData] = useState({
-    username: '',
-    email: ''
+  const [users, setUsers] = useState({
+    id: updateUser ? updateUser._id : uuidv4(),
+    name: updateUser ? updateUser.name : '',
+    lastname: updateUser ? updateUser.lastname : '',
+    phonenumber: updateUser ? updateUser.phonenumber : '',
+    email: updateUser ? updateUser.email : '',
   });
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        if (userId) {
-          const user = await getUser(userId);
-          console.log("#️⃣ User Id", userId);
-          console.log("💁 User ", user);
-          setFormData({
-            username: user.username,
-            email: user.email
-          });
-        }
-      } catch (error) {
-        console.error('Error:', error.message);
-      }
-    };
-    fetchUser();
-  }, [getUser, userId]);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevFormData => ({
-      ...prevFormData,
-      [name]: value
-    }));
+  const handleChange = (e) => {
+    setUsers({
+      ...users,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const handleEdit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      await editUser(userId, formData);
-      updateUserList();
+
+    if (updateUser) {
+      editUser(users);
       handleClose();
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Success!',
-        text: 'User edited successfully.',
-        timer: 2000,
-        showConfirmButton: false
-      });
-    } catch (error) {
-      console.error('Error:', error.message);
+    } else {
+      createUser(users);
     }
+
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'User Checked',
+      showConfirmButton: false,
+      timer: 1500,
+    });
+
+    setUsers({
+      id: uuidv4(),
+      name: '',
+      lastname: '',
+      phonenumber: '',
+      email: '',
+    });
   };
 
   return (
-    <Modal show={show} onHide={handleClose} contentClassName="bg-transparent border-0 p-0" centered>
-      <Modal.Header className="text-star bg-dark shadow-box text-white rounded-top-4 py-1 border-0" closeButton>
-        <Modal.Title className="subtitle ps-3 mt-2 pt-1 my-0">Edit user</Modal.Title>
-      </Modal.Header>
-      <Modal.Body className="gradient-bg shadow-box text-light pb-3 px-4  rounded-bottom-4">
-        <Form>
-          <Form.Group controlId="formBasicUserId">
-            <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">User ID</Form.Label>
-            <Form.Control className="paragraph bg-dark text-white" type="text" name="userId" value={userId || ''} readOnly />
-          </Form.Group>
+    <>
+      <div className="text-star bg-dark shadow-box text-white rounded-top-4 py-1">
+        <h3 className="subtitle ps-3 mt-2 pt-1 my-0 ">Gym user</h3>
+      </div>
+      <Form
+        onSubmit={handleSubmit}
+        className=" gradient-bg shadow-box text-light rounded-bottom-3 pb-3 px-4 rounded-bottom-4"
+      >
+        <Form.Group className="mb-1 pt-1">
+          <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2  ps-1">
+            Name
+          </Form.Label>
+          <Form.Control
+            className="paragraph"
+            type="text"
+            value={users.name}
+            onChange={handleChange}
+            name="name"
+            placeholder="Enter the user name"
+          />
+        </Form.Group>
 
-          <Form.Group controlId="formBasicUsername">
-            <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">Username</Form.Label>
-            <Form.Control className="paragraph" type="text" name="username" value={formData.username} onChange={handleInputChange} placeholder="Enter an username" />
-          </Form.Group>
+        <Form.Group className="mb-1 pt-1">
+          <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2  ps-1">
+            Lastname
+          </Form.Label>
+          <Form.Control
+            className="paragraph"
+            type="text"
+            value={users.lastname}
+            onChange={handleChange}
+            name="lastnamename"
+            placeholder="Enter the user lastname"
+          />
+        </Form.Group>
 
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">Email</Form.Label>
-            <Form.Control className="paragraph" type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="Enter an email" />
-          </Form.Group>
+        <Form.Group className="mb-1 pt-1">
+          <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2  ps-1">
+            Phone number
+          </Form.Label>
+          <Form.Control
+            className="paragraph"
+            type="text"
+            value={users.phonenumber}
+            onChange={handleChange}
+            name="phonenumber"
+            placeholder="Enter the user phone"
+          />
+        </Form.Group>
 
-          <Button className="gradient-background border-0 rounded-5 subtitle py-1 mt-4 shadow-on-hover w-25" onClick={handleClose}>
-            Close
-          </Button>
-          <Button className="gradient-background border-0 rounded-5 subtitle py-1 mt-4 shadow-on-hover w-25" onClick={handleEdit}>
-            Edit
-          </Button>
-        </Form>
-      </Modal.Body>
-    </Modal>
+        <Form.Group className="mb-1 pt-1">
+          <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2  ps-1">
+            Email
+          </Form.Label>
+          <Form.Control
+            className="paragraph"
+            type="email"
+            value={users.email}
+            onChange={handleChange}
+            name="email"
+            placeholder="Enter the user email"
+          />
+        </Form.Group>
+
+        {updateUser ? (
+          <div className="mt-1">
+            <Button
+              className="gradient-background border-0 rounded-5 subtitle py-1 mt-1 shadow-on-hover w-100"
+              type="submit"
+            >
+              Edit User{' '}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                className="bi bi-arrow-right-short mt-1 pe-0"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"
+                />
+              </svg>
+            </Button>
+          </div>
+        ) : (
+          <div className="mt-1">
+            <Button
+              className="gradient-background border-0 rounded-5 subtitle py-1 mt-3 shadow-on-hover w-100"
+              type="submit"
+            >
+              Add User{' '}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                className="bi bi-arrow-right-short mt-1 pe-0"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"
+                />
+              </svg>
+            </Button>
+          </div>
+        )}
+      </Form>
+    </>
   );
 }
 
 FormEditUser.propTypes = {
-  show: PropTypes.bool,
+  updateUser: PropTypes.object,
   handleClose: PropTypes.func,
-  userId: PropTypes.string,
-  editUser: PropTypes.func,
-  updateUserList: PropTypes.func
 };
-
 export default FormEditUser;

@@ -1,11 +1,14 @@
-import { Button, Card, Container, Col, Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
+import './../../css/NutritionComponent.css';
 
 const FoodComponent = () => {
   return (
     <>
       <div>
         <Col xs={3} className="d-flex justify-content-center align-items-center">
-          <img src="https://i.pinimg.com/564x/98/6e/80/986e8020d901fe1c313e9460495ec5c3.jpg" alt="Imagen" className="img-fluid rounded-circle" />
+          <img src="https://i.pinimg.com/564x/98/6e/80/986e8020d901fe1c313e9460495ec5c3.jpg"
+            alt="Imagen"
+            className="img-fluid rounded-circle" />
         </Col>
         <Col xs={9} className="d-flex align-items-center">
           <div>
@@ -17,6 +20,6 @@ const FoodComponent = () => {
       </div>
     </>
   )
-}
+};
 
-export default FoodComponent
+export default FoodComponent;

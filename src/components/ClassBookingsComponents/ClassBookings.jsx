@@ -9,7 +9,17 @@ import { ClassProvider } from '../../context/ClassContex';
 function ClassBookings() {
   const { classes } = useContext(ClassProvider);
 
+   // Función para formatear la fecha y hora al formato deseado
+   const formatDateTime = (dateTimeString) => {
+    const date = new Date(dateTimeString);
+    const formattedDate = date.toLocaleDateString();
+    const formattedTime = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    return `${formattedDate} ${formattedTime}`;
+  };
+
   const isEmpty = () => classes.length === 0;
+
+  
 
   return (
     <>
@@ -27,7 +37,7 @@ function ClassBookings() {
                       name={name}
                       description={description}
                       teacher={teacher}
-                      dateAndTime={dateAndTime}
+                      dateAndTime={formatDateTime(dateAndTime)}
                     />
                   </Col>
                 );

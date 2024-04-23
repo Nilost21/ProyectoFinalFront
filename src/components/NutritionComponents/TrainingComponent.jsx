@@ -14,9 +14,9 @@ const TrainingComponent = () => {
           </Col>
           <Col xs={9} className="d-flex align-items-center">
             <div>
-              <p className="mt-4 mt-md-5 custom-title">Training</p>
-              <h2 className="text-white titles mb-md-3 fs-4">How to stay fit in winter?</h2>
-              <p className="text-white-50 mt-md-4 custom-text">
+              <p className="mt-4 mt-md-5 custom-title paragraph fs-5">Training</p>
+              <h2 className="text-white mb-md-3 fs-3 paragraph">How to stay fit in winter?</h2>
+              <p className="text-white-50 mt-md-4 custom-text small-font">
                 In this article, we will show you tips on how to stay in shape during the winter. Check and share!
               </p>
             </div>
@@ -32,9 +32,9 @@ const TrainingComponent = () => {
           </Col>
           <Col xs={9} className="d-flex align-items-center">
             <div>
-              <p className="mt-4 mt-md-5 custom-title">Healthy food</p>
-              <h2 className="text-white titles mb-md-3 fs-4">Required for dinner</h2>
-              <p className="text-white-50 mt-md-4 custom-text pe-md-5">A recipe for quick and effective preparation of dinner. In this article, you will learn some recipes for delicious dinner dishes. For work or maybe at home? Take them with you!</p>
+              <p className="mt-4 mt-md-5 custom-title paragraph fs-5">Healthy food</p>
+              <h2 className="text-white mb-md-3 fs-3 paragraph">Required for dinner</h2>
+              <p className="text-white-50 mt-md-4 pe-md-5 custom-text small-font">A recipe for quick and effective preparation of dinner. In this article, you will learn some recipes for delicious dinner dishes. For work or maybe at home? Take them with you!</p>
             </div>
           </Col>
         </Row>
