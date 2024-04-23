@@ -23,7 +23,7 @@
 }
 
 .text-shadow:hover {
-  text-shadow: 1px 1px 2px rgba(109, 107, 107, 0.9);
+  text-shadow: 0 0 2.5px #b665ec;
 }
 
 .text-animation {
@@ -34,12 +34,18 @@
   transform: scale(1.05);
 }
 
-
 .text-gradient {
   color: linear-gradient(to right, #7E61DD, #8F5EAF);
 }
 
-
 .nav-dropdown-title {
   color: white !important;
+}
+
+.navbar-button:hover {
+  transform: scale(1.1);
+}
+
+.navbar-button {
+  transition: transform 0.3s ease;
 }

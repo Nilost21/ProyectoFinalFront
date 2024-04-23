@@ -1,46 +1,55 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useState } from 'react';
 import { Table, Button, Modal, Pagination } from 'react-bootstrap';
-import { ProductsProvider } from '../../context/ProductsContext';
-import FormProducts from '../Form/FormProducts';
+import { ClassProvider } from '../../context/ClassContex';
+import FormNewClass from '../Form/FormNewClass';
 
-function TableProducts() {
-  const { products, deleteProducts } = useContext(ProductsProvider);
+function TableClasses() {
+  const { classes, deleteClass } = useContext(ClassProvider);
   const [show, setShow] = useState(false);
-  const [editProducts, setEditProducts] = useState(null);
+  const [editClasses, setEditClasses] = useState(null);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(6);
+  const [itemsPerPage] = useState(5);
 
   const handleClose = () => setShow(false);
 
-  const handleEdit = (product) => {
-    setEditProducts(product);
+  const handleEdit = (c) => {
+    setEditClasses(c);
     setShow(true);
+  };
+
+  // Función para formatear la fecha y hora al formato deseado
+  const formatDateTime = (dateTimeString) => {
+    const date = new Date(dateTimeString);
+    const formattedDate = date.toLocaleDateString();
+    const formattedTime = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    return `${formattedDate} ${formattedTime}`;
   };
 
   // Calcular los índices de los elementos a mostrar en la página actual
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = classes.slice(indexOfFirstItem, indexOfLastItem);
 
   // Cambiar de página
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const isEmpty = () => products.length === 0;
+  const isEmpty = () => classes.length === 0;
 
   return (
     <>
       <div className="text-star bg-dark text-white rounded-top-4 py-1">
-        <h3 className="subtitle ps-3 mt-1 pt-1 my-0 ">Gym Products</h3>
+        <h3 className="subtitle ps-3 mt-1 pt-1 my-0 ">Gym Classes</h3>
       </div>
       <Table className="mb-0">
         <thead>
           <tr className="subtitle">
             <th>Index</th>
-            <th className="pe-5">Name</th>
+            <th>Name</th>
             <th>Description</th>
-            <th>Price</th>
+            <th>Teacher</th>
+            <th>Date and time</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -48,24 +57,25 @@ function TableProducts() {
           {isEmpty() ? (
             <tr>
               <td colSpan="4">
-                <h3 className="paragraph">No se encontraron usuarios</h3>
+                <h3 className="paragraph">No classes found</h3>
               </td>
             </tr>
           ) : (
-            currentItems.map((product, index) => {
+            currentItems.map((c, index) => {
               const rowIndex = index + indexOfFirstItem;
-              const { name, price, _id, description } = product;
+              const { _id, name, description, teacher, dateAndTime } = c;
 
               return (
                 <tr key={_id} className="paragraph fw-bold ">
                   <td className="bg-dark text-light border-0 pt-3">{rowIndex + 1}</td>
                   <td className="bg-dark text-light border-0 pt-3">{name}</td>
                   <td className="bg-dark text-light border-0 pt-3">{description}</td>
-                  <td className="bg-dark text-light border-0 pt-3">$ {price}</td>
+                  <td className="bg-dark text-light border-0 pt-3">{teacher}</td>
+                  <td className="bg-dark text-light border-0 pt-3">{formatDateTime(dateAndTime)}</td>
                   <td className=" bg-dark text-light border-0">
                     <div className="d-flex flex-row justify-content-around">
                       <Button
-                        onClick={() => handleEdit(product)}
+                        onClick={() => handleEdit(c)}
                         className="bg-secondary border-0 text-dark me-3"
                       >
                         <svg
@@ -80,7 +90,7 @@ function TableProducts() {
                         </svg>
                       </Button>
                       <Button
-                        onClick={() => deleteProducts(_id)}
+                        onClick={() => deleteClass(_id)}
                         className="bg-danger border-0 text-dark"
                       >
                         <svg
@@ -103,7 +113,7 @@ function TableProducts() {
         </tbody>
       </Table>
 
-      {/* Form edit product */}
+      {/* Form edit class */}
       <div className="rounded-5 p-0">
         <Modal
           show={show}
@@ -112,8 +122,8 @@ function TableProducts() {
           contentClassName="bg-transparent p-0 border-0"
         >
           <Modal.Body className="bg-transparent rounded-5 border-0 p-0 ">
-            <FormProducts
-              editProducts={editProducts}
+            <FormNewClass
+              editClass={editClasses}
               handleClose={handleClose}
             />
           </Modal.Body>
@@ -122,7 +132,7 @@ function TableProducts() {
 
       {/* Pagination */}
       <Pagination className="justify-content-center mt-4 paragraph">
-        {Array.from({ length: Math.ceil(products.length / itemsPerPage) }).map((_, index) => (
+        {Array.from({ length: Math.ceil(classes.length / itemsPerPage) }).map((_, index) => (
           <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
             {index + 1}
           </Pagination.Item>
@@ -131,4 +141,4 @@ function TableProducts() {
     </>
   );
 }
-export default TableProducts;
+export default TableClasses;
