@@ -23,7 +23,7 @@ function CardFlex() {
               xl={3}
               className="d-flex flex-column justify-content-end pe-xl-5 mt-0 mt-xxl-0 ps-xl-3"
             >
-              <Card.Text className="paragraph fs-5 mt-5 text-gray pt-md-0 pt-xxl-5  pe-xl-2 ">
+              <Card.Text className="paragraph fs-5 mt-5 text-gray pt-md-0 pt-xxl-5  pe-xl-2">
                 We have been creating and implementing projects for many years
                 all over the wold, we have hundreds of satisfaced customers
               </Card.Text>

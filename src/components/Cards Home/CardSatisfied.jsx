@@ -12,7 +12,7 @@ function CardSatisfied() {
         </Card.Title>
         <Card.Body className="pt-1">
           <div className="p-0">
-            <Button className="bg-transparent py-1 mb-1 border-0 d-flex flex-row justify-content-around ">
+            <Button className="bg-transparent py-1 mb-1 border-0 d-flex flex-row justify-content-around">
               <StarSVG />
               <StarSVG />
               <StarSVG />

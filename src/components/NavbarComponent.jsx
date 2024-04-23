@@ -37,6 +37,10 @@ function NavbarComponent() {
     navigate('/admin');
   };
 
+  const handleClassesButton = () => {
+    navigate('/classes')
+  };
+
   return (
     <>
       <Navbar
@@ -78,6 +82,7 @@ function NavbarComponent() {
                 <>
                   {user &&
                     user.isAdmin && ( // Si el usuario tiene rol ADMIN, muestra el botón
+
                       <Nav.Link
                         onClick={handleAdminButton}
                         className="subtitle mt-1 text-light text-shadow"
@@ -85,6 +90,16 @@ function NavbarComponent() {
                         Admin Management
                       </Nav.Link>
                     )}
+                  {
+                    user && user.isAdmin && ( // Mostrar el botón "Classes" solo si el usuario es administrador
+                      <Nav.Link
+                        onClick={handleClassesButton}
+                        className="subtitle mt-1 text-light text-shadow"
+                      >
+                        Classes
+                      </Nav.Link>
+                    )
+                  }
                   <Nav.Link
                     onClick={handleLogout}
                     className="subtitle mt-1 text-light"

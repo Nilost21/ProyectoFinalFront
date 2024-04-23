@@ -8,7 +8,7 @@ import "../../css/ClassBookings/BookingCard.css";
 
 import { useNavigate } from "react-router-dom";
 
-const BookingCard = ({ name, hour, date, instructor, description }) => {
+const BookingCard = ({ name, description, teacher, dateAndTime }) => {
 
   const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ const BookingCard = ({ name, hour, date, instructor, description }) => {
 
   return (
     <>
-      <Card
+      {/* <Card
         style={{ width: "18rem" }}
         className="mb-5 mt-5 text-center custom-booking-card"
       >
@@ -51,7 +51,7 @@ const BookingCard = ({ name, hour, date, instructor, description }) => {
           </Button>
         </Card.Body>
       </Card>
-
+ */}
       {/* Card con props */}
       <Card
         style={{ width: "18rem" }}
@@ -61,20 +61,18 @@ const BookingCard = ({ name, hour, date, instructor, description }) => {
           <ListGroup variant="flush">
             <ListGroup.Item>
               <Card.Title className="text-white paragraph mt-1 mb-3 fs-3">
-              {name}name
+              {name}
               </Card.Title>
             </ListGroup.Item>
             <ListGroup.Item>
               <Card.Text className="mb-1 mt-1 small-font">
-              {date} at {hour}date at hour
+              {dateAndTime}
               </Card.Text>
-              <Card.Text className="mb-1 mt-1 small-font">{instructor}Instructor</Card.Text>
+              <Card.Text className="mb-1 mt-1 small-font">{teacher}</Card.Text>
             </ListGroup.Item>
             <ListGroup.Item>
               <Card.Text className="small-font description-booking-card mt-1 mb-1">
               {description}
-              Some quick example text to build on the card title and make up
-                the bulk of the card's content.
               </Card.Text>
             </ListGroup.Item>
           </ListGroup>

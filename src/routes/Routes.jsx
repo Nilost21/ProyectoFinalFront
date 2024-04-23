@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home";
 import Admin from "../pages/Admin/Admin";
 import Products from "../pages/Products/Products";
 import Profile from '../pages/Profile/Profile';
+import AdminClass from '../pages/Admin/AdminClass';
 
 
 import ClassPlan from "../pages/Plans/ClassPlan";
@@ -36,6 +37,7 @@ const RoutesPages = () => {
         <Route path="/*" element={<h1 className="title text-light mt-3 ">NOT FOUND</h1>} />
         <Route element={<PrivateRoute />}>
           <Route path="/admin" element={<Admin />} isAdminRoute={true} />
+          <Route path="/classes" element={<AdminClass />} isAdminRoute={true} />
           <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes >

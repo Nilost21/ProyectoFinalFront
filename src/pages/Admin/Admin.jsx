@@ -36,7 +36,7 @@ function Admin() {
         <Row className="p-0 pe-5 pb-5 pb-md-0">
           <NavbarComponent />
         </Row>
-        <h1 className="title ms-5 ps-3 mt-3 text-center">Admin management</h1>
+        <h1 className="title ms-5 ps-3 mt-3 text-center text-white-50 fs-2">Admin management</h1>
         <Container>
           <Row className="d-flex flex-row justify-content-between px-xs-3">
             <Col xl={3} xs={12}>
