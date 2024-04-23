@@ -1,11 +1,15 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { UsersProvider } from '../../context/UsersContext';
 import { Table, Button } from 'react-bootstrap';
 
 import PropTypes from 'prop-types';
 
 function TableUsers({ onEdit, onDelete }) {
-  const { users } = useContext(UsersProvider);
+  const { users, getUsers } = useContext(UsersProvider);
+
+  useEffect(() => {
+    getUsers();
+  }, [getUsers]);
 
   const isEmpty = () => users.length === 0;
 
@@ -22,7 +26,7 @@ function TableUsers({ onEdit, onDelete }) {
             <th>Username</th>
             <th>Email</th>
             <th>Role</th>
-            <th className=''>Actions</th>
+            <th className="">Actions</th>
           </tr>
         </thead>
         <tbody className="rounded-bottom-5">
@@ -39,10 +43,15 @@ function TableUsers({ onEdit, onDelete }) {
               const adminClass = isAdmin ? 'text-danger' : 'text-secondary';
 
               return (
-                <tr key={`${_id}-${username}`} className="paragraph fw-bold text-center">
+                <tr
+                  key={`${_id}-${username}`}
+                  className="paragraph fw-bold text-center"
+                >
                   <td className="bg-dark text-light border-0 pt-3">{index}</td>
                   <td className="bg-dark text-light border-0 pt-3">{_id}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{username}</td>
+                  <td className="bg-dark text-light border-0 pt-3">
+                    {username}
+                  </td>
                   <td className="bg-dark text-light border-0 pt-3">{email}</td>
                   <td className={`${adminClass} bg-dark border-0 pt-3`}>
                     {checkAdmin}
@@ -50,7 +59,8 @@ function TableUsers({ onEdit, onDelete }) {
                   <td className="d-flex flex-row justify-content-around bg-dark text-light border-0">
                     <Button
                       className="bg-secondary border-0 text-dark me-3"
-                      onClick={() => onEdit(_id)}>
+                      onClick={() => onEdit(_id)}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -80,7 +90,6 @@ function TableUsers({ onEdit, onDelete }) {
                         <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5" />
                       </svg>
                     </Button>
-
                   </td>
                 </tr>
               );
