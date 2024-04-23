@@ -9,8 +9,8 @@ const Error404 = () => {
         <Row className="justify-content-center text-center text-white">
           <Col xs={12} sm={6} md={6} lg={6} xl={6} className="mb-4 mb-sm-0">
             <img
-              src="https://img.freepik.com/vector-premium/cute-red-panda-lifting-dumbbell-gym-fitness-dibujos-animados-vector-icono-ilustracion-deporte-animal-aislado_138676-6140.jpg?w=2000"
-              alt="Red panda lifting dumbbell"
+              src="https://img.freepik.com/vector-premium/cute-red-panda-lifting-dumbbell-gym-fitness-dibujos-animados-vector-icono-ilustracion-deporte-animal-aislado_138676-6140.jpg" 
+              alt="img-error404"
               className="img-fluid"
               style={{ maxWidth: '300px' }}
             />
@@ -18,7 +18,7 @@ const Error404 = () => {
           <Col xs={12} sm={6} md={6} lg={6} xl={6}>
             <h1 className='title'>Error 404</h1>
             <h3 className='subtitle'>¡Ups! Parece que te has perdido un poco.</h3>
-            <h3 className='subtitle'>No te preocupes, puedes volver al inicio haciendo clic en el botón de abajo.</h3>
+            <h3 className='subtitle'>puedes volver al inicio haciendo clic en el botón de abajo.</h3>
             <Link to="/">
               <Button 
                 variant="outline-light" 
