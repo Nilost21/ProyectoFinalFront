@@ -15,8 +15,11 @@ import Home from './pages/Home/Home';
 import AdminProducts from './pages/Admin/AdminProducts';
 import Products from './pages/Products/Products';
 import Profile from './pages/Profile/Profile';
+import Error404 from './pages/Error404/Error404';
+
 import AdminClass from './pages/Admin/AdminClass';
 import AdminUsers from './pages/Admin/AdminUsers';
+
 
 
 function App() {
@@ -24,7 +27,7 @@ function App() {
   const routes = [
     {
       path: "*",
-      element: <PublicRoute><h1 className="title text-light mt-3 ">Not found</h1></PublicRoute>
+      element: <PublicRoute><Error404 /></PublicRoute>
     },
     {
       path: "/",
