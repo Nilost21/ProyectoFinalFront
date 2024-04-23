@@ -9,6 +9,7 @@ import Error404 from '../pages/Error404/Error404';
 import ClassPlan from "../pages/Plans/ClassPlan";
 import MusclePlan from "../pages/Plans/MusclePlan";
 import FullPlan from "../pages/Plans/FullPlan";
+import BookingPage from "../pages/ClassBookings/BookingPage";
 
 const RoutesPages = () => {
   return (
@@ -19,13 +20,17 @@ const RoutesPages = () => {
         <Route path="/*" element={<Error404 />} />
 
         {/* Rutas para paginas de planes */}        
-        <Route path="/class-plan" element={<ClassPlan />} />
+        <Route path="/class-plan" element={<ClassPlan/>} />
         <Route path="/muscle-plan" element={<MusclePlan />} />
         <Route path="/full-plan" element={<FullPlan />} />
         {/* Fin rutas para paginas de planes */}
+
+        {/* Ruta para page de reserva */}
+        <Route path="/class-bookings" element={<BookingPage/>} />
+        {/* Fin de ruta de page de reserva */}
         
       
-        <Route path="/*" element={<h1 className="title text-light mt-3 ">NOT FOUND</h1>} />
+        <Route path="/*" element={<Error404 />} />
         <Route element={<PrivateRoute />}>
           <Route path="/admin" element={<Admin />} isAdminRoute={true} />
           <Route path="/profile" element={<Profile />} />
