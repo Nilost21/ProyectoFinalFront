@@ -266,7 +266,6 @@ function NavbarComponent() {
               )}
               {/* Fin carrito */}
 
-
             </Nav>
             <Nav className="pe-4">
               {isLoggedIn ? (

@@ -1,0 +1,11 @@
+.editable-column {
+  width: 500px;
+}
+
+.pagination .page-link.active {
+  background-color: #212529 !important;
+}
+
+.pagination .page-link {
+  color: #212529;
+}

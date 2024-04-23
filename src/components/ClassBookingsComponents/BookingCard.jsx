@@ -1,57 +1,54 @@
-{
-  /* esqueleto de cards */
-}
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import ListGroup from "react-bootstrap/ListGroup";
-import "../../css/ClassBookings/BookingCard.css";
+/* eslint-disable no-unused-vars */
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import ListGroup from 'react-bootstrap/ListGroup';
+import { useContext } from 'react';
+import PropTypes from 'prop-types';
+import Swal from 'sweetalert2';
 
-import { useNavigate } from "react-router-dom";
+import { EnrollmentProvider } from '../../context/EnrollmentContext';
+import { ClassProvider } from '../../context/ClassContex';
+import { useAuth } from '../../context/Utils/authUtils';
 
-const BookingCard = ({ name, description, teacher, dateAndTime }) => {
+import '../../css/ClassBookings/BookingCard.css';
 
-  const navigate = useNavigate();
 
-  /* const handleBookingPage = () => {
-    navigate(`/class-bookings`);
-  }; */
+const BookingCard = ({ classId, name, description, teacher, dateAndTime }) => {
+
+  const { newEnrollment } = useContext(EnrollmentProvider);
+
+  const { isLoggedIn, user } = useAuth();
+
+  const handleEnroll = async () => {
+    try {
+      if (!isLoggedIn) {
+        console.log("USUARIO NO LOGUEADO")
+        return;
+      }
+      console.log("🇲🇻 User - BOOKINGCARD COMPONENT", user);
+      console.log("🍯 ClassId - BOOKINGCARD COMPONENT", classId);
+      await newEnrollment({ userId: user.id, classId });
+
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Successfully enrolled in the class!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } catch (error) {
+      console.log('Error enrolling in class:', error);
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Error enrolling in class',
+        text: error.message || error,
+      });
+    }
+  };
 
   return (
     <>
-      {/* <Card
-        style={{ width: "18rem" }}
-        className="mb-5 mt-5 text-center custom-booking-card"
-      >
-        <Card.Body>
-          <ListGroup variant="flush">
-            <ListGroup.Item>
-              <Card.Title className="text-white paragraph mt-1 mb-3 fs-3">
-                Boxing
-              </Card.Title>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Card.Text className="mb-1 mt-1 small-font">
-                Monday at 5 PM
-              </Card.Text>
-              <Card.Text className="mb-1 mt-1 small-font">Instructor</Card.Text>
-            </ListGroup.Item>
-            <ListGroup.Item>
-              <Card.Text className="small-font description-booking-card mt-1 mb-1">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </Card.Text>
-            </ListGroup.Item>
-          </ListGroup>
-          <Button
-            variant="primary"
-            className="custom-btn-bc small-font fw-bold"
-            onClick={ () => navigate("/class-bookings") }
-          >
-            Reserve
-          </Button>
-        </Card.Body>
-      </Card>
- */}
       {/* Card con props */}
       <Card
         style={{ width: "18rem" }}
@@ -61,25 +58,25 @@ const BookingCard = ({ name, description, teacher, dateAndTime }) => {
           <ListGroup variant="flush">
             <ListGroup.Item>
               <Card.Title className="text-white paragraph mt-1 mb-3 fs-3">
-              {name}
+                {name}
               </Card.Title>
             </ListGroup.Item>
             <ListGroup.Item>
               <Card.Text className="mb-1 mt-1 small-font">
-              {dateAndTime}
+                {dateAndTime}
               </Card.Text>
               <Card.Text className="mb-1 mt-1 small-font">{teacher}</Card.Text>
             </ListGroup.Item>
             <ListGroup.Item>
               <Card.Text className="small-font description-booking-card mt-1 mb-1">
-              {description}
+                {description}
               </Card.Text>
             </ListGroup.Item>
           </ListGroup>
           <Button
             variant="primary"
             className="custom-btn-bc small-font fw-bold"
-            onClick={ () => navigate("/class-bookings") }
+            onClick={handleEnroll}
           >
             Reserve
           </Button>
@@ -87,6 +84,14 @@ const BookingCard = ({ name, description, teacher, dateAndTime }) => {
       </Card>
     </>
   );
+};
+
+BookingCard.propTypes = {
+  classId: PropTypes.string,
+  name: PropTypes.string,
+  description: PropTypes.string,
+  teacher: PropTypes.string,
+  dateAndTime: PropTypes.string
 };
 
 export default BookingCard;

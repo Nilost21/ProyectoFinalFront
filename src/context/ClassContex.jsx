@@ -19,6 +19,16 @@ function ClassContext({ children }) {
     }
   };
 
+  const getClass = async (id) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/api/class/${id}`);
+      const data = response.data;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const addClass = async (newClass) => {
     try {
       const response = await axios.post(
@@ -77,6 +87,7 @@ function ClassContext({ children }) {
       value={{
         classes,
         addClass,
+        getClass,
         deleteClass,
         updateClass,
         getClasses
