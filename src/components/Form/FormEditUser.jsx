@@ -47,9 +47,9 @@ function FormEditUser({ updateUser, handleClose }) {
     setUsers({
       id: uuidv4(),
       name: '',
-      price: '',
-      description: '',
-      image: '',
+      lastname: '',
+      phonenumber: '',
+      email: '',
     });
   };
 

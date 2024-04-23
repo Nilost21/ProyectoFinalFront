@@ -63,74 +63,73 @@ function NavbarComponent() {
           <Navbar.Collapse id="responsive-navbar-nav" className="text-light">
             <Nav className="me-auto">
               <Nav.Link
-                className="subtitle mt-1 text-white"
+                className="subtitle mt-1 text-white navbar-button"
                 onClick={() => navigate('/')}
               >
                 Home
               </Nav.Link>
               <Nav.Link
-                className="subtitle mt-1 text-white"
+                className="subtitle mt-1 text-white navbar-button"
                 onClick={() => navigate('/products')}
               >
                 Products
               </Nav.Link>
               <Nav.Link
-                className="subtitle mt-1 text-white"
+                className="subtitle mt-1 text-white navbar-button"
                 onClick={() => navigate('/contact')}
               >
                 Contact
               </Nav.Link>
             </Nav>
             <Nav className="pe-4">
-              {isLoggedIn ? ( // Si el usuario está autenticado, muestra el botón de Logout
+              {isLoggedIn ? (
                 <>
                   {user &&
-                    user.isAdmin && ( // Si el usuario tiene rol ADMIN, muestra el botón
+                    user.isAdmin && (
 
                       <Nav.Link
                         onClick={handleProductsButton}
-                        className="subtitle mt-1 text-light text-shadow"
+                        className="subtitle mt-1 text-light text-shadow navbar-button"
                       >
                         Products
                       </Nav.Link>
                     )}
                   {
-                    user && user.isAdmin && ( // Mostrar el botón "Classes" solo si el usuario es administrador
+                    user && user.isAdmin && (
                       <Nav.Link
                         onClick={handleClassesButton}
-                        className="subtitle mt-1 text-light text-shadow"
+                        className="subtitle mt-1 text-light text-shadow navbar-button"
                       >
                         Classes
                       </Nav.Link>
                     )
                   }
                   {user &&
-                    user.isAdmin && ( // Si el usuario tiene rol ADMIN, muestra el botón
-
+                    user.isAdmin && (
                       <Nav.Link
                         onClick={handleUsersButton}
-                        className="subtitle mt-1 text-light text-shadow"
+                        className="subtitle mt-1 text-light text-shadow navbar-button"
                       >
                         Users
                       </Nav.Link>
                     )}
                   <Nav.Link
                     onClick={handleLogout}
-                    className="subtitle mt-1 text-light"
+                    className="subtitle mt-1 text-light navbar-button"
                   >
                     Logout
                   </Nav.Link>
 
                   <ButtonComponent
                     onClick={handleProfileButton}
-                    text={user && user.username ? user.username : 'Profile'}
+                    text={user && user.name ? user.name : 'Profile'}
                   />
                 </>
               ) : (
                 <>
                   <Nav.Link
                     onClick={handleLoginModalShow}
-                    className="subtitle mt-1 text-light mx-2"
+                    className="subtitle mt-1 text-light mx-2 navbar-button"
                   >
                     Login
                   </Nav.Link>

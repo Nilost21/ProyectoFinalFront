@@ -1,11 +1,20 @@
 import './../../css/Home.css';
 import { Container, Row, Col } from 'react-bootstrap';
+import { useEffect, useContext } from 'react';
 
 import NavbarComponent from '../../components/NavbarComponent';
 import TableClasses from '../../components/Table/TableClasses';
 import FormNewClass from '../../components/Form/FormNewClass';
+import { ClassProvider } from '../../context/ClassContex';
 
 function AdminClass() {
+
+  const { getClasses } = useContext(ClassProvider);
+
+  useEffect(() => {
+    getClasses();
+  }, [getClasses]);
+
   return (
     <>
       <Container fluid>

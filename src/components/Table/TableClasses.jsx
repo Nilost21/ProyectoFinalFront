@@ -19,6 +19,14 @@ function TableClasses() {
     setShow(true);
   };
 
+  // Función para formatear la fecha y hora al formato deseado
+  const formatDateTime = (dateTimeString) => {
+    const date = new Date(dateTimeString);
+    const formattedDate = date.toLocaleDateString();
+    const formattedTime = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    return `${formattedDate} ${formattedTime}`;
+  };
+
   // Calcular los índices de los elementos a mostrar en la página actual
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -63,7 +71,7 @@ function TableClasses() {
                   <td className="bg-dark text-light border-0 pt-3">{name}</td>
                   <td className="bg-dark text-light border-0 pt-3">{description}</td>
                   <td className="bg-dark text-light border-0 pt-3">{teacher}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{dateAndTime}</td>
+                  <td className="bg-dark text-light border-0 pt-3">{formatDateTime(dateAndTime)}</td>
                   <td className=" bg-dark text-light border-0">
                     <div className="d-flex flex-row justify-content-around">
                       <Button
@@ -115,7 +123,7 @@ function TableClasses() {
         >
           <Modal.Body className="bg-transparent rounded-5 border-0 p-0 ">
             <FormNewClass
-              editClasses={editClasses}
+              editClass={editClasses}
               handleClose={handleClose}
             />
           </Modal.Body>

@@ -56,7 +56,7 @@ function ClassContext({ children }) {
   const updateClass = async (classToEdit) => {
     try {
       await axios.put(
-        `http://localhost:3000/api/class/${classToEdit._id}`,
+        `http://localhost:3000/api/class/${classToEdit.id}`,
         classToEdit
       );
       const updatedClass = classes.map((c) =>

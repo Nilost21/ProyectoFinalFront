@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 function FormNewClass({ editClass, handleClose }) {
   const { addClass, updateClass } = useContext(ClassProvider);
 
-  const [classes, setClasses] = useState({
+  const [classFormData, setClassFormData] = useState({
     id: editClass ? editClass._id : uuidv4(),
     name: editClass ? editClass.name : '',
     description: editClass ? editClass.description : '',
@@ -20,8 +20,8 @@ function FormNewClass({ editClass, handleClose }) {
   });
 
   const handleChange = (e) => {
-    setClasses({
-      ...classes,
+    setClassFormData({
+      ...classFormData,
       [e.target.name]: e.target.value,
     });
   };
@@ -29,27 +29,11 @@ function FormNewClass({ editClass, handleClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (
-      !classes.name ||
-      !classes.description ||
-      !classes.teacher ||
-      !classes.dateAndTime
-    ) {
-      Swal.fire({
-        position: 'center',
-        icon: 'error',
-        title: 'Please fill in all fields',
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      return;
-    }
-
     if (editClass) {
-      updateClass(classes);
+      updateClass(classFormData);
       handleClose();
     } else {
-      addClass(classes);
+      addClass(classFormData);
     }
 
     Swal.fire({
@@ -60,12 +44,12 @@ function FormNewClass({ editClass, handleClose }) {
       timer: 1500,
     });
 
-    setClasses({
+    setClassFormData({
       id: uuidv4(),
       name: '',
-      price: '',
       description: '',
-      image: '',
+      teacher: '',
+      dateAndTime: '',
     });
   };
 
@@ -85,7 +69,7 @@ function FormNewClass({ editClass, handleClose }) {
           <Form.Control
             className="paragraph"
             type="text"
-            value={classes.name}
+            value={classFormData.name}
             onChange={handleChange}
             name="name"
             placeholder="Enter the class name"
@@ -100,7 +84,7 @@ function FormNewClass({ editClass, handleClose }) {
             className="paragraph no-resizable"
             type="text"
             as="textarea"
-            value={classes.description}
+            value={classFormData.description}
             onChange={handleChange}
             name="description"
             placeholder="Write a description"
@@ -114,7 +98,7 @@ function FormNewClass({ editClass, handleClose }) {
           <Form.Control
             className="paragraph"
             type="text"
-            value={classes.teacher}
+            value={classFormData.teacher}
             onChange={handleChange}
             name="teacher"
             placeholder="Enter the teacher's name"
@@ -129,7 +113,7 @@ function FormNewClass({ editClass, handleClose }) {
           <Form.Control
             className="paragraph"
             type="datetime-local"
-            value={classes.dateAndTime}
+            value={classFormData.dateAndTime}
             onChange={handleChange}
             name="dateAndTime"
           />

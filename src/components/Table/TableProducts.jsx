@@ -32,7 +32,7 @@ function TableProducts() {
   return (
     <>
       <div className="text-star bg-dark text-white rounded-top-4 py-1">
-        <h3 className="subtitle ps-3 mt-1 pt-1 my-0 ">Table Products</h3>
+        <h3 className="subtitle ps-3 mt-1 pt-1 my-0 ">Gym Products</h3>
       </div>
       <Table className="mb-0">
         <thead>
