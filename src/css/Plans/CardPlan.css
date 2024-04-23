@@ -1,0 +1,42 @@
+.custom-card-plan {
+    color: rgb(255, 255, 255);
+    height: 26rem;
+    border-radius: 15px;
+    border: 0;
+    /* border: 1px solid #88559c8f; */
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+.custom-card-plan:hover {
+    box-shadow: #2e2168 0px 7px 29px 0px;
+    transform: scale(1.1);
+    background: linear-gradient(to top right, #7b63d2, #af65d2);
+}
+
+.custom-card-plan:hover .month-card-plan,
+.custom-card-plan:hover .description-card-plan {
+    color: #ffffff;
+}
+
+.price-card-plan {
+    font-size: 50px;
+    margin-bottom: 0%;
+    letter-spacing: 2px;
+}
+
+.description-card-plan {
+    color: #a5a5af
+}
+
+.month-card-plan {
+    color: #a198c9;
+    font-weight: bold;
+}
+
+@media (max-width: 991px) and (min-width: 576px) {
+    .custom-card-plan {
+        width: 80% !important;
+        height: auto;
+    }
+}

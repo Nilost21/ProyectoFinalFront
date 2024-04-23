@@ -58,9 +58,10 @@ function ProductsContext({ children }) {
         product
       );
       const updatedProducts = products.map((p) =>
-        p._id === product._id ? product : p
+        p.id === product.id ? product : p
       );
       setProducts(updatedProducts);
+      await getProducts();
     } catch (error) {
       console.log(error, 'Error updating product');
     }

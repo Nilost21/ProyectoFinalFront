@@ -6,7 +6,7 @@ import '../../css/Card.css';
 function CardFlex() {
   return (
     <>
-      <Card className="bg-transparent border-0 ms-xl-5 ms-md-5 mb-5 text-white me-5 pb-5 px-5 mt-xl-5">
+      <Card className="bg-transparent border-0 ms-xl-5 ms-md-5 mb-5 text-white me-5 pb-5 px-5 mt-xl-5 ">
         <Card.Img
           src="../../../public/img/3.jpg"
           alt="Card image"

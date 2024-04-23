@@ -3,6 +3,7 @@ import './App.css';
 
 import ProductsContext from './context/ProductsContext';
 import UsersContext from './context/UsersContext';
+import CartContext from './context/CartContext';
 import ClassContext from './context/ClassContex';
 
 import { useRoutes } from 'react-router-dom';
@@ -16,6 +17,7 @@ import Products from './pages/Products/Products';
 import Profile from './pages/Profile/Profile';
 import AdminClass from './pages/Admin/AdminClass';
 import AdminUsers from './pages/Admin/AdminUsers';
+
 
 function App() {
 
@@ -56,9 +58,11 @@ function App() {
     <>
       <UsersContext>
         <ProductsContext>
-          <ClassContext>
-            {routeselement}
-          </ClassContext>
+          <CartContext>
+            <ClassContext>
+              {routeselement}
+            </ClassContext>
+          </CartContext>
         </ProductsContext>
       </UsersContext>
     </>
