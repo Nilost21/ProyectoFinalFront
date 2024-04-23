@@ -20,6 +20,7 @@ import AdminUsers from './pages/Admin/AdminUsers';
 import ClassPlan from './pages/Plans/ClassPlan';
 import MusclePlan from './pages/Plans/MusclePlan';
 import FullPlan from './pages/Plans/FullPlan';
+import Error404 from './pages/Error404/Error404';
 
 
 
@@ -28,7 +29,7 @@ function App() {
   const routes = [
     {
       path: "*",
-      element: <PublicRoute><h1 className="title text-light mt-3 ">Not found</h1></PublicRoute>
+      element: <PublicRoute><Error404 /></PublicRoute>
     },
     {
       path: "/",
@@ -81,8 +82,10 @@ function App() {
           </CartContext>
         </ProductsContext>
       </UsersContext>
+      
     </>
   );
 }
 
 export default App;
+
