@@ -33,12 +33,16 @@ function NavbarComponent() {
     navigate('/profile');
   };
 
-  const handleAdminButton = () => {
-    navigate('/admin');
+  const handleProductsButton = () => {
+    navigate('/adminproducts');
   };
 
   const handleClassesButton = () => {
-    navigate('/classes')
+    navigate('/adminclasses')
+  };
+
+  const handleUsersButton = () => {
+    navigate('/adminusers')
   };
 
   return (
@@ -84,10 +88,10 @@ function NavbarComponent() {
                     user.isAdmin && ( // Si el usuario tiene rol ADMIN, muestra el botón
 
                       <Nav.Link
-                        onClick={handleAdminButton}
+                        onClick={handleProductsButton}
                         className="subtitle mt-1 text-light text-shadow"
                       >
-                        Admin Management
+                        Products
                       </Nav.Link>
                     )}
                   {
@@ -100,6 +104,16 @@ function NavbarComponent() {
                       </Nav.Link>
                     )
                   }
+                  {user &&
+                    user.isAdmin && ( // Si el usuario tiene rol ADMIN, muestra el botón
+
+                      <Nav.Link
+                        onClick={handleUsersButton}
+                        className="subtitle mt-1 text-light text-shadow"
+                      >
+                        Users
+                      </Nav.Link>
+                    )}
                   <Nav.Link
                     onClick={handleLogout}
                     className="subtitle mt-1 text-light"

@@ -22,7 +22,6 @@ function UsersContext({ children }) {
         config
       );
       const data = response.data;
-      //setUsers(data);
       setUsers([...data]);
     } catch (error) {
       console.log(error);
@@ -36,8 +35,7 @@ function UsersContext({ children }) {
         user
       );
       const data = response.data;
-      setUsers([...users, data]);
-      await getUsers();
+      setUsers(prevUsers => [...prevUsers, data]);
     } catch (error) {
       console.error('Registration error:', error.message);
     }
@@ -64,7 +62,7 @@ function UsersContext({ children }) {
     }
   };
 
-  const editUser = async (id, user) => {
+  const editUser = async (user) => {
     try {
       const token = localStorage.getItem('token');
       if (!token) return;
@@ -74,17 +72,14 @@ function UsersContext({ children }) {
         }
       };
       await axios.put(
-        `http://localhost:3000/api/user/${id}`,
+        `http://localhost:3000/api/user/${user.id}`,
         user,
         config
       );
-      //const updatedUser = response.data;
-      //setUsers(prevUsers => prevUsers.map(user => user._id === id ? updatedUser : user));
       const updatedUsers = users.map((u) =>
         u._id === users._id ? user : u
       );
       setUsers(updatedUsers);
-
     } catch (error) {
       console.log(error);
     }
@@ -103,14 +98,13 @@ function UsersContext({ children }) {
       const filteredUsers = users.filter(user => user._id !== id);
       Swal.fire({
         position: 'center',
-        icon: 'error',
+        icon: 'Success',
         title: 'User deleted succesfully',
         showConfirmButton: false,
         timer: 1500,
       });
       setUsers([...filteredUsers]);
       await getUsers();
-      //setUsers(prevUsers => prevUsers.filter(user => user._id !== id));
     } catch (error) {
       console.log(error);
     }
@@ -121,7 +115,14 @@ function UsersContext({ children }) {
   }, []);
 
   return (
-    <UsersProvider.Provider value={{ users, getUsers, createUser, getUser, editUser, deleteUser }}>
+    <UsersProvider.Provider value={{
+      users,
+      getUsers,
+      createUser,
+      getUser,
+      editUser,
+      deleteUser
+    }}>
       {children}
     </UsersProvider.Provider>
   );

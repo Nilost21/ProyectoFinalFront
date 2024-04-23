@@ -11,10 +11,11 @@ import PublicRoute from './routes/public-route/PublicRoute';
 import AdminRoute from './routes/admin-route/AdminRoute';
 
 import Home from './pages/Home/Home';
-import Admin from './pages/Admin/Admin';
+import AdminProducts from './pages/Admin/AdminProducts';
 import Products from './pages/Products/Products';
 import Profile from './pages/Profile/Profile';
 import AdminClass from './pages/Admin/AdminClass';
+import AdminUsers from './pages/Admin/AdminUsers';
 
 function App() {
 
@@ -32,11 +33,15 @@ function App() {
       element: <PublicRoute><Products /></PublicRoute>
     },
     {
-      path: "/admin",
-      element: <AdminRoute> <Admin /></AdminRoute>
+      path: "/adminproducts",
+      element: <AdminRoute> <AdminProducts /></AdminRoute>
     },
     {
-      path: "/classes",
+      path: "/adminusers",
+      element: <AdminRoute> <AdminUsers /></AdminRoute>
+    },
+    {
+      path: "/adminclasses",
       element: <AdminRoute> <AdminClass /> </AdminRoute>
     },
     {

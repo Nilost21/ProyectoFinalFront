@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useState } from 'react';
-import { Table, Button, Modal } from 'react-bootstrap';
+import { Table, Button, Modal, Pagination } from 'react-bootstrap';
 import { ClassProvider } from '../../context/ClassContex';
 import FormNewClass from '../Form/FormNewClass';
 
@@ -9,12 +9,23 @@ function TableClasses() {
   const [show, setShow] = useState(false);
   const [editClasses, setEditClasses] = useState(null);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(5);
+
   const handleClose = () => setShow(false);
 
   const handleEdit = (c) => {
     setEditClasses(c);
     setShow(true);
   };
+
+  // Calcular los índices de los elementos a mostrar en la página actual
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = classes.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Cambiar de página
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const isEmpty = () => classes.length === 0;
 
@@ -27,7 +38,7 @@ function TableClasses() {
         <thead>
           <tr className="subtitle">
             <th>Index</th>
-            <th className="pe-5">Name</th>
+            <th>Name</th>
             <th>Description</th>
             <th>Teacher</th>
             <th>Date and time</th>
@@ -42,12 +53,13 @@ function TableClasses() {
               </td>
             </tr>
           ) : (
-            classes.map((c, index) => {
+            currentItems.map((c, index) => {
+              const rowIndex = index + indexOfFirstItem;
               const { _id, name, description, teacher, dateAndTime } = c;
 
               return (
                 <tr key={_id} className="paragraph fw-bold ">
-                  <td className="bg-dark text-light border-0 pt-3">{index}</td>
+                  <td className="bg-dark text-light border-0 pt-3">{rowIndex + 1}</td>
                   <td className="bg-dark text-light border-0 pt-3">{name}</td>
                   <td className="bg-dark text-light border-0 pt-3">{description}</td>
                   <td className="bg-dark text-light border-0 pt-3">{teacher}</td>
@@ -93,6 +105,7 @@ function TableClasses() {
         </tbody>
       </Table>
 
+      {/* Form edit class */}
       <div className="rounded-5 p-0">
         <Modal
           show={show}
@@ -108,6 +121,15 @@ function TableClasses() {
           </Modal.Body>
         </Modal>
       </div>
+
+      {/* Pagination */}
+      <Pagination className="justify-content-center mt-4 paragraph">
+        {Array.from({ length: Math.ceil(classes.length / itemsPerPage) }).map((_, index) => (
+          <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
+            {index + 1}
+          </Pagination.Item>
+        ))}
+      </Pagination>
     </>
   );
 }

@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import './../../css/Home.css';
+import './../../css/NutritionComponent.css';
 import { Container, Col, Row } from 'react-bootstrap';
 import Products from '../Products/Products';
 import TitleHomeComponent from '../../components/TitleHomeComponent';
@@ -47,9 +48,9 @@ function Home() {
       </Container>
       <Container fluid>
         <Row className="d-flex flex-row justify-content-start">
-          <Col xl={12} className="p-0 bg-black mb-5">
+          <Col xl={12} className="p-0 mb-5 background-color">
 
-            <Row className="d-flex flex-row justify-content-center mt-5 px-5">
+            <Row className="d-flex flex-row justify-content-center mt-5">
               <NutritionTitle />
             </Row>
 

@@ -6,7 +6,6 @@ const PrivateRoute = ({ children }) => {
 
   const { isLoggedIn } = useAuth();
 
-  console.log("Is the user logged in?", isLoggedIn);
   if (!isLoggedIn) {
     return <Navigate to={'/'} />;
   }
