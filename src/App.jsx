@@ -14,6 +14,7 @@ import AdminRoute from './routes/admin-route/AdminRoute';
 import Home from './pages/Home/Home';
 import AdminProducts from './pages/Admin/AdminProducts';
 import Products from './pages/Products/Products';
+import About from './pages/About/About';
 import Profile from './pages/Profile/Profile';
 import AdminClass from './pages/Admin/AdminClass';
 import AdminUsers from './pages/Admin/AdminUsers';
@@ -38,6 +39,10 @@ function App() {
     {
       path: "/products",
       element: <PublicRoute><Products /></PublicRoute>
+    },
+    {
+      path: "/about",
+      element: <PublicRoute><About /></PublicRoute>
     },
     {
       path:"/class-plan",

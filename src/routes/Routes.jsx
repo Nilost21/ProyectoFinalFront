@@ -3,6 +3,7 @@ import { PrivateRoute } from './PrivateRoutes';
 import Home from "../pages/Home/Home";
 import Admin from "../pages/Admin/Admin";
 import Products from "../pages/Products/Products";
+import About from "../pages/About/About";
 import Profile from '../pages/Profile/Profile';
 import Error404 from '../pages/Error404/Error404'; 
 
@@ -17,6 +18,7 @@ const RoutesPages = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/about" element={<About />} />
         <Route path="/*" element={<Error404 />} />
 
         {/* Rutas para paginas de planes */}        
