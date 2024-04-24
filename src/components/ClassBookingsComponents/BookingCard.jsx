@@ -18,7 +18,13 @@ const BookingCard = ({ id, name, description, teacher, dateAndTime }) => {
 
   const handleEnroll = async () => {
     if (!isLoggedIn) {
-      console.log("User must log in");
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'You must log in',
+        showConfirmButton: false,
+        timer: 1500,
+      });
       return;
     }
     try {
@@ -70,13 +76,13 @@ const BookingCard = ({ id, name, description, teacher, dateAndTime }) => {
             </ListGroup.Item>
           </ListGroup>
           <div className="button-container d-flex justify-content-center">
-          <Button
-            variant="primary"
-            className="custom-btn-bc small-font fw-bold"
-            onClick={handleEnroll}
-          >
-            Reserve
-          </Button>
+            <Button
+              variant="primary"
+              className="custom-btn-bc small-font fw-bold"
+              onClick={handleEnroll}
+            >
+              Reserve
+            </Button>
           </div>
         </Card.Body>
       </Card>

@@ -22,6 +22,7 @@ function AdminDashboard() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const isEmpty = () => classesForToday.length === 0;
+  //onsole.log(isEmpty);
 
   return (
     <>
@@ -44,9 +45,6 @@ function AdminDashboard() {
         <tbody>
           {isEmpty() ? (
             <tr>
-              <td colSpan="4">
-                <h3 className="paragraph">No classes found</h3>
-              </td>
             </tr>
           ) : (
             currentItems.map((c, index) => {

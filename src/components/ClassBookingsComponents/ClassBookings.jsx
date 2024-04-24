@@ -39,6 +39,7 @@ function ClassBookings() {
                   className="d-flex justify-content-center"
                 >
                   <BookingCard
+                    id={_id}
                     name={name}
                     description={description}
                     teacher={teacher}

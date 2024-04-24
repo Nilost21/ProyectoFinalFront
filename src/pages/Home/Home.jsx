@@ -26,7 +26,7 @@ function Home() {
     <>
       <Container fluid>
         <Row className="p-0 bg-home pe-5 pb-5 pb-md-0">
-          <NavbarComponent />´{}
+          <NavbarComponent />´{ }
           <Col
             className="ms-xl-5 ms-4"
             xxl={5}

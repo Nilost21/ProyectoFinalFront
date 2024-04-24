@@ -39,16 +39,17 @@ function EnrollmentContext({ children }) {
       );
       const data = response.data;
       setEnrollments([...enrollments, data]);
-      //await getEnrollments();
+      return data;
     } catch (error) {
       console.log('Error at enrolling to the class', error.message || error);
     }
   };
 
-  const deleteEnrollment = async (id) => {
+  const deleteEnrollment = async (_id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/enrollment/${id}`);
-      const filteredEnrollments = enrollments.filter((e) => e.id !== id);
+      const res = await axios.delete(`http://localhost:3000/api/enrollment/${_id}`);
+      console.log("res", res);
+      const filteredEnrollments = enrollments.filter((e) => e.id !== _id);
       Swal.fire({
         position: 'center',
         icon: 'error',
