@@ -4,6 +4,18 @@
   border-top: 1.5px solid #402E5A !important;
 }
 
+.increase-font-size-title {
+  font-size: 3rem; 
+}
+
+.increase-font-paragraph {
+  font-size: 1.1rem; 
+}
+
+.increase-font-subtitle {
+  font-size: 3rem; 
+}
+
 .food-image {
   max-width: 100%;
   transition: transform 0.5s;

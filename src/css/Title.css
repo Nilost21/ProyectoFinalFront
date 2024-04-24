@@ -3,12 +3,18 @@
   }
 
   .increase-font-p {
-    font-size: 3rem; 
+    font-size: 4rem; 
   }
 
-  .increase-font-number {
-    font-size: 6rem; 
+  .increase-font-flex {
+    font-size: 3.2rem; 
   }
+
+  .increase-font-small {
+    font-size: 1.3rem; 
+  }
+
+
 
   .gradient-background {
     background: linear-gradient(to right, #6245c4, #bb56ff);

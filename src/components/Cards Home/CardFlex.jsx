@@ -2,34 +2,34 @@
 import { Card, Col, Row, Button } from 'react-bootstrap';
 import '../../css/Title.css';
 import '../../css/Card.css';
+import '../../css/Home.css';
 
 function CardFlex() {
   return (
     <>
-      <Card className="bg-transparent border-0 ms-xl-5 ms-md-5 mb-5 text-white me-5 pb-5 px-5 mt-xl-5 ">
+      <Card className="bg-transparent border-0  text-white pe-md-0 mt-5  ">
         <Card.Img
-          src="../../../public/img/3.jpg"
+          src="../../../public/img/10.jpg"
           alt="Card image"
-          className=" border-0 rounded-top-3 shadow-box "
+          className=" border-0 rounded-top-3 shadow-box mb-3 "
         />
-        <Card.ImgOverlay>
-          <Row className="d-flex flex-row justify-content-between ">
-            <Col xl={4}>
-              <Card.Title className="subtitle text-white mt-4 fs-1 ps-5">
-                Get in shape and training at the gym or home
-              </Card.Title>
-            </Col>
-            <Col
-              xl={3}
-              className="d-flex flex-column justify-content-end pe-xl-5 mt-0 mt-xxl-0 ps-xl-3"
-            >
-              <Card.Text className="paragraph fs-5 mt-5 text-gray pt-md-0 pt-xxl-5  pe-xl-2">
-                We have been creating and implementing projects for many years
-                all over the wold, we have hundreds of satisfaced customers
-              </Card.Text>
-            </Col>
-          </Row>
-        </Card.ImgOverlay>
+
+        <Row className=" ">
+          <Col xl={10}>
+            <Card.Title className="subtitle mt-4 mb-3 increase-font-flex pe-md-5 text-shadow-effect">
+              Get in shape and training at the gym or home
+            </Card.Title>
+          </Col>
+          <Col
+            xl={10}
+            className="d-flex flex-column justify-content-end pe-md-5 pe-xl-5ps-xl-3"
+          >
+            <Card.Text className="paragraph text-color-small pt-md-0 increase-font-small pe-md-5 text-shadow-effect">
+              We have been creating and implementing projects for many years all
+              over the wold, we have hundreds of satisfaced customers
+            </Card.Text>
+          </Col>
+        </Row>
       </Card>
     </>
   );

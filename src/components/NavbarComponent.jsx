@@ -63,11 +63,11 @@ function NavbarComponent() {
   };
 
   const handleClassesButton = () => {
-    navigate('/adminclasses')
+    navigate('/adminclasses');
   };
 
   const handleUsersButton = () => {
-    navigate('/adminusers')
+    navigate('/adminusers');
   };
 
   const handleAdminEnrollments = () => {
@@ -88,8 +88,11 @@ function NavbarComponent() {
           >
             <h5 className="mt-2 gradient-text text-shadow fs-2">ELITEBODY</h5>
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav" className="text-light">
+          <Navbar.Toggle
+            aria-controls="responsive-navbar-nav"
+            className="custom-toggle"
+          />
+          <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link
                 className="subtitle mt-1 text-white navbar-button"
@@ -108,6 +111,12 @@ function NavbarComponent() {
                 onClick={() => navigate('/contact')}
               >
                 Contact
+              </Nav.Link>
+              <Nav.Link
+                className="subtitle mt-1 text-white navbar-button"
+                onClick={() => navigate('/about')}
+              >
+                About
               </Nav.Link>
 
               {/* Inicio carrito */}
@@ -269,7 +278,6 @@ function NavbarComponent() {
                 <></>
               )}
               {/* Fin carrito */}
-
             </Nav>
             <Nav className="pe-4">
               {isLoggedIn ? (

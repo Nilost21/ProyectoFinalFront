@@ -46,9 +46,8 @@ const BookingCard = ({ id, name, description, teacher, dateAndTime }) => {
 
   return (
     <>
-      {/* Card con props */}
       <Card
-        style={{ width: "18rem" }}
+        style={{ width: "16rem" }}
         className="mb-5 mt-5 text-center custom-booking-card"
       >
         <Card.Body>
@@ -70,6 +69,7 @@ const BookingCard = ({ id, name, description, teacher, dateAndTime }) => {
               </Card.Text>
             </ListGroup.Item>
           </ListGroup>
+          <div className="button-container d-flex justify-content-center">
           <Button
             variant="primary"
             className="custom-btn-bc small-font fw-bold"
@@ -77,6 +77,7 @@ const BookingCard = ({ id, name, description, teacher, dateAndTime }) => {
           >
             Reserve
           </Button>
+          </div>
         </Card.Body>
       </Card>
     </>
