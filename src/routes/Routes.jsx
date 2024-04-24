@@ -1,15 +1,14 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
 import { PrivateRoute } from './PrivateRoutes';
-import Home from "../pages/Home/Home";
-import Admin from "../pages/Admin/Admin";
-import Products from "../pages/Products/Products";
+import Home from '../pages/Home/Home';
+import Admin from '../pages/Admin/Admin';
+import Products from '../pages/Products/Products';
 import Profile from '../pages/Profile/Profile';
 
-
-import ClassPlan from "../pages/Plans/ClassPlan";
-import MusclePlan from "../pages/Plans/MusclePlan";
-import FullPlan from "../pages/Plans/FullPlan";
-import BookingPage from "../pages/ClassBookings/BookingPage";
+import ClassPlan from '../pages/Plans/ClassPlan';
+import MusclePlan from '../pages/Plans/MusclePlan';
+import FullPlan from '../pages/Plans/FullPlan';
+import BookingPage from '../pages/ClassBookings/BookingPage';
 
 const RoutesPages = () => {
   return (
@@ -22,23 +21,21 @@ const RoutesPages = () => {
           element={<h1 className="title text-light mt-3 ">NOT FOUND</h1>}
         />
 
-        {/* Rutas para paginas de planes */}        
-        <Route path="/class-plan" element={<ClassPlan/>} />
+        <Route path="/class-plan" element={<ClassPlan />} />
         <Route path="/muscle-plan" element={<MusclePlan />} />
         <Route path="/full-plan" element={<FullPlan />} />
-        {/* Fin rutas para paginas de planes */}
 
-        {/* Ruta para page de reserva */}
-        <Route path="/class-bookings" element={<BookingPage/>} />
-        {/* Fin de ruta de page de reserva */}
-        
-      
-        <Route path="/*" element={<h1 className="title text-light mt-3 ">NOT FOUND</h1>} />
+        <Route path="/class-bookings" element={<BookingPage />} />
+
+        <Route
+          path="/*"
+          element={<h1 className="title text-light mt-3 ">NOT FOUND</h1>}
+        />
         <Route element={<PrivateRoute />}>
           <Route path="/admin" element={<Admin />} isAdminRoute={true} />
           <Route path="/profile" element={<Profile />} />
         </Route>
-      </Routes >
+      </Routes>
     </>
   );
 };

@@ -1,7 +1,20 @@
-import { Col, Row, Button } from 'react-bootstrap';
+import { Col, Row, Button, Modal } from 'react-bootstrap';
+import { useState } from 'react';
 import '../css/Footer/Footer.css';
+import InfoCardHome from './Cards Home/InfoCardHome';
+import { useNavigate } from 'react-router';
 
 function FooterComponent() {
+  const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const subtitle = `Optimal nutrition serves as the cornerstone of our overall well-being, supplying our bodies with a diverse array of essential vitamins, minerals, and nutrients necessary for peak performance and vitality. Beyond merely sustaining life, a well-balanced diet empowers us to thrive, fostering physical resilience, mental acuity, and emotional equilibrium.
+
+  In this enlightening article, we embark on a journey of nutritional discovery, unraveling the intricacies of dietary requirements and shedding light on the profound impact of wholesome eating habits. Armed with expert insights and evidence-based recommendations, we unveil the key components of a nutritionally sound diet, guiding you towards informed choices that nurture your body from within.`;
+
   return (
     <>
       <Row className="text-white mt-5 mb-4 ms-lg-5">
@@ -16,7 +29,10 @@ function FooterComponent() {
             needs and makes us feel better. In this article, we`ll show you what
             to look for.
           </p>
-          <Button className="bg-transparent border-0 subtitle px-0 ">
+          <Button
+            onClick={handleShow}
+            className="bg-transparent border-0 subtitle px-0 "
+          >
             {' '}
             <span className="gradient-hover">Read More</span>{' '}
             <svg
@@ -37,32 +53,32 @@ function FooterComponent() {
           <ul className="list-unstyled pt-3">
             <li>
               <a
-                href="#"
-                className="text-decoration-none small-font text-color-small"
+                onClick={() => navigate('/')}
+                className="text-decoration-none small-font text-color-small hover-effect"
               >
                 Home
               </a>
             </li>
             <li>
               <a
-                href="#"
-                className="text-decoration-none small-font text-color-small"
+                onClick={() => navigate('/*')}
+                className="text-decoration-none small-font text-color-small hover-effect"
               >
                 About us
               </a>
             </li>
             <li>
               <a
-                href="#"
-                className="text-decoration-none small-font text-color-small"
+                onClick={() => navigate('/products')}
+                className="text-decoration-none small-font text-color-small hover-effect"
               >
                 Products
               </a>
             </li>
             <li>
               <a
-                href="#"
-                className="text-decoration-none small-font text-color-small"
+                onClick={() => navigate('/*')}
+                className="text-decoration-none small-font text-color-small hover-effect"
               >
                 Blog
               </a>
@@ -75,8 +91,8 @@ function FooterComponent() {
           <ul className="list-unstyled">
             <li>
               <a
-                href="#"
-                className="text-decoration-none small-font text-color-small"
+                href="https://www.instagram.com/"
+                className="text-decoration-none small-font text-color-small hover-effect"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -93,8 +109,8 @@ function FooterComponent() {
             </li>
             <li>
               <a
-                href="#"
-                className="text-decoration-none small-font text-color-small"
+                href="https://www.facebook.com/"
+                className="text-decoration-none small-font text-color-small hover-effect"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -111,8 +127,8 @@ function FooterComponent() {
             </li>
             <li>
               <a
-                href="#"
-                className="text-decoration-none small-font text-color-small"
+                href="https://twitter.com/"
+                className="text-decoration-none small-font text-color-small hover-effect"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -129,8 +145,8 @@ function FooterComponent() {
             </li>
             <li>
               <a
-                href="#"
-                className="text-decoration-none small-font text-color-small"
+                href="https://discord.com/"
+                className="text-decoration-none small-font text-color-small hover-effect"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -148,6 +164,18 @@ function FooterComponent() {
           </ul>
         </Col>
       </Row>
+
+      <Modal
+        contentClassName="bg-transparent border-0 p-0"
+        show={show}
+        onHide={handleClose}
+      >
+        <InfoCardHome
+          handleClose={handleClose}
+          textTitle={'Healthy food'}
+          textSubtitle={subtitle}
+        />
+      </Modal>
     </>
   );
 }

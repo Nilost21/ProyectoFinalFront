@@ -23,7 +23,14 @@ function Products() {
                 const { _id, name, price, description, image } = product;
 
                 return (
-                  <Col xs={10} lg={4} md={4} sm={8} key={_id}>
+                  <Col
+                    xs={10}
+                    lg={4}
+                    md={4}
+                    sm={8}
+                    key={_id}
+                    className="d-flex flex-row justify-content-center"
+                  >
                     <CardComponent
                       name={name}
                       product={product}

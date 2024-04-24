@@ -1,8 +1,21 @@
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Modal } from 'react-bootstrap';
+import { useState } from 'react';
 import '../../css/Card.css';
 import '../../css/Home.css';
+import InfoCardHome from './InfoCardHome';
 
 function CardDiet() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const subTitle = `In addition to our exceptional personal training services, you'll gain exclusive access to a premium account, elevating your fitness journey to new heights. With this premium account, you'll unlock a treasure trove of invaluable resources aimed at enriching every aspect of your health and well-being. Delve into a curated collection of articles meticulously crafted by nutritionists, fitness experts, and culinary maestros, offering a wealth of advice, insights, and tips to enhance your culinary prowess.
+
+  Explore a diverse range of topics spanning from wholesome recipes and meal prep strategies to nutritional insights tailored to complement your fitness goals. Discover innovative cooking techniques, ingredient substitutions, and dietary recommendations designed to fuel your body optimally, ensuring you achieve peak performance both in and out of the gym.
+  
+  Moreover, our premium account grants you privileged access to live cooking demonstrations, virtual workshops, and interactive Q&A sessions hosted by renowned chefs and nutritionists. `;
+
   return (
     <>
       <Card className="bg-experience  mb-5 rounded-3 border-0 pt-5 pb-4 px-4 shadow-box card-zoom ">
@@ -28,7 +41,10 @@ function CardDiet() {
             You will also get access to a premium account, thanks to which you
             will have access to articles with advice and tips for cooking
           </Card.Text>
-          <Button className="bg-transparent border-0 subtitle px-0 ">
+          <Button
+            onClick={handleShow}
+            className="bg-transparent border-0 subtitle px-0 "
+          >
             {' '}
             <span className="gradient-hover ">Read More</span>{' '}
             <svg
@@ -44,6 +60,18 @@ function CardDiet() {
           </Button>
         </Card.Body>
       </Card>
+
+      <Modal
+        contentClassName="bg-transparent border-0 p-0"
+        show={show}
+        onHide={handleClose}
+      >
+        <InfoCardHome
+          handleClose={handleClose}
+          textTitle={'Nutritional Diet'}
+          textSubtitle={subTitle}
+        />
+      </Modal>
     </>
   );
 }

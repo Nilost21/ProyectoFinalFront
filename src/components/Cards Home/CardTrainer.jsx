@@ -1,8 +1,19 @@
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Modal } from 'react-bootstrap';
+import { useState } from 'react';
 import '../../css/Card.css';
 import '../../css/Home.css';
+import InfoCardHome from './InfoCardHome';
 
 function CardTrainer() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const subTitle = ` Experience the ultimate in personalized fitness with our dedicated team of personal trainers. Whether you are aiming to bulk up, slim down, or enhance your overall well-being, our certified trainers are here to guide you every step of the way. Reach out to us anytime to schedule a session or consult with your designated trainer. With our comprehensive price list, finding the perfect plan tailored to your needs has never been easier. Feel free to reach out to us at your convenience to initiate your fitness journey or connect with your designated trainer. From crafting personalized workout routines to providing invaluable nutritional guidance, our trainers are dedicated to ensuring that you not only achieve but surpass your fitness objectives.
+
+  With our transparent pricing structure, selecting the ideal plan for your needs is effortless. Take the first step towards realizing your full fitness potential and discover the unparalleled benefits of partnering with our esteemed team of personal trainers today;`;
+
   return (
     <>
       <Card className="bg-transparent mb-5 rounded-3 border-card pt-5 pb-4 px-4 shadow-box card-zoom">
@@ -29,7 +40,10 @@ function CardTrainer() {
             at any time or call your trainer. Use the price list and choose the
             right plan for you
           </Card.Text>
-          <Button className="bg-transparent border-0 subtitle px-0">
+          <Button
+            onClick={handleShow}
+            className="bg-transparent border-0 subtitle px-0"
+          >
             {' '}
             <span className="gradient-hover">Read More</span>{' '}
             <svg
@@ -45,6 +59,18 @@ function CardTrainer() {
           </Button>
         </Card.Body>
       </Card>
+
+      <Modal
+        contentClassName="bg-transparent border-0 p-0"
+        show={show}
+        onHide={handleClose}
+      >
+        <InfoCardHome
+          handleClose={handleClose}
+          textTitle={'Coach Trainer'}
+          textSubtitle={subTitle}
+        />
+      </Modal>
     </>
   );
 }

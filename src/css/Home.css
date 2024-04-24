@@ -41,3 +41,22 @@
 .scroll-animation.active {
   opacity: 1; 
 }
+
+.gradient-text {
+  background-image: linear-gradient(to right, #6245c4, #b665ec);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+
+.hover-effect {
+  cursor: pointer;
+}
+
+.hover-effect:hover {
+  color: transparent;
+  background-image: linear-gradient(to right, #6245c4, #b665ec);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
