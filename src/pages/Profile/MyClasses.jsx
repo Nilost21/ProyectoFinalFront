@@ -5,10 +5,13 @@ import TableUserClasses from '../../components/Table/TableUserClasses';
 
 import { EnrollmentProvider } from '../../context/EnrollmentContext';
 import { useEffect, useContext } from 'react';
+import { useAuth } from '../../context/Utils/authUtils';
 
 const MyClasses = () => {
 
   const { getUserEnrollments } = useContext(EnrollmentProvider);
+  const { user } = useAuth();
+  const userId = user.id;
 
   useEffect(() => {
     getUserEnrollments();
@@ -25,7 +28,7 @@ const MyClasses = () => {
           <Row className="d-flex flex-row justify-content-between px-xs-3">
             <Col xl={12}>
               <Row className="mt-5">
-                <TableUserClasses />
+                <TableUserClasses user={userId} />
               </Row>
             </Col>
           </Row>

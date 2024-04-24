@@ -67,6 +67,7 @@ function EnrollmentContext({ children }) {
 
   const getUserEnrollments = async (userId) => {
     try {
+      console.log("userId FRONT CONTEXT", userId)
       const response = await axios.get(`http://localhost:3000/api/enrollment/enrollments/${userId}`);
       const data = response.data;
       setuserEnrollments([...data]);

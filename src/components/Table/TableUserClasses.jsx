@@ -1,13 +1,29 @@
 /* eslint-disable no-unused-vars */
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { Table, Button, Modal, Pagination } from 'react-bootstrap';
 import { EnrollmentProvider } from '../../context/EnrollmentContext';
 
 import formatDateTime from '../../utils/dateTimeUtils';
 
-const TableUserClasses = () => {
+const TableUserClasses = ({ userId }) => {
 
-  const { userEnrollments, deleteEnrollment } = useContext(EnrollmentProvider);
+  const { getUserEnrollments, deleteEnrollment } = useContext(EnrollmentProvider);
+
+  const [userEnrollments, setUserEnrollments] = useState([]); // Estado local para almacenar las inscripciones del usuario
+
+  useEffect(() => {
+    // Llama a getUserEnrollments con userId y actualiza el estado local cuando se reciban los datos
+    const fetchData = async () => {
+      try {
+        console.log("AAAA", userId)
+        const enrollments = await getUserEnrollments(userId);
+        setUserEnrollments(enrollments);
+      } catch (error) {
+        console.error('Error fetching user enrollments:', error.message || error);
+      }
+    };
+    fetchData();
+  }, [getUserEnrollments, userId]);
 
   const [show, setShow] = useState(false);
   const [editClasses, setEditClasses] = useState(null);

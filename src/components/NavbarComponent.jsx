@@ -318,14 +318,14 @@ function NavbarComponent() {
                         Enrollments
                       </Nav.Link>
                     )}
-                  {user && (
+                  {/*                   {user && (
                     <Nav.Link
                       onClick={handleMyClassesButton}
                       className="subtitle mt-1 text-light text-shadow navbar-button"
                     >
                       My classes
                     </Nav.Link>
-                  )}
+                  )} */}
                   <Nav.Link
                     onClick={handleLogout}
                     className="subtitle mt-1 text-light navbar-button"
