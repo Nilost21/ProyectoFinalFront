@@ -1,8 +1,11 @@
 // eslint-disable-next-line no-unused-vars
 import { Card, Row, Col, Button } from 'react-bootstrap';
 import '../css/Title.css';
+import { useNavigate } from 'react-router';
 
 function TitleHomeComponent() {
+  const navigate = useNavigate();
+
   return (
     <>
       <Card className="bg-transparent border-0 ms-xl-5 ms-md-5 mb-5 mt-5">
@@ -31,7 +34,10 @@ function TitleHomeComponent() {
             over the wold, we have hundreds of satisfaced customers
           </Card.Text>
           <div className="mb-4 pb-5">
-            <Button className="gradient-background border-0 rounded-5 subtitle py-2 my-3 ps-5 pe-3  shadow-on-hover">
+            <Button
+              onClick={() => navigate('/*')}
+              className="gradient-background border-0 rounded-5 subtitle py-2 my-3 ps-5 pe-3  shadow-on-hover"
+            >
               Read More
               <svg
                 xmlns="http://www.w3.org/2000/svg"
