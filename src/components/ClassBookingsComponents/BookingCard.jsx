@@ -22,11 +22,9 @@ const BookingCard = ({ id, name, description, teacher, dateAndTime }) => {
   const handleEnroll = async () => {
     try {
       if (!isLoggedIn) {
-        console.log("USUARIO NO LOGUEADO")
+        console.log("User must log in");
         return;
       }
-      console.log("🇲🇻 User - BOOKINGCARD COMPONENT", user);
-      console.log("🍯 ClassId - BOOKINGCARD COMPONENT", id);
       await newEnrollment({ user: user._id, gymClass: id });
 
       Swal.fire({

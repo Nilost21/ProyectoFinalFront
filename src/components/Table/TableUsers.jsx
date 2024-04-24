@@ -79,6 +79,7 @@ function TableUsers() {
                       <Button
                         onClick={() => handleEdit(user)}
                         className="bg-secondary border-0 text-dark me-3"
+                        disabled={isAdmin}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -94,6 +95,7 @@ function TableUsers() {
                       <Button
                         onClick={() => deleteUser(_id)}
                         className="bg-danger border-0 text-dark"
+                        disabled={isAdmin}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"

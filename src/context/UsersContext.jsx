@@ -62,6 +62,16 @@ function UsersContext({ children }) {
     }
   };
 
+  const getUserName = async (id) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/api/user/name/${id}`);
+      const data = response.data;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const editUser = async (user) => {
     try {
       const token = localStorage.getItem('token');
@@ -120,6 +130,7 @@ function UsersContext({ children }) {
       getUsers,
       createUser,
       getUser,
+      getUserName,
       editUser,
       deleteUser
     }}>

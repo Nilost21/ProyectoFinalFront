@@ -70,6 +70,10 @@ function NavbarComponent() {
     navigate('/adminusers')
   };
 
+  const handleAdminEnrollments = () => {
+    navigate('/enrollments')
+  };
+
   return (
     <>
       <Navbar
@@ -297,6 +301,16 @@ function NavbarComponent() {
                         className="subtitle mt-1 text-light text-shadow navbar-button"
                       >
                         Users
+                      </Nav.Link>
+                    )}
+                  {user &&
+                    user.isAdmin && (
+
+                      <Nav.Link
+                        onClick={handleAdminEnrollments}
+                        className="subtitle mt-1 text-light text-shadow navbar-button"
+                      >
+                        Enrollments
                       </Nav.Link>
                     )}
                   <Nav.Link
