@@ -1,14 +1,16 @@
 /* eslint-disable no-unused-vars */
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Table, Button, Modal, Pagination } from 'react-bootstrap';
-import { ClassProvider } from '../../context/ClassContex';
 import { EnrollmentProvider } from '../../context/EnrollmentContext';
-import { UsersProvider } from '../../context/UsersContext';
 
 import formatDateTime from '../../utils/dateTimeUtils';
 
-function AdminDashboard() {
-  const { classesForToday, deleteEnrollment } = useContext(EnrollmentProvider);
+const TableUserClasses = () => {
+
+  const { userEnrollments, deleteEnrollment } = useContext(EnrollmentProvider);
+
+  const [show, setShow] = useState(false);
+  const [editClasses, setEditClasses] = useState(null);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(7);
@@ -16,13 +18,12 @@ function AdminDashboard() {
   // Calcular los índices de los elementos a mostrar en la página actual
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = classesForToday.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = userEnrollments.slice(indexOfFirstItem, indexOfLastItem);
 
   // Cambiar de página
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const isEmpty = () => classesForToday.length === 0;
-  //onsole.log(isEmpty);
+  const isEmpty = () => userEnrollments.length === 0;
 
   return (
     <>
@@ -33,33 +34,31 @@ function AdminDashboard() {
         <thead>
           <tr className="subtitle">
             <th>Index</th>
-            <th>Class Date</th>
-            <th>Class ID</th>
-            <th>Class Name</th>
-            <th>Teacher</th>
-            <th>User ID</th>
-            <th>UserName</th>
+            <th>Gym Class ID</th>
+            <th>Gym Class Name</th>
+            <th>Gym Class Teacher</th>
+            <th>Date and time</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {isEmpty() ? (
             <tr>
+              <td colSpan="4">
+                <h3 className="paragraph">No classes found</h3>
+              </td>
             </tr>
           ) : (
             currentItems.map((c, index) => {
               const rowIndex = index + indexOfFirstItem;
-              const { _id, dateAndTime, gymClass, className, teacher, user, userName } = c;
-
+              const { _id, gymClass, className, teacher, dateAndTime } = c;
               return (
                 <tr key={_id} className="paragraph fw-bold ">
                   <td className="bg-dark text-light border-0 pt-3">{rowIndex + 1}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{formatDateTime(dateAndTime)}</td>
                   <td className="bg-dark text-light border-0 pt-3">{gymClass}</td>
                   <td className="bg-dark text-light border-0 pt-3">{className}</td>
                   <td className="bg-dark text-light border-0 pt-3">{teacher}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{user}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{userName}</td>
+                  <td className="bg-dark text-light border-0 pt-3">{formatDateTime(dateAndTime)}</td>
                   <td className=" bg-dark text-light border-0">
                     <div className="d-flex flex-row justify-content-around">
                       <Button
@@ -88,7 +87,7 @@ function AdminDashboard() {
 
       {/* Pagination */}
       <Pagination className="justify-content-center mt-4 paragraph">
-        {Array.from({ length: Math.ceil(classesForToday.length / itemsPerPage) }).map((_, index) => (
+        {Array.from({ length: Math.ceil(userEnrollments.length / itemsPerPage) }).map((_, index) => (
           <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
             {index + 1}
           </Pagination.Item>
@@ -98,6 +97,4 @@ function AdminDashboard() {
   );
 }
 
-export default AdminDashboard;
-
-
+export default TableUserClasses;

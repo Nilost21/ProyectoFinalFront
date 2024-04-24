@@ -74,6 +74,10 @@ function NavbarComponent() {
     navigate('/enrollments')
   };
 
+  const handleMyClassesButton = () => {
+    navigate('/myclasses');
+  };
+
   return (
     <>
       <Navbar
@@ -105,12 +109,6 @@ function NavbarComponent() {
                 onClick={() => navigate('/products')}
               >
                 Products
-              </Nav.Link>
-              <Nav.Link
-                className="subtitle mt-1 text-white navbar-button"
-                onClick={() => navigate('/contact')}
-              >
-                Contact
               </Nav.Link>
               <Nav.Link
                 className="subtitle mt-1 text-white navbar-button"
@@ -313,7 +311,6 @@ function NavbarComponent() {
                     )}
                   {user &&
                     user.isAdmin && (
-
                       <Nav.Link
                         onClick={handleAdminEnrollments}
                         className="subtitle mt-1 text-light text-shadow navbar-button"
@@ -321,6 +318,14 @@ function NavbarComponent() {
                         Enrollments
                       </Nav.Link>
                     )}
+                  {user && (
+                    <Nav.Link
+                      onClick={handleMyClassesButton}
+                      className="subtitle mt-1 text-light text-shadow navbar-button"
+                    >
+                      My classes
+                    </Nav.Link>
+                  )}
                   <Nav.Link
                     onClick={handleLogout}
                     className="subtitle mt-1 text-light navbar-button"

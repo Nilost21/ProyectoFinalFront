@@ -32,7 +32,7 @@ const BookingForm = () => {
       });
     }
   }, [classes, selectedClass]);
-  
+
 
   const handleClassChange = (e) => {
     const classId = parseInt(e.target.value);
@@ -68,13 +68,13 @@ const BookingForm = () => {
           <Form.Group controlId="classSelect">
             <Form.Label>Select a class:</Form.Label>
             <Form.Control as="select" onChange={handleClassChange}>
-  <option value="">Seleccione una clase</option>
-  {classes.map((c) => (
-    <option key={c.id} value={c.id}>
-      {c.name} - {c.teacher} - {formatDateTime(c.dateAndTime)}
-    </option>
-  ))}
-</Form.Control>
+              <option value="">Seleccione una clase</option>
+              {classes.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.name} - {c.teacher} - {formatDateTime(c.dateAndTime)}
+                </option>
+              ))}
+            </Form.Control>
           </Form.Group>
 
           <Form.Group controlId="instructor">
@@ -88,7 +88,7 @@ const BookingForm = () => {
             />
           </Form.Group>
 
-        {/*   <Form.Group controlId="day">
+          {/*   <Form.Group controlId="day">
             <Form.Label>Day</Form.Label>
             <Form.Control
               type="text"

@@ -9,6 +9,7 @@ export const EnrollmentProvider = createContext();
 function EnrollmentContext({ children }) {
   const [enrollments, setEnrollments] = useState([]);
   const [classesForToday, setClassesForToday] = useState([]);
+  const [userEnrollments, setuserEnrollments] = useState([]);
 
   const getEnrollments = async () => {
     try {
@@ -39,16 +40,17 @@ function EnrollmentContext({ children }) {
       );
       const data = response.data;
       setEnrollments([...enrollments, data]);
-      //await getEnrollments();
+      return data;
     } catch (error) {
       console.log('Error at enrolling to the class', error.message || error);
     }
   };
 
-  const deleteEnrollment = async (id) => {
+  const deleteEnrollment = async (_id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/enrollment/${id}`);
-      const filteredEnrollments = enrollments.filter((e) => e.id !== id);
+      const res = await axios.delete(`http://localhost:3000/api/enrollment/${_id}`);
+      console.log("res", res);
+      const filteredEnrollments = enrollments.filter((e) => e.id !== _id);
       Swal.fire({
         position: 'center',
         icon: 'error',
@@ -63,6 +65,18 @@ function EnrollmentContext({ children }) {
     }
   };
 
+  const getUserEnrollments = async (userId) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/api/enrollment/enrollments/${userId}`);
+      const data = response.data;
+      setuserEnrollments([...data]);
+      return data;
+    } catch (error) {
+      console.error('Error fetching user enrollments:', error.message || error);
+      throw new Error('Error fetching user enrollments');
+    }
+  };
+
   useEffect(() => {
     getEnrollments();
     getEnrollmentsForToday();
@@ -73,8 +87,10 @@ function EnrollmentContext({ children }) {
       value={{
         enrollments,
         classesForToday,
+        userEnrollments,
         getEnrollments,
         getEnrollmentsForToday,
+        getUserEnrollments,
         newEnrollment,
         deleteEnrollment
       }}

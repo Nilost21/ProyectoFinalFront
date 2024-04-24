@@ -26,7 +26,7 @@ function Home() {
     <>
       <Container fluid>
         <Row className="p-0 bg-home pe-5 pb-5 pb-md-0">
-          <NavbarComponent />´{}
+          <NavbarComponent />´{ }
           <Col
             className="ms-xl-5 ms-4"
             xxl={5}
@@ -54,7 +54,7 @@ function Home() {
         </Row>
       </Container>
       <Container fluid data-aos="fade-up">
-        <Row className="mt-5 ps-md-5 ms-5 d-flex flex-row  justify-content-lg-center">
+        <Row className="mt-5 ps-md-5 ms-5 d-flex flex-row justify-content-lg-center">
           <Col
             md={8}
             xl={5}
@@ -68,11 +68,14 @@ function Home() {
             lg={5}
             xs={10}
             s={12}
-            className=" d-xxl-flex flex-xl-row px-0  ps-md-0 mb-5"
+            className=" d-xxl-flex flex-xl-row px-0 ps-md-0 mb-5"
           >
             <CardFlex />
           </Col>
         </Row>
+      </Container>
+      <Container className="my-0 py-3" data-aos="fade-left">
+        <PlanList />
       </Container>
       <Container fluid className="bg-footer my-5">
         <Row className="d-flex flex-row justify-content-start">
@@ -101,16 +104,13 @@ function Home() {
           </Col>
         </Row>
       </Container>
-      <Container className="my-5 py-5" data-aos="fade-left">
-        <PlanList />
-      </Container>
-      <Container>
+
+      <Container data-aos="fade-up">
         <ClassBookings />
       </Container>
-
       <Container
         fluid
-        className="d-flex flex-row justify-content-around mt-5  border-footer bg-footer"
+        className="d-flex flex-row justify-content-around mt-5 border-footer bg-footer"
       >
         <FooterComponent />
       </Container>

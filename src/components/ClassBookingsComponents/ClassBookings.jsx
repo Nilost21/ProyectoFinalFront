@@ -21,7 +21,7 @@ function ClassBookings() {
 
   return (
     <>
-      <Container>
+      <Container >
         <Row className="d-flex justify-content-center mt-3">
           {isEmpty() ? (
             <h2 className="paragraph">Oops! No classes available</h2>
@@ -39,6 +39,7 @@ function ClassBookings() {
                   className="d-flex justify-content-center"
                 >
                   <BookingCard
+                    id={_id}
                     name={name}
                     description={description}
                     teacher={teacher}

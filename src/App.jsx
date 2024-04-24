@@ -16,7 +16,7 @@ import Home from './pages/Home/Home';
 import AdminProducts from './pages/Admin/AdminProducts';
 import Products from './pages/Products/Products';
 import About from './pages/About/About';
-import Profile from './pages/Profile/Profile';
+import MyClasses from './pages/Profile/MyClasses';
 import AdminClass from './pages/Admin/AdminClass';
 import AdminUsers from './pages/Admin/AdminUsers';
 import ClassPlan from './pages/Plans/ClassPlan';
@@ -24,7 +24,6 @@ import MusclePlan from './pages/Plans/MusclePlan';
 import FullPlan from './pages/Plans/FullPlan';
 import AdminEnrollments from './pages/Admin/AdminEnrollments';
 import Error404 from './pages/Error404/Error404';
-
 
 function App() {
 
@@ -50,8 +49,8 @@ function App() {
       element: <PublicRoute><ClassPlan /></PublicRoute>
     },
     {
-      path:"/class-plan",
-      element: <PublicRoute><ClassPlan/></PublicRoute>
+      path: "/class-plan",
+      element: <PublicRoute><ClassPlan /></PublicRoute>
     },
     {
       path: "/muscle-plan",
@@ -79,7 +78,11 @@ function App() {
     },
     {
       path: "/profile",
-      element: <PrivateRoute> <Profile /> </PrivateRoute>
+      element: <PrivateRoute><Error404 /> </PrivateRoute>
+    },
+    {
+      path: "/myclasses",
+      element: <PrivateRoute><MyClasses /> </PrivateRoute>
     }
   ];
 
@@ -98,7 +101,7 @@ function App() {
           </CartContext>
         </ProductsContext>
       </UsersContext>
-      
+
     </>
   );
 }
