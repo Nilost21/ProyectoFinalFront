@@ -63,7 +63,7 @@ function FormEditUser({ updateUser, handleClose }) {
         className=" gradient-bg shadow-box text-light rounded-bottom-3 pb-3 px-4 rounded-bottom-4"
       >
         <Form.Group className="mb-1 pt-1">
-          <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2  ps-1">
+          <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
             Name
           </Form.Label>
           <Form.Control
@@ -77,7 +77,7 @@ function FormEditUser({ updateUser, handleClose }) {
         </Form.Group>
 
         <Form.Group className="mb-1 pt-1">
-          <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2  ps-1">
+          <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
             Lastname
           </Form.Label>
           <Form.Control
@@ -85,13 +85,13 @@ function FormEditUser({ updateUser, handleClose }) {
             type="text"
             value={users.lastname}
             onChange={handleChange}
-            name="lastnamename"
+            name="lastname"
             placeholder="Enter the user lastname"
           />
         </Form.Group>
 
         <Form.Group className="mb-1 pt-1">
-          <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2  ps-1">
+          <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
             Phone number
           </Form.Label>
           <Form.Control
@@ -105,7 +105,7 @@ function FormEditUser({ updateUser, handleClose }) {
         </Form.Group>
 
         <Form.Group className="mb-1 pt-1">
-          <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2  ps-1">
+          <Form.Label className=" subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
             Email
           </Form.Label>
           <Form.Control
@@ -121,7 +121,7 @@ function FormEditUser({ updateUser, handleClose }) {
         {updateUser ? (
           <div className="mt-1">
             <Button
-              className="gradient-background border-0 rounded-5 subtitle py-1 mt-1 shadow-on-hover w-100"
+              className="gradient-background border-0 rounded-5 subtitle py-1 mt-3 shadow-on-hover w-100"
               type="submit"
             >
               Edit User{' '}

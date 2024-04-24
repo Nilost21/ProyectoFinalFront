@@ -5,6 +5,7 @@ import ProductsContext from './context/ProductsContext';
 import UsersContext from './context/UsersContext';
 import CartContext from './context/CartContext';
 import ClassContext from './context/ClassContex';
+import EnrollmentContext from './context/EnrollmentContext';
 
 import { useRoutes } from 'react-router-dom';
 import PrivateRoute from './routes/private-route/PrivateRoute';
@@ -21,8 +22,8 @@ import AdminUsers from './pages/Admin/AdminUsers';
 import ClassPlan from './pages/Plans/ClassPlan';
 import MusclePlan from './pages/Plans/MusclePlan';
 import FullPlan from './pages/Plans/FullPlan';
+import AdminEnrollments from './pages/Admin/AdminEnrollments';
 import Error404 from './pages/Error404/Error404';
-
 
 
 function App() {
@@ -45,16 +46,20 @@ function App() {
       element: <PublicRoute><About /></PublicRoute>
     },
     {
+      path: "/class-plan",
+      element: <PublicRoute><ClassPlan /></PublicRoute>
+    },
+    {
       path:"/class-plan",
       element: <PublicRoute><ClassPlan/></PublicRoute>
     },
     {
-      path:"/muscle-plan",
-      element: <PublicRoute><MusclePlan/></PublicRoute>
+      path: "/muscle-plan",
+      element: <PublicRoute><MusclePlan /></PublicRoute>
     },
     {
-      path:"/full-plan",
-      element: <PublicRoute><FullPlan/></PublicRoute>
+      path: "/full-plan",
+      element: <PublicRoute><FullPlan /></PublicRoute>
     },
     {
       path: "/adminproducts",
@@ -67,6 +72,10 @@ function App() {
     {
       path: "/adminclasses",
       element: <AdminRoute> <AdminClass /> </AdminRoute>
+    },
+    {
+      path: "/enrollments",
+      element: <AdminRoute> <AdminEnrollments /> </AdminRoute>
     },
     {
       path: "/profile",
@@ -82,7 +91,9 @@ function App() {
         <ProductsContext>
           <CartContext>
             <ClassContext>
-              {routeselement}
+              <EnrollmentContext>
+                {routeselement}
+              </EnrollmentContext>
             </ClassContext>
           </CartContext>
         </ProductsContext>

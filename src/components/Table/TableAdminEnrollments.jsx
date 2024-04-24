@@ -1,51 +1,93 @@
 /* eslint-disable no-unused-vars */
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { Table, Button, Modal, Pagination } from 'react-bootstrap';
 
+import { EnrollmentProvider } from '../../context/EnrollmentContext';
+import { ClassProvider } from '../../context/ClassContex';
 import { UsersProvider } from '../../context/UsersContext';
-import FormEditUser from '../Form/FormEditUser';
+import formatDateTime from '../../utils/dateTimeUtils';
+
 import './../../css/Tables.css';
 
-function TableUsers() {
-  const { users, deleteUser } = useContext(UsersProvider);
+function TableAdminEnrollments() {
+  const { enrollments, deleteEnrollment } = useContext(EnrollmentProvider);
+  const { getClassDate, getClassNameById, getClassTeacherById } = useContext(ClassProvider);
+  const { getUserName } = useContext(UsersProvider);
+
   const [show, setShow] = useState(false);
-  const [editUser, setEditUser] = useState(null);
+  const [editEnrollment, setEditEnrollment] = useState(null);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(7);
+  const [itemsPerPage] = useState(5);
+
+  const [userNames, setUserNames] = useState({});
+  const [classNames, setClassNames] = useState({});
+  const [teachers, setTeachers] = useState({});
+  const [classDates, setClassDates] = useState({});
+
+  useEffect(() => {
+    async function fetchUserNames() {
+      const names = {};
+      for (const enrollment of enrollments) {
+        const userName = await getUserName(enrollment.user);
+        names[enrollment._id] = userName;
+      }
+      setUserNames(names);
+    }
+    fetchUserNames();
+  }, [enrollments, getUserName]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const classNames = {};
+      const teacherNames = {};
+      const dates = {};
+      for (const enrollment of enrollments) {
+        const className = await getClassNameById(enrollment.gymClass);
+        const teacherName = await getClassTeacherById(enrollment.gymClass);
+        const date = await getClassDate(enrollment.gymClass);
+        classNames[enrollment._id] = className;
+        teacherNames[enrollment._id] = teacherName;
+        dates[enrollment._id] = date;
+      }
+      setClassNames(classNames);
+      setTeachers(teacherNames);
+      setClassDates(dates);
+    }
+    fetchData();
+  }, [enrollments, getClassNameById, getClassTeacherById, getClassDate]);
 
   const handleClose = () => setShow(false);
 
-  const handleEdit = (user) => {
-    setEditUser(user);
+  const handleEdit = (enrollment) => {
+    setEditEnrollment(enrollment);
     setShow(true);
   };
 
   // Calcular los índices de los elementos a mostrar en la página actual
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = users.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = enrollments.slice(indexOfFirstItem, indexOfLastItem);
 
   // Cambiar de página
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const isEmpty = () => users.length === 0;
+  const isEmpty = () => enrollments.length === 0;
 
   return (
     <>
       <div className="text-star bg-dark text-white rounded-top-4 py-1">
-        <h3 className="subtitle ps-3 mt-1 pt-1 my-0 ">Gym Users</h3>
+        <h3 className="subtitle ps-3 mt-1 pt-1 my-0 ">Classes enrollments</h3>
       </div>
       <Table className="mb-0">
         <thead>
           <tr className="subtitle">
             <th>Index</th>
             <th>Id</th>
-            <th>Name</th>
-            <th>Lastname</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Role</th>
+            <th>Class name</th>
+            <th>Teacher</th>
+            <th>Date and time</th>
+            <th>User name</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -53,33 +95,26 @@ function TableUsers() {
           {isEmpty() ? (
             <tr>
               <td colSpan="4">
-                <h3 className="paragraph">No users found</h3>
+                <h3 className="paragraph">No enrollments found</h3>
               </td>
             </tr>
           ) : (
-            currentItems.map((user, index) => {
+            currentItems.map((enrollment, index) => {
               const rowIndex = index + indexOfFirstItem;
-              const { _id, name, lastname, phonenumber, email, isAdmin } = user;
-              const checkAdmin = isAdmin ? 'Admin' : 'User';
-              const adminClass = isAdmin ? 'text-danger' : 'text-secondary';
-
+              const { _id, user } = enrollment;
               return (
                 <tr key={_id} className="paragraph fw-bold ">
                   <td className="bg-dark text-light border-0 pt-3">{rowIndex + 1}</td>
                   <td className="bg-dark text-light border-0 pt-3">{_id}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{name}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{lastname}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{phonenumber}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{email}</td>
-                  <td className={`${adminClass} bg-dark border-0 pt-3`}>
-                    {checkAdmin}
-                  </td>
+                  <td className="bg-dark text-light border-0 pt-3">{classNames[_id]}</td>
+                  <td className="bg-dark text-light border-0 pt-3">{teachers[_id]}</td>
+                  <td className="bg-dark text-light border-0 pt-3">{formatDateTime(classDates[_id])}</td>
+                  <td className="bg-dark text-light border-0 pt-3">{userNames[_id]}</td>
                   <td className=" bg-dark text-light border-0">
                     <div className="d-flex flex-row justify-content-around">
                       <Button
-                        onClick={() => handleEdit(user)}
+                        onClick={() => handleEdit(enrollment)}
                         className="bg-secondary border-0 text-dark me-3"
-                        disabled={isAdmin}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -93,9 +128,8 @@ function TableUsers() {
                         </svg>
                       </Button>
                       <Button
-                        onClick={() => deleteUser(_id)}
+                        onClick={() => deleteEnrollment(_id)}
                         className="bg-danger border-0 text-dark"
-                        disabled={isAdmin}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -117,26 +151,9 @@ function TableUsers() {
         </tbody>
       </Table>
 
-      {/* Form edit user */}
-      <div className="rounded-5 p-0">
-        <Modal
-          show={show}
-          onHide={handleClose}
-          className="rounded-5 p-0"
-          contentClassName="bg-transparent p-0 border-0"
-        >
-          <Modal.Body className="bg-transparent rounded-5 border-0 p-0 ">
-            <FormEditUser
-              updateUser={editUser}
-              handleClose={handleClose}
-            />
-          </Modal.Body>
-        </Modal>
-      </div>
-
       {/* Pagination */}
       <Pagination className="justify-content-center mt-4 paragraph">
-        {Array.from({ length: Math.ceil(users.length / itemsPerPage) }).map((_, index) => (
+        {Array.from({ length: Math.ceil(enrollments.length / itemsPerPage) }).map((_, index) => (
           <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
             {index + 1}
           </Pagination.Item>
@@ -145,4 +162,4 @@ function TableUsers() {
     </>
   );
 }
-export default TableUsers;
+export default TableAdminEnrollments;

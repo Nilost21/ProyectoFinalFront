@@ -19,6 +19,46 @@ function ClassContext({ children }) {
     }
   };
 
+  const getClass = async (id) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/api/class/${id}`);
+      const data = response.data;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getClassDate = async (id) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/api/class/${id}`);
+      const data = response.data;
+      return data.dateAndTime;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getClassNameById = async (id) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/api/class/name/${id}`);
+      const data = response.data;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getClassTeacherById = async (id) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/api/class/teacher/${id}`);
+      const data = response.data;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const addClass = async (newClass) => {
     try {
       const response = await axios.post(
@@ -77,6 +117,10 @@ function ClassContext({ children }) {
       value={{
         classes,
         addClass,
+        getClass,
+        getClassNameById,
+        getClassTeacherById,
+        getClassDate,
         deleteClass,
         updateClass,
         getClasses

@@ -70,6 +70,10 @@ function NavbarComponent() {
     navigate('/adminusers');
   };
 
+  const handleAdminEnrollments = () => {
+    navigate('/enrollments')
+  };
+
   return (
     <>
       <Navbar
@@ -121,7 +125,7 @@ function NavbarComponent() {
                   <NavDropdown
                     title={<CartSVG />}
                     id="navbar-dropdown"
-                    className="hide-toggle-icon pe-5 me-5 border-0"
+                    className="hide-toggle-icon pe-5 me-5 border-0 navbar-button"
                   >
                     <NavDropdown.Item
                       id="carrito"
@@ -278,30 +282,45 @@ function NavbarComponent() {
             <Nav className="pe-4">
               {isLoggedIn ? (
                 <>
-                  {user && user.isAdmin && (
-                    <Nav.Link
-                      onClick={handleProductsButton}
-                      className="subtitle mt-1 text-light text-shadow navbar-button"
-                    >
-                      Products
-                    </Nav.Link>
-                  )}
-                  {user && user.isAdmin && (
-                    <Nav.Link
-                      onClick={handleClassesButton}
-                      className="subtitle mt-1 text-light text-shadow navbar-button"
-                    >
-                      Classes
-                    </Nav.Link>
-                  )}
-                  {user && user.isAdmin && (
-                    <Nav.Link
-                      onClick={handleUsersButton}
-                      className="subtitle mt-1 text-light text-shadow navbar-button"
-                    >
-                      Users
-                    </Nav.Link>
-                  )}
+                  {user &&
+                    user.isAdmin && (
+
+                      <Nav.Link
+                        onClick={handleProductsButton}
+                        className="subtitle mt-1 text-light text-shadow navbar-button"
+                      >
+                        Products
+                      </Nav.Link>
+                    )}
+                  {
+                    user && user.isAdmin && (
+                      <Nav.Link
+                        onClick={handleClassesButton}
+                        className="subtitle mt-1 text-light text-shadow navbar-button"
+                      >
+                        Classes
+                      </Nav.Link>
+                    )
+                  }
+                  {user &&
+                    user.isAdmin && (
+                      <Nav.Link
+                        onClick={handleUsersButton}
+                        className="subtitle mt-1 text-light text-shadow navbar-button"
+                      >
+                        Users
+                      </Nav.Link>
+                    )}
+                  {user &&
+                    user.isAdmin && (
+
+                      <Nav.Link
+                        onClick={handleAdminEnrollments}
+                        className="subtitle mt-1 text-light text-shadow navbar-button"
+                      >
+                        Enrollments
+                      </Nav.Link>
+                    )}
                   <Nav.Link
                     onClick={handleLogout}
                     className="subtitle mt-1 text-light navbar-button"

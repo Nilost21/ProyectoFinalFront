@@ -6,38 +6,39 @@ import { Link } from 'react-router-dom';
 import { Formik, ErrorMessage } from 'formik';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { UsersProvider } from '../context/UsersContext';
 import { schema } from '../schema/SignUpSchema';
-import errorMessages from '../utils/errorMessages';
 import './../css/Form.css';
 
 const SignUp = ({ show, handleClose, showLoginModal }) => {
-  const { users, getUsers, createUser } = useContext(UsersProvider);
+  const { createUser } = useContext(UsersProvider);
 
   const handleSignUp = async (user) => {
     try {
-      // Call createUser function with the form values
-      await createUser(user);
-      // Show success message or navigate to login page
-      toast.success('User registered successfully');
-      handleClose();
-      showLoginModal();
-    } catch (error) {
-      if (error.response) {
-        // Si la respuesta contiene un error
-        const errorCode = error.response.status;
-        const errorMessage = errorMessages[errorCode] || 'An unexpected error occurred.';
-        toast.error(errorMessage);
-      } else if (error.request) {
-        // Si no se recibe respuesta del servidor
-        toast.error('No response from server. Please try again later.');
-      } else {
-        // Si ocurre un error durante la solicitud
-        console.error('Registration error:', error.message);
-        toast.error('An error occurred while registering the user');
+      const response = await createUser(user);
+      if (response) {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'User registered successfully',
+          timer: 1500,
+          showConfirmButton: false
+        });
+        handleClose();
+        showLoginModal();
       }
+    } catch (error) {
+      const errorMessage = error.response?.data?.error.message
+      console.log(error);
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Error enrolling in class',
+        text: errorMessage
+      });
     }
   };
 

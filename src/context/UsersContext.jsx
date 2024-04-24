@@ -25,6 +25,7 @@ function UsersContext({ children }) {
       setUsers([...data]);
     } catch (error) {
       console.log(error);
+      throw error;
     }
   };
 
@@ -36,8 +37,10 @@ function UsersContext({ children }) {
       );
       const data = response.data;
       setUsers(prevUsers => [...prevUsers, data]);
+      return data;
     } catch (error) {
       console.error('Registration error:', error.message);
+      throw error;
     }
   };
 
@@ -54,6 +57,17 @@ function UsersContext({ children }) {
         `http://localhost:3000/api/user/${id}`,
         config
       );
+      const data = response.data;
+      return data;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  };
+
+  const getUserName = async (id) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/api/user/name/${id}`);
       const data = response.data;
       return data;
     } catch (error) {
@@ -82,6 +96,7 @@ function UsersContext({ children }) {
       setUsers(updatedUsers);
     } catch (error) {
       console.log(error);
+      throw error;
     }
   };
 
@@ -107,6 +122,7 @@ function UsersContext({ children }) {
       await getUsers();
     } catch (error) {
       console.log(error);
+      throw error;
     }
   };
 
@@ -120,6 +136,7 @@ function UsersContext({ children }) {
       getUsers,
       createUser,
       getUser,
+      getUserName,
       editUser,
       deleteUser
     }}>
