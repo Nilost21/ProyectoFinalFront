@@ -4,7 +4,7 @@ import CardComponent from '../../components/CardComponent';
 import { useContext } from 'react';
 import { ProductsProvider } from '../../context/ProductsContext';
 import NavbarComponent from '../../components/NavbarComponent';
-
+import FooterComponent from '../../components/FooterComponent';
 function Products() {
   const { products } = useContext(ProductsProvider);
 
@@ -44,6 +44,12 @@ function Products() {
             )}
           </Row>
         </Container>
+      </Container>
+      <Container
+        fluid
+        className="d-flex flex-row justify-content-around mt-5  border-footer bg-footer"
+      >
+        <FooterComponent />
       </Container>
     </>
   );

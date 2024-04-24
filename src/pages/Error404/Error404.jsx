@@ -44,7 +44,7 @@ const Error404 = () => {
       </div>
       <Container
         fluid
-        className="d-flex flex-row justify-content-around mt-5  border-footer bg-footer"
+        className="d-flex flex-row justify-content-around   border-footer bg-footer"
       >
         <FooterComponent />
       </Container>
