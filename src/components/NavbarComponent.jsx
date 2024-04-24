@@ -108,6 +108,12 @@ function NavbarComponent() {
               >
                 Contact
               </Nav.Link>
+              <Nav.Link
+                className="subtitle mt-1 text-white navbar-button"
+                onClick={() => navigate('/about')}
+              >
+                About
+              </Nav.Link>
 
               {/* Inicio carrito */}
               {isLoggedIn ? (

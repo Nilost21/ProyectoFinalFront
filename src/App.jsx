@@ -14,12 +14,14 @@ import AdminRoute from './routes/admin-route/AdminRoute';
 import Home from './pages/Home/Home';
 import AdminProducts from './pages/Admin/AdminProducts';
 import Products from './pages/Products/Products';
+import About from './pages/About/About';
 import Profile from './pages/Profile/Profile';
 import AdminClass from './pages/Admin/AdminClass';
 import AdminUsers from './pages/Admin/AdminUsers';
 import ClassPlan from './pages/Plans/ClassPlan';
 import MusclePlan from './pages/Plans/MusclePlan';
 import FullPlan from './pages/Plans/FullPlan';
+import Error404 from './pages/Error404/Error404';
 
 
 
@@ -28,7 +30,7 @@ function App() {
   const routes = [
     {
       path: "*",
-      element: <PublicRoute><h1 className="title text-light mt-3 ">Not found</h1></PublicRoute>
+      element: <PublicRoute><Error404 /></PublicRoute>
     },
     {
       path: "/",
@@ -37,6 +39,10 @@ function App() {
     {
       path: "/products",
       element: <PublicRoute><Products /></PublicRoute>
+    },
+    {
+      path: "/about",
+      element: <PublicRoute><About /></PublicRoute>
     },
     {
       path:"/class-plan",
@@ -81,8 +87,10 @@ function App() {
           </CartContext>
         </ProductsContext>
       </UsersContext>
+      
     </>
   );
 }
 
 export default App;
+
