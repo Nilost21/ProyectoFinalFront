@@ -63,11 +63,11 @@ function NavbarComponent() {
   };
 
   const handleClassesButton = () => {
-    navigate('/adminclasses')
+    navigate('/adminclasses');
   };
 
   const handleUsersButton = () => {
-    navigate('/adminusers')
+    navigate('/adminusers');
   };
 
   return (
@@ -84,8 +84,11 @@ function NavbarComponent() {
           >
             <h5 className="mt-2 gradient-text text-shadow fs-2">ELITEBODY</h5>
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav" className="text-light">
+          <Navbar.Toggle
+            aria-controls="responsive-navbar-nav"
+            className="custom-toggle"
+          />
+          <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link
                 className="subtitle mt-1 text-white navbar-button"
@@ -265,41 +268,34 @@ function NavbarComponent() {
                 <></>
               )}
               {/* Fin carrito */}
-
-
             </Nav>
             <Nav className="pe-4">
               {isLoggedIn ? (
                 <>
-                  {user &&
-                    user.isAdmin && (
-
-                      <Nav.Link
-                        onClick={handleProductsButton}
-                        className="subtitle mt-1 text-light text-shadow navbar-button"
-                      >
-                        Products
-                      </Nav.Link>
-                    )}
-                  {
-                    user && user.isAdmin && (
-                      <Nav.Link
-                        onClick={handleClassesButton}
-                        className="subtitle mt-1 text-light text-shadow navbar-button"
-                      >
-                        Classes
-                      </Nav.Link>
-                    )
-                  }
-                  {user &&
-                    user.isAdmin && (
-                      <Nav.Link
-                        onClick={handleUsersButton}
-                        className="subtitle mt-1 text-light text-shadow navbar-button"
-                      >
-                        Users
-                      </Nav.Link>
-                    )}
+                  {user && user.isAdmin && (
+                    <Nav.Link
+                      onClick={handleProductsButton}
+                      className="subtitle mt-1 text-light text-shadow navbar-button"
+                    >
+                      Products
+                    </Nav.Link>
+                  )}
+                  {user && user.isAdmin && (
+                    <Nav.Link
+                      onClick={handleClassesButton}
+                      className="subtitle mt-1 text-light text-shadow navbar-button"
+                    >
+                      Classes
+                    </Nav.Link>
+                  )}
+                  {user && user.isAdmin && (
+                    <Nav.Link
+                      onClick={handleUsersButton}
+                      className="subtitle mt-1 text-light text-shadow navbar-button"
+                    >
+                      Users
+                    </Nav.Link>
+                  )}
                   <Nav.Link
                     onClick={handleLogout}
                     className="subtitle mt-1 text-light navbar-button"

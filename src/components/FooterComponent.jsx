@@ -4,7 +4,7 @@ import '../css/Footer/Footer.css';
 function FooterComponent() {
   return (
     <>
-      <Row className="text-white mt-5 mb-4">
+      <Row className="text-white mt-5 mb-4 ms-lg-5">
         <Col lg={3} className="subtitle fs-1">
           <h1 className="gradient-text fw-bold">ELITEBODY</h1>
         </Col>

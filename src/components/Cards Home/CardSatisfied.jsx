@@ -1,4 +1,4 @@
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Col } from 'react-bootstrap';
 import StarSVG from '../../utils/StarSVG';
 import '../../css/Card.css';
 import '../../css/Home.css';
@@ -6,10 +6,10 @@ import '../../css/Home.css';
 function CardSatisfied() {
   return (
     <>
-      <Card className="bg-transparent mb-5 rounded-3 border-0 p-0 ms-md-5 mt-md-5 pt-5 ps-md-5">
-        <Card.Title className="title number-color mt-4 increase-font-number ms-3">
+      <Card className="bg-transparent mb-5 rounded-3 border-0 p-0 mt-md-5  ">
+        <h1 className="title number-color  increase-font-number ms-3">
           1 4 0 0 0 +
-        </Card.Title>
+        </h1>
         <Card.Body className="pt-1">
           <div className="p-0">
             <Button className="bg-transparent py-1 mb-1 border-0 d-flex flex-row justify-content-around">
@@ -20,14 +20,18 @@ function CardSatisfied() {
               <StarSVG />
             </Button>
           </div>
-          <Card.Title className="text-white paragraph mb-3 increase-font-p">
-            Satisfied Costumers
+          <Card.Title>
+            <h1 className="text-white paragraph mb-3 increase-font-satisfied text-shadow-effect mt-md-4">
+              Satisfied Costumers
+            </h1>
           </Card.Title>
-          <Card.Text className="text-color-small small-font pe-5">
-            So many people have already trusted us. This number is constantly
-            growing thanks to the positive feedback from our customers.
-          </Card.Text>
-          <Button className="bg-transparent border-0 subtitle px-0">
+          <Col md={9}>
+            <Card.Text className="text-color-small small-font pe-5  text-shadow-effect increase-font-small">
+              So many people have already trusted us. This number is constantly
+              growing thanks to the positive feedback from our customers.
+            </Card.Text>
+          </Col>
+          <Button className="bg-transparent border-0 subtitle px-0 mt-3">
             {' '}
             <span className="gradient-hover">Read More</span>{' '}
             <svg

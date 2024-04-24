@@ -12,9 +12,9 @@ function CardComponent({ name, description, product, price, image }) {
     <>
       <Card
         style={{ width: '18rem' }}
-        className="text-light g-bg rounded-5 border-0 rounded-4 mb-3 card-zoom "
+        className="text-light g-bg rounded-4 border-0 rounded-4 mb-3 card-zoom "
       >
-        <Card.Body className=" shadow-box rounded-4 border-0 rounded-5">
+        <Card.Body className=" shadow-box rounded-4 border-0 rounded-2">
           <div className="p-2">
             <Card.Img
               variant="top"

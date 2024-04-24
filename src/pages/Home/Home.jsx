@@ -12,6 +12,8 @@ import CardSatisfied from '../../components/Cards Home/CardSatisfied';
 import CardFlex from '../../components/Cards Home/CardFlex';
 import FooterComponent from '../../components/FooterComponent';
 import PlanList from '../Plans/PlanList';
+import { activateScrollAnimation } from '../../utils/activateScrollAnimation.js';
+import React, { useEffect } from 'react';
 
 import NutritionTitle from '../../components/NutritionComponents/NutritionTitle';
 import NutritionFood from '../../components/NutritionComponents/NutritionFood';
@@ -24,37 +26,61 @@ function Home() {
     <>
       <Container fluid>
         <Row className="p-0 bg-home pe-5 pb-5 pb-md-0">
-          <NavbarComponent />´{ }
-          <Col className="ms-xl-5 ms-4" xxl={5} xl={7} lg={8} md={9}>
+          <NavbarComponent />´{}
+          <Col
+            className="ms-xl-5 ms-4"
+            xxl={5}
+            xl={7}
+            lg={8}
+            md={9}
+            data-aos="fade-right"
+          >
             <TitleHomeComponent />
           </Col>
         </Row>
-        <Row className="pb-5 d-flex flex-row justify-content-center px-5">
-          <Col xl={3} lg={3} md={6} sm={8}>
+        <Row
+          className=" d-flex flex-row justify-content-center px-5"
+          data-aos="fade-right"
+        >
+          <Col xl={3} lg={6} md={5} sm={8}>
             <CardExperience />
           </Col>
-          <Col xl={3} lg={3} md={6} sm={8}>
+          <Col xl={3} lg={6} md={5} sm={8}>
             <CardTrainer />
           </Col>
-          <Col xl={3} lg={3} md={6} sm={12} xs={12}>
+          <Col xl={3} lg={6} md={5} sm={12} xs={12}>
             <CardDiet />
           </Col>
         </Row>
-        <Row className="mt-5 ps-md-5 ms-5 d-flex flex-row justify-content-end">
-          <Col lg={4} xs={12} s={12}>
+      </Container>
+      <Container fluid data-aos="fade-up">
+        <Row className="mt-5 ps-md-5 ms-5 d-flex flex-row  justify-content-lg-center">
+          <Col
+            md={8}
+            xl={5}
+            xs={12}
+            s={12}
+            className="d-flex flex-column justify-content-center p-0 ms-ms-5 ps-md-5 "
+          >
             <CardSatisfied />
           </Col>
-          <Col lg={7} xs={12} s={12} className="px-0 pe-md-5 ps-md-0">
+          <Col
+            lg={5}
+            xs={10}
+            s={12}
+            className=" d-xxl-flex flex-xl-row px-0  ps-md-0 mb-5"
+          >
             <CardFlex />
           </Col>
         </Row>
       </Container>
-
-      <Container fluid>
+      <Container fluid className="bg-footer my-5">
         <Row className="d-flex flex-row justify-content-start">
-          <Col xl={12} className="p-0 mb-5 background-color">
-
-            <Row className="d-flex flex-row justify-content-center mt-5">
+          <Col>
+            <Row
+              className="d-flex flex-row justify-content-center mt-5"
+              data-aos="fade-down"
+            >
               <NutritionTitle />
             </Row>
 
@@ -62,25 +88,24 @@ function Home() {
               <Col xl={5} className="">
                 <NutritionFood />
               </Col>
-              {/* Segunda columna */}
               <Col xl={6} className="mb-4">
                 <TrainingComponent />
               </Col>
             </Row>
 
-            <Row>
-              <div className="d-flex flex-row justify-content-center">
+            <Row data-aos="fade-down">
+              <div className="d-flex flex-row justify-content-center mb-3">
                 <NutritionBtn />
               </div>
             </Row>
           </Col>
         </Row>
       </Container>
-      <Container>
+      <Container className="my-5 py-5" data-aos="fade-left">
         <PlanList />
       </Container>
       <Container>
-        <ClassBookings/>
+        <ClassBookings />
       </Container>
 
       <Container

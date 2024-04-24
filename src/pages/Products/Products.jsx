@@ -23,7 +23,7 @@ function Products() {
                 const { _id, name, price, description, image } = product;
 
                 return (
-                  <Col xs={8} lg={2} md={6} sm={8} key={_id}>
+                  <Col xs={10} lg={4} md={4} sm={8} key={_id}>
                     <CardComponent
                       name={name}
                       product={product}

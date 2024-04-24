@@ -22,7 +22,9 @@
   transform: scale(1.05);
 }
 
-
+.increase-font-satisfied {
+  font-size: 5rem; 
+}
 
 .bg-experience {
   background: #1B1924;
@@ -57,9 +59,14 @@
 
 .number-color {
   color: #AC65CF;
-  font-size: 5rem; 
+  font-size: 9rem; /* Tamaño de fuente por defecto */
 }
 
+@media only screen and (max-width: 600px) {
+  .number-color {
+    font-size: 4rem; /* Tamaño de fuente para pantallas más pequeñas, como dispositivos móviles */
+  }
+}
 
 .slide-up {
   animation: slideUp 5s ease forwards;

@@ -3,11 +3,14 @@
   }
   
   
-  .border-footer {
+  /* .border-footer {
     border-top: 3px solid #332847;
-  }
+  } */
 
 
 .bg-footer {
     background-color: #1B1924;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
 }
+
+
