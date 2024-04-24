@@ -40,7 +40,7 @@ function Home() {
         </Row>
         <Row
           className=" d-flex flex-row justify-content-center px-5"
-          data-aos="fade-right"
+          data-aos="fade-left"
         >
           <Col xl={3} lg={6} md={5} sm={8}>
             <CardExperience />
