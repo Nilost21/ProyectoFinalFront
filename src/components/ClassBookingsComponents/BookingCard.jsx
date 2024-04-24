@@ -12,30 +12,29 @@ import { useAuth } from '../../context/Utils/authUtils';
 
 import '../../css/ClassBookings/BookingCard.css';
 
-
 const BookingCard = ({ id, name, description, teacher, dateAndTime }) => {
-
   const { newEnrollment } = useContext(EnrollmentProvider);
-
   const { isLoggedIn, user } = useAuth();
 
   const handleEnroll = async () => {
+    if (!isLoggedIn) {
+      console.log("User must log in");
+      return;
+    }
     try {
-      if (!isLoggedIn) {
-        console.log("User must log in");
-        return;
+      const res = await newEnrollment({ user: user._id, gymClass: id });
+      if (res) {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Successfully enrolled in the class!',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } else {
+        throw new Error('The user is already enrolled');
       }
-      await newEnrollment({ user: user._id, gymClass: id });
-
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Successfully enrolled in the class!',
-        showConfirmButton: false,
-        timer: 1500,
-      });
     } catch (error) {
-      console.log('Error enrolling in class:', error);
       Swal.fire({
         position: 'center',
         icon: 'error',

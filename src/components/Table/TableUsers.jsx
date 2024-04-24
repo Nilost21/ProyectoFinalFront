@@ -12,7 +12,7 @@ function TableUsers() {
   const [editUser, setEditUser] = useState(null);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(5);
+  const [itemsPerPage] = useState(7);
 
   const handleClose = () => setShow(false);
 

@@ -3,14 +3,14 @@
 import { useEffect, useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { Formik, ErrorMessage } from 'formik';
+import axios from 'axios';
 import PropTypes from 'prop-types';
-import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
+
 import 'react-toastify/dist/ReactToastify.css';
 
 import { schema } from '../schema/SignInSchema';
-import errorMessages from '../utils/errorMessages';
 import { useAuth } from '../context/Utils/authUtils';
 import './../css/Form.css';
 
@@ -24,7 +24,6 @@ const SignIn = ({ show, handleClose, showRegisterModal }) => {
   const { login } = useAuth();
 
   useEffect(() => {
-    // Limpiar los valores del estado cuando se cierra el modal
     if (!show) {
       setFormData({
         email: '',
@@ -49,34 +48,26 @@ const SignIn = ({ show, handleClose, showRegisterModal }) => {
         formData
       );
 
-      if (response.status === 200) {
-        const { token, user } = response.data;
-        login(token, user);
-        localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(user));
+      const { token, user } = response.data;
+      login(token, user);
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
 
-        setFormData({
-          email: '',
-          password: '',
-        });
+      setFormData({
+        email: '',
+        password: '',
+      });
 
-        handleClose();
-        navigate('/');
-      } else {
-        const errorData = await response.json();
-        console.log("errorData", errorData);
-        let errorMessage = 'An unexpected error occurred.';
-        if (errorData && errorData.error && errorData.error.message) {
-          toast.error(errorData.error.message);
-        } else {
-          const errorCode = response.status;
-          errorMessage = errorMessages[errorCode] || errorMessage;
-          toast.error(errorMessage);
-        }
-        //throw new Error('Error al enviar la solicitud para iniciar sesión');
-      }
+      handleClose();
+      navigate('/');
     } catch (error) {
-      console.error('Error:', error.message);
+      const errorMessage = error.response?.data?.error.message || 'Unknown Error';
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Error enrolling in class',
+        text: errorMessage
+      });
     }
   };
 
@@ -109,7 +100,7 @@ const SignIn = ({ show, handleClose, showRegisterModal }) => {
             password: '',
           }}
         >
-          {({ handleSubmit, handleChange, values }) => (
+          {({ handleSubmit }) => (
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">

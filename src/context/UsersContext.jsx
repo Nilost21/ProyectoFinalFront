@@ -25,6 +25,7 @@ function UsersContext({ children }) {
       setUsers([...data]);
     } catch (error) {
       console.log(error);
+      throw error;
     }
   };
 
@@ -36,8 +37,10 @@ function UsersContext({ children }) {
       );
       const data = response.data;
       setUsers(prevUsers => [...prevUsers, data]);
+      return data;
     } catch (error) {
       console.error('Registration error:', error.message);
+      throw error;
     }
   };
 
@@ -69,6 +72,7 @@ function UsersContext({ children }) {
       return data;
     } catch (error) {
       console.log(error);
+      throw error;
     }
   };
 
@@ -92,6 +96,7 @@ function UsersContext({ children }) {
       setUsers(updatedUsers);
     } catch (error) {
       console.log(error);
+      throw error;
     }
   };
 
@@ -117,6 +122,7 @@ function UsersContext({ children }) {
       await getUsers();
     } catch (error) {
       console.log(error);
+      throw error;
     }
   };
 
