@@ -9,6 +9,7 @@ export const EnrollmentProvider = createContext();
 function EnrollmentContext({ children }) {
   const [enrollments, setEnrollments] = useState([]);
   const [classesForToday, setClassesForToday] = useState([]);
+  const [userEnrollments, setuserEnrollments] = useState([]);
 
   const getEnrollments = async () => {
     try {
@@ -64,6 +65,18 @@ function EnrollmentContext({ children }) {
     }
   };
 
+  const getUserEnrollments = async (userId) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/api/enrollment/enrollments/${userId}`);
+      const data = response.data;
+      setuserEnrollments([...data]);
+      return data;
+    } catch (error) {
+      console.error('Error fetching user enrollments:', error.message || error);
+      throw new Error('Error fetching user enrollments');
+    }
+  };
+
   useEffect(() => {
     getEnrollments();
     getEnrollmentsForToday();
@@ -74,8 +87,10 @@ function EnrollmentContext({ children }) {
       value={{
         enrollments,
         classesForToday,
+        userEnrollments,
         getEnrollments,
         getEnrollmentsForToday,
+        getUserEnrollments,
         newEnrollment,
         deleteEnrollment
       }}

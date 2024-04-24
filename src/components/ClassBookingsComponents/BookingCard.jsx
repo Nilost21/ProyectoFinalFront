@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
 
 import { EnrollmentProvider } from '../../context/EnrollmentContext';
-import { ClassProvider } from '../../context/ClassContex';
 import { useAuth } from '../../context/Utils/authUtils';
 
 import '../../css/ClassBookings/BookingCard.css';
@@ -54,7 +53,7 @@ const BookingCard = ({ id, name, description, teacher, dateAndTime }) => {
     <>
       <Card
         style={{ width: "16rem" }}
-        className="mb-5 mt-5 text-center custom-booking-card"
+        className="mb-5 mt-0 text-center custom-booking-card"
       >
         <Card.Body>
           <ListGroup variant="flush">
