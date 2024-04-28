@@ -53,6 +53,9 @@ function TableClasses() {
               <td colSpan="4">
                 <h3 className="paragraph">No classes found</h3>
               </td>
+              <td>
+                <></>
+              </td>
             </tr>
           ) : (
             currentItems.map((c, index) => {
@@ -61,11 +64,19 @@ function TableClasses() {
 
               return (
                 <tr key={_id} className="paragraph fw-bold ">
-                  <td className="bg-dark text-light border-0 pt-3">{rowIndex + 1}</td>
+                  <td className="bg-dark text-light border-0 pt-3">
+                    {rowIndex + 1}
+                  </td>
                   <td className="bg-dark text-light border-0 pt-3">{name}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{description}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{teacher}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{formatDateTime(dateAndTime)}</td>
+                  <td className="bg-dark text-light border-0 pt-3">
+                    {description}
+                  </td>
+                  <td className="bg-dark text-light border-0 pt-3">
+                    {teacher}
+                  </td>
+                  <td className="bg-dark text-light border-0 pt-3">
+                    {formatDateTime(dateAndTime)}
+                  </td>
                   <td className=" bg-dark text-light border-0">
                     <div className="d-flex flex-row justify-content-around">
                       <Button
@@ -116,21 +127,24 @@ function TableClasses() {
           contentClassName="bg-transparent p-0 border-0"
         >
           <Modal.Body className="bg-transparent rounded-5 border-0 p-0 ">
-            <FormNewClass
-              editClass={editClasses}
-              handleClose={handleClose}
-            />
+            <FormNewClass editClass={editClasses} handleClose={handleClose} />
           </Modal.Body>
         </Modal>
       </div>
 
       {/* Pagination */}
       <Pagination className="justify-content-center mt-4 paragraph">
-        {Array.from({ length: Math.ceil(classes.length / itemsPerPage) }).map((_, index) => (
-          <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
-            {index + 1}
-          </Pagination.Item>
-        ))}
+        {Array.from({ length: Math.ceil(classes.length / itemsPerPage) }).map(
+          (_, index) => (
+            <Pagination.Item
+              key={index + 1}
+              active={index + 1 === currentPage}
+              onClick={() => paginate(index + 1)}
+            >
+              {index + 1}
+            </Pagination.Item>
+          )
+        )}
       </Pagination>
     </>
   );

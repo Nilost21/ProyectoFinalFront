@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useContext } from 'react';
 import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
@@ -11,6 +12,7 @@ import { useAuth } from '../context/Utils/authUtils';
 
 import './../css/Navbar.css';
 import CartSVG from '../utils/CartSVG';
+import AdminSVG from '../utils/AdminSVG';
 
 function NavbarComponent() {
   const {
@@ -71,7 +73,7 @@ function NavbarComponent() {
   };
 
   const handleAdminEnrollments = () => {
-    navigate('/enrollments')
+    navigate('/enrollments');
   };
 
   const handleMyClassesButton = () => {
@@ -123,7 +125,7 @@ function NavbarComponent() {
                   <NavDropdown
                     title={<CartSVG />}
                     id="navbar-dropdown"
-                    className="hide-toggle-icon pe-5 me-5 border-0 navbar-button"
+                    className="hide-toggle-icon pe-5 me-5 border-0"
                   >
                     <NavDropdown.Item
                       id="carrito"
@@ -280,55 +282,43 @@ function NavbarComponent() {
             <Nav className="pe-4">
               {isLoggedIn ? (
                 <>
-                  {user &&
-                    user.isAdmin && (
-
-                      <Nav.Link
-                        onClick={handleProductsButton}
-                        className="subtitle mt-1 text-light text-shadow navbar-button"
+                  {user && user.isAdmin && (
+                    <>
+                      <NavDropdown
+                        title={<AdminSVG />}
+                        id="basic-nav-dropdown"
+                        className="hide-toggle-icon p-0 border-0 "
                       >
-                        Products
-                      </Nav.Link>
-                    )}
-                  {
-                    user && user.isAdmin && (
-                      <Nav.Link
-                        onClick={handleClassesButton}
-                        className="subtitle mt-1 text-light text-shadow navbar-button"
-                      >
-                        Classes
-                      </Nav.Link>
-                    )
-                  }
-                  {user &&
-                    user.isAdmin && (
-                      <Nav.Link
-                        onClick={handleUsersButton}
-                        className="subtitle mt-1 text-light text-shadow navbar-button"
-                      >
-                        Users
-                      </Nav.Link>
-                    )}
-                  {user &&
-                    user.isAdmin && (
-                      <Nav.Link
-                        onClick={handleAdminEnrollments}
-                        className="subtitle mt-1 text-light text-shadow navbar-button"
-                      >
-                        Enrollments
-                      </Nav.Link>
-                    )}
-                  {/*                   {user && (
-                    <Nav.Link
-                      onClick={handleMyClassesButton}
-                      className="subtitle mt-1 text-light text-shadow navbar-button"
-                    >
-                      My classes
-                    </Nav.Link>
-                  )} */}
+                        <NavDropdown.Item
+                          onClick={handleProductsButton}
+                          className="subtitle mt-1 text-light text-shadow navbar-button"
+                        >
+                          Products
+                        </NavDropdown.Item>
+                        <NavDropdown.Item
+                          onClick={handleClassesButton}
+                          className="subtitle mt-1 text-light text-shadow navbar-button"
+                        >
+                          Classes
+                        </NavDropdown.Item>
+                        <NavDropdown.Item
+                          onClick={handleUsersButton}
+                          className="subtitle mt-1 text-light text-shadow navbar-button"
+                        >
+                          Users
+                        </NavDropdown.Item>
+                        <NavDropdown.Item
+                          onClick={handleAdminEnrollments}
+                          className="subtitle mt-1 text-light text-shadow navbar-button"
+                        >
+                          Enrollments
+                        </NavDropdown.Item>
+                      </NavDropdown>
+                    </>
+                  )}
                   <Nav.Link
                     onClick={handleLogout}
-                    className="subtitle mt-1 text-light navbar-button"
+                    className="subtitle mt-1 text-light navbar-button "
                   >
                     Logout
                   </Nav.Link>

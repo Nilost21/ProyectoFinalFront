@@ -29,6 +29,16 @@ function FormProducts({ editProducts, handleClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const priceValue = parseFloat(product.price);
+    if (isNaN(priceValue) || priceValue < 1 || priceValue > 100) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid Price',
+        text: 'Price must be a number between 1 and 100',
+      });
+      return;
+    }
+
     if (editProducts) {
       updateProduct(product);
       handleClose();

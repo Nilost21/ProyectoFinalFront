@@ -48,7 +48,12 @@ function TableProducts() {
           {isEmpty() ? (
             <tr>
               <td colSpan="4">
-                <h3 className="paragraph">No se encontraron usuarios</h3>
+                <h3 className="subtitle fw-bold text-center ms-5 ps-5">
+                  No products found
+                </h3>
+              </td>
+              <td>
+                <></>
               </td>
             </tr>
           ) : (
@@ -58,10 +63,16 @@ function TableProducts() {
 
               return (
                 <tr key={_id} className="paragraph fw-bold ">
-                  <td className="bg-dark text-light border-0 pt-3">{rowIndex + 1}</td>
+                  <td className="bg-dark text-light border-0 pt-3">
+                    {rowIndex + 1}
+                  </td>
                   <td className="bg-dark text-light border-0 pt-3">{name}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{description}</td>
-                  <td className="bg-dark text-light border-0 pt-3">$ {price}</td>
+                  <td className="bg-dark text-light border-0 pt-3">
+                    {description}
+                  </td>
+                  <td className="bg-dark text-light border-0 pt-3">
+                    $ {price}
+                  </td>
                   <td className=" bg-dark text-light border-0">
                     <div className="d-flex flex-row justify-content-around">
                       <Button
@@ -122,11 +133,17 @@ function TableProducts() {
 
       {/* Pagination */}
       <Pagination className="justify-content-center mt-4 paragraph">
-        {Array.from({ length: Math.ceil(products.length / itemsPerPage) }).map((_, index) => (
-          <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
-            {index + 1}
-          </Pagination.Item>
-        ))}
+        {Array.from({ length: Math.ceil(products.length / itemsPerPage) }).map(
+          (_, index) => (
+            <Pagination.Item
+              key={index + 1}
+              active={index + 1 === currentPage}
+              onClick={() => paginate(index + 1)}
+            >
+              {index + 1}
+            </Pagination.Item>
+          )
+        )}
       </Pagination>
     </>
   );

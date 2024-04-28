@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useContext, useState, useEffect } from 'react';
 import { Table, Button, Modal, Pagination } from 'react-bootstrap';
@@ -6,8 +7,8 @@ import { EnrollmentProvider } from '../../context/EnrollmentContext';
 import formatDateTime from '../../utils/dateTimeUtils';
 
 const TableUserClasses = ({ userId }) => {
-
-  const { getUserEnrollments, deleteEnrollment } = useContext(EnrollmentProvider);
+  const { getUserEnrollments, deleteEnrollment } =
+    useContext(EnrollmentProvider);
 
   const [userEnrollments, setUserEnrollments] = useState([]); // Estado local para almacenar las inscripciones del usuario
 
@@ -15,11 +16,14 @@ const TableUserClasses = ({ userId }) => {
     // Llama a getUserEnrollments con userId y actualiza el estado local cuando se reciban los datos
     const fetchData = async () => {
       try {
-        console.log("AAAA", userId)
+        console.log('AAAA', userId);
         const enrollments = await getUserEnrollments(userId);
         setUserEnrollments(enrollments);
       } catch (error) {
-        console.error('Error fetching user enrollments:', error.message || error);
+        console.error(
+          'Error fetching user enrollments:',
+          error.message || error
+        );
       }
     };
     fetchData();
@@ -63,6 +67,9 @@ const TableUserClasses = ({ userId }) => {
               <td colSpan="4">
                 <h3 className="paragraph">No classes found</h3>
               </td>
+              <td>
+                <></>
+              </td>
             </tr>
           ) : (
             currentItems.map((c, index) => {
@@ -70,11 +77,21 @@ const TableUserClasses = ({ userId }) => {
               const { _id, gymClass, className, teacher, dateAndTime } = c;
               return (
                 <tr key={_id} className="paragraph fw-bold ">
-                  <td className="bg-dark text-light border-0 pt-3">{rowIndex + 1}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{gymClass}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{className}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{teacher}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{formatDateTime(dateAndTime)}</td>
+                  <td className="bg-dark text-light border-0 pt-3">
+                    {rowIndex + 1}
+                  </td>
+                  <td className="bg-dark text-light border-0 pt-3">
+                    {gymClass}
+                  </td>
+                  <td className="bg-dark text-light border-0 pt-3">
+                    {className}
+                  </td>
+                  <td className="bg-dark text-light border-0 pt-3">
+                    {teacher}
+                  </td>
+                  <td className="bg-dark text-light border-0 pt-3">
+                    {formatDateTime(dateAndTime)}
+                  </td>
                   <td className=" bg-dark text-light border-0">
                     <div className="d-flex flex-row justify-content-around">
                       <Button
@@ -103,14 +120,20 @@ const TableUserClasses = ({ userId }) => {
 
       {/* Pagination */}
       <Pagination className="justify-content-center mt-4 paragraph">
-        {Array.from({ length: Math.ceil(userEnrollments.length / itemsPerPage) }).map((_, index) => (
-          <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
+        {Array.from({
+          length: Math.ceil(userEnrollments.length / itemsPerPage),
+        }).map((_, index) => (
+          <Pagination.Item
+            key={index + 1}
+            active={index + 1 === currentPage}
+            onClick={() => paginate(index + 1)}
+          >
             {index + 1}
           </Pagination.Item>
         ))}
       </Pagination>
     </>
   );
-}
+};
 
 export default TableUserClasses;

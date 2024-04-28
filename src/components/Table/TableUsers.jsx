@@ -55,6 +55,9 @@ function TableUsers() {
               <td colSpan="4">
                 <h3 className="paragraph">No users found</h3>
               </td>
+              <td>
+                <></>
+              </td>
             </tr>
           ) : (
             currentItems.map((user, index) => {
@@ -65,11 +68,17 @@ function TableUsers() {
 
               return (
                 <tr key={_id} className="paragraph fw-bold ">
-                  <td className="bg-dark text-light border-0 pt-3">{rowIndex + 1}</td>
+                  <td className="bg-dark text-light border-0 pt-3">
+                    {rowIndex + 1}
+                  </td>
                   <td className="bg-dark text-light border-0 pt-3">{_id}</td>
                   <td className="bg-dark text-light border-0 pt-3">{name}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{lastname}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{phonenumber}</td>
+                  <td className="bg-dark text-light border-0 pt-3">
+                    {lastname}
+                  </td>
+                  <td className="bg-dark text-light border-0 pt-3">
+                    {phonenumber}
+                  </td>
                   <td className="bg-dark text-light border-0 pt-3">{email}</td>
                   <td className={`${adminClass} bg-dark border-0 pt-3`}>
                     {checkAdmin}
@@ -126,21 +135,24 @@ function TableUsers() {
           contentClassName="bg-transparent p-0 border-0"
         >
           <Modal.Body className="bg-transparent rounded-5 border-0 p-0 ">
-            <FormEditUser
-              updateUser={editUser}
-              handleClose={handleClose}
-            />
+            <FormEditUser updateUser={editUser} handleClose={handleClose} />
           </Modal.Body>
         </Modal>
       </div>
 
       {/* Pagination */}
       <Pagination className="justify-content-center mt-4 paragraph">
-        {Array.from({ length: Math.ceil(users.length / itemsPerPage) }).map((_, index) => (
-          <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
-            {index + 1}
-          </Pagination.Item>
-        ))}
+        {Array.from({ length: Math.ceil(users.length / itemsPerPage) }).map(
+          (_, index) => (
+            <Pagination.Item
+              key={index + 1}
+              active={index + 1 === currentPage}
+              onClick={() => paginate(index + 1)}
+            >
+              {index + 1}
+            </Pagination.Item>
+          )
+        )}
       </Pagination>
     </>
   );
