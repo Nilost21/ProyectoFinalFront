@@ -22,6 +22,10 @@ function FormProducts({ editProducts, handleClose }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
+    if (name === 'price' && parseFloat(value) > 100) {
+      return;
+    }
+
     if (name === 'name' && value.length > 25) {
       return;
     }
