@@ -85,7 +85,7 @@ function NavbarComponent() {
       <Navbar
         collapseOnSelect
         expand="lg"
-        className="bg-navbar mt-3 rounded-3 py-1 pe-3 me-5 ms-3 ms-sm-5"
+        className="bg-navbar  rounded-3 py-1 pe-3 me-5 ms-3 ms-sm-5"
       >
         <Container fluid className="px-0">
           <Navbar.Brand
