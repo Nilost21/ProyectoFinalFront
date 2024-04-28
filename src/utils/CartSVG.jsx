@@ -5,7 +5,7 @@ function CartSVG() {
         xmlns="http://www.w3.org/2000/svg"
         width="20"
         height="20"
-        fill="white"
+        fill="#8f70f8"
         className="bi bi-cart-fill"
         viewBox="0 0 16 16"
       >

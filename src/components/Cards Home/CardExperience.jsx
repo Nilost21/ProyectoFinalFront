@@ -24,8 +24,8 @@ function CardExperience() {
             <Button className="bg-transparent rounded-5 px-2 py-1 mb-4 border-experience ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="39"
-                height="41"
+                width="30"
+                height="31"
                 fill="#BB6BDC"
                 className="bi bi-star-fill mb-1 p-2 "
                 viewBox="0 0 16 16"

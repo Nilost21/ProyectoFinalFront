@@ -24,8 +24,8 @@ function CardDiet() {
             <Button className="gradient-background rounded-5 px-2 py-1 mb-4 border-0 ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="39"
-                height="41"
+                width="30"
+                height="31"
                 fill="currentColor"
                 className="bi bi-basket3-fill mb-1 p-2"
                 viewBox="0 0 16 16"

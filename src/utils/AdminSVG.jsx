@@ -6,7 +6,7 @@ function AdminSVG() {
       xmlns="http://www.w3.org/2000/svg"
       width="30"
       height="24"
-      fill="#AC65CF"
+      fill="#8f70f8"
       className="bi bi-person-fill-gear py-0"
       viewBox="0 0 16 16"
     >
