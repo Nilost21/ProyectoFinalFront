@@ -20,9 +20,19 @@ function FormProducts({ editProducts, handleClose }) {
   });
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    if (name === 'name' && value.length > 25) {
+      return;
+    }
+
+    if (name === 'description' && value.length > 60) {
+      return;
+    }
+
     setProduct({
       ...product,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
   };
 
@@ -30,11 +40,26 @@ function FormProducts({ editProducts, handleClose }) {
     e.preventDefault();
 
     const priceValue = parseFloat(product.price);
+    const errorMessages = [];
+
     if (isNaN(priceValue) || priceValue < 1 || priceValue > 100) {
+      errorMessages.push('Price must be a number between 1 and 100');
+    }
+
+    if (product.name.length > 25) {
+      errorMessages.push('Name must be 25 characters or less');
+    }
+
+    if (product.description.length > 40) {
+      errorMessages.push('Description must be 40 characters or less');
+    }
+
+    if (errorMessages.length > 0) {
       Swal.fire({
         icon: 'error',
-        title: 'Invalid Price',
-        text: 'Price must be a number between 1 and 100',
+        title: 'Error!',
+        text: 'Several fields have errors while submitting the form.',
+        html: errorMessages.map((message) => `<p>${message}</p>`).join(''),
       });
       return;
     }
@@ -79,6 +104,7 @@ function FormProducts({ editProducts, handleClose }) {
           <Form.Control
             className="paragraph"
             type="text"
+            max={25}
             value={product.name}
             onChange={handleChange}
             name="name"
