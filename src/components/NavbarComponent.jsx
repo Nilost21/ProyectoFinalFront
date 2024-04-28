@@ -96,7 +96,7 @@ function NavbarComponent() {
           </Navbar.Brand>
           <Navbar.Toggle
             aria-controls="responsive-navbar-nav"
-            className="custom-toggle"
+            className="custom-toggle me-3 gradient-bg border-0 "
           />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
