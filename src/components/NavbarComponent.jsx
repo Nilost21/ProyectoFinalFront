@@ -85,7 +85,7 @@ function NavbarComponent() {
       <Navbar
         collapseOnSelect
         expand="lg"
-        className="bg-navbar mt-3 rounded-3 py-1 mx-5"
+        className="bg-navbar mt-3 rounded-3 py-1 pe-3 me-5 ms-3 ms-sm-5"
       >
         <Container fluid className="px-0">
           <Navbar.Brand
@@ -101,31 +101,30 @@ function NavbarComponent() {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link
-                className="subtitle mt-1 text-white navbar-button"
+                className="subtitle mt-1 text-color-small navbar-button ms-1"
                 onClick={() => navigate('/')}
               >
                 Home
               </Nav.Link>
               <Nav.Link
-                className="subtitle mt-1 text-white navbar-button"
+                className="subtitle mt-1 text-color-small navbar-button ms-1"
                 onClick={() => navigate('/products')}
               >
                 Products
               </Nav.Link>
               <Nav.Link
-                className="subtitle mt-1 text-white navbar-button"
+                className="subtitle mt-1 text-color-small navbar-button ms-1"
                 onClick={() => navigate('/about')}
               >
                 About
               </Nav.Link>
-
               {/* Inicio carrito */}
               {isLoggedIn ? (
                 <>
                   <NavDropdown
                     title={<CartSVG />}
                     id="navbar-dropdown"
-                    className="hide-toggle-icon pe-5 me-5 border-0"
+                    className="hide-toggle-icon pe-5 me-5 border-0 ms-1"
                   >
                     <NavDropdown.Item
                       id="carrito"
@@ -318,7 +317,7 @@ function NavbarComponent() {
                   )}
                   <Nav.Link
                     onClick={handleLogout}
-                    className="subtitle mt-1 text-light navbar-button "
+                    className="subtitle mt-1 text-color-small navbar-button me-md-2"
                   >
                     Logout
                   </Nav.Link>
@@ -332,7 +331,7 @@ function NavbarComponent() {
                 <>
                   <Nav.Link
                     onClick={handleLoginModalShow}
-                    className="subtitle mt-1 text-light mx-2 navbar-button"
+                    className="subtitle mt-1 text-color-small mx-2 navbar-button"
                   >
                     Login
                   </Nav.Link>

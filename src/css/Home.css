@@ -11,6 +11,12 @@
   color: #8A89B3;
 }
 
+.text-color-small:hover,
+.text-color-small:active,
+.text-color-small:focus {
+  color: #7D63D2;
+}
+
 .shadow-box {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }

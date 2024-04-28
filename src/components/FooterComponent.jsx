@@ -61,7 +61,7 @@ function FooterComponent() {
             </li>
             <li>
               <a
-                onClick={() => navigate('/*')}
+                onClick={() => navigate('/about')}
                 className="text-decoration-none small-font text-color-small hover-effect"
               >
                 About us
@@ -77,10 +77,10 @@ function FooterComponent() {
             </li>
             <li>
               <a
-                onClick={() => navigate('/*')}
+                onClick={() => navigate('/contact')}
                 className="text-decoration-none small-font text-color-small hover-effect"
               >
-                Blog
+                Contact
               </a>
             </li>
           </ul>

@@ -24,66 +24,134 @@ import MusclePlan from './pages/Plans/MusclePlan';
 import FullPlan from './pages/Plans/FullPlan';
 import AdminEnrollments from './pages/Admin/AdminEnrollments';
 import Error404 from './pages/Error404/Error404';
+import Contact from './pages/Contact/Contact';
 
 function App() {
-
   const routes = [
     {
-      path: "*",
-      element: <PublicRoute><Error404 /></PublicRoute>
+      path: '*',
+      element: (
+        <PublicRoute>
+          <Error404 />
+        </PublicRoute>
+      ),
     },
     {
-      path: "/",
-      element: <PublicRoute><Home /></PublicRoute>
+      path: '/',
+      element: (
+        <PublicRoute>
+          <Home />
+        </PublicRoute>
+      ),
     },
     {
-      path: "/products",
-      element: <PublicRoute><Products /></PublicRoute>
+      path: '/products',
+      element: (
+        <PublicRoute>
+          <Products />
+        </PublicRoute>
+      ),
     },
     {
-      path: "/about",
-      element: <PublicRoute><About /></PublicRoute>
+      path: '/about',
+      element: (
+        <PublicRoute>
+          <About />
+        </PublicRoute>
+      ),
     },
     {
-      path: "/class-plan",
-      element: <PublicRoute><ClassPlan /></PublicRoute>
+      path: '/about',
+      element: (
+        <PublicRoute>
+          <About />
+        </PublicRoute>
+      ),
     },
     {
-      path: "/class-plan",
-      element: <PublicRoute><ClassPlan /></PublicRoute>
+      path: '/class-plan',
+      element: (
+        <PublicRoute>
+          <ClassPlan />
+        </PublicRoute>
+      ),
     },
     {
-      path: "/muscle-plan",
-      element: <PublicRoute><MusclePlan /></PublicRoute>
+      path: '/contact',
+      element: (
+        <PublicRoute>
+          <Contact />
+        </PublicRoute>
+      ),
     },
     {
-      path: "/full-plan",
-      element: <PublicRoute><FullPlan /></PublicRoute>
+      path: '/muscle-plan',
+      element: (
+        <PublicRoute>
+          <MusclePlan />
+        </PublicRoute>
+      ),
     },
     {
-      path: "/adminproducts",
-      element: <AdminRoute> <AdminProducts /></AdminRoute>
+      path: '/full-plan',
+      element: (
+        <PublicRoute>
+          <FullPlan />
+        </PublicRoute>
+      ),
     },
     {
-      path: "/adminusers",
-      element: <AdminRoute> <AdminUsers /></AdminRoute>
+      path: '/adminproducts',
+      element: (
+        <AdminRoute>
+          {' '}
+          <AdminProducts />
+        </AdminRoute>
+      ),
     },
     {
-      path: "/adminclasses",
-      element: <AdminRoute> <AdminClass /> </AdminRoute>
+      path: '/adminusers',
+      element: (
+        <AdminRoute>
+          {' '}
+          <AdminUsers />
+        </AdminRoute>
+      ),
     },
     {
-      path: "/enrollments",
-      element: <AdminRoute> <AdminEnrollments /> </AdminRoute>
+      path: '/adminclasses',
+      element: (
+        <AdminRoute>
+          {' '}
+          <AdminClass />{' '}
+        </AdminRoute>
+      ),
     },
     {
-      path: "/profile",
-      element: <PrivateRoute><Error404 /> </PrivateRoute>
+      path: '/enrollments',
+      element: (
+        <AdminRoute>
+          {' '}
+          <AdminEnrollments />{' '}
+        </AdminRoute>
+      ),
     },
     {
-      path: "/myclasses",
-      element: <PrivateRoute><MyClasses /> </PrivateRoute>
-    }
+      path: '/profile',
+      element: (
+        <PrivateRoute>
+          <Error404 />{' '}
+        </PrivateRoute>
+      ),
+    },
+    {
+      path: '/myclasses',
+      element: (
+        <PrivateRoute>
+          <MyClasses />{' '}
+        </PrivateRoute>
+      ),
+    },
   ];
 
   const routeselement = useRoutes(routes);
@@ -94,17 +162,13 @@ function App() {
         <ProductsContext>
           <CartContext>
             <ClassContext>
-              <EnrollmentContext>
-                {routeselement}
-              </EnrollmentContext>
+              <EnrollmentContext>{routeselement}</EnrollmentContext>
             </ClassContext>
           </CartContext>
         </ProductsContext>
       </UsersContext>
-
     </>
   );
 }
 
 export default App;
-

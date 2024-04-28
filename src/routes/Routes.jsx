@@ -6,6 +6,7 @@ import Products from '../pages/Products/Products';
 import Profile from '../pages/Profile/Profile';
 import Error404 from '../pages/Error404/Error404';
 import About from '../pages/About/About';
+import Contact from '../pages/Contact/Contact';
 
 import ClassPlan from '../pages/Plans/ClassPlan';
 import MusclePlan from '../pages/Plans/MusclePlan';
@@ -20,6 +21,7 @@ const RoutesPages = () => {
         <Route path="/products" element={<Products />} />
         <Route path="/about" element={<About />} />
         <Route path="/*" element={<Error404 />} />
+        <Route path="/contact" element={<Contact />} />
 
         <Route path="/class-plan" element={<ClassPlan />} />
         <Route path="/muscle-plan" element={<MusclePlan />} />

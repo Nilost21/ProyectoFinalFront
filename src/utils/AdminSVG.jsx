@@ -1,10 +1,12 @@
+import '../css/Navbar.css';
+
 function AdminSVG() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="30"
       height="24"
-      fill="white"
+      fill="#AC65CF"
       className="bi bi-person-fill-gear py-0"
       viewBox="0 0 16 16"
     >
