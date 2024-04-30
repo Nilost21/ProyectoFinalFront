@@ -32,11 +32,11 @@ function ClassBookings() {
                 <Col
                   xs={12}
                   sm={12}
-                  md={6}
-                  lg={6}
+                  md={4}
+                  lg={4}
                   xl={3}
                   key={_id}
-                  className="d-flex justify-content-center"
+                  className="d-flex justify-content-center booking-card"
                 >
                   <BookingCard
                     id={_id}

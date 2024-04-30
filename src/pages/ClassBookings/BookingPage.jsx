@@ -1,35 +1,38 @@
-import BookingForm from "../../components/ClassBookingsComponents/BookingForm";
 import NavbarComponent from "../../components/NavbarComponent";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row} from "react-bootstrap";
+import ClassBookings from '../../components/ClassBookingsComponents/ClassBookings';
 
 
 import "../../css/ClassBookings/BookingPage.css";
+import FooterComponent from "../../components/FooterComponent";
 
 {
-  /* pagina que contendra el form para agendar turnos */
+  /* pagina que contendra cards para agendar turnos */
 }
 
 const BookingPage = () => {
   return (
     <>
-      <Container fluid>
-        <NavbarComponent />
+      <Container fluid className="booking-page">
+        <Row className="p-0 pe-md-5 pb-5 pb-md-0">
+      <NavbarComponent/>
+      <Container>
+        <ClassBookings />
       </Container>
-      <div className="body-booking-page">
-        <Container>
-        <Row className="justify-content-center">
-            <Col xs={12} md={8}>
-              <h1 className="text-white paragraph text-center mb-3 mb-md-5 mt-2">
-                Book your class here
-              </h1>
-              <BookingForm />
-            </Col>
-          </Row>
-        </Container>
-      </div>
-     {/*  <footer>
-        <h2 className="text-white">soy footer</h2>
-      </footer> */}
+      
+        
+        </Row>
+      </Container>
+      
+      
+     
+      
+      <Container
+        fluid
+        className="d-flex flex-row justify-content-around  border-footer bg-footer"
+      >
+        <FooterComponent/>
+      </Container>
     </>
   );
 };

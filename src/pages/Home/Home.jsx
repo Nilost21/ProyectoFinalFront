@@ -19,7 +19,6 @@ import NutritionTitle from '../../components/NutritionComponents/NutritionTitle'
 import NutritionFood from '../../components/NutritionComponents/NutritionFood';
 import TrainingComponent from '../../components/NutritionComponents/TrainingComponent';
 import NutritionBtn from '../../components/NutritionComponents/NutritionBtn';
-import ClassBookings from '../../components/ClassBookingsComponents/ClassBookings';
 
 function Home() {
   return (
@@ -103,10 +102,6 @@ function Home() {
             </Row>
           </Col>
         </Row>
-      </Container>
-
-      <Container data-aos="fade-up">
-        <ClassBookings />
       </Container>
       <Container
         fluid
