@@ -1,51 +1,48 @@
 .increase-font-size {
-    font-size: 4rem; 
-  }
+  font-size: 4rem;
+}
 
-  .increase-font-p {
-    font-size: 4rem; 
-  }
+.increase-font-p {
+  font-size: 4rem;
+}
 
-  .increase-font-flex {
-    font-size: 3.2rem; 
-  }
+.increase-font-flex {
+  font-size: 3.2rem;
+}
 
-  .increase-font-small {
-    font-size: 1.3rem; 
-  }
+.increase-font-small {
+  font-size: 1.3rem;
+}
 
+.gradient-background {
+  background: linear-gradient(to right, #6245c4, #bb56ff);
+}
 
+.gradient-background:hover {
+  box-shadow: 0 0 10px rgba(206, 205, 205, 0.3);
+}
 
-  .gradient-background {
-    background: linear-gradient(to right, #6245c4, #bb56ff);
-  }
-  
-  .gradient-background:hover {
-    box-shadow: 0 0 10px rgba(206, 205, 205, 0.3);
-  }
+.gradient-text {
+  background-image: linear-gradient(to right, #6245c4, #b665ec);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
+.slide-Right {
+  animation: slideRight 5s ease forwards;
+  opacity: 0;
+  transform: translateX(-100%);
+}
 
-  .gradient-text {
-    background-image: linear-gradient(to right, #6245c4, #b665ec);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-
-  .slide-Right {
-    animation: slideRight 5s ease forwards;
+@keyframes slideRight {
+  from {
     opacity: 0;
     transform: translateX(-100%);
   }
-  
-  @keyframes slideRight {
-    from {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0%);
-    }
+
+  to {
+    opacity: 1;
+    transform: translateX(0%);
   }
+}

@@ -40,6 +40,7 @@ function NavbarComponent() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
   const { isLoggedIn, user, logout } = useAuth();
+
   const navigate = useNavigate();
 
   const handleLoginModalShow = () => setShowLoginModal(true);
@@ -315,6 +316,16 @@ function NavbarComponent() {
                       </NavDropdown>
                     </>
                   )}
+
+                  {user && !user.isAdmin && (
+                    <Nav.Link
+                      onClick={handleMyClassesButton}
+                      className="subtitle mt-1 text-light text-shadow navbar-button"
+                    >
+                      My classes
+                    </Nav.Link>
+                  )}
+
                   <Nav.Link
                     onClick={handleLogout}
                     className="subtitle mt-1 text-color-small navbar-button me-md-2"
