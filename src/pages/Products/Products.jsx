@@ -17,7 +17,7 @@ function Products() {
       <Container fluid>
         <Row className="p-0 bg-products pe-md-5 pb-5 pb-md-0">
           <NavbarComponent />
-          <Container className="px-5" data-aos="fade-up">
+          <Container className="px-5">
             <Row className="d-flex flex-row justify-content-center mt-3  ">
               {isEmpty() ? (
                 <h2 className="paragraph">No hay productos</h2>
