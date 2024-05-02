@@ -6,41 +6,16 @@ import { EnrollmentProvider } from '../../context/EnrollmentContext';
 
 import formatDateTime from '../../utils/dateTimeUtils';
 
-const TableUserClasses = ({ userId }) => {
-  const { getUserEnrollments, deleteEnrollment } =
-    useContext(EnrollmentProvider);
-
-  const [userEnrollments, setUserEnrollments] = useState([]); // Estado local para almacenar las inscripciones del usuario
-
-  useEffect(() => {
-    // Llama a getUserEnrollments con userId y actualiza el estado local cuando se reciban los datos
-    const fetchData = async () => {
-      try {
-        console.log('AAAA', userId);
-        const enrollments = await getUserEnrollments(userId);
-        setUserEnrollments(enrollments);
-      } catch (error) {
-        console.error(
-          'Error fetching user enrollments:',
-          error.message || error
-        );
-      }
-    };
-    fetchData();
-  }, [getUserEnrollments, userId]);
-
-  const [show, setShow] = useState(false);
-  const [editClasses, setEditClasses] = useState(null);
+const TableUserClasses = ({ user }) => {
+  const { userEnrollments, deleteEnrollment } = useContext(EnrollmentProvider);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(7);
 
-  // Calcular los índices de los elementos a mostrar en la página actual
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = userEnrollments.slice(indexOfFirstItem, indexOfLastItem);
 
-  // Cambiar de página
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const isEmpty = () => userEnrollments.length === 0;

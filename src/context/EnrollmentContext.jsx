@@ -18,6 +18,7 @@ function EnrollmentContext({ children }) {
       setEnrollments([...data]);
     } catch (error) {
       console.log(error);
+      throw error;
     }
   };
 
@@ -29,6 +30,7 @@ function EnrollmentContext({ children }) {
       return data;
     } catch (error) {
       console.log(error);
+      throw error;
     }
   };
 
@@ -43,6 +45,7 @@ function EnrollmentContext({ children }) {
       return data;
     } catch (error) {
       console.log('Error at enrolling to the class', error.message || error);
+      throw error;
     }
   };
 
@@ -62,19 +65,29 @@ function EnrollmentContext({ children }) {
       await getEnrollments();
     } catch (error) {
       console.log(error, 'Error when deleting class');
+      throw error;
     }
   };
 
   const getUserEnrollments = async (userId) => {
     try {
-      console.log("userId FRONT CONTEXT", userId)
-      const response = await axios.get(`http://localhost:3000/api/enrollment/enrollments/${userId}`);
+      const token = localStorage.getItem('token');
+      if (!token) return;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.get(
+        `http://localhost:3000/api/enrollment/enrollments/${userId}`,
+        config
+      );
       const data = response.data;
       setuserEnrollments([...data]);
       return data;
     } catch (error) {
       console.error('Error fetching user enrollments:', error.message || error);
-      throw new Error('Error fetching user enrollments');
+      throw error;
     }
   };
 

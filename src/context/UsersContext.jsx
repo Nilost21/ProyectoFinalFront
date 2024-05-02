@@ -2,11 +2,13 @@ import { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { useAuth } from './Utils/authUtils';
 
 export const UsersProvider = createContext();
 
 function UsersContext({ children }) {
   const [users, setUsers] = useState([]);
+  const { isLoggedIn, user } = useAuth();
 
   const getUsers = async () => {
     try {
@@ -127,8 +129,10 @@ function UsersContext({ children }) {
   };
 
   useEffect(() => {
-    getUsers();
-  }, []);
+    if (isLoggedIn && user.isAdmin) {
+      getUsers();
+    }
+  }, [isLoggedIn, user]);
 
   return (
     <UsersProvider.Provider value={{

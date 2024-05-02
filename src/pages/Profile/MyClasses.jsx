@@ -3,19 +3,19 @@ import { Container, Row, Col } from 'react-bootstrap';
 import NavbarComponent from '../../components/NavbarComponent';
 import TableUserClasses from '../../components/Table/TableUserClasses';
 
-import { EnrollmentProvider } from '../../context/EnrollmentContext';
 import { useEffect, useContext } from 'react';
 import { useAuth } from '../../context/Utils/authUtils';
+import { EnrollmentProvider } from '../../context/EnrollmentContext';
 
 const MyClasses = () => {
+  const { user } = useAuth();
+  const userId = user._id;
 
   const { getUserEnrollments } = useContext(EnrollmentProvider);
-  const { user } = useAuth();
-  const userId = user.id;
 
   useEffect(() => {
-    getUserEnrollments();
-  }, [getUserEnrollments]);
+    getUserEnrollments(userId);
+  }, [getUserEnrollments, userId]);
 
   return (
     <>
