@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Modal, Button, Form, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Formik, ErrorMessage } from 'formik';
@@ -15,6 +15,7 @@ import './../css/Form.css';
 
 const SignUp = ({ show, handleClose, showLoginModal }) => {
   const { createUser } = useContext(UsersProvider);
+  const [showPasswordInfo, setShowPasswordInfo] = useState(false);
 
   const handleSignUp = async (user) => {
     try {
@@ -45,6 +46,10 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
   const handleLoginClick = () => {
     handleClose();
     showLoginModal();
+  };
+
+  const togglePasswordInfo = () => {
+    setShowPasswordInfo(!showPasswordInfo);
   };
 
   return (
@@ -158,7 +163,13 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
                   </Form.Group>
                   <Form.Group controlId="formBasicPassword">
                     <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
-                      Password
+                      Password{' '}
+                      <span
+                        className="text-info fs-6 question-mark"
+                        onClick={togglePasswordInfo}
+                      >
+                        ?
+                      </span>
                     </Form.Label>
                     <Form.Control
                       className="paragraph"
@@ -212,6 +223,13 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
               >
                 Sign Up
               </Button>
+
+              {showPasswordInfo && (
+                <div className="text-muted">
+                  {/* Aquí puedes agregar el texto de información sobre la contraseña */}
+                  Password should contain at least 8 characters, including uppercase and lowercase letters, numbers, and special characters.
+                </div>
+              )}
             </Form>
           )}
         </Formik>
