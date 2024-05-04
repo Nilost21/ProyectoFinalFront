@@ -111,7 +111,7 @@ function NavbarComponent() {
                 className="subtitle mt-1 text-color-small navbar-button ms-1"
                 onClick={() => navigate('/products')}
               >
-                Products
+                Store
               </Nav.Link>
               <Nav.Link
                 className="subtitle mt-1 text-color-small navbar-button ms-1"

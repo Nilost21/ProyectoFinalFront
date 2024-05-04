@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useContext, useState } from 'react';
-import { Modal, Button, Form, Col, Row } from 'react-bootstrap';
+import { Modal, Button, Form, Col, Row, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Formik, ErrorMessage } from 'formik';
 import PropTypes from 'prop-types';
-import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import 'react-toastify/dist/ReactToastify.css';
+import InfoSVG from '../utils/InfoSVG';
 
 import { UsersProvider } from '../context/UsersContext';
 import { schema } from '../schema/SignUpSchema';
@@ -51,6 +51,12 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
   const togglePasswordInfo = () => {
     setShowPasswordInfo(!showPasswordInfo);
   };
+
+  const passwordTooltip = (
+    <Tooltip id="password-tooltip" className="text-white bg-blac paragraph">
+      Password should contain at least 8 characters, including uppercase and lowercase letters and numbers.
+    </Tooltip>
+  );
 
   return (
     <Modal
@@ -164,13 +170,16 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
                   <Form.Group controlId="formBasicPassword">
                     <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
                       Password{' '}
-                      <span
-                        className="text-info fs-6 question-mark"
-                        onClick={togglePasswordInfo}
+                      <OverlayTrigger
+                        placement="top"
+                        overlay={passwordTooltip}
                       >
-                        ?
-                      </span>
+                        <span className="password-info-icon" onClick={togglePasswordInfo}>
+                          <InfoSVG />
+                        </span>
+                      </OverlayTrigger>
                     </Form.Label>
+
                     <Form.Control
                       className="paragraph"
                       type="password"
@@ -206,30 +215,24 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
                 </Col>
               </Row>
 
-              <p className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1 mt-4 mb-4">
+              <p className="subtitle fs-5 px-3 pt-1 rounded-5 mb-3 ps-1 mt-4 text-center">
                 Already have an account?{' '}
                 <Link onClick={handleLoginClick}>Log In</Link>
               </p>
-
-              <Button
-                className="gradient-background border-0 rounded-5 subtitle py-1 mt-1 shadow-on-hover w-25"
-                onClick={handleClose}
-              >
-                Close
-              </Button>
-              <Button
-                className="gradient-background border-0 rounded-5 subtitle py-1 mt-1 shadow-on-hover w-25"
-                type="submit"
-              >
-                Sign Up
-              </Button>
-
-              {showPasswordInfo && (
-                <div className="text-muted">
-                  {/* Aquí puedes agregar el texto de información sobre la contraseña */}
-                  Password should contain at least 8 characters, including uppercase and lowercase letters, numbers, and special characters.
-                </div>
-              )}
+              <div className="d-flex flex-row justify-content-center">
+                <Button
+                  className="gradient-background border-0 rounded-5 subtitle py-1 me-1 shadow-on-hover w-25"
+                  onClick={handleClose}
+                >
+                  Close
+                </Button>
+                <Button
+                  className="gradient-background border-0 rounded-5 subtitle py-1 ms-1 shadow-on-hover w-25"
+                  type="submit"
+                >
+                  Sign Up
+                </Button>
+              </div>
             </Form>
           )}
         </Formik>
