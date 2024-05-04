@@ -73,9 +73,6 @@ function Home() {
           </Col>
         </Row>
       </Container>
-      <Container className="my-0 py-3" data-aos="fade-left">
-        <PlanList />
-      </Container>
       <Container fluid className="bg-footer my-5">
         <Row className="d-flex flex-row justify-content-start">
           <Col>
@@ -102,6 +99,9 @@ function Home() {
             </Row>
           </Col>
         </Row>
+      </Container>
+      <Container className="my-0 py-3" data-aos="fade-left">
+        <PlanList />
       </Container>
       <Container
         fluid

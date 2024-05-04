@@ -102,19 +102,19 @@ function NavbarComponent() {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link
-                className="subtitle mt-1 text-color-small navbar-button ms-1"
+                className="subtitle mt-1 text-light navbar-button ms-1"
                 onClick={() => navigate('/')}
               >
                 Home
               </Nav.Link>
               <Nav.Link
-                className="subtitle mt-1 text-color-small navbar-button ms-1"
+                className="subtitle mt-1 text-light navbar-button ms-1"
                 onClick={() => navigate('/products')}
               >
                 Store
               </Nav.Link>
               <Nav.Link
-                className="subtitle mt-1 text-color-small navbar-button ms-1"
+                className="subtitle mt-1 text-light navbar-button ms-1"
                 onClick={() => navigate('/class-bookings')}
               >
                 Classes
@@ -291,25 +291,25 @@ function NavbarComponent() {
                       >
                         <NavDropdown.Item
                           onClick={handleProductsButton}
-                          className="subtitle mt-1 text-light text-shadow navbar-button"
+                          className="subtitle mt-1 text-light text-shadow"
                         >
                           Products
                         </NavDropdown.Item>
                         <NavDropdown.Item
                           onClick={handleClassesButton}
-                          className="subtitle mt-1 text-light text-shadow navbar-button"
+                          className="subtitle mt-1 text-light text-shadow"
                         >
                           Classes
                         </NavDropdown.Item>
                         <NavDropdown.Item
                           onClick={handleUsersButton}
-                          className="subtitle mt-1 text-light text-shadow navbar-button"
+                          className="subtitle mt-1 text-light text-shadow"
                         >
                           Users
                         </NavDropdown.Item>
                         <NavDropdown.Item
                           onClick={handleAdminEnrollments}
-                          className="subtitle mt-1 text-light text-shadow navbar-button"
+                          className="subtitle mt-1 text-light text-shadow"
                         >
                           Enrollments
                         </NavDropdown.Item>
@@ -342,7 +342,7 @@ function NavbarComponent() {
                 <>
                   <Nav.Link
                     onClick={handleLoginModalShow}
-                    className="subtitle mt-1 text-color-small mx-2 navbar-button"
+                    className="subtitle mt-1 text-light mx-2 navbar-button"
                   >
                     Login
                   </Nav.Link>
