@@ -42,20 +42,19 @@ function FormProducts({ editProducts, handleClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const priceValue = parseFloat(product.price);
     const errorMessages = [];
-
-    if (isNaN(priceValue) || priceValue < 1 || priceValue > 100) {
-      errorMessages.push('Price must be a number between 1 and 100');
+    if (isNaN(priceValue) || priceValue < 0.1) {
+      errorMessages.push('You must enter a valid price');
     }
-
     if (product.name.length > 25) {
       errorMessages.push('Name must be 25 characters or less');
     }
-
     if (product.description.length > 40) {
       errorMessages.push('Description must be 40 characters or less');
+    }
+    if (!product.image) {
+      errorMessages.push('You must enter an image');
     }
 
     if (errorMessages.length > 0) {

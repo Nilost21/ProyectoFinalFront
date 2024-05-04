@@ -8,7 +8,6 @@ import FormProducts from '../../components/Form/FormProducts';
 import { ProductsProvider } from '../../context/ProductsContext';
 
 function AdminProducts() {
-
   const { getProducts } = useContext(ProductsProvider);
 
   useEffect(() => {

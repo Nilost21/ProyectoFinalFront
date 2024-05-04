@@ -105,7 +105,7 @@ function App() {
       path: '/class-bookings',
       element: (
         <PublicRoute>
-          <BookingPage/>
+          <BookingPage />
         </PublicRoute>
       ),
     },

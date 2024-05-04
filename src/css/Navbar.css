@@ -51,5 +51,6 @@
 }
 
 .custom-toggler .navbar-toggler-icon {
-  background-color: red; /* Cambia 'red' al color que desees */
+  background-color: red;
+  /* Cambia 'red' al color que desees */
 }

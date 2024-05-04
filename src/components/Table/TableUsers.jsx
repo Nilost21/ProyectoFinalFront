@@ -1,32 +1,18 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useState } from 'react';
 import { Table, Button, Modal, Pagination } from 'react-bootstrap';
-
 import { UsersProvider } from '../../context/UsersContext';
-import FormEditUser from '../Form/FormEditUser';
 import './../../css/Tables.css';
 
 function TableUsers() {
   const { users, deleteUser } = useContext(UsersProvider);
-  const [show, setShow] = useState(false);
-  const [editUser, setEditUser] = useState(null);
-
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(7);
 
-  const handleClose = () => setShow(false);
-
-  const handleEdit = (user) => {
-    setEditUser(user);
-    setShow(true);
-  };
-
-  // Calcular los índices de los elementos a mostrar en la página actual
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = users.slice(indexOfFirstItem, indexOfLastItem);
 
-  // Cambiar de página
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const isEmpty = () => users.length === 0;
@@ -86,22 +72,6 @@ function TableUsers() {
                   <td className=" bg-dark text-light border-0">
                     <div className="d-flex flex-row justify-content-around">
                       <Button
-                        onClick={() => handleEdit(user)}
-                        className="bg-secondary border-0 text-dark me-3"
-                        disabled={isAdmin}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          className="bi bi-pen-fill"
-                          viewBox="0 0 16 16"
-                        >
-                          <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001" />
-                        </svg>
-                      </Button>
-                      <Button
                         onClick={() => deleteUser(_id)}
                         className="bg-danger border-0 text-dark"
                         disabled={isAdmin}
@@ -125,20 +95,6 @@ function TableUsers() {
           )}
         </tbody>
       </Table>
-
-      {/* Form edit user */}
-      <div className="rounded-5 p-0">
-        <Modal
-          show={show}
-          onHide={handleClose}
-          className="rounded-5 p-0"
-          contentClassName="bg-transparent p-0 border-0"
-        >
-          <Modal.Body className="bg-transparent rounded-5 border-0 p-0 ">
-            <FormEditUser updateUser={editUser} handleClose={handleClose} />
-          </Modal.Body>
-        </Modal>
-      </div>
 
       {/* Pagination */}
       <Pagination className="justify-content-center mt-4 paragraph">
