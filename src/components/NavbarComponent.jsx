@@ -114,9 +114,9 @@ function NavbarComponent() {
               </Nav.Link>
               <Nav.Link
                 className="subtitle mt-1 text-light navbar-button ms-1"
-                onClick={() => navigate('/about')}
+                onClick={() => navigate('/class-bookings')}
               >
-                About
+                Classes
               </Nav.Link>
               {/* Inicio carrito */}
               {isLoggedIn ? (

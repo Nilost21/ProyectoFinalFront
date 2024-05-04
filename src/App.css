@@ -35,3 +35,48 @@ body {
 }
 
 /* Fonts */
+
+/* Scroll */
+
+
+.scroll-right {
+ overflow-y: scroll !important;
+}
+
+
+
+.scroll-right::-webkit-scrollbar {
+  width: 12px; 
+  background-color: #7E5DC8; 
+}
+
+
+.scroll-right::-webkit-scrollbar-track {
+  background-color: #8A89B3;
+}
+
+
+.scroll-right::-webkit-scrollbar-thumb {
+  background-color: #7E5DC8;
+  border-radius: 2px; 
+}
+
+
+.scroll-right::-webkit-scrollbar-thumb:hover {
+  background-color: #8163D3;
+}
+
+/* Scroll */
+
+
+/* Modal */
+.modal.show {
+  opacity: 1;
+  visibility: visible;
+  padding: 0 !important;
+}
+
+.modal-open {
+  padding: 0 !important;
+}
+/* Modal */

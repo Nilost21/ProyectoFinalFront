@@ -22,7 +22,7 @@ function FormProducts({ editProducts, handleClose }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    if (name === 'price' && parseFloat(value) > 100) {
+    if (name === 'price' && parseFloat(value) > 10000) {
       return;
     }
 

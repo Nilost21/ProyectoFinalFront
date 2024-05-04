@@ -25,6 +25,7 @@ import FullPlan from './pages/Plans/FullPlan';
 import AdminEnrollments from './pages/Admin/AdminEnrollments';
 import Error404 from './pages/Error404/Error404';
 import Contact from './pages/Contact/Contact';
+import BookingPage from './pages/ClassBookings/BookingPage';
 
 function App() {
   const routes = [
@@ -97,6 +98,14 @@ function App() {
       element: (
         <PublicRoute>
           <FullPlan />
+        </PublicRoute>
+      ),
+    },
+    {
+      path: '/class-bookings',
+      element: (
+        <PublicRoute>
+          <BookingPage/>
         </PublicRoute>
       ),
     },
