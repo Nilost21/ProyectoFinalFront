@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { Container, Row, Col } from 'react-bootstrap';
 import NavbarComponent from '../../components/NavbarComponent';
-import TableUserClasses from '../../components/Table/TableUserClasses';
+import TableUserClasses from '../../components/Tables/TableUserClasses';
 
 import { useEffect, useContext } from 'react';
 import { useAuth } from '../../context/Utils/authUtils';

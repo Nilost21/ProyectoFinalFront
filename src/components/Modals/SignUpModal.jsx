@@ -7,11 +7,11 @@ import { Formik, ErrorMessage } from 'formik';
 import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
 import 'react-toastify/dist/ReactToastify.css';
-import InfoSVG from '../utils/InfoSVG';
+import InfoSVG from '../../utils/InfoSVG';
 
-import { UsersProvider } from '../context/UsersContext';
-import { schema } from '../schema/SignUpSchema';
-import './../css/Form.css';
+import { UsersProvider } from '../../context/UsersContext';
+import { schema } from '../../schema/SignUpSchema';
+import './../../css/Form.css';
 
 const SignUp = ({ show, handleClose, showLoginModal }) => {
   const { createUser } = useContext(UsersProvider);
@@ -37,7 +37,7 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
       Swal.fire({
         position: 'center',
         icon: 'error',
-        title: 'Error enrolling in class',
+        title: 'Error creating a user',
         text: errorMessage
       });
     }
@@ -46,6 +46,15 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
   const handleLoginClick = () => {
     handleClose();
     showLoginModal();
+  };
+
+  const isFormComplete = (values) => {
+    return values.email !== ''
+      && values.password !== ''
+      && values.confirmPassword !== ''
+      && values.name !== ''
+      && values.lastname !== ''
+      && values.phonenumber !== '';
   };
 
   const togglePasswordInfo = () => {
@@ -86,7 +95,7 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
             confirmPassword: '',
           }}
         >
-          {({ handleSubmit, handleChange, values }) => (
+          {({ handleSubmit, isValid, handleChange, values }) => (
             <Form onSubmit={handleSubmit}>
               <Row>
                 <Col>
@@ -229,6 +238,7 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
                 <Button
                   className="gradient-background border-0 rounded-5 subtitle py-1 ms-1 shadow-on-hover w-25"
                   type="submit"
+                  disabled={!isFormComplete(values)}
                 >
                   Sign Up
                 </Button>

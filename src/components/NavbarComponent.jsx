@@ -6,8 +6,8 @@ import { CartProvider } from '../context/CartContext';
 import ButtonComponent from './ButtonComponent';
 import '../css/Cart/Cart.css';
 
-import SignIn from './SignIn';
-import SignUp from './SignUp';
+import SignIn from './Modals/SignInModal';
+import SignUp from './Modals/SignUpModal';
 import { useAuth } from '../context/Utils/authUtils';
 
 import './../css/Navbar.css';

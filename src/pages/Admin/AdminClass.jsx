@@ -3,8 +3,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useEffect, useContext } from 'react';
 
 import NavbarComponent from '../../components/NavbarComponent';
-import TableClasses from '../../components/Table/TableClasses';
-import FormNewClass from '../../components/Form/FormNewClass';
+import TableClasses from '../../components/Tables/TableClasses';
+import FormNewClass from '../../components/Forms/FormNewClass';
 import { ClassProvider } from '../../context/ClassContex';
 
 function AdminClass() {

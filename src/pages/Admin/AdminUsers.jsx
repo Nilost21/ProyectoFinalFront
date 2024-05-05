@@ -2,7 +2,7 @@ import './../../css/Home.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useEffect, useContext } from 'react';
 import NavbarComponent from '../../components/NavbarComponent';
-import TableUsers from '../../components/Table/TableUsers';
+import TableUsers from '../../components/Tables/TableUsers';
 import { UsersProvider } from '../../context/UsersContext';
 
 function AdminUsers() {

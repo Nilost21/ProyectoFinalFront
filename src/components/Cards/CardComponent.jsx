@@ -1,8 +1,8 @@
 import { Card } from 'react-bootstrap';
 import { useContext } from 'react';
-import { CartProvider } from '../context/CartContext';
-import './../css/Card.css';
-import ButtonComponent from './ButtonComponent';
+import { CartProvider } from '../../context/CartContext';
+import './../../css/Card.css';
+import ButtonComponent from '../ButtonComponent';
 import PropTypes from 'prop-types';
 
 function CardComponent({ name, description, product, price, image }) {

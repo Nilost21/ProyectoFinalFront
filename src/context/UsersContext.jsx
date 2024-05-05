@@ -46,6 +46,19 @@ function UsersContext({ children }) {
     }
   };
 
+  const userLogIn = async (user) => {
+    try {
+      const response = await axios.post(
+        'http://localhost:3000/api/auth/signin',
+        user
+      );
+      return response;
+    } catch (error) {
+      console.error('Login error:', error.message);
+      throw error;
+    }
+  };
+
   const getUser = async (id) => {
     try {
       const token = localStorage.getItem('token');
@@ -201,6 +214,7 @@ function UsersContext({ children }) {
       users,
       getUsers,
       createUser,
+      userLogIn,
       getUser,
       getUserName,
       getMyUser,
