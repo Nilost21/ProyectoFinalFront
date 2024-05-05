@@ -1,8 +1,8 @@
-import { Container, Row, Col } from "react-bootstrap";
-import PropTypes from "prop-types";
-import BookingCard from "../../components/ClassBookingsComponents/BookingCard";
-import { useContext } from "react";
-import { ClassProvider } from "../../context/ClassContex";
+import { Container, Row, Col } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import BookingCard from './BookingCard';
+import { useContext } from 'react';
+import { ClassProvider } from '../../context/ClassContex';
 
 function ClassBookings() {
   const { classes } = useContext(ClassProvider);

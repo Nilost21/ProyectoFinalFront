@@ -3,11 +3,8 @@ import './../../css/Home.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useEffect, useContext } from 'react';
 import NavbarComponent from '../../components/NavbarComponent';
-import TableAdminEnrollments from '../../components/Table/TableAdminEnrollments';
 import { EnrollmentProvider } from '../../context/EnrollmentContext';
-import { UsersProvider } from '../../context/UsersContext';
-
-import AdminDashboard from '../../components/Table/AdminDashboard';
+import AdminDashboard from '../../components/Tables/AdminDashboard';
 
 const AdminEnrollments = () => {
   const { getEnrollmentsForToday } = useContext(EnrollmentProvider);

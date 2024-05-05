@@ -1,4 +1,4 @@
-import CardPlan from '../../components/planComponents/CardPlan';
+import CardPlan from '../../components/GymPlans/CardPlan';
 import { Container, Row, Col } from 'react-bootstrap';
 
 const PlanList = () => {
@@ -41,7 +41,7 @@ const PlanList = () => {
               key={product.id}
               lg={4}
               className="d-flex justify-content-center text-center"
-             
+
             >
               <CardPlan
                 level={product.level}

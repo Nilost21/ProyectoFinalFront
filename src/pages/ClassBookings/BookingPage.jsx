@@ -1,6 +1,6 @@
 import NavbarComponent from "../../components/NavbarComponent";
 import { Container, Row } from "react-bootstrap";
-import ClassBookings from "../../components/ClassBookingsComponents/ClassBookings";
+import ClassBookings from "../../components/GymClassBookings/ClassBookings";
 
 import "../../css/ClassBookings/BookingPage.css";
 import FooterComponent from "../../components/FooterComponent";

@@ -5,20 +5,20 @@ import '../../css/Footer/Footer.css';
 import { Container, Col, Row } from 'react-bootstrap';
 import TitleHomeComponent from '../../components/TitleHomeComponent';
 import NavbarComponent from '../../components/NavbarComponent';
-import CardExperience from '../../components/Cards Home/CardExperience';
-import CardTrainer from '../../components/Cards Home/CardTrainer';
-import CardDiet from '../../components/Cards Home/CardDiet';
-import CardSatisfied from '../../components/Cards Home/CardSatisfied';
-import CardFlex from '../../components/Cards Home/CardFlex';
+import CardExperience from '../../components/Cards/CardExperience.jsx';
+import CardTrainer from '../../components/Cards/CardTrainer.jsx';
+import CardDiet from '../../components/Cards/CardDiet.jsx';
+import CardSatisfied from '../../components/Cards/CardSatisfied.jsx';
+import CardFlex from '../../components/Cards/CardFlex.jsx';
 import FooterComponent from '../../components/FooterComponent';
 import PlanList from '../Plans/PlanList';
 import { activateScrollAnimation } from '../../utils/activateScrollAnimation.js';
 import React, { useEffect } from 'react';
 
-import NutritionTitle from '../../components/NutritionComponents/NutritionTitle';
-import NutritionFood from '../../components/NutritionComponents/NutritionFood';
-import TrainingComponent from '../../components/NutritionComponents/TrainingComponent';
-import NutritionBtn from '../../components/NutritionComponents/NutritionBtn';
+import NutritionTitle from '../../components/GymNutrition/NutritionTitle';
+import NutritionFood from '../../components/GymNutrition/NutritionFood';
+import TrainingComponent from '../../components/GymNutrition/TrainingComponent';
+import NutritionBtn from '../../components/GymNutrition/NutritionBtn';
 
 function Home() {
   return (

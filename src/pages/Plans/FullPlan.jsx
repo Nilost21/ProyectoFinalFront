@@ -1,9 +1,9 @@
-import { Container } from "react-bootstrap";
-import FormPlan from "../../components/planComponents/FormPlan";
-import "../../css/Plans/PlanDetail.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
-import NavbarComponent from "../../components/NavbarComponent";
-import coverImageFull from "../../assets/img/Plans/cover-image-full-plan.png";
+import { Container } from 'react-bootstrap';
+import FormPlan from '../../components/GymPlans/FormPlan';
+import '../../css/Plans/PlanDetail.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import NavbarComponent from '../../components/NavbarComponent';
+import coverImageFull from '../../assets/img/Plans/cover-image-full-plan.png';
 
 const FullPlan = () => {
   return (

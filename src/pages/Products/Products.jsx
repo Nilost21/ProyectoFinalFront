@@ -1,6 +1,6 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import CardComponent from '../../components/CardComponent';
+import CardComponent from '../../components/Cards/CardComponent';
 import { useContext } from 'react';
 import { ProductsProvider } from '../../context/ProductsContext';
 import NavbarComponent from '../../components/NavbarComponent';

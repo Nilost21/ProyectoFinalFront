@@ -1,9 +1,9 @@
-import { Container } from "react-bootstrap";
-import FormPlan from "../../components/planComponents/FormPlan";
-import coverImageMuscle from "../../assets/img/Plans/cover-image-muscle-plan.png";
-import "../../css/Plans/PlanDetail.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
-import NavbarComponent from "../../components/NavbarComponent";
+import { Container } from 'react-bootstrap';
+import FormPlan from '../../components/GymPlans/FormPlan';
+import coverImageMuscle from '../../assets/img/Plans/cover-image-muscle-plan.png';
+import '../../css/Plans/PlanDetail.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import NavbarComponent from '../../components/NavbarComponent';
 
 const MusclePlan = () => {
   return (

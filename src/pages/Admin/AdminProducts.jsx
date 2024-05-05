@@ -3,8 +3,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useEffect, useContext } from 'react';
 
 import NavbarComponent from '../../components/NavbarComponent';
-import TableProducts from '../../components/Table/TableProducts';
-import FormProducts from '../../components/Form/FormProducts';
+import TableProducts from '../../components/Tables/TableProducts';
+import FormProducts from '../../components/Forms/FormProducts';
 import { ProductsProvider } from '../../context/ProductsContext';
 
 function AdminProducts() {
