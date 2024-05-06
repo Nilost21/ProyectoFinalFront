@@ -26,6 +26,7 @@ import AdminEnrollments from './pages/Admin/AdminEnrollments';
 import Error404 from './pages/Error404/Error404';
 import Contact from './pages/Contact/Contact';
 import BookingPage from './pages/ClassBookings/BookingPage';
+import Profile from './pages/Profile/Profile';
 
 function App() {
   const routes = [
@@ -149,7 +150,7 @@ function App() {
       path: '/profile',
       element: (
         <PrivateRoute>
-          <Error404 />{' '}
+          <Profile />{' '}
         </PrivateRoute>
       ),
     },
