@@ -1,93 +1,61 @@
 /* eslint-disable no-unused-vars */
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
 import { Table, Button, Modal, Pagination } from 'react-bootstrap';
-
-import { EnrollmentProvider } from '../../context/EnrollmentContext';
 import { ClassProvider } from '../../context/ClassContex';
-import { UsersProvider } from '../../context/UsersContext';
+import FormNewClass from '../Forms/FormNewClass';
 import formatDateTime from '../../utils/dateTimeUtils';
+import ConfirmationModal from '../Modals/ConfirmationModal';
 
-import './../../css/Tables.css';
-
-function TableAdminEnrollments() {
-  const { enrollments, deleteEnrollment } = useContext(EnrollmentProvider);
-  const { getClassDate, getClassNameById, getClassTeacherById } = useContext(ClassProvider);
-  const { getUserName } = useContext(UsersProvider);
-
+function TableClasses() {
+  const { classes, deleteClass } = useContext(ClassProvider);
   const [show, setShow] = useState(false);
-  const [editEnrollment, setEditEnrollment] = useState(null);
-
+  const [editClasses, setEditClasses] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(5);
-
-  const [userNames, setUserNames] = useState({});
-  const [classNames, setClassNames] = useState({});
-  const [teachers, setTeachers] = useState({});
-  const [classDates, setClassDates] = useState({});
-
-  useEffect(() => {
-    async function fetchUserNames() {
-      const names = {};
-      for (const enrollment of enrollments) {
-        const userName = await getUserName(enrollment.user);
-        names[enrollment._id] = userName;
-      }
-      setUserNames(names);
-    }
-    fetchUserNames();
-  }, [enrollments, getUserName]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const classNames = {};
-      const teacherNames = {};
-      const dates = {};
-      for (const enrollment of enrollments) {
-        const className = await getClassNameById(enrollment.gymClass);
-        const teacherName = await getClassTeacherById(enrollment.gymClass);
-        const date = await getClassDate(enrollment.gymClass);
-        classNames[enrollment._id] = className;
-        teacherNames[enrollment._id] = teacherName;
-        dates[enrollment._id] = date;
-      }
-      setClassNames(classNames);
-      setTeachers(teacherNames);
-      setClassDates(dates);
-    }
-    fetchData();
-  }, [enrollments, getClassNameById, getClassTeacherById, getClassDate]);
+  const [showModal, setShowModal] = useState(false);
+  const [itemIdToDelete, setItemIdToDelete] = useState(null);
 
   const handleClose = () => setShow(false);
 
-  const handleEdit = (enrollment) => {
-    setEditEnrollment(enrollment);
+  const handleEdit = (c) => {
+    setEditClasses(c);
     setShow(true);
   };
 
-  // Calcular los índices de los elementos a mostrar en la página actual
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = enrollments.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = classes.slice(indexOfFirstItem, indexOfLastItem);
 
-  // Cambiar de página
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const isEmpty = () => enrollments.length === 0;
+  const isEmpty = () => classes.length === 0;
+
+  const handleShowModal = (classId) => {
+    setItemIdToDelete(classId);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => setShowModal(false);
+
+  const handleConfirmDelete = () => {
+    deleteClass(itemIdToDelete);
+    handleCloseModal();
+  };
+
 
   return (
     <>
       <div className="text-star bg-dark text-white rounded-top-4 py-1">
-        <h3 className="subtitle ps-3 mt-1 pt-1 my-0 ">Classes enrollments</h3>
+        <h3 className="subtitle ps-3 mt-1 pt-1 my-0 ">Gym Classes</h3>
       </div>
       <Table className="mb-0">
         <thead>
           <tr className="subtitle">
             <th>Index</th>
-            <th>Id</th>
-            <th>Class name</th>
+            <th>Name</th>
+            <th>Description</th>
             <th>Teacher</th>
             <th>Date and time</th>
-            <th>User name</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -95,25 +63,36 @@ function TableAdminEnrollments() {
           {isEmpty() ? (
             <tr>
               <td colSpan="4">
-                <h3 className="paragraph">No enrollments found</h3>
+                <h3 className="paragraph">No classes found</h3>
+              </td>
+              <td>
+                <></>
               </td>
             </tr>
           ) : (
-            currentItems.map((enrollment, index) => {
+            currentItems.map((c, index) => {
               const rowIndex = index + indexOfFirstItem;
-              const { _id, user } = enrollment;
+              const { _id, name, description, teacher, dateAndTime } = c;
+
               return (
                 <tr key={_id} className="paragraph fw-bold ">
-                  <td className="bg-dark text-light border-0 pt-3">{rowIndex + 1}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{_id}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{classNames[_id]}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{teachers[_id]}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{formatDateTime(classDates[_id])}</td>
-                  <td className="bg-dark text-light border-0 pt-3">{userNames[_id]}</td>
+                  <td className="bg-dark text-light border-0 pt-3">
+                    {rowIndex + 1}
+                  </td>
+                  <td className="bg-dark text-light border-0 pt-3">{name}</td>
+                  <td className="bg-dark text-light border-0 pt-3">
+                    {description}
+                  </td>
+                  <td className="bg-dark text-light border-0 pt-3">
+                    {teacher}
+                  </td>
+                  <td className="bg-dark text-light border-0 pt-3">
+                    {formatDateTime(dateAndTime)}
+                  </td>
                   <td className=" bg-dark text-light border-0">
                     <div className="d-flex flex-row justify-content-around">
                       <Button
-                        onClick={() => handleEdit(enrollment)}
+                        onClick={() => handleEdit(c)}
                         className="bg-secondary border-0 text-dark me-3"
                       >
                         <svg
@@ -128,7 +107,7 @@ function TableAdminEnrollments() {
                         </svg>
                       </Button>
                       <Button
-                        onClick={() => deleteEnrollment(_id)}
+                        onClick={() => handleShowModal(_id)}
                         className="bg-danger border-0 text-dark"
                       >
                         <svg
@@ -151,15 +130,42 @@ function TableAdminEnrollments() {
         </tbody>
       </Table>
 
+      {/* Form edit class */}
+      <div className="rounded-5 p-0">
+        <Modal
+          show={show}
+          onHide={handleClose}
+          className="rounded-5 p-0"
+          contentClassName="bg-transparent p-0 border-0"
+        >
+          <Modal.Body className="bg-transparent rounded-5 border-0 p-0 ">
+            <FormNewClass editClass={editClasses} handleClose={handleClose} />
+          </Modal.Body>
+        </Modal>
+      </div>
+
       {/* Pagination */}
       <Pagination className="justify-content-center mt-4 paragraph">
-        {Array.from({ length: Math.ceil(enrollments.length / itemsPerPage) }).map((_, index) => (
-          <Pagination.Item key={index + 1} active={index + 1 === currentPage} onClick={() => paginate(index + 1)}>
-            {index + 1}
-          </Pagination.Item>
-        ))}
+        {Array.from({ length: Math.ceil(classes.length / itemsPerPage) }).map(
+          (_, index) => (
+            <Pagination.Item
+              key={index + 1}
+              active={index + 1 === currentPage}
+              onClick={() => paginate(index + 1)}
+            >
+              {index + 1}
+            </Pagination.Item>
+          )
+        )}
       </Pagination>
+      {/* Modal de confirmación */}
+      <ConfirmationModal
+        show={showModal}
+        handleClose={handleCloseModal}
+        handleConfirm={handleConfirmDelete}
+        name={"class"}
+      />
     </>
   );
 }
-export default TableAdminEnrollments;
+export default TableClasses;

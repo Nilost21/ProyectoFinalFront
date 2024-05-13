@@ -1,7 +1,7 @@
 import { Col, Row, Button, Modal } from 'react-bootstrap';
 import { useState } from 'react';
 import '../css/Footer/Footer.css';
-import InfoCardHome from './Cards Home/InfoCardHome';
+import InfoCardHome from './Cards/InfoCardHome';
 import { useNavigate } from 'react-router';
 
 function FooterComponent() {

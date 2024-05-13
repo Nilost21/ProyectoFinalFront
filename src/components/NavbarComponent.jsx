@@ -6,8 +6,8 @@ import { CartProvider } from '../context/CartContext';
 import ButtonComponent from './ButtonComponent';
 import '../css/Cart/Cart.css';
 
-import SignIn from './SignIn';
-import SignUp from './SignUp';
+import SignIn from './Modals/SignInModal';
+import SignUp from './Modals/SignUpModal';
 import { useAuth } from '../context/Utils/authUtils';
 
 import './../css/Navbar.css';
@@ -111,7 +111,7 @@ function NavbarComponent() {
                 className="subtitle mt-1 text-light navbar-button ms-1"
                 onClick={() => navigate('/products')}
               >
-                Products
+                Store
               </Nav.Link>
               <Nav.Link
                 className="subtitle mt-1 text-light navbar-button ms-1"

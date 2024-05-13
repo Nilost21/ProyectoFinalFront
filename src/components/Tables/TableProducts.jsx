@@ -2,12 +2,15 @@
 import { useContext, useState } from 'react';
 import { Table, Button, Modal, Pagination } from 'react-bootstrap';
 import { ProductsProvider } from '../../context/ProductsContext';
-import FormProducts from '../Form/FormProducts';
+import FormProducts from '../Forms/FormProducts';
+import ConfirmationModal from '../Modals/ConfirmationModal';
 
 function TableProducts() {
   const { products, deleteProducts } = useContext(ProductsProvider);
   const [show, setShow] = useState(false);
   const [editProducts, setEditProducts] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [itemIdToDelete, setItemIdToDelete] = useState(null);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(6);
@@ -26,6 +29,18 @@ function TableProducts() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const isEmpty = () => products.length === 0;
+
+  const handleShowModal = (productId) => {
+    setItemIdToDelete(productId);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => setShowModal(false);
+
+  const handleConfirmDelete = () => {
+    deleteProducts(itemIdToDelete);
+    handleCloseModal();
+  };
 
   return (
     <>
@@ -89,7 +104,7 @@ function TableProducts() {
                         </svg>
                       </Button>
                       <Button
-                        onClick={() => deleteProducts(_id)}
+                        onClick={() => handleShowModal(_id)}
                         className="bg-danger border-0 text-dark"
                       >
                         <svg
@@ -143,6 +158,13 @@ function TableProducts() {
           )
         )}
       </Pagination>
+      {/* Modal de confirmación */}
+      <ConfirmationModal
+        show={showModal}
+        handleClose={handleCloseModal}
+        handleConfirm={handleConfirmDelete}
+        name={"product"}
+      />
     </>
   );
 }

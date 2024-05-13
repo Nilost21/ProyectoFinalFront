@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import FormPlan from "../../components/planComponents/FormPlan";
+import FormPlan from "../../components/GymPlans/FormPlan";
 import "../../css/Plans/PlanDetail.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import NavbarComponent from "../../components/NavbarComponent";

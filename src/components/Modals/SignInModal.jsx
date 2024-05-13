@@ -1,71 +1,42 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { Formik, ErrorMessage } from 'formik';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
-
 import 'react-toastify/dist/ReactToastify.css';
 
-import { schema } from '../schema/SignInSchema';
-import { useAuth } from '../context/Utils/authUtils';
-import './../css/Form.css';
+import { schema } from '../../schema/SignInSchema';
+import { UsersProvider } from '../../context/UsersContext';
+import { useAuth } from '../../context/Utils/authUtils';
+import './../../css/Form.css';
 
 const SignIn = ({ show, handleClose, showRegisterModal }) => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
-
-  const navigate = useNavigate();
+  const { userLogIn } = useContext(UsersProvider);
   const { login } = useAuth();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!show) {
-      setFormData({
-        email: '',
-        password: '',
-      });
-    }
-  }, [show]);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSignIn = async (e) => {
-    e.preventDefault();
+  const handleSignIn = async (user) => {
     try {
-      const response = await axios.post(
-        'http://localhost:3000/api/auth/signin',
-        formData
-      );
-
-      const { token, user } = response.data;
-      login(token, user);
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(user));
-
-      setFormData({
-        email: '',
-        password: '',
-      });
-
-      handleClose();
-      navigate('/');
+      const response = await userLogIn(user);
+      if (response) {
+        const { token, user } = response.data;
+        login(token, user);
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
+        handleClose();
+        navigate('/');
+      } else {
+        console.log("No")
+      }
     } catch (error) {
       const errorMessage = error.response?.data?.error.message || 'Unknown Error';
       Swal.fire({
         position: 'center',
         icon: 'error',
-        title: 'Error enrolling in class',
+        title: 'Failed to login',
         text: errorMessage
       });
     }
@@ -74,6 +45,10 @@ const SignIn = ({ show, handleClose, showRegisterModal }) => {
   const handleRegisterClick = () => {
     handleClose();
     showRegisterModal();
+  };
+
+  const isFormComplete = (values) => {
+    return values.email !== '' && values.password !== '';
   };
 
   return (
@@ -100,7 +75,7 @@ const SignIn = ({ show, handleClose, showRegisterModal }) => {
             password: '',
           }}
         >
-          {({ handleSubmit }) => (
+          {({ handleSubmit, handleChange, values }) => (
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1">
@@ -110,8 +85,8 @@ const SignIn = ({ show, handleClose, showRegisterModal }) => {
                   className="paragraph"
                   type="email"
                   name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
+                  value={values.email}
+                  onChange={handleChange}
                   placeholder="Enter your email"
                 />
                 <ErrorMessage
@@ -129,8 +104,8 @@ const SignIn = ({ show, handleClose, showRegisterModal }) => {
                   className="paragraph"
                   type="password"
                   name="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
+                  value={values.password}
+                  onChange={handleChange}
                   placeholder="Enter your password"
                 />
                 <ErrorMessage
@@ -139,24 +114,25 @@ const SignIn = ({ show, handleClose, showRegisterModal }) => {
                   className="formik-error-message"
                 />
               </Form.Group>
-              <p className="subtitle fs-5 px-3 pt-1 rounded-5 mb-2 ps-1 mt-4 mb-4">
+              <p className="subtitle fs-5 px-3 pt-1 rounded-5 mb-3 ps-1 mt-4 text-center">
                 Don't have an account?{' '}
                 <Link onClick={handleRegisterClick}>Sign Up</Link>
               </p>
-
-              <Button
-                className="gradient-background border-0 rounded-5 subtitle py-1 mt-1 shadow-on-hover w-25"
-                onClick={handleClose}
-              >
-                Close
-              </Button>
-              <Button
-                type="submit"
-                className="gradient-background border-0 rounded-5 subtitle py-1 mt-1 shadow-on-hover w-25"
-                onClick={handleSignIn}
-              >
-                Log In
-              </Button>
+              <div className="d-flex flex-row justify-content-center">
+                <Button
+                  className="gradient-background border-0 rounded-5 subtitle py-1 me-1 shadow-on-hover w-25"
+                  onClick={handleClose}
+                >
+                  Close
+                </Button>
+                <Button
+                  type="submit"
+                  className="gradient-background border-0 rounded-5 subtitle py-1 ms-1 shadow-on-hover w-25"
+                  disabled={!isFormComplete(values)}
+                >
+                  Log In
+                </Button>
+              </div>
             </Form>
           )}
         </Formik>
