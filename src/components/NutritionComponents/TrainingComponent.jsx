@@ -4,7 +4,7 @@ import './../../css/NutritionComponent.css';
 const TrainingComponent = () => {
   return (
     <>
-      <div className="mx-3 pe-md-5" data-aos="fade-left">
+      <div className="mx-3 pe-md-5" data-aos="fade-right">
         {/* Primera fila */}
         <Row className="mb-3 border-top custom-row">
           <Col
