@@ -23,7 +23,7 @@ Para ejecutar este proyecto en tu entorno local, sigue los siguientes pasos:
 
 1. Clona el repositorio:
     ```bash
-    git clone [https://github.com/tuusuario/GymWebApp.git](https://github.com/Nilost21/ProyectoFinalFront.git)
+    git clone https://github.com/Nilost21/ProyectoFinalFront.git
     ```
 
 2. Navega al directorio del proyecto:
