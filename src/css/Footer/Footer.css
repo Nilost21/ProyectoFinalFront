@@ -1,0 +1,8 @@
+.text-color-small {
+  color: #8A89B3;
+}
+
+.bg-footer {
+  background-color: #1B1924;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}

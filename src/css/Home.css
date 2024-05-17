@@ -1,0 +1,65 @@
+.bg-home {
+  border-bottom-color: transparent;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url('../../src/assets/img/Home/GettyImages-597068867 (1).jpg');
+  background-size: cover;
+  background-position: top;
+  -webkit-mask-image: linear-gradient(black 80%, transparent);
+  mask-image: linear-gradient(black 80%, transparent);
+}
+
+.text-color-small {
+  color: #8A89B3;
+}
+
+.text-color-small:hover,
+.text-color-small:active,
+.text-color-small:focus {
+  color: #8A89B3
+}
+
+.shadow-box {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.text-shadow-effect {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-animation {
+  opacity: 0;
+  animation: slide-up 3s ease forwards;
+}
+
+.scroll-animation.active {
+  opacity: 1;
+}
+
+.gradient-text {
+  background-image: linear-gradient(to right, #6245c4, #b665ec);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hover-effect {
+  cursor: pointer;
+}
+
+.hover-effect:hover {
+  color: transparent;
+  background-image: linear-gradient(to right, #6245c4, #b665ec);
+  -webkit-background-clip: text;
+  background-clip: text;
+}

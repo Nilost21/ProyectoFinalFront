@@ -1,0 +1,46 @@
+.custom-booking-card{
+    background-color: #2b2354;
+    border: 0;
+    border-radius: 15px;
+    height: auto;
+}
+.custom-booking-card .list-group-item {
+    background-color: #2b2354;
+    /* color: #a198c9; */
+    color: #fff;
+}
+.list-group-item {
+    border-color: rgba(178, 102, 210, 0.3);
+}
+.custom-booking-card:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+    box-shadow: #2e2168 0px 7px 29px 0px;
+}
+
+.description-booking-card{
+    color: #a5a5af;
+}
+
+.custom-btn-bc{
+    border-radius: 50px;
+    border: 0;
+    background: linear-gradient(to top right, #7b63d2, #af65d2);
+    padding: 10px 30px;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+.custom-btn-bc:hover{
+    letter-spacing: 3px;
+}
+/* .custom-btn-bc:active{
+    background-color: rgb(141, 100, 179)!important;
+} */
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que los botones se envuelvan en líneas */
+  }
+  

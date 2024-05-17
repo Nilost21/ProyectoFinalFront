@@ -1,0 +1,56 @@
+.bg-navbar {
+  background: transparent
+}
+
+.text-color {
+  color: #FFFBFD;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.enlarge {
+  transition: transform 0.3s ease;
+}
+
+.enlarge:hover {
+  transform: scale(1.1);
+}
+
+.text-shadow {
+  transition: text-shadow 0.3s ease;
+}
+
+.text-shadow:hover {
+  text-shadow: 0 0 2.5px #b665ec;
+}
+
+.text-animation {
+  transition: transform 0.3s ease;
+}
+
+.text-animation:hover {
+  transform: scale(1.05);
+}
+
+.text-gradient {
+  color: linear-gradient(to right, #7E61DD, #8F5EAF);
+}
+
+.nav-dropdown-title {
+  color: white !important;
+}
+
+.navbar-button:hover {
+  transform: scale(1.1);
+}
+
+.navbar-button {
+  transition: transform 0.1s ease;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-color: red;
+  /* Cambia 'red' al color que desees */
+}
