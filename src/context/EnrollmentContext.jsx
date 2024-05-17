@@ -13,7 +13,9 @@ function EnrollmentContext({ children }) {
 
   const getEnrollments = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/enrollment/');
+      const response = await axios.get(
+        'https://proyectofinalback.onrender.com/api/enrollment/'
+      );
       const data = response.data;
       setEnrollments([...data]);
     } catch (error) {
@@ -24,7 +26,9 @@ function EnrollmentContext({ children }) {
 
   const getEnrollmentsForToday = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/enrollment/enrollments/today');
+      const response = await axios.get(
+        'https://proyectofinalback.onrender.com/api/enrollment/enrollments/today'
+      );
       const data = response.data;
       setClassesForToday([...data]);
       return data;
@@ -37,7 +41,7 @@ function EnrollmentContext({ children }) {
   const newEnrollment = async (enrollmentData) => {
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/enrollment/',
+        'https://proyectofinalback.onrender.com/api/enrollment/',
         enrollmentData
       );
       const data = response.data;
@@ -51,8 +55,10 @@ function EnrollmentContext({ children }) {
 
   const deleteEnrollment = async (_id) => {
     try {
-      const res = await axios.delete(`http://localhost:3000/api/enrollment/${_id}`);
-      console.log("res", res);
+      const res = await axios.delete(
+        `https://proyectofinalback.onrender.com/api/enrollment/${_id}`
+      );
+      console.log('res', res);
       const filteredEnrollments = enrollments.filter((e) => e.id !== _id);
       Swal.fire({
         position: 'center',
@@ -79,7 +85,7 @@ function EnrollmentContext({ children }) {
         },
       };
       const response = await axios.get(
-        `http://localhost:3000/api/enrollment/enrollments/${userId}`,
+        `https://proyectofinalback.onrender.com/api/enrollment/enrollments/${userId}`,
         config
       );
       const data = response.data;
@@ -106,7 +112,7 @@ function EnrollmentContext({ children }) {
         getEnrollmentsForToday,
         getUserEnrollments,
         newEnrollment,
-        deleteEnrollment
+        deleteEnrollment,
       }}
     >
       {children}
