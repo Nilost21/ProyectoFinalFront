@@ -1,12 +1,11 @@
 /* eslint-disable no-unused-vars */
-import { createContext, useEffect, useState, useContext } from 'react';
-import { ProductsProvider } from './ProductsContext';
+import { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
 import { useAuth } from '../context/Utils/authUtils';
+import SignIn from '../components/Modals/SignInModal';
 
 export const CartProvider = createContext();
-
 function CartContext({ children }) {
   const initialCart = () => {
     const localStorageCart = localStorage.getItem('cart');
@@ -14,11 +13,12 @@ function CartContext({ children }) {
   };
 
   const [cart, setCart] = useState(initialCart);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const { isLoggedIn } = useAuth();
 
   const MAX_ITEMS = 5;
   const MIN_ITEMS = 1;
-
-  const { isLoggedIn } = useAuth();
 
   const addToCart = (item) => {
     if (!isLoggedIn) {
@@ -29,6 +29,8 @@ function CartContext({ children }) {
         timer: 2000,
         timerProgressBar: true,
         allowOutsideClick: false,
+      }).then(() => {
+        setShowLoginModal(true);
       });
       return;
     }
@@ -114,21 +116,39 @@ function CartContext({ children }) {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
+  const handleRegisterModalShow = () => setShowRegisterModal(true);
+
+  // Cierra los modales
+  const handleCloseModals = () => {
+    setShowLoginModal(false);
+    setShowRegisterModal(false);
+  };
+
+
   return (
-    <CartProvider.Provider
-      value={{
-        cart,
-        addToCart,
-        removeToCart,
-        increaseQuantity,
-        decrementQuantity,
-        clearCart,
-        buyComplete,
-      }}
-    >
-      {children}
-    </CartProvider.Provider>
+    <>
+      <CartProvider.Provider
+        value={{
+          cart,
+          addToCart,
+          removeToCart,
+          increaseQuantity,
+          decrementQuantity,
+          clearCart,
+          buyComplete,
+        }}
+      >
+        {children}
+      </CartProvider.Provider>
+      {/* Modal de inicio de sesión */}
+      <SignIn
+        show={showLoginModal}
+        handleClose={handleCloseModals}
+        showRegisterModal={handleRegisterModalShow}
+      />
+    </>
   );
+
 }
 
 CartContext.propTypes = {

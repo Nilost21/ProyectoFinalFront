@@ -17,8 +17,8 @@ function Products() {
       <Container fluid>
         <Row className="p-0 bg-products pe-md-5 pb-5 pb-md-0">
           <NavbarComponent />
-          <Container className="px-5">
-            <Row className="d-flex flex-row justify-content-center mt-3  ">
+          <Container className="ps-lg-5 pe-lg-0">
+            <Row className="d-flex flex-row justify-content-center mt-3">
               {isEmpty() ? (
                 <h2 className="paragraph">No hay productos</h2>
               ) : (
@@ -32,7 +32,7 @@ function Products() {
                       md={4}
                       sm={8}
                       key={_id}
-                      className="d-flex flex-row justify-content-center"
+                      className="d-flex flex-row justify-content-center me-0"
                     >
                       <CardComponent
                         name={name}
@@ -51,7 +51,7 @@ function Products() {
       </Container>
       <Container
         fluid
-        className="d-flex flex-row justify-content-around  border-footer bg-footer"
+        className="d-flex flex-row justify-content-around border-footer bg-footer"
       >
         <FooterComponent />
       </Container>
