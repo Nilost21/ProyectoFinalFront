@@ -34,6 +34,11 @@ Credenciales para ingresar como usuario administrador:
 3. Instala las dependencias necesarias:
 `$ npm install`
 
+## Ejecución
+
+Para iniciar el servidor de desarrollo, utiliza el siguiente comando:
+`npm run dev`
+
 ## Autores
 
 Este proyecto fue desarrollado por un grupo de programadores de la academia Rolling Code:
