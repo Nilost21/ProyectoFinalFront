@@ -37,6 +37,7 @@ Credenciales para ingresar como usuario administrador:
 ## Ejecución
 
 Para iniciar el servidor de desarrollo, utiliza el siguiente comando:
+
 `npm run dev`
 
 ## Autores
