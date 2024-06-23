@@ -9,7 +9,7 @@ function CardFlex() {
     <>
       <Card className="bg-transparent border-0  text-white pe-md-0 mt-5  ">
         <Card.Img
-          src="https://imgtr.ee/images/2024/05/17/1273103ec02c0083e00344dd51fedbb9.jpeg"
+          src="../../../public/img/10.jpg"
           alt="Card image"
           className=" border-0 rounded-top-3 shadow-box mb-3 "
         />
