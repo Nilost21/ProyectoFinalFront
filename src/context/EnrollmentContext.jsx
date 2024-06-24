@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import axiosInstance from '../utils/axiosInstance';
 
 export const EnrollmentProvider = createContext();
 
@@ -12,89 +13,58 @@ function EnrollmentContext({ children }) {
   const [userEnrollments, setuserEnrollments] = useState([]);
 
   const getEnrollments = async () => {
-    try {
-      const response = await axios.get(
-        'https://proyectofinalback.onrender.com/api/enrollment/'
-      );
-      const data = response.data;
-      setEnrollments([...data]);
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
+    const response = await axios.get('http://localhost:3000/api/enrollment/');
+    const data = response.data;
+    setEnrollments([...data]);
   };
 
   const getEnrollmentsForToday = async () => {
-    try {
-      const response = await axios.get(
-        'https://proyectofinalback.onrender.com/api/enrollment/enrollments/today'
-      );
-      const data = response.data;
-      setClassesForToday([...data]);
-      return data;
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
+    const response = await axios.get('http://localhost:3000/api/enrollment/enrollments/today');
+    const data = response.data;
+    setClassesForToday([...data]);
+    return data;
   };
 
   const newEnrollment = async (enrollmentData) => {
-    try {
-      const response = await axios.post(
-        'https://proyectofinalback.onrender.com/api/enrollment/',
-        enrollmentData
-      );
-      const data = response.data;
-      setEnrollments([...enrollments, data]);
+    const response = await axiosInstance.post('/enrollment/', enrollmentData);
+    const data = response.data;
+    if (data.message === 'You are already enrolled in the class.') {
       return data;
-    } catch (error) {
-      console.log('Error at enrolling to the class', error.message || error);
-      throw error;
     }
+    setEnrollments([...enrollments, data]);
+    return data;
   };
 
   const deleteEnrollment = async (_id) => {
-    try {
-      const res = await axios.delete(
-        `https://proyectofinalback.onrender.com/api/enrollment/${_id}`
-      );
-      console.log('res', res);
-      const filteredEnrollments = enrollments.filter((e) => e.id !== _id);
-      Swal.fire({
-        position: 'center',
-        icon: 'error',
-        title: 'Class eliminated',
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      setEnrollments([...filteredEnrollments]);
-      await getEnrollments();
-    } catch (error) {
-      console.log(error, 'Error when deleting class');
-      throw error;
-    }
+    const res = await axios.delete(`http://localhost:3000/api/enrollment/${_id}`);
+    console.log("res", res);
+    const filteredEnrollments = enrollments.filter((e) => e.id !== _id);
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Class eliminated',
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    setEnrollments([...filteredEnrollments]);
+    await getEnrollments();
   };
 
   const getUserEnrollments = async (userId) => {
-    try {
-      const token = localStorage.getItem('token');
-      if (!token) return;
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      const response = await axios.get(
-        `https://proyectofinalback.onrender.com/api/enrollment/enrollments/${userId}`,
-        config
-      );
-      const data = response.data;
-      setuserEnrollments([...data]);
-      return data;
-    } catch (error) {
-      console.error('Error fetching user enrollments:', error.message || error);
-      throw error;
-    }
+    const token = localStorage.getItem('token');
+    if (!token) return;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const response = await axios.get(
+      `http://localhost:3000/api/enrollment/enrollments/${userId}`,
+      config
+    );
+    const data = response.data;
+    setuserEnrollments([...data]);
+    return data;
   };
 
   useEffect(() => {
@@ -112,7 +82,7 @@ function EnrollmentContext({ children }) {
         getEnrollmentsForToday,
         getUserEnrollments,
         newEnrollment,
-        deleteEnrollment,
+        deleteEnrollment
       }}
     >
       {children}

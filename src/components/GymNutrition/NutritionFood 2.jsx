@@ -4,7 +4,7 @@ import './../../css/NutritionComponent.css';
 const NutritionFood = () => {
   return (
     <>
-      <div className="ms-lg-5 ms-md-3 mx-3" data-aos="fade-right">
+      <div className="ms-lg-5 ms-md-3 mx-3" data-aos="fade-left">
         <div className="shadow-box ms-md-5">
           <img
             src="https://christworldchannel.family.blog/wp-content/uploads/2020/11/monika-grabkowska-p1aohbit-ey-unsplash.jpg?w=1568"
