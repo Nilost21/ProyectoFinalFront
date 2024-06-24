@@ -20,7 +20,7 @@ function UsersContext({ children }) {
         },
       };
       const response = await axios.get(
-        'http://localhost:3000/api/user/',
+        'https://proyectofinalback.onrender.com/api/user/',
         config
       );
       const data = response.data;
@@ -34,11 +34,11 @@ function UsersContext({ children }) {
   const createUser = async (user) => {
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/auth/signup',
+        'https://proyectofinalback.onrender.com/api/auth/signup',
         user
       );
       const data = response.data;
-      setUsers(prevUsers => [...prevUsers, data]);
+      setUsers((prevUsers) => [...prevUsers, data]);
       return data;
     } catch (error) {
       console.error('Registration error:', error.message);
@@ -49,7 +49,7 @@ function UsersContext({ children }) {
   const userLogIn = async (user) => {
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/auth/signin',
+        'https://proyectofinalback.onrender.com/api/auth/signin',
         user
       );
       return response;
@@ -69,7 +69,7 @@ function UsersContext({ children }) {
         },
       };
       const response = await axios.get(
-        `http://localhost:3000/api/user/${id}`,
+        `https://proyectofinalback.onrender.com/api/user/${id}`,
         config
       );
       const data = response.data;
@@ -107,14 +107,11 @@ function UsersContext({ children }) {
       if (!token) return;
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       };
-      await axios.delete(
-        `http://localhost:3000/api/user/${id}`,
-        config
-      );
-      const filteredUsers = users.filter(user => user._id !== id);
+      await axios.delete(`http://localhost:3000/api/user/${id}`, config);
+      const filteredUsers = users.filter((user) => user._id !== id);
       Swal.fire({
         position: 'center',
         icon: 'Success',
@@ -159,17 +156,15 @@ function UsersContext({ children }) {
       if (!token) return;
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       };
       await axios.put(
         `http://localhost:3000/api/user/profile/${user.id}`,
         user,
         config
       );
-      const updatedUsers = users.map((u) =>
-        u._id === users._id ? user : u
-      );
+      const updatedUsers = users.map((u) => (u._id === users._id ? user : u));
       setUsers(updatedUsers);
     } catch (error) {
       console.log(error);
@@ -210,17 +205,19 @@ function UsersContext({ children }) {
   }, [isLoggedIn, user]);
 
   return (
-    <UsersProvider.Provider value={{
-      users,
-      getUsers,
-      createUser,
-      userLogIn,
-      getUser,
-      getUserName,
-      getMyUser,
-      editUser,
-      deleteUser
-    }}>
+    <UsersProvider.Provider
+      value={{
+        users,
+        getUsers,
+        createUser,
+        userLogIn,
+        getUser,
+        getUserName,
+        getMyUser,
+        editUser,
+        deleteUser,
+      }}
+    >
       {children}
     </UsersProvider.Provider>
   );

@@ -11,7 +11,9 @@ function ProductsContext({ children }) {
 
   const getProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/products');
+      const response = await axios.get(
+        'https://proyectofinalback.onrender.com/api/products'
+      );
       const data = response.data;
       setProducts([...data]);
     } catch (error) {
@@ -22,7 +24,7 @@ function ProductsContext({ children }) {
   const addProduct = async (product) => {
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/products/create',
+        'https://proyectofinalback.onrender.com/api/products/create',
         product
       );
       const data = response.data;
@@ -35,7 +37,9 @@ function ProductsContext({ children }) {
 
   const deleteProducts = async (_id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/products/${_id}`);
+      await axios.delete(
+        `https://proyectofinalback.onrender.com/api/products/${_id}`
+      );
       const filteredProducts = products.filter((product) => product.id !== _id);
       Swal.fire({
         position: 'center',
@@ -54,7 +58,7 @@ function ProductsContext({ children }) {
   const updateProduct = async (product) => {
     try {
       await axios.put(
-        `http://localhost:3000/api/products/${product.id}`,
+        `https://proyectofinalback.onrender.com/api/products/${product.id}`,
         product
       );
       const updatedProducts = products.map((p) =>

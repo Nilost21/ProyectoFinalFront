@@ -27,8 +27,16 @@ const BookingCard = ({ id, name, description, teacher, dateAndTime }) => {
       return;
     }
     try {
-      const res = await newEnrollment({ user: user._id, gymClass: id });
-      if (res) {
+      const result = await newEnrollment({ user: user._id, gymClass: id });
+      if (result.message === 'You are already enrolled in the class.') {
+        Swal.fire({
+          position: 'center',
+          icon: 'info',
+          title: 'You are already enrolled in the class.',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } else {
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -36,15 +44,14 @@ const BookingCard = ({ id, name, description, teacher, dateAndTime }) => {
           showConfirmButton: false,
           timer: 1500,
         });
-      } else {
-        throw new Error('The user is already enrolled');
       }
     } catch (error) {
+      const errorMessage = error.response?.data?.error.message
       Swal.fire({
         position: 'center',
         icon: 'error',
-        title: 'Error enrolling in class',
-        text: error.message || error,
+        title: 'Error when booking the class.',
+        text: errorMessage,
       });
     }
   };
