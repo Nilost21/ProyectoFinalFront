@@ -13,20 +13,26 @@ function EnrollmentContext({ children }) {
   const [userEnrollments, setuserEnrollments] = useState([]);
 
   const getEnrollments = async () => {
-    const response = await axios.get('http://localhost:3000/api/enrollment/');
+    const response = await axios.get(
+      'https://proyectofinalback.onrender.com/api/enrollment/'
+    );
     const data = response.data;
     setEnrollments([...data]);
   };
 
   const getEnrollmentsForToday = async () => {
-    const response = await axios.get('http://localhost:3000/api/enrollment/enrollments/today');
+    const response = await axios.get(
+      'https://proyectofinalback.onrender.com/api/enrollment/enrollments/today'
+    );
     const data = response.data;
     setClassesForToday([...data]);
     return data;
   };
 
   const newEnrollment = async (enrollmentData) => {
-    const response = await axiosInstance.post('/enrollment/', enrollmentData);
+    const response = await axios.post(
+      'https://proyectofinalback.onrender.com/api/enrollment/',
+      enrollmentData);
     const data = response.data;
     if (data.message === 'You are already enrolled in the class.') {
       return data;
@@ -36,7 +42,9 @@ function EnrollmentContext({ children }) {
   };
 
   const deleteEnrollment = async (_id) => {
-    const res = await axios.delete(`http://localhost:3000/api/enrollment/${_id}`);
+    const res = await axios.delete(
+      `https://proyectofinalback.onrender.com/api/enrollment/${_id}`
+    );
     console.log("res", res);
     const filteredEnrollments = enrollments.filter((e) => e.id !== _id);
     Swal.fire({
@@ -59,7 +67,7 @@ function EnrollmentContext({ children }) {
       },
     };
     const response = await axios.get(
-      `http://localhost:3000/api/enrollment/enrollments/${userId}`,
+      `https://proyectofinalback.onrender.com/api/enrollment/enrollments/${userId}`,
       config
     );
     const data = response.data;

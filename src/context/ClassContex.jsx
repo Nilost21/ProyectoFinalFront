@@ -11,7 +11,9 @@ function ClassContext({ children }) {
 
   const getClasses = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/class/');
+      const response = await axios.get(
+        'https://proyectofinalback.onrender.com/api/class/'
+      );
       const data = response.data;
       setClasses([...data]);
     } catch (error) {
@@ -21,7 +23,9 @@ function ClassContext({ children }) {
 
   const getClass = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/class/${id}`);
+      const response = await axios.get(
+        `https://proyectofinalback.onrender.com/api/class/${id}`
+      );
       const data = response.data;
       return data;
     } catch (error) {
@@ -31,7 +35,9 @@ function ClassContext({ children }) {
 
   const getClassDate = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/class/${id}`);
+      const response = await axios.get(
+        `https://proyectofinalback.onrender.com/api/class/${id}`
+      );
       const data = response.data;
       return data.dateAndTime;
     } catch (error) {
@@ -41,7 +47,9 @@ function ClassContext({ children }) {
 
   const getClassNameById = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/class/name/${id}`);
+      const response = await axios.get(
+        `https://proyectofinalback.onrender.com/api/class/name/${id}`
+      );
       const data = response.data;
       return data;
     } catch (error) {
@@ -51,7 +59,9 @@ function ClassContext({ children }) {
 
   const getClassTeacherById = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/class/teacher/${id}`);
+      const response = await axios.get(
+        `https://proyectofinalback.onrender.com/api/class/teacher/${id}`
+      );
       const data = response.data;
       return data;
     } catch (error) {
@@ -62,7 +72,7 @@ function ClassContext({ children }) {
   const addClass = async (newClass) => {
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/class/create',
+        'https://proyectofinalback.onrender.com/api/class/create',
         newClass
       );
       const data = response.data;
@@ -76,7 +86,7 @@ function ClassContext({ children }) {
   const deleteClass = async (_id) => {
     try {
       await axios.delete(
-        `http://localhost:3000/api/class/${_id}`
+        `https://proyectofinalback.onrender.com/api/class/${_id}`
       );
       const filteredClasses = classes.filter((e) => e.id !== _id);
       Swal.fire({
@@ -96,7 +106,7 @@ function ClassContext({ children }) {
   const updateClass = async (classToEdit) => {
     try {
       await axios.put(
-        `http://localhost:3000/api/class/${classToEdit.id}`,
+        `https://proyectofinalback.onrender.com/api/class/${classToEdit.id}`,
         classToEdit
       );
       const updatedClass = classes.map((c) =>
@@ -123,7 +133,7 @@ function ClassContext({ children }) {
         getClassDate,
         deleteClass,
         updateClass,
-        getClasses
+        getClasses,
       }}
     >
       {children}
