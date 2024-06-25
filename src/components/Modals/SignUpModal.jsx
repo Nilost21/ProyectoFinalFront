@@ -148,6 +148,8 @@ const SignUp = ({ show, handleClose, showLoginModal }) => {
                       value={values.phonenumber}
                       onChange={handleChange}
                       placeholder="Enter your phone number"
+                      minLength={6}
+                      maxLength={15}
                     />
                     <ErrorMessage
                       name="phonenumber"
